@@ -5,7 +5,7 @@ const dest          = `${__dirname}/public`;
 const bodyParser    = require('body-parser');
 const env           = require('./config/env');
 const router        = require('./config/routes');
-const errorHandler  = require('./lib/errors');
+const errorHandler  = require('./lib/errorHandler');
 const mongoose      = require('mongoose');
 mongoose.Promise    = require('bluebird');
 

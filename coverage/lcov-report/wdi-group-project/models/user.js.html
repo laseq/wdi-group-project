@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for wdi-group-project/config/routes.js</title>
+    <title>Code coverage report for wdi-group-project/models/user.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">all files</a> / <a href="index.html">wdi-group-project/config/</a> routes.js
+      <a href="../../index.html">all files</a> / <a href="index.html">wdi-group-project/models/</a> user.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>3/3</span>
       </div>
     </div>
   </div>
@@ -50,20 +50,56 @@
 5
 6
 7
-8</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const router = require('express').Router();
-const users   = require('../controllers/users');
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const mongoose  = require('mongoose');
 &nbsp;
-router.route('/users')
-.get(users.index);
+const userSchema = new mongoose.Schema({
+  username: { type: String, unique: true, trim: true, required: true },
+  name: { type: String, trim: true },
+  email: { type: String, unique: true, trim: true, required: true },
+  age: { type: Number, required: true },
+  gender: { type: String, enum: ['male', 'female'] },
+  image: { type: String, trim: true },
+  location: { type: String, required: true },
+  postcode: { type: String, required: true },
+  locationCoords: [{ lat: { type: Number }, lng: { type: Number } }],
+  about: { type: String },
+  groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
+}, {
+  timestamps: true
+});
 &nbsp;
-module.exports = router;
+module.exports = mongoose.model('User', userSchema);
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
