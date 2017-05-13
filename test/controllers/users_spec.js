@@ -75,6 +75,28 @@ describe('Users Controller Test', () => {
         done();
       }); // shuts: .end((err, res)...)
     }); // shuts: it('should return a JSON object'...)
+    // This test is ensuring the required parts of the model are there
+    it('should return a user-like object with the required fields as the first item in the array', function(done) {
+      api
+      .get('/api/users')
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) console.log(err);
+        expect(res.body)
+        .to.have.property(0)
+        .and.to.include.keys([
+          'username',
+          'email',
+          'age',
+          'location',
+          'postcode',
+          '_id',
+          'updatedAt',
+          'createdAt'
+        ]);
+        done();
+      }); // shuts: .end((err, res)..)
+    }); // shuts: it('should return ...)
 
   }); // shuts: describe('GET /api/users'...)
 }); // shuts: describe('Users Controller Test'...)
