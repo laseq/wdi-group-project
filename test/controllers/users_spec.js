@@ -15,7 +15,26 @@ describe('Users Controller Test', () => {
     }); // shuts: it('should return a 200 response'...)
     // This test is checking that the request to our API returns an arary
     it('should return an array', function (done) {
-
-    })
+      api
+      .get('/api/users')
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) console.log(err);
+        expect(res.body).to.be.an('array');
+        done();
+      }); // shuts: .end((err, res)...)
+    }); // shuts: it('should return an array'...)
+    // This test is checking that the request to our API returns JSON
+    it('should return a JSON object', function (done) {
+      api
+      .get('/api/users')
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) console.log(err);
+        expect(res.header['content-type'])
+        .to.be.eq('application/json; charset=utf-8');
+        done();
+      }); // shuts: .end((err, res)...)
+    }); // shuts: it('should return a JSON object'...)
   }); // shuts: describe('GET /api/users'...)
 }); // shuts: describe('Users Controller Test'...)
