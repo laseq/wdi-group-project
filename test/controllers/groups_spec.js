@@ -162,6 +162,53 @@ describe('Groups Controller Test', () => {
         });
     }); // End of it('should return a group-like object with the required fields...)
 
+    it('should return a soup-like object with all fields as the first item in the array', function(done) {
+    // this.skip();
+      api
+        .get('/api/groups')
+        .set('Accept', 'application/json')
+        .end((err, res) => {
+          if (err) console.log(err);
+          expect(res.body)
+            .to.have.property(0)
+            .and.to.all.keys([
+              '__v',
+              '_id',
+              'name',
+              'admin',
+              'members',
+              'schedule',
+              'comments',
+              'updatedAt',
+              'createdAt'
+            ]);
+          done();
+        });
+    });
+
+
+
+    // [{
+    //   name: 'Aldgate Runchers',
+    //   admin: users[0]._id,
+    //   members: [
+    //     users[1]._id,
+    //     users[2]._id
+    //   ],
+    //   schedule: {
+    //     day: 'Monday',
+    //     date: new Date('2017-05-15'),
+    //     startTime: '12:30',
+    //     location: 'Aldgate East Station',
+    //     distance: '3.0 km',
+    //     description: 'A nice easy run'
+    //   },
+    //   comments: [
+    //     { comment: 'Welcome to my group', user: users[0]._id },
+    //     { comment: 'This is a great run group', user: users[1]._id }
+    //   ]
+    // }]
+
 
 
   }); // End of describe('GET /api/groups'...)

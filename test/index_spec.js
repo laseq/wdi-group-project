@@ -55,7 +55,6 @@ describe('Base Index.html test', () => {
         });
     }); // End of it('should return the correct index.html even when an undefined endpoint is called'...)
 
-
   }); //End of describe('GET /*'...)
 
 }); // End of describe('Base Index.html test'...)
