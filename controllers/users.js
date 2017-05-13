@@ -32,8 +32,17 @@ function usersCreate(req, res, next) {
   .catch(next);
 }
 
+function usersUpdate(req, res, next) {
+  User
+  .findByIdAndUpdate(req.params.id, req.body.user, { new: true, runValidators: true })
+  .exec()
+  .then(user => res.status(200).json(user))
+  .catch(next);
+}
+
 module.exports = {
   index: usersIndex,
   show: usersShow,
-  create: usersCreate
+  create: usersCreate,
+  update: usersUpdate
 };

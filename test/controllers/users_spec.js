@@ -219,4 +219,65 @@ describe('Users Controller Test', () => {
       }); // shuts: .end((err, res)...)
     }); // shuts: it('should return...)
   }); // shuts: describe('POST /api/users'...)
+
+  // This is testing the users update
+  describe('PUT /api/users/:id', () => {
+
+    // This gets rid of the duplicate error, which comes because of username having to be unique
+    beforeEach(done => {
+      User
+      .remove()
+      .then(() => done())
+      .catch(done);
+    });
+
+    // This ensures that the unique dummy data is not re-used
+    afterEach(done => {
+      User
+      .remove()
+      .then(() => done())
+      .catch(done);
+    });
+
+    // This test ensures a connection and that the 'name' is updated for example
+    it('should return a 200 response and update name', function(done) {
+      User
+      .create({
+        username: 'alexyeates',
+        name: 'alex',
+        email: 'alex@alex.com',
+        age: 23,
+        gender: 'male',
+        image: 'https://www.fillmurray.com/600/400',
+        location: 'Aldgate',
+        postcode: 'E1 7PT',
+        locationCoords: { lat: 51.5152149, lng: 0.0745205 },
+        about: 'lorem'
+        // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
+      })
+      .then(user => {
+        api
+        .put(`/api/users/${user._id}`)
+        .set('Accept', 'application/json')
+        .send({
+          user: {
+            name: 'Joe'
+          }
+        })
+        .end((err, res) => {
+          if (err) console.log(err);
+          expect(res.status)
+          .to.eq(200);
+
+          expect(res.body)
+          .to.have.property('name');
+
+          expect(res.body.name)
+          .to.eq('Joe');
+          done();
+        }); // shuts: .end((err, res)...)
+      })
+      .catch(done);
+    }); // shuts: it('should return...)
+  }); // shuts: describe('PUT /api/users/:id'...)
 }); // shuts: describe('Users Controller Test'...)

@@ -6,6 +6,7 @@ router.route('/users')
 .post(users.create);
 
 router.route('/users/:id')
-.get(users.show);
+.get(users.show)
+.put(users.update);
 
 module.exports = router;
