@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   image: { type: String, trim: true },
   location: { type: String, required: true },
   postcode: { type: String, required: true },
-  locationCoords: [{ lat: { type: Number }, lng: { type: Number } }],
+  locationCoords: { lat: { type: Number }, lng: { type: Number } },
   about: { type: String },
   groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
 }, {

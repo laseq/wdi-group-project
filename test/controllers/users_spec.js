@@ -1,7 +1,37 @@
 const { api, expect } = require('../spec_helper');
+const User            = require('../../models/user');
 
 describe('Users Controller Test', () => {
   describe('GET /api/users', () => {
+
+    // This gets rid of the duplicate error, which comes because of username having to be unique
+    beforeEach(done => {
+      User
+      .remove()
+      .then(() => done())
+      .catch(done);
+    });
+
+    // This creates dummy data for the tests to run against in the API
+    beforeEach(done => {
+      User
+      .create({
+        username: 'alexyeates',
+        name: 'alex',
+        email: 'alex@alex.com',
+        age: 23,
+        gender: 'male',
+        image: 'https://www.fillmurray.com/600/400',
+        location: 'Aldgate',
+        postcode: 'E1 7PT',
+        locationCoords: { lat: 51.5152149, lng: 0.0745205 },
+        about: 'lorem'
+        // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
+      })
+      .then(() => done())
+      .catch(done);
+    }); // shuts: beforeEach(...)
+
     // This test is checking that a request to our API is connecting to a link
     it('should return a 200 response', function (done) {
       api
