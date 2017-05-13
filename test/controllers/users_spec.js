@@ -260,9 +260,7 @@ describe('Users Controller Test', () => {
         .put(`/api/users/${user._id}`)
         .set('Accept', 'application/json')
         .send({
-          user: {
-            name: 'Joe'
-          }
+          name: 'Joe'
         })
         .end((err, res) => {
           if (err) console.log(err);
@@ -327,7 +325,7 @@ describe('Users Controller Test', () => {
           done();
         }); // shuts: .end((err, res) => {
       }) // shuts: .then(user => {
-      .catch(done); 
+          .catch(done);
     }); // shuts: it('should return...)
   }); // shuts: describe('DELETE /api/users/:id'...)
 }); // shuts: describe('Users Controller Test'...)

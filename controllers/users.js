@@ -27,16 +27,20 @@ function usersShow(req, res, next) {
 
 function usersCreate(req, res, next) {
   User
-  .create(req.body.user)
-  .then(user => res.status(201).json(user))
+  .create(req.body)
+  .then(user => {
+    res.status(201).json(user);
+  })
   .catch(next);
 }
 
 function usersUpdate(req, res, next) {
   User
-  .findByIdAndUpdate(req.params.id, req.body.user, { new: true, runValidators: true })
+  .findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
   .exec()
-  .then(user => res.status(200).json(user))
+  .then(user => {
+    res.status(200).json(user);
+  })
   .catch(next);
 }
 
