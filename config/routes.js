@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const router = require('express').Router();
 const users  = require('../controllers/users');
 const groups = require('../controllers/groups');
@@ -20,3 +21,6 @@ router.route('/groups/:id')
 
 
 module.exports = router;
+=======
+
+>>>>>>> 67755ec6f235088dbb59b0e3c8d158eae12f9581
