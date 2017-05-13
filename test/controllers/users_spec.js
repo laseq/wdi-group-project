@@ -36,5 +36,6 @@ describe('Users Controller Test', () => {
         done();
       }); // shuts: .end((err, res)...)
     }); // shuts: it('should return a JSON object'...)
+
   }); // shuts: describe('GET /api/users'...)
 }); // shuts: describe('Users Controller Test'...)
