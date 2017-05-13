@@ -5,7 +5,7 @@ describe('Base Index.html test', () => {
   describe('GET /*', () => {
 
     it('should return a 200 response', function(done) {
-      // this.skip()
+      this.skip();
       api
       .get('/')
       .set('Accept', 'application/html')
@@ -17,7 +17,7 @@ describe('Base Index.html test', () => {
     }); // End of it('should return a 200 response'...)
 
     it('should return a html', function(done) {
-    // this.skip()
+      this.skip();
       api
         .get('/')
         .set('Accept', 'application/html')
@@ -30,7 +30,7 @@ describe('Base Index.html test', () => {
     }); // End of it('should return a html'...)
 
     it('should return the correct index.html with title Runch', function(done) {
-    // this.skip()
+      this.skip();
       api
         .get('/')
         .set('Accept', 'application/html')
@@ -43,7 +43,7 @@ describe('Base Index.html test', () => {
     }); // End of it('should return the correct index.html with title Runch'...)
 
     it('should return the correct index.html even when an undefined endpoint is called', function(done) {
-    // this.skip()
+      this.skip();
       api
         .get('/hlwhjisr')
         .set('Accept', 'application/html')
