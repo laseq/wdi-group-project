@@ -12,6 +12,8 @@ const userSchema = new mongoose.Schema({
   locationCoords: [{ lat: { type: Number }, lng: { type: Number } }],
   about: { type: String },
   groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('User', userSchema);
