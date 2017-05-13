@@ -41,7 +41,7 @@ const testUserArray = [{
 }];
 
 function createGroup(users) {
-  const groupArray = [{
+  const runningGroup = {
     name: 'Aldgate Runchers',
     admin: users[0]._id,
     members: [
@@ -60,9 +60,21 @@ function createGroup(users) {
       { comment: 'Welcome to my group', user: users[0]._id },
       { comment: 'This is a great run group', user: users[1]._id }
     ]
-  }];
+  };
 
-  return groupArray;
+  return runningGroup;
+}
+
+function removeGroupAndUserDbs(done) {
+  Group
+    .remove()
+    .then(() => {
+
+      User
+      .remove()
+      .then(() => done())
+      .catch(done);
+    });
 }
 
 describe('Groups Controller Test', () => {
@@ -70,15 +82,7 @@ describe('Groups Controller Test', () => {
   describe('GET /api/groups', () => {
 
     beforeEach(done => {
-      Group
-        .remove()
-        .then(() => {
-
-          User
-          .remove()
-          .then(() => done())
-          .catch(done);
-        });
+      removeGroupAndUserDbs(done);
     });
 
     beforeEach(done => {
@@ -86,32 +90,24 @@ describe('Groups Controller Test', () => {
       User
       .create(testUserArray)
       .then(users => {
-        console.log(`${users.length} users were created!`);
+        // console.log(`${users.length} users were created!`);
 
         return Group
-        .create(createGroup(users));
+        .create([createGroup(users)]);
       })
       .then(groups => {
         // console.log('groups[0].admin:', groups[0].admin);
         // console.log('groups[0].members:', groups[0].members);
         // console.log('groups[0].comments:', groups[0].comments);
-        console.log(`A group with group id ${groups[0]._id} was created!`);
-        console.log(`${groups.length} groups were created!`);
+        // console.log(`A group with group id ${groups[0]._id} was created!`);
+        // console.log(`${groups.length} groups were created!`);
         done();
       })
       .catch(done);
     });
 
     afterEach(done => {
-      Group
-        .remove()
-        .then(() => {
-
-          User
-          .remove()
-          .then(() => done())
-          .catch(done);
-        });
+      removeGroupAndUserDbs(done);
     });
 
     it('should return a 200 response', function(done) {
@@ -199,27 +195,11 @@ describe('Groups Controller Test', () => {
   describe('GET /api/groups/:id', () => {
 
     beforeEach(done => {
-      Group
-        .remove()
-        .then(() => {
-
-          User
-          .remove()
-          .then(() => done())
-          .catch(done);
-        });
+      removeGroupAndUserDbs(done);
     });
 
     afterEach(done => {
-      Group
-        .remove()
-        .then(() => {
-
-          User
-          .remove()
-          .then(() => done())
-          .catch(done);
-        });
+      removeGroupAndUserDbs(done);
     });
 
     it('should return a 200 response', function(done) {
@@ -227,15 +207,15 @@ describe('Groups Controller Test', () => {
       User
         .create(testUserArray)
         .then(users => {
-          console.log(`${users.length} users were created!`);
+          // console.log(`${users.length} users were created!`);
 
           return Group
-          .create(createGroup(users));
+            .create(createGroup(users));
         })
         .then(group => {
-          console.log(`A group with group id ${group[0]._id} was created!`);
+          // console.log(`A group with group id ${group._id} was created!`);
           api
-            .get(`/api/group/${group[0]._id}`)
+            .get(`/api/groups/${group._id}`)
             .set('Accept', 'application/json')
             .end((err, res) => {
               expect(res.status)
@@ -263,30 +243,105 @@ describe('Groups Controller Test', () => {
 
   describe('POST /api/groups', () => {
     it('should return a 201 response', function(done) {
+      // this.skip();
       let testUsers = [];
       User
       .create(testUserArray)
       .then(users => {
-        console.log(`${users.length} users were created!`);
+        // console.log(`${users.length} users were created!`);
         testUsers = users;
-        done();
+
+        api
+          .post('/api/groups')
+          .set('Accept', 'application/json')
+          .send(createGroup(testUsers))
+          .end((err, res) => {
+            if (err) console.log(err);
+            expect(res.status)
+              .to.eq(201);
+            done();
+          });
       })
       .catch(done);
-      // this.skip();
-      api
-        .post('/api/groups')
-        .set('Accept', 'application/json')
-        .send(createGroup(testUsers)[0])
-        .end((err, res) => {
-          console.log('res.body:', res.body);
-          if (err) console.log(err);
-          expect(res.status)
-            .to.eq(201);
-          done();
-        });
+    }); // End of it('should return a 201 response'...)
+  }); // End of describe('POST /api/groups'...)
+
+  describe('PUT /api/groups/:id', () => {
+
+    beforeEach(done => {
+      removeGroupAndUserDbs(done);
     });
-  });
 
+    afterEach(done => {
+      removeGroupAndUserDbs(done);
+    });
 
+    it('should return a 200 response and update name', function(done) {
+      // this.skip();
+      User
+        .create(testUserArray)
+        .then(users => {
+          // console.log(`${users.length} users were created!`);
+
+          return Group
+            .create(createGroup(users));
+        })
+        .then(group => {
+          api
+            .put(`/api/groups/${group._id}`)
+            .set('Accept', 'application/json')
+            .send({
+              name: 'Whitechapel Runchers'
+            })
+            .end((err, res) => {
+              if(err) console.log(err);
+              expect(res.status)
+                .to.eq(200);
+
+              expect(res.body)
+                .to.have.property('name');
+
+              expect(res.body.name)
+                .to.eq('Whitechapel Runchers');
+              done();
+            });
+        })
+        .catch(done);
+    }); // End of it('should return a 200 response and update name'...)
+  }); // End of describe('PUT /api/groups/:id'...)
+
+  describe('DELETE /api/groups/:id', () => {
+    // this.skip();
+    beforeEach(done => {
+      removeGroupAndUserDbs(done);
+    });
+
+    afterEach(done => {
+      removeGroupAndUserDbs(done);
+    });
+
+    it('should return a 204 response', function(done) {
+      User
+        .create(testUserArray)
+        .then(users => {
+          // console.log(`${users.length} users were created!`);
+
+          return Group
+            .create(createGroup(users));
+        })
+        .then(group => {
+          api
+            .delete(`/api/groups/${group._id}`)
+            .set('Accept', 'application/json')
+            .end((err, res) => {
+              if (err) console.log(err);
+              expect(res.status)
+                .to.eq(204);
+              done();
+            });
+        })
+        .catch(done);
+    }); // End of it('should return a 204 response'...)
+  }); // End of describe('DELETE /api/groups/:id'...)
 
 }); // End of describe('Groups Controller Test'...)

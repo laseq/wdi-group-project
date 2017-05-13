@@ -16,7 +16,9 @@ router.route('/groups')
 .post(groups.create);
 
 router.route('/groups/:id')
-.get(groups.show);
+.get(groups.show)
+.put(groups.update)
+.delete(groups.delete);
 
 
 module.exports = router;
