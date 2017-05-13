@@ -10,6 +10,16 @@ function groupsIndex(req, res, next) {
     .catch(next);
 }
 
+function groupsCreate(req, res) {
+  Group
+    .create(req.body)
+    .then(group => {
+      console.log('req.body inside groupsCreate:', req.body);
+      res.status(201).json(group);
+    })
+    .catch(err => res.status(500).json(err));
+}
+
 function groupsShow(req, res, next) {
   Group
     .findById(req.params.id)
@@ -27,5 +37,6 @@ function groupsShow(req, res, next) {
 
 module.exports = {
   index: groupsIndex,
+  create: groupsCreate,
   show: groupsShow
 };

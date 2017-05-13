@@ -95,6 +95,7 @@ describe('Groups Controller Test', () => {
         // console.log('groups[0].admin:', groups[0].admin);
         // console.log('groups[0].members:', groups[0].members);
         // console.log('groups[0].comments:', groups[0].comments);
+        console.log(`A group with group id ${groups[0]._id} was created!`);
         console.log(`${groups.length} groups were created!`);
         done();
       })
@@ -232,9 +233,9 @@ describe('Groups Controller Test', () => {
           .create(createGroup(users));
         })
         .then(group => {
-          console.log(`A group with group id ${group._id} was created!`);
+          console.log(`A group with group id ${group[0]._id} was created!`);
           api
-            .get(`/api/group/${group._id}`)
+            .get(`/api/group/${group[0]._id}`)
             .set('Accept', 'application/json')
             .end((err, res) => {
               expect(res.status)
@@ -260,7 +261,31 @@ describe('Groups Controller Test', () => {
     }); //End of it('should not return a group if the id is wrong'...)
   }); // End of describe('GET /api/groups/:id'...)
 
-
+  describe('POST /api/groups', () => {
+    it('should return a 201 response', function(done) {
+      let testUsers = [];
+      User
+      .create(testUserArray)
+      .then(users => {
+        console.log(`${users.length} users were created!`);
+        testUsers = users;
+        done();
+      })
+      .catch(done);
+      // this.skip();
+      api
+        .post('/api/groups')
+        .set('Accept', 'application/json')
+        .send(createGroup(testUsers)[0])
+        .end((err, res) => {
+          console.log('res.body:', res.body);
+          if (err) console.log(err);
+          expect(res.status)
+            .to.eq(201);
+          done();
+        });
+    });
+  });
 
 
 
