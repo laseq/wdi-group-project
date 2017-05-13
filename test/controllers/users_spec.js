@@ -128,6 +128,7 @@ describe('Users Controller Test', () => {
     }); // shuts: it('should return...')
   }); // shuts: describe('GET /api/users'...)
 
+  // This is testing the users show
   describe('GET /api/users/:id', () => {
 
     // This gets rid of the duplicate error, which comes because of username having to be unique
@@ -175,6 +176,7 @@ describe('Users Controller Test', () => {
       })
       .catch(done);
     }); // shuts: it('should return'...)
+
     // This test ensures the show is using a correct id for the user
     it('should not return a user if the id is wrong', function(done) {
       api
@@ -188,4 +190,33 @@ describe('Users Controller Test', () => {
       }); // shuts: .end((err, res)...)
     }); // shuts: it('should return'...)
   }); // shuts: describe('GET /api/users/:id'...)
+
+  // This is testing the users create
+  describe('POST /api/users', () => {
+
+    // This ensures that what is being added to the database fits the model
+    it('should return a 201 response', function(done) {
+      api
+      .post('/api/users')
+      .set('Accept', 'application/json')
+      .send({
+        username: 'alexyeates',
+        name: 'alex',
+        email: 'alex@alex.com',
+        age: 23,
+        gender: 'male',
+        image: 'https://www.fillmurray.com/600/400',
+        location: 'Aldgate',
+        postcode: 'E1 7PT',
+        locationCoords: { lat: 51.5152149, lng: 0.0745205 },
+        about: 'lorem'
+      })
+      .end((err, res) => {
+        if (err) console.log(err);
+        expect(res.status)
+        .to.eq(201);
+        done();
+      }); // shuts: .end((err, res)...)
+    }); // shuts: it('should return...)
+  }); // shuts: describe('POST /api/users'...)
 }); // shuts: describe('Users Controller Test'...)

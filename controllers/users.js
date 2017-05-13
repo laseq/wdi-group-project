@@ -25,7 +25,15 @@ function usersShow(req, res, next) {
   .catch(next);
 }
 
+function usersCreate(req, res, next) {
+  User
+  .create(req.body.user)
+  .then(user => res.status(201).json(user))
+  .catch(next);
+}
+
 module.exports = {
   index: usersIndex,
-  show: usersShow
+  show: usersShow,
+  create: usersCreate
 };
