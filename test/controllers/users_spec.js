@@ -146,8 +146,9 @@ describe('Users Controller Test', () => {
       .catch(done);
     });
 
-    // This test should test that there is a connection when trying to view a user page 
+    // This test should test that there is a connection when trying to view a user page
     it('should return a 200 response', function(done) {
+      // this.skip();
       User
       .create({
         username: 'alexyeates',
@@ -173,6 +174,18 @@ describe('Users Controller Test', () => {
         });
       })
       .catch(done);
+    }); // shuts: it('should return'...)
+    // This test ensures the show is using a correct id for the user
+    it('should not return a user if the id is wrong', function(done) {
+      api
+      .get(`/api/users/5917156c02a7b9cde5e2fa21`)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) console.log(err);
+        expect(res.status)
+        .to.eq(404);
+        done();
+      }); // shuts: .end((err, res)...)
     }); // shuts: it('should return'...)
   }); // shuts: describe('GET /api/users/:id'...)
 }); // shuts: describe('Users Controller Test'...)

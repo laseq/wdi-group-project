@@ -18,6 +18,7 @@ function usersShow(req, res, next) {
     if (!user) {
       const error  = new Error('No user was found');
       error.status = 404;
+      return next(error);
     }
     return res.status(200).json(user);
   })
