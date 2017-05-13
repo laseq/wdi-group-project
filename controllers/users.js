@@ -10,6 +10,21 @@ function usersIndex(req, res, next) {
   .catch(next);
 }
 
+function usersShow(req, res, next) {
+  User
+  .findById(req.params.id)
+  .exec()
+  .then(user => {
+    if (!user) {
+      const error  = new Error('No user was found');
+      error.status = 404;
+    }
+    return res.status(200).json(user);
+  })
+  .catch(next);
+}
+
 module.exports = {
-  index: usersIndex
+  index: usersIndex,
+  show: usersShow
 };
