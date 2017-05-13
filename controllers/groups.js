@@ -10,14 +10,14 @@ function groupsIndex(req, res, next) {
     .catch(next);
 }
 
-function groupsCreate(req, res) {
+function groupsCreate(req, res, next) {
   Group
     .create(req.body)
     .then(group => {
-      console.log('req.body inside groupsCreate:', req.body);
+      // console.log('req.body inside groupsCreate:', req.body);
       res.status(201).json(group);
     })
-    .catch(err => res.status(500).json(err));
+    .catch(next);
 }
 
 function groupsShow(req, res, next) {
@@ -35,8 +35,26 @@ function groupsShow(req, res, next) {
     .catch(next);
 }
 
+function groupsUpdate(req, res, next) {
+  Group
+    .findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+    .exec()
+    .then(group => res.status(200).json(group))
+    .catch(next);
+}
+
+function groupsDelete(req, res, next) {
+  Group
+    .findByIdAndRemove(req.params.id)
+    .exec()
+    .then(() => res.sendStatus(204))
+    .catch(next);
+}
+
 module.exports = {
   index: groupsIndex,
   create: groupsCreate,
-  show: groupsShow
+  show: groupsShow,
+  update: groupsUpdate,
+  delete: groupsDelete
 };
