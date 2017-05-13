@@ -97,6 +97,34 @@ describe('Users Controller Test', () => {
         done();
       }); // shuts: .end((err, res)..)
     }); // shuts: it('should return ...)
-
+    // This test will check that the request is returning all of the fields specified in the model
+    it('should return a user-like object with all fields as the first item in the array', function(done) {
+      api
+      .get('/api/users')
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) console.log(err);
+        expect(res.body)
+        .to.have.property(0)
+        .and.to.have.all.keys([
+          '__v',
+          '_id',
+          'updatedAt',
+          'createdAt',
+          'username',
+          'email',
+          'age',
+          'location',
+          'postcode',
+          'image',
+          'name',
+          'gender',
+          'locationCoords',
+          'about',
+          'groups'
+        ]);
+        done();
+      }); // shuts: .end((err, res)..)
+    }); // shuts: it('should return...')
   }); // shuts: describe('GET /api/users'...)
 }); // shuts: describe('Users Controller Test'...)
