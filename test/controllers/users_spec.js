@@ -2,6 +2,7 @@ const { api, expect } = require('../spec_helper');
 const User            = require('../../models/user');
 
 describe('Users Controller Test', () => {
+  // This is testing the users index
   describe('GET /api/users', () => {
 
     // This gets rid of the duplicate error, which comes because of username having to be unique
@@ -31,6 +32,14 @@ describe('Users Controller Test', () => {
       .then(() => done())
       .catch(done);
     }); // shuts: beforeEach(...)
+
+    // This ensures that the unique dummy data is not re-used
+    afterEach(done => {
+      User
+      .remove()
+      .then(() => done())
+      .catch(done);
+    });
 
     // This test is checking that a request to our API is connecting to a link
     it('should return a 200 response', function (done) {
