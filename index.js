@@ -10,7 +10,7 @@ const mongoose      = require('mongoose');
 mongoose.Promise    = require('bluebird');
 
 app.use(express.static(dest));
-// mongoose.connect(env.db[process.env.NODE_ENV]||env.db.development);
+mongoose.connect(env.db[process.env.NODE_ENV]);
 
 app.use(bodyParser.json());
 app.use('/api', router);
