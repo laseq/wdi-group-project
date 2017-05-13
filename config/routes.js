@@ -7,6 +7,7 @@ router.route('/users')
 
 router.route('/users/:id')
 .get(users.show)
-.put(users.update);
+.put(users.update)
+.delete(users.delete);
 
 module.exports = router;

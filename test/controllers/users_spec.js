@@ -280,4 +280,54 @@ describe('Users Controller Test', () => {
       .catch(done);
     }); // shuts: it('should return...)
   }); // shuts: describe('PUT /api/users/:id'...)
+
+  // This is testing the users delete
+  describe('DELETE /api/users/:id', () => {
+
+    // This gets rid of the duplicate error, which comes because of username having to be unique
+    beforeEach(done => {
+      User
+      .remove()
+      .then(() => done())
+      .catch(done);
+    });
+
+    // This ensures that the unique dummy data is not re-used
+    afterEach(done => {
+      User
+      .remove()
+      .then(() => done())
+      .catch(done);
+    });
+
+    // This test will ensure that the server has processed the reponse and is no longer producing the deleted user
+    it('should return a 204 response', function(done) {
+      User
+      .create({
+        username: 'alexyeates',
+        name: 'alex',
+        email: 'alex@alex.com',
+        age: 23,
+        gender: 'male',
+        image: 'https://www.fillmurray.com/600/400',
+        location: 'Aldgate',
+        postcode: 'E1 7PT',
+        locationCoords: { lat: 51.5152149, lng: 0.0745205 },
+        about: 'lorem'
+        // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
+      })
+      .then(user => {
+        api
+        .delete(`/api/users/${user._id}`)
+        .set('Accept', 'application/json')
+        .end((err, res) => {
+          if (err) console.log(err);
+          expect(res.status)
+          .to.eq(204);
+          done();
+        }); // shuts: .end((err, res) => {
+      }) // shuts: .then(user => {
+      .catch(done); 
+    }); // shuts: it('should return...)
+  }); // shuts: describe('DELETE /api/users/:id'...)
 }); // shuts: describe('Users Controller Test'...)

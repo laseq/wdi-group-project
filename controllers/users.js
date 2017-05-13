@@ -40,9 +40,18 @@ function usersUpdate(req, res, next) {
   .catch(next);
 }
 
+function usersDelete(req, res, next) {
+  User
+  .findByIdAndRemove(req.params.id)
+  .exec()
+  .then(() => res.sendStatus(204))
+  .catch(next);
+}
+
 module.exports = {
   index: usersIndex,
   show: usersShow,
   create: usersCreate,
-  update: usersUpdate
+  update: usersUpdate,
+  delete: usersDelete
 };
