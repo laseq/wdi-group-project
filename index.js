@@ -1,4 +1,6 @@
 const express       = require('express');
+const morgan        = require('morgan');
+const cors          = require('cors');
 const port          = process.env.PORT || 4000;
 const app           = express();
 const dest          = `${__dirname}/public`;
@@ -12,7 +14,10 @@ mongoose.Promise    = require('bluebird');
 app.use(express.static(dest));
 mongoose.connect(env.db[process.env.NODE_ENV]);
 
+app.use(morgan('dev'));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 app.use('/api', router);
 app.get('/*', (req, res) => res.sendFile(`${dest}/index.html`));
 app.use(errorHandler);
