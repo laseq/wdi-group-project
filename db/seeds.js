@@ -79,7 +79,7 @@ User
       {
         name: 'Whitechapel Runchers',
         admin: users[3]._id,
-        members: [users[3]._id, users[4]._id, users[5]._id, users[6]._id],
+        members: [users[3]._id, users[4]._id, users[5]._id, users[6]._id, users[1]._id, users[2]._id],
         schedule: [{
           day: 'Tuesday',
           date: new Date('2017-05-16'),
@@ -134,6 +134,37 @@ User
     console.log('groups[2].name:', groups[2].name);
     console.log('groups[2].admin:', groups[2].admin);
     // console.log('groups[2].comments:', groups[2].comments);
+
+    // return User
+    //   .find()
+    //   .exec()
+    //   .then(users => {
+    //     users.forEach(user => {
+    //       if (user.email === 'sophie@sophie.com') {
+    //         user.groups.push(groups[0]._id);
+    //       }
+    //       user.save();
+    //     });
+    //   });
+
+    // groups.forEach(group => {
+    //   let memberArray = [];
+    //   memberArray = group.members;
+    //   console.log('memberArray:', memberArray);
+    //   memberArray.forEach(memberId => {
+    //     return User
+    //       .find({ id: memberId })
+    //       .exec()
+    //       .then(member => {
+    //         console.log('member in double forEach:', member);
+    //         member.groups.push(group._id);
+    //         member.save();
+    //       });
+    //   });
+    // });
+  })
+  .then(users => {
+    console.log('users:', users.length);
   })
   .catch(err => {
     console.log('seeds file error:', err);
