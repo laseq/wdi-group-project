@@ -1,4 +1,6 @@
-const mongoose  = require('mongoose');
+const mongoose    = require('mongoose');
+mongoose.Promise  = require('bluebird');
+const User        = require('./user');
 
 const groupSchema = new mongoose.Schema({
   name: { type: String, unique: true, trim: true, required: true },
@@ -19,6 +21,10 @@ const groupSchema = new mongoose.Schema({
   }]
 }, {
   timestamps: true
+});
+
+groupSchema.post('save', function() {
+
 });
 
 module.exports = mongoose.model('Group', groupSchema);
