@@ -2,9 +2,9 @@ angular
   .module('runchApp')
   .controller('RegisterCtrl', RegisterCtrl);
 
-RegisterCtrl.$inject = ['User', 'CurrentUserService'];
-function RegisterCtrl(User, CurrentUserService) {
-  const vm    = this;
+RegisterCtrl.$inject = ['User', 'CurrentUserService', '$state'];
+function RegisterCtrl(User, CurrentUserService, $state) {
+  const vm = this;
 
   vm.register =  () => {
     User
@@ -12,6 +12,7 @@ function RegisterCtrl(User, CurrentUserService) {
       .$promise
       .then(() => {
         CurrentUserService.getUser();
+        $state.go('usersIndex');
       }, err => {
         console.log(err);
       });

@@ -22,4 +22,12 @@ function CurrentUserService(TokenService, $rootScope, User) {
         });
     }
   };
+
+  self.removeUser = () => {
+    self.currentUser = null;
+    TokenService.removeToken();
+    $rootScope.$broadcast('loggedOut');
+  };
+
+  self.getUser();
 }
