@@ -92,8 +92,8 @@ describe('Users Controller Test', () => {
         .to.have.property(0)
         .and.to.include.keys([
           'username',
-          'email',
           'age',
+          'email',
           'location',
           'postcode',
           '_id',
@@ -168,7 +168,9 @@ describe('Users Controller Test', () => {
         location: 'Aldgate',
         postcode: 'E1 7PT',
         locationCoords: { lat: 51.5152149, lng: 0.0745205 },
-        about: 'lorem'
+        about: 'lorem',
+        password: 'password',
+        passwordConfirmation: 'password'
         // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
       })
       .then(user => {
@@ -218,7 +220,9 @@ describe('Users Controller Test', () => {
         location: 'Aldgate',
         postcode: 'E1 7PT',
         locationCoords: { lat: 51.5152149, lng: 0.0745205 },
-        about: 'lorem'
+        about: 'lorem',
+        password: 'password',
+        passwordConfirmation: 'password'
       })
       .end((err, res) => {
         if (err) console.log(err);
@@ -262,7 +266,9 @@ describe('Users Controller Test', () => {
         location: 'Aldgate',
         postcode: 'E1 7PT',
         locationCoords: { lat: 51.5152149, lng: 0.0745205 },
-        about: 'lorem'
+        about: 'lorem',
+        password: 'password',
+        passwordConfirmation: 'password'
         // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
       })
       .then(user => {
@@ -322,7 +328,9 @@ describe('Users Controller Test', () => {
         location: 'Aldgate',
         postcode: 'E1 7PT',
         locationCoords: { lat: 51.5152149, lng: 0.0745205 },
-        about: 'lorem'
+        about: 'lorem',
+        password: 'password',
+        passwordConfirmation: 'password'
         // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
       })
       .then(user => {
