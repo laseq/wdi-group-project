@@ -31,7 +31,10 @@ describe('Users Controller Test', () => {
         about: 'lorem'
         // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
       })
-      .then(() => done())
+      .then(user => {
+        console.log('user after User.create:', user);
+        done();
+      })
       .catch(done);
     }); // shuts: beforeEach(...)
 
