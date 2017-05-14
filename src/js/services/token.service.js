@@ -16,13 +16,6 @@ function TokenService($window, jwtHelper) {
 
   self.decodeToken = () => {
     const token = self.getToken();
-    let decodedToken;
-    if (token) {
-      decodedToken = jwtHelper.decodeToken(token);
-    } else {
-      decodedToken = null;
-    }
-    return decodedToken;
-    // return token ? jwtHelper.decodeToken(token) : null;
+    return token ? jwtHelper.decodeToken(token) : null;
   };
 }
