@@ -14,7 +14,8 @@ function CurrentUserService(TokenService, $rootScope, User) {
         .get({ id: decoded.id })
         .$promise
         .then(data => {
-          console.log('decoded data:', data);
+          self.currentUser = data;
+          $rootScope.$broadcast('loggedIn');
         })
         .catch(err => {
           console.log('decoded error:', err);
