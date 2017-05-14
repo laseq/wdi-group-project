@@ -114,7 +114,6 @@ describe('Users Controller Test', () => {
         expect(res.body)
         .to.have.property(0)
         .and.to.have.all.keys([
-          '__v',
           '_id',
           'updatedAt',
           'createdAt',

@@ -7,6 +7,8 @@ const testUserArray = [{
   name: 'alex',
   email: 'alex@alex.com',
   age: 23,
+  password: 'password',
+  passwordConfirmation: 'password',
   gender: 'male',
   image: 'https://www.fillmurray.com/600/400',
   location: 'Aldgate',
@@ -19,6 +21,8 @@ const testUserArray = [{
   name: 'sophie',
   email: 'sophie@sophie.com',
   age: 25,
+  password: 'password',
+  passwordConfirmation: 'password',
   gender: 'female',
   image: 'https://www.fillmurray.com/600/400',
   location: 'Whitechapel',
@@ -31,6 +35,8 @@ const testUserArray = [{
   name: 'lourenco',
   email: 'lou@lou.com',
   age: 27,
+  password: 'password',
+  passwordConfirmation: 'password',
   gender: 'male',
   image: 'https://www.fillmurray.com/600/400',
   location: 'Stepney',
@@ -100,7 +106,7 @@ describe('Groups Controller Test', () => {
         // console.log('groups[0].members:', groups[0].members);
         // console.log('groups[0].comments:', groups[0].comments);
         // console.log(`A group with group id ${groups[0]._id} was created!`);
-        // console.log(`${groups.length} groups were created!`);
+        console.log(`${groups.length} groups were created!`);
         done();
       })
       .catch(done);
@@ -111,7 +117,7 @@ describe('Groups Controller Test', () => {
     });
 
     it('should return a 200 response', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get('/api/groups')
       .set('Accept', 'application/json')
@@ -123,7 +129,7 @@ describe('Groups Controller Test', () => {
     }); // End of it('should return a 200 response'...)
 
     it('should return an array', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get('/api/groups')
       .set('Accept', 'application/json')
@@ -135,7 +141,7 @@ describe('Groups Controller Test', () => {
     }); // End of it('should return an array'...)
 
     it('should return a JSON object', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get('/api/groups')
       .set('Accept', 'application/json')
@@ -148,7 +154,7 @@ describe('Groups Controller Test', () => {
     }); // End of it('should return a JSON object'...)
 
     it('should return a group-like object with the required fields as the first item in the array', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get('/api/groups')
       .set('Accept', 'application/json')
@@ -168,7 +174,7 @@ describe('Groups Controller Test', () => {
     }); // End of it('should return a group-like object with the required fields...)
 
     it('should return a soup-like object with all fields as the first item in the array', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get('/api/groups')
       .set('Accept', 'application/json')
@@ -203,7 +209,7 @@ describe('Groups Controller Test', () => {
     });
 
     it('should return a 200 response', function(done) {
-      this.skip();
+      // this.skip();
       User
       .create(testUserArray)
       .then(users => {
@@ -227,7 +233,7 @@ describe('Groups Controller Test', () => {
     }); //End of it('should return a 200 response'...)
 
     it('should not return a group if the id is wrong', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get(`/api/groups/59171dd6cbeaf9fb9f1236c6`)
       .set('Accept', 'application/json')
@@ -243,7 +249,7 @@ describe('Groups Controller Test', () => {
 
   describe('POST /api/groups', () => {
     it('should return a 201 response', function(done) {
-      this.skip();
+      // this.skip();
       let testUsers = [];
       User
       .create(testUserArray)
@@ -277,7 +283,7 @@ describe('Groups Controller Test', () => {
     });
 
     it('should return a 200 response and update name', function(done) {
-      this.skip();
+      // this.skip();
       User
       .create(testUserArray)
       .then(users => {
@@ -321,7 +327,7 @@ describe('Groups Controller Test', () => {
     });
 
     it('should return a 204 response', function(done) {
-      this.skip();
+      // this.skip();
       User
       .create(testUserArray)
       .then(users => {
