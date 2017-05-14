@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">70.59% </span>
+        <span class="strong">57.14% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>12/17</span>
+        <span class='fraction'>12/21</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>1/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">20% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/3</span>
+        <span class='fraction'>1/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">70.59% </span>
+        <span class="strong">57.14% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/17</span>
+        <span class='fraction'>12/21</span>
       </div>
     </div>
   </div>
@@ -85,14 +85,57 @@
 40
 41
 42
-43</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -102,51 +145,44 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const Group = require('../models/group');
 &nbsp;
-function groupsIndex(req, res, next) {
-  Group
+<span class="fstat-no" title="function not covered" >function groupsIndex(req, res, next) {</span>
+<span class="cstat-no" title="statement not covered" >  Group</span>
     .find()
     .exec()
     .then(groups =&gt; {
-      return res.status(200).json(groups);
+<span class="cstat-no" title="statement not covered" >      return res.status(200).json(groups);</span>
     })
     .catch(next);
 }
 &nbsp;
-<span class="fstat-no" title="function not covered" >function groupsCreate(req, res) {</span>
+<span class="fstat-no" title="function not covered" >function groupsCreate(req, res, next) {</span>
 <span class="cstat-no" title="statement not covered" >  Group</span>
     .create(req.body)
     .then(group =&gt; {
-<span class="cstat-no" title="statement not covered" >      console.log('req.body inside groupsCreate:', req.body);</span>
+      // console.log('req.body inside groupsCreate:', req.body);
 <span class="cstat-no" title="statement not covered" >      res.status(201).json(group);</span>
     })
-    .catch(err =&gt; <span class="cstat-no" title="statement not covered" >res.status(500).json(err))</span>;
+    .catch(next);
 }
 &nbsp;
 function groupsShow(req, res, next) {
@@ -164,10 +200,28 @@ function groupsShow(req, res, next) {
     .catch(next);
 }
 &nbsp;
+<span class="fstat-no" title="function not covered" >function groupsUpdate(req, res, next) {</span>
+<span class="cstat-no" title="statement not covered" >  Group</span>
+    .findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+    .exec()
+    .then(group =&gt; <span class="cstat-no" title="statement not covered" >res.status(200).json(group))</span>
+    .catch(next);
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function groupsDelete(req, res, next) {</span>
+<span class="cstat-no" title="statement not covered" >  Group</span>
+    .findByIdAndRemove(req.params.id)
+    .exec()
+    .then(() =&gt; <span class="cstat-no" title="statement not covered" >res.sendStatus(204))</span>
+    .catch(next);
+}
+&nbsp;
 module.exports = {
   index: groupsIndex,
   create: groupsCreate,
-  show: groupsShow
+  show: groupsShow,
+  update: groupsUpdate,
+  delete: groupsDelete
 };
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -175,7 +229,7 @@ module.exports = {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat May 13 2017 16:59:50 GMT+0100 (BST)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun May 14 2017 14:27:30 GMT+0100 (BST)
 </div>
 </div>
 <script src="../../prettify.js"></script>
