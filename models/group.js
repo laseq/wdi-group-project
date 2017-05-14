@@ -10,7 +10,8 @@ const groupSchema = new mongoose.Schema({
     startTime: { type: String, required: true },
     location: { type: String, required: true },
     distance: { type: String, required: true },
-    description: { type: String }
+    description: { type: String },
+    maxRunners: { type: Number }
   }],
   comments: [{
     comment: { type: String, required: true },

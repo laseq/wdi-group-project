@@ -52,21 +52,24 @@ User
           startTime: '12:30',
           location: 'Aldgate East Station',
           distance: '3.0 km',
-          description: 'A nice easy run'
+          description: 'A nice easy run',
+          maxRunners: 10
         },{
           day: 'Wednesday',
           date: new Date('2017-05-17'),
           startTime: '12:30',
           location: 'Aldgate East Station',
           distance: '3.0 km',
-          description: 'A nice easy run'
+          description: 'A nice easy run',
+          maxRunners: 10
         },{
           day: 'Friday',
           date: new Date('2017-05-19'),
           startTime: '12:30',
           location: 'Aldgate East Station',
           distance: '3.0 km',
-          description: 'A nice easy run'
+          description: 'A nice easy run',
+          maxRunners: 10
         }],
         comments: [
           { comment: 'Welcome to my group', user: users[0]._id },
@@ -83,7 +86,8 @@ User
           startTime: '13:00',
           location: 'Whitechapel Tube Station',
           distance: '4.0 km',
-          description: 'A fast paced run'
+          description: 'A fast paced run',
+          maxRunners: 8
         },
         {
           day: 'Thursday',
@@ -91,7 +95,8 @@ User
           startTime: '13:00',
           location: 'Whitechapel Tube Station',
           distance: '5.0 km',
-          description: 'A fast paced run'
+          description: 'A fast paced run',
+          maxRunners: 8
         }],
         comments: [
           { comment: 'Welcome to my group', user: users[3]._id },
@@ -108,7 +113,8 @@ User
           startTime: '12:00',
           location: 'Bethnal Green Tube Station',
           distance: '2.0 km',
-          description: 'A leisurely run'
+          description: 'A leisurely run',
+          maxRunners: 15
         }],
         comments: [
           { comment: 'We meet up once a week on a Wednesday', user: users[7]._id },
@@ -123,6 +129,7 @@ User
     // console.log('groups[0].schedule[1]:', groups[0].schedule[1]);
     console.log('groups[0].members:', groups[0].members);
     console.log('groups[1].name:', groups[1].name);
+    console.log('groups[1].schedule[0].maxRunners:', groups[1].schedule[0].maxRunners);
     // console.log('groups[1].schedule:', groups[1].schedule);
     console.log('groups[2].name:', groups[2].name);
     console.log('groups[2].admin:', groups[2].admin);
