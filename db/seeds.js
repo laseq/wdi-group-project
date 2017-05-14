@@ -23,6 +23,8 @@ function UserTemplate(username, name, email, age, gender, location) {
   this.about = 'I like running';
 }
 
+let groupsArray = [];
+
 User
   .create([
     new UserTemplate('sophie1', 'Sophie', 'sophie@sophie.com', 20, 'female', 'Aldgate East'),
@@ -32,7 +34,7 @@ User
     new UserTemplate('dave1', 'Dave', 'dave@dave.com', 28, 'male', 'Whitechapel'),
     new UserTemplate('danai1', 'Danai', 'danai@danai.com', 25, 'female', 'Whitechapel'),
     new UserTemplate('jen1', 'Jennifer', 'jen@jen.com', 30, 'female', 'Whitechapel'),
-    new UserTemplate('Jack1', 'Jack', 'Jack@Jack.com', 27, 'male', 'Bethnal Green'),
+    new UserTemplate('jack1', 'Jack', 'jack@jack.com', 27, 'male', 'Bethnal Green'),
     new UserTemplate('casey1', 'Casey', 'casey@casey.com', 23, 'female', 'Bethnal Green'),
     new UserTemplate('ed1', 'Ed', 'ed@ed.com', 25, 'male', 'Bethnal Green')
   ])
@@ -124,6 +126,7 @@ User
     ]);
   })
   .then(groups => {
+    groupsArray = groups;
     console.log(`${groups.length} groups created!`);
     console.log('groups[0].name:', groups[0].name);
     // console.log('groups[0].schedule[1]:', groups[0].schedule[1]);
@@ -134,18 +137,6 @@ User
     console.log('groups[2].name:', groups[2].name);
     console.log('groups[2].admin:', groups[2].admin);
     // console.log('groups[2].comments:', groups[2].comments);
-
-    // return User
-    //   .find()
-    //   .exec()
-    //   .then(users => {
-    //     users.forEach(user => {
-    //       if (user.email === 'sophie@sophie.com') {
-    //         user.groups.push(groups[0]._id);
-    //       }
-    //       user.save();
-    //     });
-    //   });
 
     // groups.forEach(group => {
     //   let memberArray = [];
@@ -162,9 +153,46 @@ User
     //       });
     //   });
     // });
-  })
-  .then(users => {
-    console.log('users:', users.length);
+
+    // User
+    // .find()
+    // .exec()
+    // .then(users => {
+    //   users.forEach(user => {
+    //     if (user.email === 'sophie@sophie.com') {
+    //       user.groups.push(groupsArray[0]._id);
+    //     }
+    //     if (user.email === 'tim@tim.com') {
+    //       user.groups.push(groupsArray[0]._id);
+    //       user.groups.push(groupsArray[1]._id);
+    //     }
+    //     if (user.email === 'alex@alex.com') {
+    //       user.groups.push(groupsArray[0]._id);
+    //       user.groups.push(groupsArray[1]._id);
+    //     }
+    //     if (user.email === 'lou@lou.com') {
+    //       user.groups.push(groupsArray[1]._id);
+    //     }
+    //     if (user.email === 'dave@dave.com') {
+    //       user.groups.push(groupsArray[1]._id);
+    //     }
+    //     if (user.email === 'danai@danai.com') {
+    //       user.groups.push(groupsArray[1]._id);
+    //     }
+    //     if (user.email === 'jen@jen.com') {
+    //       user.groups.push(groupsArray[1]._id);
+    //     }
+    //     if (user.email === 'jack@jack.com') {
+    //       user.groups.push(groupsArray[2]._id);
+    //     }
+    //     if (user.email === 'casey@casey.com') {
+    //       user.groups.push(groupsArray[2]._id);
+    //     }
+    //     if (user.email === 'ed@ed.com') {
+    //       user.groups.push(groupsArray[2]._id);
+    //     }
+    //     user.save();
+    //   });
   })
   .catch(err => {
     console.log('seeds file error:', err);
