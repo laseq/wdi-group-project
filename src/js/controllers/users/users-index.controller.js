@@ -2,8 +2,8 @@ angular
   .module('runchApp')
   .controller('UsersIndexCtrl', UsersIndexCtrl);
 
-UsersIndexCtrl.$inject = ['User'];
-function UsersIndexCtrl(User) {
+UsersIndexCtrl.$inject = ['User', '$stateParams', '$state'];
+function UsersIndexCtrl(User, $state, $stateParams) {
   const vm = this;
-  vm.users = User.query();
+  vm.users = User.get($stateParams);
 }

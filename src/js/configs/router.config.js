@@ -30,7 +30,7 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
     controllerAs: 'dashboard'
   })
   .state('usersIndex', {
-    url: '/users',
+    url: '/users/profile', // called it profile to avoid confusion with usersShow
     templateUrl: '/js/views/users/index.html',
     controller: 'UsersIndexCtrl',
     controllerAs: 'usersIndex'
