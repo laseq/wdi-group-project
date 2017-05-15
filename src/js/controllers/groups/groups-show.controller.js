@@ -130,7 +130,8 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
       .update({ id: vm.group._id }, vm.group)
       .$promise
       .then(() => {
-        
+        console.log('Comment posted');
+        getCommenters();
       })
       .catch(err => console.log('error in postComment:', err));
 
