@@ -25,14 +25,14 @@
           <a ui-sref="dashboard">Home</a>
         </li>
         <li ng-show="main.user">
-          <a ui-sref="usersShow">Profile</a>
+          <a ui-sref="usersProfile">Profile</a>
         </li>
         <li ng-show="main.user">
           <a ng-click="main.logout()">Logout</a>
         </li>
       </ul>
     </nav>
-    <p ng-show="main.user">Welcome, {{ main.user.username }}</p>
+    <p ng-show="main.user">Logged in as, {{ main.user.username }}</p>
     <main ui-view></main>
   </body>
 </html>

@@ -1,0 +1,10 @@
+<h1>{{ usersProfile.user.name }}'s Profile</h1>
+<img class="profile-pic" ng-src="{{ usersProfile.user.image }}">
+<div class="profile-info">
+  <h2>{{ usersProfile.user.username }}</h2>
+  <p>Age: {{ usersProfile.user.age }}</p>
+  <p>Gender: {{ usersProfile.user.gender }}</p>
+  <p>Location: {{ usersProfile.user.location }}</p>
+  <p>About: {{ usersProfile.user.about }}</p>
+  <button type="button" ui-sref="usersEdit({ id: usersProfile.user._id })">Edit</button>
+</div>
