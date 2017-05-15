@@ -11,8 +11,6 @@ function JoinGroupService(User, TokenService, Group, CurrentUserService) {
 
 
   self.joinGroup = function(group) {
-    console.log('group:', group);
-    console.log('self.loggedInUser:', self.loggedInUser);
 
     for (let i=0; i<group.members.length; i++) {
       if (group.members[i] === self.currentUserId) {
@@ -21,7 +19,24 @@ function JoinGroupService(User, TokenService, Group, CurrentUserService) {
       }
     }
 
-  };
+    if (group.schedule[0].maxRunners <= group.members.length) {
+      console.log('Maximum number of runners has been reached');
+      return false;
+    }
 
+    group.members.push(self.currentUserId);
+    self.loggedInUser.groups.push(group);
+    Group
+      .update({ id: group._id }, group)
+      .$promise
+      .then(() => {
+        User
+          .update({ id: self.currentUserId }, self.loggedInUser)
+          .$promise
+          .then(() => {
+            console.log('Joined group');
+          });
+      });
+  };
 
 }
