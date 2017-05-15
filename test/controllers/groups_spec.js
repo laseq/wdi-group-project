@@ -460,33 +460,54 @@ describe('Groups Controller Test', () => {
       removeGroupAndUserDbs(done);
     });
 
+    beforeEach(done => {
+      registerUsersAndCreateGroup(done);
+    });
+
     afterEach(done => {
       removeGroupAndUserDbs(done);
     });
 
-    it('should return a 204 response', function(done) {
-      this.skip();
-      User
-      .create(testUserArray)
-      .then(users => {
-        // console.log(`${users.length} users were created!`);
+    // it('should return a 204 response', function(done) {
+    //   this.skip();
+    //   User
+    //   .create(testUserArray)
+    //   .then(users => {
+    //     // console.log(`${users.length} users were created!`);
+    //
+    //     return Group
+    //     .create(createGroup(users));
+    //   })
+    //   .then(group => {
+    //     api
+    //     .delete(`/api/groups/${group._id}`)
+    //     .set('Accept', 'application/json')
+    //     .end((err, res) => {
+    //       if (err) console.log(err);
+    //       expect(res.status)
+    //       .to.eq(204);
+    //       done();
+    //     });
+    //   })
+    //   .catch(done);
+    // }); // End of it('should return a 204 response'...)
 
-        return Group
-        .create(createGroup(users));
-      })
-      .then(group => {
-        api
-        .delete(`/api/groups/${group._id}`)
-        .set('Accept', 'application/json')
-        .end((err, res) => {
-          if (err) console.log(err);
-          expect(res.status)
-          .to.eq(204);
-          done();
-        });
-      })
-      .catch(done);
+    it('should return a 204 response', function(done) {
+      // this.skip();
+
+      api
+      .delete(`/api/groups/${groupId}`)
+      .set('Authorization', 'Bearer ' + user0.token)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) console.log(err);
+        expect(res.status)
+        .to.eq(204);
+        done();
+      });
+
     }); // End of it('should return a 204 response'...)
+
   }); // End of describe('DELETE /api/groups/:id'...)
 
 }); // End of describe('Groups Controller Test'...)
