@@ -321,9 +321,10 @@ describe('Groups Controller Test', () => {
 
 
     it('should not return a group if the id is wrong', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get(`/api/groups/59171dd6cbeaf9fb9f1236c6`)
+      .set('Authorization', 'Bearer ' + user0.token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) console.log(err);
