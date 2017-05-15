@@ -72,8 +72,6 @@ function registerUsersAndCreateGroup(done) {
     .send(testUserArray[0])
     .then(data => {
       const jsonData = JSON.parse(data.text);
-      // jsonTokenArray.push(jsonData.token);
-      // currentUserIdArray.push(jsonData.user._id);
       user0 = new userAndTokens(jsonData.user, jsonData.token);
       // console.log('user0:', user0);
     });
@@ -84,8 +82,6 @@ function registerUsersAndCreateGroup(done) {
     .send(testUserArray[1])
     .then(data => {
       const jsonData = JSON.parse(data.text);
-      // jsonTokenArray.push(jsonData.token);
-      // currentUserIdArray.push(jsonData.user._id);
       user1 = new userAndTokens(jsonData.user, jsonData.token);
       // console.log('user1:', user1);
     });
@@ -96,17 +92,16 @@ function registerUsersAndCreateGroup(done) {
     .send(testUserArray[2])
     .then(data => {
       const jsonData = JSON.parse(data.text);
-      // jsonTokenArray.push(jsonData.token);
-      // currentUserIdArray.push(jsonData.user._id);
       user2 = new userAndTokens(jsonData.user, jsonData.token);
       // console.log('user2:', user2);
     });
 
   Promise.all([p1,p2,p3])
     .then(() => {
-      createGroup([user0.user, user1.user, user2.user]);
-      done();
+      Group
+        .create(createGroup([user0.user, user1.user, user2.user]));
     })
+    .then(done)
     .catch(done);
 }
 
@@ -131,7 +126,7 @@ function createGroup(users) {
       { comment: 'This is a great run group', user: users[1]._id }
     ]
   };
-
+  // console.log(runningGroup.name);
   return runningGroup;
 }
 
