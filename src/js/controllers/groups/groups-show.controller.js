@@ -134,8 +134,6 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
         getCommenters();
       })
       .catch(err => console.log('error in postComment:', err));
-
-
   }
 
 }
