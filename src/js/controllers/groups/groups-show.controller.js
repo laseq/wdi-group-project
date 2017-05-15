@@ -93,22 +93,17 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
   }
 
   function joinGroup() {
-    // vm.memberArray.forEach(member => {
-    //   if (member._id === vm.currentUserId) {
+
+    // for (let i=0; i<vm.memberArray.length; i++) {
+    //   if (vm.memberArray[i]._id === vm.currentUserId) {
     //     console.log('You\'ve already joined this group');
-    //     break;
     //     return false;
     //   }
-    // });
+    // }
+    console.log('vm.group.schedule[0].maxRunners:', vm.group.schedule[0].maxRunners);
+    console.log('vm.memberArray.length:', vm.memberArray.length);
 
-    for (let i=0; i<vm.memberArray.length; i++) {
-      if (vm.memberArray[i]._id === vm.currentUserId) {
-        console.log('You\'ve already joined this group');
-        return false;
-      }
-    }
-
-    if (vm.group.schedule.maxRunners >= vm.memberArray.length) {
+    if (vm.group.schedule[0].maxRunners <= vm.memberArray.length) {
       console.log('Maximum number of runners has been reached');
       return false;
     }
