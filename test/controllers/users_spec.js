@@ -61,7 +61,7 @@ describe('Users Controller Test', () => {
         .then(data => {
           jsonToken = JSON.parse(data.text).token;
           // console.log('jsonData in beforeEach .post(/api/register):', jsonData);
-          console.log('jsonData.token in beforeEach .post(/api/register):', jsonToken);
+          // console.log('jsonData.token in beforeEach .post(/api/register):', jsonToken);
           done();
         })
         .catch(done);
@@ -95,6 +95,7 @@ describe('Users Controller Test', () => {
       // this.skip();
       api
       .get('/api/users')
+      .set('Authorization', 'Bearer ' + jsonToken)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) console.log(err);
@@ -107,6 +108,7 @@ describe('Users Controller Test', () => {
       // this.skip();
       api
       .get('/api/users')
+      .set('Authorization', 'Bearer ' + jsonToken)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) console.log(err);
@@ -120,6 +122,7 @@ describe('Users Controller Test', () => {
       // this.skip();
       api
       .get('/api/users')
+      .set('Authorization', 'Bearer ' + jsonToken)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) console.log(err);
@@ -143,6 +146,7 @@ describe('Users Controller Test', () => {
       // this.skip();
       api
       .get('/api/users')
+      .set('Authorization', 'Bearer ' + jsonToken)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) console.log(err);
