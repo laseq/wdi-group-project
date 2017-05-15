@@ -12,6 +12,7 @@
 <div ng-repeat="comment in groupsShow.group.comments">
   <p>{{ comment.comment }}</p>
   <p>{{ comment.user }}</p>
+  <p>Comment by: {{ comment.userDetails.username }}</p>
 </div>
 <!-- <p>{{ groupsShow.group.comments }}</p>
 <p>{{ groupsShow.group.comments.user }}</p> -->
