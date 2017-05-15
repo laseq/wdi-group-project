@@ -9,6 +9,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
   // vm.group = Group.get($stateParams);
   vm.currentUserId = TokenService.decodeToken().id;
   vm.delete = groupsDelete;
+  vm.memberArray = [];
   getGroupDetails();
 
   function getGroupDetails() {
@@ -18,6 +19,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
       .then(group => {
         vm.group = group;
         getAdminDetails();
+        getMemberDetails();
       })
       .catch(err => console.log('error in getGroupDetails:', err));
   }
@@ -38,6 +40,18 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
       .then(admin => {
         vm.admin = admin;
       });
+  }
+
+  function getMemberDetails() {
+    vm.group.members.forEach(member => {
+      User
+        .get({ id: member })
+        .$promise
+        .then(theMember => {
+          vm.memberArray.push(theMember);
+        })
+        .catch(err => console.log('error in getMemberDetails:', err));
+    });
   }
 
 }
