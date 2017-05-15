@@ -2,6 +2,14 @@ const { api, expect } = require('../spec_helper');
 const Group           = require('../../models/group');
 const User           = require('../../models/user');
 
+let user0, user1, user2, groupId;
+let promise1, promise2, promise3;
+
+function userAndTokens(user, token) {
+  this.user = user;
+  this.token = token;
+}
+
 const testUserArray = [{
   username: 'alexyeates',
   name: 'alex',
@@ -46,6 +54,51 @@ const testUserArray = [{
   // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
 }];
 
+function registerUsers() {
+  promise1 = api
+    .post('/api/register')
+    .set('Accept', 'application/json')
+    .send(testUserArray[0])
+    .then(data => {
+      const jsonData = JSON.parse(data.text);
+      user0 = new userAndTokens(jsonData.user, jsonData.token);
+    });
+
+  promise2 = api
+    .post('/api/register')
+    .set('Accept', 'application/json')
+    .send(testUserArray[1])
+    .then(data => {
+      const jsonData = JSON.parse(data.text);
+      user1 = new userAndTokens(jsonData.user, jsonData.token);
+    });
+
+  promise3 = api
+    .post('/api/register')
+    .set('Accept', 'application/json')
+    .send(testUserArray[2])
+    .then(data => {
+      const jsonData = JSON.parse(data.text);
+      user2 = new userAndTokens(jsonData.user, jsonData.token);
+    });
+}
+
+function registerUsersAndCreateGroup(done) {
+
+  registerUsers();
+
+  Promise.all([promise1,promise2,promise3])
+    .then(() => {
+      return Group
+        .create(createGroup([user0.user, user1.user, user2.user]));
+    })
+    .then(group => {
+      groupId = group._id;
+    })
+    .then(done)
+    .catch(done);
+}
+
 function createGroup(users) {
   const runningGroup = {
     name: 'Aldgate Runchers',
@@ -67,7 +120,6 @@ function createGroup(users) {
       { comment: 'This is a great run group', user: users[1]._id }
     ]
   };
-
   return runningGroup;
 }
 
@@ -92,24 +144,7 @@ describe('Groups Controller Test', () => {
     });
 
     beforeEach(done => {
-
-      User
-      .create(testUserArray)
-      .then(users => {
-        // console.log(`${users.length} users were created!`);
-
-        return Group
-        .create([createGroup(users)]);
-      })
-      .then(groups => {
-        // console.log('groups[0].admin:', groups[0].admin);
-        // console.log('groups[0].members:', groups[0].members);
-        // console.log('groups[0].comments:', groups[0].comments);
-        // console.log(`A group with group id ${groups[0]._id} was created!`);
-        console.log(`${groups.length} groups were created!`);
-        done();
-      })
-      .catch(done);
+      registerUsersAndCreateGroup(done);
     });
 
     afterEach(done => {
@@ -117,9 +152,10 @@ describe('Groups Controller Test', () => {
     });
 
     it('should return a 200 response', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get('/api/groups')
+      .set('Authorization', 'Bearer ' + user0.token)
       .set('Accept', 'application/json')
       .end((err,res) => {
         if (err) console.log(err);
@@ -129,9 +165,10 @@ describe('Groups Controller Test', () => {
     }); // End of it('should return a 200 response'...)
 
     it('should return an array', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get('/api/groups')
+      .set('Authorization', 'Bearer ' + user0.token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) console.log(err);
@@ -141,9 +178,10 @@ describe('Groups Controller Test', () => {
     }); // End of it('should return an array'...)
 
     it('should return a JSON object', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get('/api/groups')
+      .set('Authorization', 'Bearer ' + user0.token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) console.log(err);
@@ -154,9 +192,10 @@ describe('Groups Controller Test', () => {
     }); // End of it('should return a JSON object'...)
 
     it('should return a group-like object with the required fields as the first item in the array', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get('/api/groups')
+      .set('Authorization', 'Bearer ' + user0.token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) console.log(err);
@@ -174,9 +213,10 @@ describe('Groups Controller Test', () => {
     }); // End of it('should return a group-like object with the required fields...)
 
     it('should return a soup-like object with all fields as the first item in the array', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get('/api/groups')
+      .set('Authorization', 'Bearer ' + user0.token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) console.log(err);
@@ -204,38 +244,33 @@ describe('Groups Controller Test', () => {
       removeGroupAndUserDbs(done);
     });
 
+    beforeEach(done => {
+      registerUsersAndCreateGroup(done);
+    });
+
     afterEach(done => {
       removeGroupAndUserDbs(done);
     });
 
     it('should return a 200 response', function(done) {
-      this.skip();
-      User
-      .create(testUserArray)
-      .then(users => {
-        // console.log(`${users.length} users were created!`);
-
-        return Group
-        .create(createGroup(users));
-      })
-      .then(group => {
-        // console.log(`A group with group id ${group._id} was created!`);
-        api
-        .get(`/api/groups/${group._id}`)
-        .set('Accept', 'application/json')
-        .end((err, res) => {
-          expect(res.status)
-          .to.eq(200);
-          done();
-        });
-      })
-      .catch(done);
+      // this.skip();
+      api
+      .get(`/api/groups/${groupId}`)
+      .set('Authorization', 'Bearer ' + user0.token)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        expect(res.status)
+        .to.eq(200);
+        done();
+      });
     }); //End of it('should return a 200 response'...)
 
+
     it('should not return a group if the id is wrong', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get(`/api/groups/59171dd6cbeaf9fb9f1236c6`)
+      .set('Authorization', 'Bearer ' + user0.token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) console.log(err);
@@ -248,28 +283,34 @@ describe('Groups Controller Test', () => {
   }); // End of describe('GET /api/groups/:id'...)
 
   describe('POST /api/groups', () => {
-    it('should return a 201 response', function(done) {
-      this.skip();
-      let testUsers = [];
-      User
-      .create(testUserArray)
-      .then(users => {
-        // console.log(`${users.length} users were created!`);
-        testUsers = users;
 
-        api
-        .post('/api/groups')
-        .set('Accept', 'application/json')
-        .send(createGroup(testUsers))
-        .end((err, res) => {
-          if (err) console.log(err);
-          expect(res.status)
-          .to.eq(201);
-          done();
-        });
-      })
-      .catch(done);
+    beforeEach(done => {
+      removeGroupAndUserDbs(done);
+    });
+
+    beforeEach(() => {
+      registerUsers();
+    });
+
+    afterEach(done => {
+      removeGroupAndUserDbs(done);
+    });
+
+    it('should return a 201 response', function(done) {
+      // this.skip();
+      api
+      .post('/api/groups')
+      .set('Accept', 'application/json')
+      .set('Authorization', 'Bearer ' + user0.token)
+      .send(createGroup([user0.user, user1.user, user2.user]))
+      .end((err, res) => {
+        if (err) console.log(err);
+        expect(res.status)
+        .to.eq(201);
+        done();
+      });
     }); // End of it('should return a 201 response'...)
+
   }); // End of describe('POST /api/groups'...)
 
   describe('PUT /api/groups/:id', () => {
@@ -278,42 +319,37 @@ describe('Groups Controller Test', () => {
       removeGroupAndUserDbs(done);
     });
 
+    beforeEach(done => {
+      registerUsersAndCreateGroup(done);
+    });
+
     afterEach(done => {
       removeGroupAndUserDbs(done);
     });
 
     it('should return a 200 response and update name', function(done) {
-      this.skip();
-      User
-      .create(testUserArray)
-      .then(users => {
-        // console.log(`${users.length} users were created!`);
-
-        return Group
-        .create(createGroup(users));
+      // this.skip();
+      api
+      .put(`/api/groups/${groupId}`)
+      .set('Authorization', 'Bearer ' + user0.token)
+      .set('Accept', 'application/json')
+      .send({
+        name: 'Whitechapel Runchers'
       })
-      .then(group => {
-        api
-        .put(`/api/groups/${group._id}`)
-        .set('Accept', 'application/json')
-        .send({
-          name: 'Whitechapel Runchers'
-        })
-        .end((err, res) => {
-          if(err) console.log(err);
-          expect(res.status)
-          .to.eq(200);
+      .end((err, res) => {
+        if(err) console.log(err);
+        expect(res.status)
+        .to.eq(200);
 
-          expect(res.body)
-          .to.have.property('name');
+        expect(res.body)
+        .to.have.property('name');
 
-          expect(res.body.name)
-          .to.eq('Whitechapel Runchers');
-          done();
-        });
-      })
-      .catch(done);
+        expect(res.body.name)
+        .to.eq('Whitechapel Runchers');
+        done();
+      });
     }); // End of it('should return a 200 response and update name'...)
+
   }); // End of describe('PUT /api/groups/:id'...)
 
   describe('DELETE /api/groups/:id', () => {
@@ -322,33 +358,30 @@ describe('Groups Controller Test', () => {
       removeGroupAndUserDbs(done);
     });
 
+    beforeEach(done => {
+      registerUsersAndCreateGroup(done);
+    });
+
     afterEach(done => {
       removeGroupAndUserDbs(done);
     });
 
     it('should return a 204 response', function(done) {
-      this.skip();
-      User
-      .create(testUserArray)
-      .then(users => {
-        // console.log(`${users.length} users were created!`);
+      // this.skip();
 
-        return Group
-        .create(createGroup(users));
-      })
-      .then(group => {
-        api
-        .delete(`/api/groups/${group._id}`)
-        .set('Accept', 'application/json')
-        .end((err, res) => {
-          if (err) console.log(err);
-          expect(res.status)
-          .to.eq(204);
-          done();
-        });
-      })
-      .catch(done);
+      api
+      .delete(`/api/groups/${groupId}`)
+      .set('Authorization', 'Bearer ' + user0.token)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) console.log(err);
+        expect(res.status)
+        .to.eq(204);
+        done();
+      });
+
     }); // End of it('should return a 204 response'...)
+
   }); // End of describe('DELETE /api/groups/:id'...)
 
 }); // End of describe('Groups Controller Test'...)
