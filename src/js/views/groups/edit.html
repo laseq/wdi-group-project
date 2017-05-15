@@ -1,0 +1,37 @@
+<h1>Groups Edit</h1>
+
+<form ng-submit="groupsEdit.update()" method="post">
+  <div class="">
+    <label for="name">Name: </label>
+    <input type="text" name="name" ng-model="groupsEdit.group.name">
+  </div>
+  <div class="">
+    <label for="day">Day: </label>
+    <input type="text" name="day" ng-model="groupsEdit.group.schedule[0].day">
+  </div>
+  <div class="">
+    <label for="date">Date: </label>
+    <input type="text" name="date" ng-model="groupsEdit.group.schedule[0].date">
+  </div>
+  <div class="">
+    <label for="startTime">Start Time: </label>
+    <input type="text" name="startTime" ng-model="groupsEdit.group.schedule[0].startTime">
+  </div>
+  <div class="">
+    <label for="location">Location: </label>
+    <input type="text" name="location" ng-model="groupsEdit.group.schedule[0].location">
+  </div>
+  <div class="">
+    <label for="distance">Distance: </label>
+    <input type="text" name="distance" ng-model="groupsEdit.group.schedule[0].distance">
+  </div>
+  <div class="">
+    <label for="description">Description: </label>
+    <input type="text" name="description" ng-model="groupsEdit.group.schedule[0].description">
+  </div>
+  <div class="">
+    <label for="maxRunners">Max Runners: </label>
+    <input type="text" name="maxRunners" ng-model="groupsEdit.group.schedule[0].maxRunners">
+  </div>
+  <input type="submit" name="" value="Edit">
+</form>

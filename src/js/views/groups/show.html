@@ -1,3 +1,11 @@
 <h1>Groups Show</h1>
 
-{{ groupsShow.group }}
+<p>{{ groupsShow.group.name }}</p>
+<p>{{ groupsShow.group.admin }}</p>
+<p>{{ groupsShow.group.schedule }}</p>
+<p>{{ groupsShow.group.members }}</p>
+<p>{{ groupsShow.group.comments }}</p>
+
+<a ng-show="groupsShow.currentUserId == groupsShow.group.admin" ui-sref="groupsEdit({ id: groupsShow.group._id })">Edit Group</a>
+
+<button ng-show="groupsShow.currentUserId == groupsShow.group.admin" ng-click="groupsShow.delete(groupsShow.group)">Delete</button>

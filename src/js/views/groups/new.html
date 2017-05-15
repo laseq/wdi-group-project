@@ -1,0 +1,37 @@
+<h1>Groups New</h1>
+
+<form ng-submit="groupsNew.create()" method="post">
+  <div class="">
+    <label for="name">Name: </label>
+    <input type="text" name="name" ng-model="groupsNew.group.name" placeholder="Name">
+  </div>
+  <div class="">
+    <label for="day">Day: </label>
+    <input type="text" name="day" ng-model="groupsNew.group.schedule.day" placeholder="Day">
+  </div>
+  <div class="">
+    <label for="date">Date: </label>
+    <input type="text" name="date" ng-model="groupsNew.group.schedule.date" placeholder="Date">
+  </div>
+  <div class="">
+    <label for="startTime">Start Time: </label>
+    <input type="text" name="startTime" ng-model="groupsNew.group.schedule.startTime" placeholder="Start Time">
+  </div>
+  <div class="">
+    <label for="location">Location: </label>
+    <input type="text" name="location" ng-model="groupsNew.group.schedule.location" placeholder="Location">
+  </div>
+  <div class="">
+    <label for="distance">Distance: </label>
+    <input type="text" name="distance" ng-model="groupsNew.group.schedule.distance" placeholder="Distance">
+  </div>
+  <div class="">
+    <label for="description">Description: </label>
+    <input type="text" name="description" ng-model="groupsNew.group.schedule.description" placeholder="Description">
+  </div>
+  <div class="">
+    <label for="maxRunners">Max Runners: </label>
+    <input type="text" name="maxRunners" ng-model="groupsNew.group.schedule.maxRunners" placeholder="Max Runners">
+  </div>
+  <input type="submit" name="" value="Add">
+</form>

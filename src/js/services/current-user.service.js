@@ -23,6 +23,23 @@ function CurrentUserService(TokenService, $rootScope, User) {
     }
   };
 
+  self.retrieveUser = function() {
+    const decoded = TokenService.decodeToken();
+
+    if (decoded) {
+      return User
+        .get({ id: decoded.id })
+        .$promise
+        .then(data => {
+          self.currentUser = data;
+          console.log('self.currentUser:', self.currentUser);
+        })
+        .catch(err => {
+          console.log('decoded error:', err);
+        });
+    }
+  };
+
   self.removeUser = () => {
     self.currentUser = null;
     TokenService.removeToken();
