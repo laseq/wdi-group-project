@@ -58,7 +58,7 @@ describe('Users Controller Test', () => {
 
     // This test is checking that a request to our API is connecting to a link
     it('should return a 200 response', function (done) {
-      // this.skip();
+      this.skip();
       api
       .get('/api/users')
       .set('Authorization', 'Bearer ' + jsonToken)
@@ -72,7 +72,7 @@ describe('Users Controller Test', () => {
 
     // This test is checking that the request to our API returns an arary
     it('should return an array', function (done) {
-      // this.skip();
+      this.skip();
       api
       .get('/api/users')
       .set('Authorization', 'Bearer ' + jsonToken)
@@ -86,7 +86,7 @@ describe('Users Controller Test', () => {
 
     // This test is checking that the request to our API returns JSON
     it('should return a JSON object', function (done) {
-      // this.skip();
+      this.skip();
       api
       .get('/api/users')
       .set('Authorization', 'Bearer ' + jsonToken)
@@ -101,7 +101,7 @@ describe('Users Controller Test', () => {
 
     // This test is ensuring the required parts of the model are there
     it('should return a user-like object with the required fields as the first item in the array', function(done) {
-      // this.skip();
+      this.skip();
       api
       .get('/api/users')
       .set('Authorization', 'Bearer ' + jsonToken)
@@ -126,7 +126,7 @@ describe('Users Controller Test', () => {
 
     // This test will check that the request is returning all of the fields specified in the model
     it('should return a user-like object with all fields as the first item in the array', function(done) {
-      // this.skip();
+      this.skip();
       api
       .get('/api/users')
       .set('Authorization', 'Bearer ' + jsonToken)
@@ -181,7 +181,7 @@ describe('Users Controller Test', () => {
 
     // This test should test that there is a connection when trying to view a user page
     it('should return a 200 response', function(done) {
-      // this.skip();
+      this.skip();
 
       api
       .get(`/api/users/${currentUserId}`)
@@ -197,7 +197,7 @@ describe('Users Controller Test', () => {
 
     // This test ensures the show is using a correct id for the user
     it('should not return a user if the id is wrong', function(done) {
-      // this.skip();
+      this.skip();
       api
       .get(`/api/users/5917156c02a7b9cde5e2fa21`)
       .set('Authorization', 'Bearer ' + jsonToken)
@@ -216,7 +216,7 @@ describe('Users Controller Test', () => {
 
     // This ensures that what is being added to the database fits the model
     it('should return a 201 response', function(done) {
-      // this.skip();
+      this.skip();
       api
       .post('/api/users')
       .set('Authorization', 'Bearer ' + jsonToken)
@@ -269,7 +269,7 @@ describe('Users Controller Test', () => {
 
     // This test ensures a connection and that the 'name' is updated for example
     it('should return a 200 response and update name', function(done) {
-      // this.skip();
+      this.skip();
       api
       .put(`/api/users/${currentUserId}`)
       .set('Authorization', 'Bearer ' + jsonToken)
@@ -320,7 +320,7 @@ describe('Users Controller Test', () => {
 
     // This test will ensure that the server has processed the reponse and is no longer producing the deleted user
     it('should return a 204 response', function(done) {
-      // this.skip();
+      this.skip();
 
       api
       .delete(`/api/users/${currentUserId}`)

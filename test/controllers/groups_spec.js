@@ -2,6 +2,27 @@ const { api, expect } = require('../spec_helper');
 const Group           = require('../../models/group');
 const User           = require('../../models/user');
 
+let jsonTokenArray = [];
+let currentUserIdArray = [];
+let user0, user1, user2;
+
+function userAndTokens(user, token) {
+  this.user = user;
+  // this.userId = user._id;
+  // this.username = user.username,
+  // this.name = user.name,
+  // this.email = user.email,
+  // this.age = user.age,
+  // this.passwordHash = user.passwordHash,
+  // this.gender = user.gender,
+  // this.image = user.image,
+  // this.location = user.location,
+  // this.postcode = user.postcode,
+  // this.locationCoords = user.locationCoords,
+  // this.about = user.about,
+  this.token = token;
+}
+
 const testUserArray = [{
   username: 'alexyeates',
   name: 'alex',
@@ -45,6 +66,50 @@ const testUserArray = [{
   about: 'I like programming'
   // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
 }];
+
+function registerUserAndRetrieveToken(done) {
+  const p1 = api
+    .post('/api/register')
+    .set('Accept', 'application/json')
+    .send(testUserArray[0])
+    .then(data => {
+      const jsonData = JSON.parse(data.text);
+      // jsonTokenArray.push(jsonData.token);
+      // currentUserIdArray.push(jsonData.user._id);
+      user0 = new userAndTokens(jsonData.user, jsonData.token);
+      console.log('user0:', user0);
+    });
+
+  const p2 = api
+    .post('/api/register')
+    .set('Accept', 'application/json')
+    .send(testUserArray[1])
+    .then(data => {
+      const jsonData = JSON.parse(data.text);
+      // jsonTokenArray.push(jsonData.token);
+      // currentUserIdArray.push(jsonData.user._id);
+      user1 = new userAndTokens(jsonData.user, jsonData.token);
+      console.log('user1:', user1);
+    });
+
+  const p3 = api
+    .post('/api/register')
+    .set('Accept', 'application/json')
+    .send(testUserArray[2])
+    .then(data => {
+      const jsonData = JSON.parse(data.text);
+      // jsonTokenArray.push(jsonData.token);
+      // currentUserIdArray.push(jsonData.user._id);
+      user2 = new userAndTokens(jsonData.user, jsonData.token);
+      console.log('user2:', user2);
+    });
+
+  Promise.all([p1,p2,p3])
+    .then(() => {
+      createGroup([user0.user, user1.user, user2.user]);
+    })
+    .catch(done);
+}
 
 function createGroup(users) {
   const runningGroup = {
@@ -93,23 +158,25 @@ describe('Groups Controller Test', () => {
 
     beforeEach(done => {
 
-      User
-      .create(testUserArray)
-      .then(users => {
-        // console.log(`${users.length} users were created!`);
+      registerUserAndRetrieveToken(done);
 
-        return Group
-        .create([createGroup(users)]);
-      })
-      .then(groups => {
-        // console.log('groups[0].admin:', groups[0].admin);
-        // console.log('groups[0].members:', groups[0].members);
-        // console.log('groups[0].comments:', groups[0].comments);
-        // console.log(`A group with group id ${groups[0]._id} was created!`);
-        console.log(`${groups.length} groups were created!`);
-        done();
-      })
-      .catch(done);
+      // User
+      // .create(testUserArray)
+      // .then(users => {
+      //   // console.log(`${users.length} users were created!`);
+      //
+      //   return Group
+      //   .create([createGroup(users)]);
+      // })
+      // .then(groups => {
+      //   // console.log('groups[0].admin:', groups[0].admin);
+      //   // console.log('groups[0].members:', groups[0].members);
+      //   // console.log('groups[0].comments:', groups[0].comments);
+      //   // console.log(`A group with group id ${groups[0]._id} was created!`);
+      //   console.log(`${groups.length} groups were created!`);
+      //   done();
+      // })
+      // .catch(done);
     });
 
     afterEach(done => {
@@ -117,7 +184,7 @@ describe('Groups Controller Test', () => {
     });
 
     it('should return a 200 response', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get('/api/groups')
       .set('Accept', 'application/json')
