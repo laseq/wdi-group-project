@@ -294,6 +294,7 @@ describe('Users Controller Test', () => {
       // this.skip();
       api
       .post('/api/users')
+      .set('Authorization', 'Bearer ' + jsonToken)
       .set('Accept', 'application/json')
       .send({
         username: 'alexyeates',
