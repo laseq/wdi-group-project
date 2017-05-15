@@ -2,8 +2,6 @@ const mongoose     = require('mongoose');
 mongoose.Promise   = require('bluebird');
 const env          = require('../config/env');
 
-console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
-
 mongoose.connect(env.db[process.env.NODE_ENV]||env.db.development);
 
 const User = require('../models/user');
@@ -25,7 +23,7 @@ function UserTemplate(username, name, email, age, gender, location) {
   this.passwordConfirmation = 'password';
 }
 
-let groupsArray = [];
+// let groupsArray = [];
 
 User
 .create([
@@ -130,7 +128,7 @@ User
   ]);
 })
 .then(groups => {
-  groupsArray = groups;
+  // groupsArray = groups;
   // console.log(`${groups.length} groups created!`);
   // console.log('groups[0].name:', groups[0].name);
   // // console.log('groups[0].schedule[1]:', groups[0].schedule[1]);
@@ -142,71 +140,72 @@ User
   // console.log('groups[2].admin:', groups[2].admin);
   // console.log('groups[2].comments:', groups[2].comments);
 
-  groups.forEach(group => {
-    let memberArray = [];
-    // console.log(group);
-    memberArray = group.members;
-    console.log('memberArray:', memberArray);
-    memberArray.forEach(memberId => {
-      // console.log(memberId);
-      return User
-      .findById(memberId)
-      .exec()
-      .then(member => {
-        console.log(member._id);
-        console.log('member pre save:', member.groups);
-        member.groups.push(group._id);
-        member.save();
-        console.log('member post save:', member.groups);
-      });
-    });
-  });
+  // groups.forEach(group => {
+  //   let memberArray = [];
+  //   // console.log(group);
+  //   memberArray = group.members;
+  //   console.log('memberArray:', memberArray);
+  //   memberArray.forEach(memberId => {
+  //     // console.log(memberId);
+  //     return User
+  //     .findById(memberId)
+  //     .exec()
+  //     .then(member => {
+  //       console.log(member._id);
+  //       console.log('member pre save:', member.groups);
+  //       member.groups.push(group._id);
+  //       member.save();
+  //       console.log('member post save:', member.groups);
+  //     });
+  //   });
+  // });
 
-  User
-  .find()
-  .exec()
-  .then(users => {
-    users.forEach(user => {
-      if (user.email === 'sophie@sophie.com') {
-        user.groups.push(groupsArray[0]._id);
-      }
-      if (user.email === 'tim@tim.com') {
-        user.groups.push(groupsArray[0]._id);
-        user.groups.push(groupsArray[1]._id);
-      }
-      if (user.email === 'alex@alex.com') {
-        user.groups.push(groupsArray[0]._id);
-        user.groups.push(groupsArray[1]._id);
-      }
-      if (user.email === 'lou@lou.com') {
-        user.groups.push(groupsArray[1]._id);
-      }
-      if (user.email === 'dave@dave.com') {
-        user.groups.push(groupsArray[1]._id);
-      }
-      if (user.email === 'danai@danai.com') {
-        user.groups.push(groupsArray[1]._id);
-      }
-      if (user.email === 'jen@jen.com') {
-        user.groups.push(groupsArray[1]._id);
-      }
-      if (user.email === 'jack@jack.com') {
-        user.groups.push(groupsArray[2]._id);
-      }
-      if (user.email === 'casey@casey.com') {
-        user.groups.push(groupsArray[2]._id);
-      }
-      if (user.email === 'ed@ed.com') {
-        user.groups.push(groupsArray[2]._id);
-      }
-      user.save();
-    });
-  })
-  .catch(err => {
-    console.log('seeds file error:', err);
-  })
-  .finally(() => {
-    mongoose.connection.close();
-    console.log('closed');
-  });
+  // User
+  // .find()
+  // .exec()
+  // .then(users => {
+  //   users.forEach(user => {
+  //     if (user.email === 'sophie@sophie.com') {
+  //       user.groups.push(groupsArray[0]._id);
+  //     }
+  //     if (user.email === 'tim@tim.com') {
+  //       user.groups.push(groupsArray[0]._id);
+  //       user.groups.push(groupsArray[1]._id);
+  //     }
+  //     if (user.email === 'alex@alex.com') {
+  //       user.groups.push(groupsArray[0]._id);
+  //       user.groups.push(groupsArray[1]._id);
+  //     }
+  //     if (user.email === 'lou@lou.com') {
+  //       user.groups.push(groupsArray[1]._id);
+  //     }
+  //     if (user.email === 'dave@dave.com') {
+  //       user.groups.push(groupsArray[1]._id);
+  //     }
+  //     if (user.email === 'danai@danai.com') {
+  //       user.groups.push(groupsArray[1]._id);
+  //     }
+  //     if (user.email === 'jen@jen.com') {
+  //       user.groups.push(groupsArray[1]._id);
+  //     }
+  //     if (user.email === 'jack@jack.com') {
+  //       user.groups.push(groupsArray[2]._id);
+  //     }
+  //     if (user.email === 'casey@casey.com') {
+  //       user.groups.push(groupsArray[2]._id);
+  //     }
+  //     if (user.email === 'ed@ed.com') {
+  //       user.groups.push(groupsArray[2]._id);
+  //     }
+  //     user.save();
+  //   });
+  process.exit();
+})
+.catch(err => {
+  console.log('seeds file error:', err);
+})
+.finally(() => {
+  mongoose.connection.close();
+  console.log('closed');
 });
+// });

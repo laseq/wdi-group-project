@@ -1,6 +1,7 @@
 const mongoose  = require('mongoose');
 const bcrypt    = require('bcrypt');
 const validator = require('validator');
+const Group     = require('./group');
 
 const userSchema = new mongoose.Schema({
   username: { type: String, unique: true, trim: true, required: true },
@@ -13,8 +14,7 @@ const userSchema = new mongoose.Schema({
   location: { type: String, required: true },
   postcode: { type: String, required: true },
   locationCoords: { lat: { type: Number }, lng: { type: Number } },
-  about: { type: String },
-  groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
+  about: { type: String }
 }, {
   timestamps: true
 });
@@ -27,6 +27,11 @@ userSchema
 .virtual('passwordConfirmation')
 .set(setPasswordConfirmation);
 
+/* Create an empty array for groups that we'll populate later... */
+userSchema
+.virtual('groups')
+.set(createEmptyGroups);
+
 userSchema
 .path('passwordHash')
 .validate(validatePasswordHash);
@@ -37,7 +42,13 @@ userSchema
 
 userSchema.methods.validatePassword = validatePassword;
 
+/* Run this function just as the object comes out of the db */
+userSchema.pre('init', findGroups);
+
 userSchema.set('toJSON', {
+  getters: true,
+  setters: true,
+  virtuals: true, /* Allow virtual properties to be sent as JSON output */
   transform: function(doc, ret) {
     delete ret.passwordHash;
     // delete ret.email;
@@ -47,6 +58,28 @@ userSchema.set('toJSON', {
 });
 
 module.exports = mongoose.model('User', userSchema);
+
+function createEmptyGroups() {
+  return [];
+}
+
+function findGroups(done, doc) {
+  try {
+    Group
+    .find({
+      'members': doc._id
+    })
+    .exec()
+    .then(groups => {
+      /* Replace the empty array with the groups */
+      doc.groups = groups;
+      return done();
+    })
+    .catch(done);
+  } catch(e) {
+    return done(e);
+  }
+}
 
 function setPassword(value) {
   this._password    = value;
