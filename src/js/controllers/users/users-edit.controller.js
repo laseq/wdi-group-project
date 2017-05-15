@@ -2,20 +2,21 @@ angular
 .module('runchApp')
 .controller('UsersEditCtrl', UsersEditCtrl);
 
-UsersEditCtrl.$inject = ['User', '$state', '$stateParams'];
+UsersEditCtrl.$inject = ['User', '$state', 'CurrentUserService'];
 
-function UsersEditCtrl(User, $state, $stateParams) {
+function UsersEditCtrl(User, $state, CurrentUserService) {
   const vm = this;
 
-  vm.user   = User.get($stateParams);
+  vm.user = User.get({id: CurrentUserService.currentUser._id });
   vm.update = usersUpdate;
 
   function usersUpdate() {
     User
-    .update({ id: $stateParams.id }, vm.user)
+    .update({ id: vm.user.id }, vm.user)
     .$promise
-    .then(() => {
-      $state.go('usersShow');
+    .then(user => {
+      CurrentUserService.getUser();
+      $state.go('usersProfile', { id: user._id });
     });
   }
 }

@@ -29,14 +29,14 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
     controller: 'DashboardCtrl',
     controllerAs: 'dashboard'
   })
-  .state('usersIndex', {
+  .state('usersProfile', {
     url: '/users/profile', // called it profile to avoid confusion with usersShow
-    templateUrl: '/js/views/users/index.html',
-    controller: 'UsersIndexCtrl',
-    controllerAs: 'usersIndex'
+    templateUrl: '/js/views/users/profile.html',
+    controller: 'UsersProfileCtrl',
+    controllerAs: 'usersProfile'
   })
   .state('usersEdit', {
-    url: '/users/:id/edit',
+    url: '/users/edit', // took out the :id as we're not using the id, using main.user
     templateUrl: '/js/views/users/edit.html',
     controller: 'UsersEditCtrl',
     controllerAs: 'usersEdit'

@@ -1,44 +1,43 @@
 <h1>Edit User</h1>
-<form ng-submit="vm.update()">
-
+<form ng-submit="usersEdit.update()">
   <div>
     <label for="username">Username</label>
-    <input type="text" name="username" ng-model="vm.user.username">
+    <input type="text" name="username" ng-model="usersEdit.user.username">
   </div>
 
   <div>
     <label for="name">Name</label>
-    <input type="text" name="name" ng-model="vm.user.name">
+    <input type="text" name="name" ng-model="usersEdit.user.name">
   </div>
 
   <div>
     <label for="email">email</label>
-    <input type="text" name="email" ng-model="vm.user.email">
+    <input type="text" name="email" ng-model="usersEdit.user.email">
   </div>
 
   <div>
     <label for="gender">Gender</label>
-    <input type="text" name="gender" ng-model="vm.user.gender">
+    <input type="text" name="gender" ng-model="usersEdit.user.gender">
   </div>
 
   <div>
     <label for="image">Image</label>
-    <input type="text" name="image" ng-model="vm.user.image">
+    <input type="text" name="image" ng-model="usersEdit.user.image">
   </div>
 
   <div>
     <label for="location">Location</label>
-    <input type="text" name="location" ng-model="vm.user.location">
+    <input type="text" name="location" ng-model="usersEdit.user.location">
   </div>
 
   <div>
     <label for="postcode">Postcode</label>
-    <input type="text" name="postcode" ng-model="vm.user.postcode">
+    <input type="text" name="postcode" ng-model="usersEdit.user.postcode">
   </div>
 
   <div>
     <label for="about">About</label>
-    <textarea placeholder="Tell us about yourself!" name="about" ng-model="vm.user.about"></textarea>
+    <textarea placeholder="Tell us about yourself!" name="about" ng-model="usersEdit.user.about"></textarea>
   </div>
 
   <input type="submit" value="Update User">
