@@ -2,5 +2,12 @@
 
 <h2>Running Groups</h2>
 <div ng-repeat="group in groupsIndex.all">
-  <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+  <a ui-sref="groupsShow({ id: group._id })"><h3>{{ group.name }}</h3></a>
+  <div class="">
+    <h4>Next Run</h4>
+    <p>{{ group.schedule[0].day }}</p>
+    <p>{{ group.schedule[0].startTime }}</p>
+    <p>{{ group.schedule[0].location }}</p>
+  </div>
+  <button type="button" name="button" ng-click"groupsIndex.joinGroup()">Join</button>
 </div>

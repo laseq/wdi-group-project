@@ -9,10 +9,12 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
   // vm.group = Group.get($stateParams);
   vm.currentUserId = TokenService.decodeToken().id;
   vm.delete = groupsDelete;
+  vm.join = joinGroup;
   vm.memberArray = [];
   vm.commenters = [];
 
   getGroupDetails();
+  getLoggedInUser();
 
   function getGroupDetails() {
     return Group
@@ -77,8 +79,34 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
         })
         .catch(err => console.log('error in getCommenters:', err));
     }
+  }
 
+  function getLoggedInUser() {
+    User
+      .get({ id: vm.currentUserId })
+      .$promise
+      .then(user => {
+        vm.loggedInUser = user;
+        console.log('vm.loggedInUser:', vm.loggedInUser);
+      })
+      .catch(err => console.log('error in getCommenters:', err));
+  }
 
+  function joinGroup() {
+    vm.group.members.push(vm.currentUserId);
+    vm.loggedInUser.groups.push(vm.group);
+    Group
+      .update({ id: $stateParams.id }, vm.group)
+      .$promise
+      .then(() => {
+        User
+          .update({ id: vm.currentUserId }, vm.loggedInUser)
+          .$promise
+          .then(() => {
+
+          });
+        $state.go('groupsIndex');
+      });
   }
 
 }
