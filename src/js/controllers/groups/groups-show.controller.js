@@ -93,6 +93,26 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
   }
 
   function joinGroup() {
+    // vm.memberArray.forEach(member => {
+    //   if (member._id === vm.currentUserId) {
+    //     console.log('You\'ve already joined this group');
+    //     break;
+    //     return false;
+    //   }
+    // });
+
+    for (let i=0; i<vm.memberArray.length; i++) {
+      if (vm.memberArray[i]._id === vm.currentUserId) {
+        console.log('You\'ve already joined this group');
+        return false;
+      }
+    }
+
+    if (vm.group.schedule.maxRunners >= vm.memberArray.length) {
+      console.log('Maximum number of runners has been reached');
+      return false;
+    }
+    vm.memberArray.push(vm.loggedInUser);
     vm.group.members.push(vm.currentUserId);
     vm.loggedInUser.groups.push(vm.group);
     Group
@@ -103,7 +123,8 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
           .update({ id: vm.currentUserId }, vm.loggedInUser)
           .$promise
           .then(() => {
-            $state.go('groupsIndex');
+            console.log('Joined group');
+            // $state.go('groupsIndex');
           });
       });
   }

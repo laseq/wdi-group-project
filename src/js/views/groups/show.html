@@ -8,11 +8,13 @@
   <p>Date: {{ schedule.date }}</p>
   <p>Start Time: {{ schedule.startTime }}</p>
   <p>Location: {{ schedule.location }}</p>
+  <p>Runners: {{ groupsShow.memberArray.length }}/{{ schedule.maxRunners }}</p>
 </div>
 <h3>Group members:</h3>
-<div ng-repeat="member in groupsShow.memberArray">
+<div ng-repeat="member in groupsShow.memberArray track by $index" ng-model="groupsShow.memberArray">
   <a ui-sref="usersShow({ id: member._id })">{{ member.username }}</a>
 </div>
+<input type="text" name="" value="">
 <div ng-repeat="comment in groupsShow.group.comments">
   <p>{{ comment.comment }}</p>
   <p>{{ comment.user }}</p>
