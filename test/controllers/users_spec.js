@@ -26,9 +26,6 @@ function registerUserAndRetrieveToken(done) {
       const jsonData = JSON.parse(data.text);
       jsonToken = jsonData.token;
       currentUserId = jsonData.user._id;
-      // console.log('jsonData in beforeEach .post(/api/register):', jsonData);
-      // console.log('jsonData.token in beforeEach .post(/api/register):', jsonToken);
-      console.log('currentUserId in beforeEach .post(/api/register):', currentUserId);
       done();
     })
     .catch(done);
@@ -47,30 +44,6 @@ describe('Users Controller Test', () => {
     });
 
     // This creates dummy data for the tests to run against in the API
-    // beforeEach(done => {
-    //   User
-    //   .create({
-    //     username: 'alexyeates',
-    //     name: 'alex',
-    //     email: 'alex@alex.com',
-    //     password: 'password',
-    //     passwordConfirmation: 'password',
-    //     age: 23,
-    //     gender: 'male',
-    //     image: 'https://www.fillmurray.com/600/400',
-    //     location: 'Aldgate',
-    //     postcode: 'E1 7PT',
-    //     locationCoords: { lat: 51.5152149, lng: 0.0745205 },
-    //     about: 'lorem'
-    //     // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
-    //   })
-    //   .then(user => {
-    //     console.log('user after User.create:', user);
-    //     done();
-    //   })
-    //   .catch(done);
-    // }); // shuts: beforeEach(...)
-
     beforeEach(done => {
       registerUserAndRetrieveToken(done);
     });
@@ -96,6 +69,7 @@ describe('Users Controller Test', () => {
         done();
       }); // shuts: .end((err, res)..)
     }); // shuts: it('should return a 200 response'...)
+
     // This test is checking that the request to our API returns an arary
     it('should return an array', function (done) {
       // this.skip();
@@ -109,6 +83,7 @@ describe('Users Controller Test', () => {
         done();
       }); // shuts: .end((err, res)...)
     }); // shuts: it('should return an array'...)
+
     // This test is checking that the request to our API returns JSON
     it('should return a JSON object', function (done) {
       // this.skip();
@@ -123,6 +98,7 @@ describe('Users Controller Test', () => {
         done();
       }); // shuts: .end((err, res)...)
     }); // shuts: it('should return a JSON object'...)
+
     // This test is ensuring the required parts of the model are there
     it('should return a user-like object with the required fields as the first item in the array', function(done) {
       // this.skip();
@@ -147,6 +123,7 @@ describe('Users Controller Test', () => {
         done();
       }); // shuts: .end((err, res)..)
     }); // shuts: it('should return ...)
+
     // This test will check that the request is returning all of the fields specified in the model
     it('should return a user-like object with all fields as the first item in the array', function(done) {
       // this.skip();
@@ -203,37 +180,6 @@ describe('Users Controller Test', () => {
     });
 
     // This test should test that there is a connection when trying to view a user page
-    // it('should return a 200 response', function(done) {
-    //   // this.skip();
-    //   User
-    //   .create({
-    //     username: 'alexyeates',
-    //     name: 'alex',
-    //     email: 'alex@alex.com',
-    //     age: 23,
-    //     gender: 'male',
-    //     image: 'https://www.fillmurray.com/600/400',
-    //     location: 'Aldgate',
-    //     postcode: 'E1 7PT',
-    //     locationCoords: { lat: 51.5152149, lng: 0.0745205 },
-    //     about: 'lorem',
-    //     password: 'password',
-    //     passwordConfirmation: 'password'
-    //     // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
-    //   })
-    //   .then(user => {
-    //     api
-    //     .get(`/api/users/${user._id}`)
-    //     .set('Accept', 'application/json')
-    //     .end((err, res) => {
-    //       expect(res.status)
-    //       .to.eq(200);
-    //       done();
-    //     });
-    //   })
-    //   .catch(done);
-    // }); // shuts: it('should return'...)
-
     it('should return a 200 response', function(done) {
       // this.skip();
 
@@ -322,47 +268,6 @@ describe('Users Controller Test', () => {
     });
 
     // This test ensures a connection and that the 'name' is updated for example
-    // it('should return a 200 response and update name', function(done) {
-    //   // this.skip();
-    //   User
-    //   .create({
-    //     username: 'alexyeates',
-    //     name: 'alex',
-    //     email: 'alex@alex.com',
-    //     age: 23,
-    //     gender: 'male',
-    //     image: 'https://www.fillmurray.com/600/400',
-    //     location: 'Aldgate',
-    //     postcode: 'E1 7PT',
-    //     locationCoords: { lat: 51.5152149, lng: 0.0745205 },
-    //     about: 'lorem',
-    //     password: 'password',
-    //     passwordConfirmation: 'password'
-    //     // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
-    //   })
-    //   .then(user => {
-    //     api
-    //     .put(`/api/users/${user._id}`)
-    //     .set('Accept', 'application/json')
-    //     .send({
-    //       name: 'Joe'
-    //     })
-    //     .end((err, res) => {
-    //       if (err) console.log(err);
-    //       expect(res.status)
-    //       .to.eq(200);
-    //
-    //       expect(res.body)
-    //       .to.have.property('name');
-    //
-    //       expect(res.body.name)
-    //       .to.eq('Joe');
-    //       done();
-    //     }); // shuts: .end((err, res)...)
-    //   })
-    //   .catch(done);
-    // }); // shuts: it('should return...)
-
     it('should return a 200 response and update name', function(done) {
       // this.skip();
       api
@@ -414,38 +319,6 @@ describe('Users Controller Test', () => {
     });
 
     // This test will ensure that the server has processed the reponse and is no longer producing the deleted user
-    // it('should return a 204 response', function(done) {
-    //   // this.skip();
-    //   User
-    //   .create({
-    //     username: 'alexyeates',
-    //     name: 'alex',
-    //     email: 'alex@alex.com',
-    //     age: 23,
-    //     gender: 'male',
-    //     image: 'https://www.fillmurray.com/600/400',
-    //     location: 'Aldgate',
-    //     postcode: 'E1 7PT',
-    //     locationCoords: { lat: 51.5152149, lng: 0.0745205 },
-    //     about: 'lorem',
-    //     password: 'password',
-    //     passwordConfirmation: 'password'
-    //     // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
-    //   })
-    //   .then(user => {
-    //     api
-    //     .delete(`/api/users/${user._id}`)
-    //     .set('Accept', 'application/json')
-    //     .end((err, res) => {
-    //       if (err) console.log(err);
-    //       expect(res.status)
-    //       .to.eq(204);
-    //       done();
-    //     }); // shuts: .end((err, res) => {
-    //   }) // shuts: .then(user => {
-    //       .catch(done);
-    // }); // shuts: it('should return...)
-
     it('should return a 204 response', function(done) {
       // this.skip();
 
