@@ -23,11 +23,59 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
     controller: 'LoginCtrl',
     controllerAs: 'login'
   })
+  .state('dashboard', {
+    url: '/dashboard',
+    templateUrl: '/js/views/dashboard.html',
+    controller: 'DashboardCtrl',
+    controllerAs: 'dashboard'
+  })
   .state('usersIndex', {
     url: '/users',
     templateUrl: '/js/views/users/index.html',
     controller: 'UsersIndexCtrl',
     controllerAs: 'usersIndex'
+  })
+  .state('usersEdit', {
+    url: '/users/:id/edit',
+    templateUrl: '/js/views/users/edit.html',
+    controller: 'UsersEditCtrl',
+    controllerAs: 'usersEdit'
+  })
+  .state('usersShow', {
+    url: '/users/:id',
+    templateUrl: '/js/views/users/show.html',
+    controller: 'UsersShowCtrl',
+    controllerAs: 'usersShow'
+  })
+  .state('usersNew', {
+    url: '/users/new',
+    templateUrl: '/js/views/users/new.html',
+    controller: 'UsersNewCtrl',
+    controllerAs: 'usersNew'
+  })
+  .state('groupsEdit', {
+    url: '/groups/:id/edit',
+    templateUrl: '/js/views/groups/edit.html',
+    controller: 'GroupsEditCtrl',
+    controllerAs: 'groupsEdit'
+  })
+  .state('groupsIndex', {
+    url: '/groups',
+    templateUrl: '/js/views/groups/index.html',
+    controller: 'GroupsIndexCtrl',
+    controllerAs: 'groupsIndex'
+  })
+  .state('groupsNew', {
+    url: '/groups/new',
+    templateUrl: '/js/views/groups/new.html',
+    controller: 'GroupsNewCtrl',
+    controllerAs: 'groupsNew'
+  })
+  .state('groupsShow', {
+    url: '/groups/:id',
+    templateUrl: '/js/views/groups/show.html',
+    controller: 'GroupsShowCtrl',
+    controllerAs: 'groupsShow'
   });
 
   $urlRouterProvider.otherwise('/');
