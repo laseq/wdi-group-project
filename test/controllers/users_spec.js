@@ -330,6 +330,36 @@ describe('Users Controller Test', () => {
       .catch(done);
     });
 
+    beforeEach(done => {
+      api
+        .post('/api/register')
+        .set('Accept', 'application/json')
+        .send({
+          username: 'alexyeates',
+          name: 'alex',
+          email: 'alex@alex.com',
+          age: 23,
+          gender: 'male',
+          image: 'https://www.fillmurray.com/600/400',
+          location: 'Aldgate',
+          postcode: 'E1 7PT',
+          locationCoords: { lat: 51.5152149, lng: 0.0745205 },
+          about: 'lorem',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .then(data => {
+          const jsonData = JSON.parse(data.text);
+          jsonToken = jsonData.token;
+          currentUserId = jsonData.user._id;
+          // console.log('jsonData in beforeEach .post(/api/register):', jsonData);
+          // console.log('jsonData.token in beforeEach .post(/api/register):', jsonToken);
+          console.log('currentUserId in beforeEach .post(/api/register):', currentUserId);
+          done();
+        })
+        .catch(done);
+    });
+
     // This ensures that the unique dummy data is not re-used
     afterEach(done => {
       User
@@ -339,47 +369,73 @@ describe('Users Controller Test', () => {
     });
 
     // This test ensures a connection and that the 'name' is updated for example
+    // it('should return a 200 response and update name', function(done) {
+    //   // this.skip();
+    //   User
+    //   .create({
+    //     username: 'alexyeates',
+    //     name: 'alex',
+    //     email: 'alex@alex.com',
+    //     age: 23,
+    //     gender: 'male',
+    //     image: 'https://www.fillmurray.com/600/400',
+    //     location: 'Aldgate',
+    //     postcode: 'E1 7PT',
+    //     locationCoords: { lat: 51.5152149, lng: 0.0745205 },
+    //     about: 'lorem',
+    //     password: 'password',
+    //     passwordConfirmation: 'password'
+    //     // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
+    //   })
+    //   .then(user => {
+    //     api
+    //     .put(`/api/users/${user._id}`)
+    //     .set('Accept', 'application/json')
+    //     .send({
+    //       name: 'Joe'
+    //     })
+    //     .end((err, res) => {
+    //       if (err) console.log(err);
+    //       expect(res.status)
+    //       .to.eq(200);
+    //
+    //       expect(res.body)
+    //       .to.have.property('name');
+    //
+    //       expect(res.body.name)
+    //       .to.eq('Joe');
+    //       done();
+    //     }); // shuts: .end((err, res)...)
+    //   })
+    //   .catch(done);
+    // }); // shuts: it('should return...)
+
     it('should return a 200 response and update name', function(done) {
       // this.skip();
-      User
-      .create({
-        username: 'alexyeates',
-        name: 'alex',
-        email: 'alex@alex.com',
-        age: 23,
-        gender: 'male',
-        image: 'https://www.fillmurray.com/600/400',
-        location: 'Aldgate',
-        postcode: 'E1 7PT',
-        locationCoords: { lat: 51.5152149, lng: 0.0745205 },
-        about: 'lorem',
-        password: 'password',
-        passwordConfirmation: 'password'
-        // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
+      api
+      .put(`/api/users/${currentUserId}`)
+      .set('Authorization', 'Bearer ' + jsonToken)
+      .set('Accept', 'application/json')
+      .send({
+        name: 'Joe'
       })
-      .then(user => {
-        api
-        .put(`/api/users/${user._id}`)
-        .set('Accept', 'application/json')
-        .send({
-          name: 'Joe'
-        })
-        .end((err, res) => {
-          if (err) console.log(err);
-          expect(res.status)
-          .to.eq(200);
+      .end((err, res) => {
+        if (err) console.log(err);
+        expect(res.status)
+        .to.eq(200);
 
-          expect(res.body)
-          .to.have.property('name');
+        expect(res.body)
+        .to.have.property('name');
 
-          expect(res.body.name)
-          .to.eq('Joe');
-          done();
-        }); // shuts: .end((err, res)...)
-      })
-      .catch(done);
+        expect(res.body.name)
+        .to.eq('Joe');
+        done();
+      }); // shuts: .end((err, res)...)
     }); // shuts: it('should return...)
+
   }); // shuts: describe('PUT /api/users/:id'...)
+
+
 
   // This is testing the users delete
   describe('DELETE /api/users/:id', () => {
