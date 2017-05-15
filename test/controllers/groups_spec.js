@@ -388,42 +388,70 @@ describe('Groups Controller Test', () => {
       removeGroupAndUserDbs(done);
     });
 
+    beforeEach(done => {
+      registerUsersAndCreateGroup(done);
+    });
+
     afterEach(done => {
       removeGroupAndUserDbs(done);
     });
 
+    // it('should return a 200 response and update name', function(done) {
+    //   // this.skip();
+    //   User
+    //   .create(testUserArray)
+    //   .then(users => {
+    //     // console.log(`${users.length} users were created!`);
+    //
+    //     return Group
+    //     .create(createGroup(users));
+    //   })
+    //   .then(group => {
+    //     api
+    //     .put(`/api/groups/${group._id}`)
+    //     .set('Accept', 'application/json')
+    //     .send({
+    //       name: 'Whitechapel Runchers'
+    //     })
+    //     .end((err, res) => {
+    //       if(err) console.log(err);
+    //       expect(res.status)
+    //       .to.eq(200);
+    //
+    //       expect(res.body)
+    //       .to.have.property('name');
+    //
+    //       expect(res.body.name)
+    //       .to.eq('Whitechapel Runchers');
+    //       done();
+    //     });
+    //   })
+    //   .catch(done);
+    // }); // End of it('should return a 200 response and update name'...)
+
     it('should return a 200 response and update name', function(done) {
-      this.skip();
-      User
-      .create(testUserArray)
-      .then(users => {
-        // console.log(`${users.length} users were created!`);
-
-        return Group
-        .create(createGroup(users));
+      // this.skip();
+      api
+      .put(`/api/groups/${groupId}`)
+      .set('Authorization', 'Bearer ' + user0.token)
+      .set('Accept', 'application/json')
+      .send({
+        name: 'Whitechapel Runchers'
       })
-      .then(group => {
-        api
-        .put(`/api/groups/${group._id}`)
-        .set('Accept', 'application/json')
-        .send({
-          name: 'Whitechapel Runchers'
-        })
-        .end((err, res) => {
-          if(err) console.log(err);
-          expect(res.status)
-          .to.eq(200);
+      .end((err, res) => {
+        if(err) console.log(err);
+        expect(res.status)
+        .to.eq(200);
 
-          expect(res.body)
-          .to.have.property('name');
+        expect(res.body)
+        .to.have.property('name');
 
-          expect(res.body.name)
-          .to.eq('Whitechapel Runchers');
-          done();
-        });
-      })
-      .catch(done);
+        expect(res.body.name)
+        .to.eq('Whitechapel Runchers');
+        done();
+      });
     }); // End of it('should return a 200 response and update name'...)
+
   }); // End of describe('PUT /api/groups/:id'...)
 
   describe('DELETE /api/groups/:id', () => {
