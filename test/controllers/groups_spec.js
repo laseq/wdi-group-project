@@ -333,36 +333,53 @@ describe('Groups Controller Test', () => {
       removeGroupAndUserDbs(done);
     });
 
-    beforeEach(done => {
-      registerUsersAndCreateGroup(done);
+    beforeEach(() => {
+      registerUsers();
     });
 
     afterEach(done => {
       removeGroupAndUserDbs(done);
     });
 
+    // it('should return a 201 response', function(done) {
+    //   // this.skip();
+    //   let testUsers = [];
+    //   User
+    //   .create(testUserArray)
+    //   .then(users => {
+    //     // console.log(`${users.length} users were created!`);
+    //     testUsers = users;
+    //
+    //     api
+    //     .post('/api/groups')
+    //     .set('Accept', 'application/json')
+    //     .send(createGroup(testUsers))
+    //     .end((err, res) => {
+    //       if (err) console.log(err);
+    //       expect(res.status)
+    //       .to.eq(201);
+    //       done();
+    //     });
+    //   })
+    //   .catch(done);
+    // }); // End of it('should return a 201 response'...)
+
     it('should return a 201 response', function(done) {
       // this.skip();
-      let testUsers = [];
-      User
-      .create(testUserArray)
-      .then(users => {
-        // console.log(`${users.length} users were created!`);
-        testUsers = users;
-
-        api
-        .post('/api/groups')
-        .set('Accept', 'application/json')
-        .send(createGroup(testUsers))
-        .end((err, res) => {
-          if (err) console.log(err);
-          expect(res.status)
-          .to.eq(201);
-          done();
-        });
-      })
-      .catch(done);
+      api
+      .post('/api/groups')
+      .set('Accept', 'application/json')
+      .set('Authorization', 'Bearer ' + user0.token)
+      .send(createGroup([user0.user, user1.user, user2.user]))
+      .end((err, res) => {
+        if (err) console.log(err);
+        expect(res.status)
+        .to.eq(201);
+        done();
+      });
     }); // End of it('should return a 201 response'...)
+
+
   }); // End of describe('POST /api/groups'...)
 
   describe('PUT /api/groups/:id', () => {
