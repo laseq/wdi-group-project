@@ -1,6 +1,9 @@
 <h1>Groups Index</h1>
 
 <h2>Running Groups</h2>
+
+<button type="button" name="button" ui-sref="groupsNew">Create a running group</button>
+
 <div ng-repeat="group in groupsIndex.all">
   <a ui-sref="groupsShow({ id: group._id })"><h3>{{ group.name }}</h3></a>
   <div class="">
