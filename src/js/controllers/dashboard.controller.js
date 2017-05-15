@@ -13,13 +13,16 @@ function DashboardCtrl(Group, $stateParams, $state, CurrentUserService) {
 
   const usersGroups = [];
 
-  groupsIndex();
+  memberOf();
 
-  function groupsIndex() {
-    vm.all = Group.query();
-    // console.log(vm.all);
+  function memberOf() {
+    const group = vm.all
+    vm.all = Group.query()
+    .$promise
+    .then((groups) => {
+    // for each to check if the current user id matches one of a groups members, if so, push the group to usersGroup array
+
+      console.log(groups[0].members);
+    });
   }
-  console.log(vm.all);
-
-
 }
