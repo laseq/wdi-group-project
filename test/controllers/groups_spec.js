@@ -2,8 +2,6 @@ const { api, expect } = require('../spec_helper');
 const Group           = require('../../models/group');
 const User           = require('../../models/user');
 
-let jsonTokenArray = [];
-let currentUserIdArray = [];
 let user0, user1, user2;
 
 function userAndTokens(user, token) {
@@ -198,9 +196,10 @@ describe('Groups Controller Test', () => {
     }); // End of it('should return a 200 response'...)
 
     it('should return an array', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get('/api/groups')
+      .set('Authorization', 'Bearer ' + user0.token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) console.log(err);
@@ -210,9 +209,10 @@ describe('Groups Controller Test', () => {
     }); // End of it('should return an array'...)
 
     it('should return a JSON object', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get('/api/groups')
+      .set('Authorization', 'Bearer ' + user0.token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) console.log(err);
@@ -223,9 +223,10 @@ describe('Groups Controller Test', () => {
     }); // End of it('should return a JSON object'...)
 
     it('should return a group-like object with the required fields as the first item in the array', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get('/api/groups')
+      .set('Authorization', 'Bearer ' + user0.token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) console.log(err);
@@ -243,9 +244,10 @@ describe('Groups Controller Test', () => {
     }); // End of it('should return a group-like object with the required fields...)
 
     it('should return a soup-like object with all fields as the first item in the array', function(done) {
-      this.skip();
+      // this.skip();
       api
       .get('/api/groups')
+      .set('Authorization', 'Bearer ' + user0.token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) console.log(err);
