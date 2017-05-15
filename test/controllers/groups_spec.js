@@ -67,7 +67,7 @@ const testUserArray = [{
   // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
 }];
 
-function registerUserAndRetrieveToken(done) {
+function registerUsersAndCreateGroup(done) {
   const p1 = api
     .post('/api/register')
     .set('Accept', 'application/json')
@@ -77,7 +77,7 @@ function registerUserAndRetrieveToken(done) {
       // jsonTokenArray.push(jsonData.token);
       // currentUserIdArray.push(jsonData.user._id);
       user0 = new userAndTokens(jsonData.user, jsonData.token);
-      console.log('user0:', user0);
+      // console.log('user0:', user0);
     });
 
   const p2 = api
@@ -89,7 +89,7 @@ function registerUserAndRetrieveToken(done) {
       // jsonTokenArray.push(jsonData.token);
       // currentUserIdArray.push(jsonData.user._id);
       user1 = new userAndTokens(jsonData.user, jsonData.token);
-      console.log('user1:', user1);
+      // console.log('user1:', user1);
     });
 
   const p3 = api
@@ -101,12 +101,13 @@ function registerUserAndRetrieveToken(done) {
       // jsonTokenArray.push(jsonData.token);
       // currentUserIdArray.push(jsonData.user._id);
       user2 = new userAndTokens(jsonData.user, jsonData.token);
-      console.log('user2:', user2);
+      // console.log('user2:', user2);
     });
 
   Promise.all([p1,p2,p3])
     .then(() => {
       createGroup([user0.user, user1.user, user2.user]);
+      done();
     })
     .catch(done);
 }
@@ -158,7 +159,7 @@ describe('Groups Controller Test', () => {
 
     beforeEach(done => {
 
-      registerUserAndRetrieveToken(done);
+      registerUsersAndCreateGroup(done);
 
       // User
       // .create(testUserArray)
@@ -187,6 +188,7 @@ describe('Groups Controller Test', () => {
       // this.skip();
       api
       .get('/api/groups')
+      .set('Authorization', 'Bearer ' + user0.token)
       .set('Accept', 'application/json')
       .end((err,res) => {
         if (err) console.log(err);
