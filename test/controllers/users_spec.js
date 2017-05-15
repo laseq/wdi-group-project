@@ -2,6 +2,7 @@ const { api, expect } = require('../spec_helper');
 const User            = require('../../models/user');
 
 let jsonToken;
+let currentUserId;
 
 describe('Users Controller Test', () => {
   // This is testing the users index
@@ -184,6 +185,36 @@ describe('Users Controller Test', () => {
       .catch(done);
     });
 
+    beforeEach(done => {
+      api
+        .post('/api/register')
+        .set('Accept', 'application/json')
+        .send({
+          username: 'alexyeates',
+          name: 'alex',
+          email: 'alex@alex.com',
+          age: 23,
+          gender: 'male',
+          image: 'https://www.fillmurray.com/600/400',
+          location: 'Aldgate',
+          postcode: 'E1 7PT',
+          locationCoords: { lat: 51.5152149, lng: 0.0745205 },
+          about: 'lorem',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .then(data => {
+          const jsonData = JSON.parse(data.text);
+          jsonToken = jsonData.token;
+          currentUserId = jsonData.user._id;
+          // console.log('jsonData in beforeEach .post(/api/register):', jsonData);
+          // console.log('jsonData.token in beforeEach .post(/api/register):', jsonToken);
+          // console.log('currentUserId in beforeEach .post(/api/register):', currentUserId);
+          done();
+        })
+        .catch(done);
+    });
+
     // This ensures that the unique dummy data is not re-used
     afterEach(done => {
       User
@@ -193,35 +224,50 @@ describe('Users Controller Test', () => {
     });
 
     // This test should test that there is a connection when trying to view a user page
+    // it('should return a 200 response', function(done) {
+    //   // this.skip();
+    //   User
+    //   .create({
+    //     username: 'alexyeates',
+    //     name: 'alex',
+    //     email: 'alex@alex.com',
+    //     age: 23,
+    //     gender: 'male',
+    //     image: 'https://www.fillmurray.com/600/400',
+    //     location: 'Aldgate',
+    //     postcode: 'E1 7PT',
+    //     locationCoords: { lat: 51.5152149, lng: 0.0745205 },
+    //     about: 'lorem',
+    //     password: 'password',
+    //     passwordConfirmation: 'password'
+    //     // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
+    //   })
+    //   .then(user => {
+    //     api
+    //     .get(`/api/users/${user._id}`)
+    //     .set('Accept', 'application/json')
+    //     .end((err, res) => {
+    //       expect(res.status)
+    //       .to.eq(200);
+    //       done();
+    //     });
+    //   })
+    //   .catch(done);
+    // }); // shuts: it('should return'...)
+
     it('should return a 200 response', function(done) {
       // this.skip();
-      User
-      .create({
-        username: 'alexyeates',
-        name: 'alex',
-        email: 'alex@alex.com',
-        age: 23,
-        gender: 'male',
-        image: 'https://www.fillmurray.com/600/400',
-        location: 'Aldgate',
-        postcode: 'E1 7PT',
-        locationCoords: { lat: 51.5152149, lng: 0.0745205 },
-        about: 'lorem',
-        password: 'password',
-        passwordConfirmation: 'password'
-        // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
-      })
-      .then(user => {
-        api
-        .get(`/api/users/${user._id}`)
-        .set('Accept', 'application/json')
-        .end((err, res) => {
-          expect(res.status)
-          .to.eq(200);
-          done();
-        });
-      })
-      .catch(done);
+
+      api
+      .get(`/api/users/${currentUserId}`)
+      .set('Authorization', 'Bearer ' + jsonToken)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        expect(res.status)
+        .to.eq(200);
+        done();
+      });
+
     }); // shuts: it('should return'...)
 
     // This test ensures the show is using a correct id for the user
@@ -229,6 +275,7 @@ describe('Users Controller Test', () => {
       // this.skip();
       api
       .get(`/api/users/5917156c02a7b9cde5e2fa21`)
+      .set('Authorization', 'Bearer ' + jsonToken)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) console.log(err);
