@@ -3,21 +3,10 @@ const Group           = require('../../models/group');
 const User           = require('../../models/user');
 
 let user0, user1, user2, groupId;
+let promise1, promise2, promise3;
 
 function userAndTokens(user, token) {
   this.user = user;
-  // this.userId = user._id;
-  // this.username = user.username,
-  // this.name = user.name,
-  // this.email = user.email,
-  // this.age = user.age,
-  // this.passwordHash = user.passwordHash,
-  // this.gender = user.gender,
-  // this.image = user.image,
-  // this.location = user.location,
-  // this.postcode = user.postcode,
-  // this.locationCoords = user.locationCoords,
-  // this.about = user.about,
   this.token = token;
 }
 
@@ -65,38 +54,40 @@ const testUserArray = [{
   // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
 }];
 
-function registerUsersAndCreateGroup(done) {
-  const p1 = api
+function registerUsers() {
+  promise1 = api
     .post('/api/register')
     .set('Accept', 'application/json')
     .send(testUserArray[0])
     .then(data => {
       const jsonData = JSON.parse(data.text);
       user0 = new userAndTokens(jsonData.user, jsonData.token);
-      // console.log('user0:', user0);
     });
 
-  const p2 = api
+  promise2 = api
     .post('/api/register')
     .set('Accept', 'application/json')
     .send(testUserArray[1])
     .then(data => {
       const jsonData = JSON.parse(data.text);
       user1 = new userAndTokens(jsonData.user, jsonData.token);
-      // console.log('user1:', user1);
     });
 
-  const p3 = api
+  promise3 = api
     .post('/api/register')
     .set('Accept', 'application/json')
     .send(testUserArray[2])
     .then(data => {
       const jsonData = JSON.parse(data.text);
       user2 = new userAndTokens(jsonData.user, jsonData.token);
-      // console.log('user2:', user2);
     });
+}
 
-  Promise.all([p1,p2,p3])
+function registerUsersAndCreateGroup(done) {
+
+  registerUsers();
+
+  Promise.all([promise1,promise2,promise3])
     .then(() => {
       return Group
         .create(createGroup([user0.user, user1.user, user2.user]));
@@ -337,8 +328,21 @@ describe('Groups Controller Test', () => {
   }); // End of describe('GET /api/groups/:id'...)
 
   describe('POST /api/groups', () => {
+
+    beforeEach(done => {
+      removeGroupAndUserDbs(done);
+    });
+
+    beforeEach(done => {
+      registerUsersAndCreateGroup(done);
+    });
+
+    afterEach(done => {
+      removeGroupAndUserDbs(done);
+    });
+
     it('should return a 201 response', function(done) {
-      this.skip();
+      // this.skip();
       let testUsers = [];
       User
       .create(testUserArray)
