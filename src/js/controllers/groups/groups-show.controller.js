@@ -103,9 +103,8 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
           .update({ id: vm.currentUserId }, vm.loggedInUser)
           .$promise
           .then(() => {
-
+            $state.go('groupsIndex');
           });
-        $state.go('groupsIndex');
       });
   }
 
