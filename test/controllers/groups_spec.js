@@ -120,7 +120,6 @@ function createGroup(users) {
       { comment: 'This is a great run group', user: users[1]._id }
     ]
   };
-  // console.log(runningGroup.name);
   return runningGroup;
 }
 
@@ -145,26 +144,7 @@ describe('Groups Controller Test', () => {
     });
 
     beforeEach(done => {
-
       registerUsersAndCreateGroup(done);
-
-      // User
-      // .create(testUserArray)
-      // .then(users => {
-      //   // console.log(`${users.length} users were created!`);
-      //
-      //   return Group
-      //   .create([createGroup(users)]);
-      // })
-      // .then(groups => {
-      //   // console.log('groups[0].admin:', groups[0].admin);
-      //   // console.log('groups[0].members:', groups[0].members);
-      //   // console.log('groups[0].comments:', groups[0].comments);
-      //   // console.log(`A group with group id ${groups[0]._id} was created!`);
-      //   console.log(`${groups.length} groups were created!`);
-      //   done();
-      // })
-      // .catch(done);
     });
 
     afterEach(done => {
@@ -272,31 +252,6 @@ describe('Groups Controller Test', () => {
       removeGroupAndUserDbs(done);
     });
 
-    // it('should return a 200 response', function(done) {
-    //   // this.skip();
-    //   User
-    //   .create(testUserArray)
-    //   .then(users => {
-    //     // console.log(`${users.length} users were created!`);
-    //
-    //     return Group
-    //     .create(createGroup(users));
-    //   })
-    //   .then(group => {
-    //     // console.log(`A group with group id ${group._id} was created!`);
-    //     api
-    //     .get(`/api/groups/${group._id}`)
-    //     .set('Accept', 'application/json')
-    //     .end((err, res) => {
-    //       expect(res.status)
-    //       .to.eq(200);
-    //       done();
-    //     });
-    //   })
-    //   .catch(done);
-    // }); //End of it('should return a 200 response'...)
-
-
     it('should return a 200 response', function(done) {
       // this.skip();
       api
@@ -341,29 +296,6 @@ describe('Groups Controller Test', () => {
       removeGroupAndUserDbs(done);
     });
 
-    // it('should return a 201 response', function(done) {
-    //   // this.skip();
-    //   let testUsers = [];
-    //   User
-    //   .create(testUserArray)
-    //   .then(users => {
-    //     // console.log(`${users.length} users were created!`);
-    //     testUsers = users;
-    //
-    //     api
-    //     .post('/api/groups')
-    //     .set('Accept', 'application/json')
-    //     .send(createGroup(testUsers))
-    //     .end((err, res) => {
-    //       if (err) console.log(err);
-    //       expect(res.status)
-    //       .to.eq(201);
-    //       done();
-    //     });
-    //   })
-    //   .catch(done);
-    // }); // End of it('should return a 201 response'...)
-
     it('should return a 201 response', function(done) {
       // this.skip();
       api
@@ -378,7 +310,6 @@ describe('Groups Controller Test', () => {
         done();
       });
     }); // End of it('should return a 201 response'...)
-
 
   }); // End of describe('POST /api/groups'...)
 
@@ -395,39 +326,6 @@ describe('Groups Controller Test', () => {
     afterEach(done => {
       removeGroupAndUserDbs(done);
     });
-
-    // it('should return a 200 response and update name', function(done) {
-    //   // this.skip();
-    //   User
-    //   .create(testUserArray)
-    //   .then(users => {
-    //     // console.log(`${users.length} users were created!`);
-    //
-    //     return Group
-    //     .create(createGroup(users));
-    //   })
-    //   .then(group => {
-    //     api
-    //     .put(`/api/groups/${group._id}`)
-    //     .set('Accept', 'application/json')
-    //     .send({
-    //       name: 'Whitechapel Runchers'
-    //     })
-    //     .end((err, res) => {
-    //       if(err) console.log(err);
-    //       expect(res.status)
-    //       .to.eq(200);
-    //
-    //       expect(res.body)
-    //       .to.have.property('name');
-    //
-    //       expect(res.body.name)
-    //       .to.eq('Whitechapel Runchers');
-    //       done();
-    //     });
-    //   })
-    //   .catch(done);
-    // }); // End of it('should return a 200 response and update name'...)
 
     it('should return a 200 response and update name', function(done) {
       // this.skip();
@@ -467,30 +365,6 @@ describe('Groups Controller Test', () => {
     afterEach(done => {
       removeGroupAndUserDbs(done);
     });
-
-    // it('should return a 204 response', function(done) {
-    //   this.skip();
-    //   User
-    //   .create(testUserArray)
-    //   .then(users => {
-    //     // console.log(`${users.length} users were created!`);
-    //
-    //     return Group
-    //     .create(createGroup(users));
-    //   })
-    //   .then(group => {
-    //     api
-    //     .delete(`/api/groups/${group._id}`)
-    //     .set('Accept', 'application/json')
-    //     .end((err, res) => {
-    //       if (err) console.log(err);
-    //       expect(res.status)
-    //       .to.eq(204);
-    //       done();
-    //     });
-    //   })
-    //   .catch(done);
-    // }); // End of it('should return a 204 response'...)
 
     it('should return a 204 response', function(done) {
       // this.skip();
