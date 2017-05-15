@@ -22,8 +22,24 @@ function DashboardCtrl(Group, $stateParams, $state, CurrentUserService) {
       for (var i = 0; i < groups.length; i++) {
         var groupMembers = groups[i].members; // gets an array of each groups members
         console.log(groupMembers);
-        // console.log(groups[0].name); // Gets the group's name
+        groupMembers.forEach(member => {
+          console.log(member);
+          // if (member.includes(vm.user) {
+          //   return console.log('Match');
+          // }
+        });
+
+        //
+        // .$promise
+        // .then(theMember => {
+        //   vm.memberArray.push(theMember);
+        // })
+        // .catch(err => console
+
+        // for (var j = 0; j < groupMembers[j]; j++) {
+        //   console.log(groupMembers);
       }
-    });
+      // console.log(groups[0].name); // Gets the group's name
+    }
   }
 }
