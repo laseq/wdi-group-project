@@ -17,10 +17,12 @@ function DashboardCtrl(Group, $stateParams, $state, CurrentUserService) {
     vm.all = Group.query()
     .$promise
     .then((groups) => {
-      // for each to check if the current user id matches one of a groups members, if so, push the group to usersGroup array
       console.log(vm.user);
+      // for each to check if the current user id matches one of a groups members, if so, push the group to usersGroup array
       for (var i = 0; i < groups.length; i++) {
-        console.log(groups[i].members); // logs out objects of the groups
+        var groupMembers = groups[i].members; // gets an array of each groups members
+        console.log(groupMembers);
+        // console.log(groups[0].name); // Gets the group's name
       }
     });
   }
