@@ -14,10 +14,16 @@
 <div ng-repeat="member in groupsShow.memberArray track by $index" ng-model="groupsShow.memberArray">
   <a ui-sref="usersShow({ id: member._id })">{{ member.username }}</a>
 </div>
-<input type="text" name="" value="">
-<div ng-repeat="comment in groupsShow.group.comments">
+
+<form ng-submit="groupsShow.postComment()" method="post">
+  <h4>Join the discussion</h4>
+  <input type="text" name="comment" value="" placeholder="Your comment" ng-model="groupsShow.commentObject.comment">
+  <input type="submit" name="" value="Post">
+</form>
+
+<div ng-repeat="comment in groupsShow.group.comments" ng-model="groupsShow.group.comments">
   <p>{{ comment.comment }}</p>
-  <p>{{ comment.user }}</p>
+  <!-- <p>{{ comment.user }}</p> -->
   <p>Comment by: {{ comment.userDetails.username }}</p>
 </div>
 

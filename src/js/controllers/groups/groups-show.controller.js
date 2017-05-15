@@ -12,6 +12,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
   vm.join = joinGroup;
   vm.memberArray = [];
   vm.commenters = [];
+  vm.postComment = postComment;
 
   getGroupDetails();
   getLoggedInUser();
@@ -93,16 +94,12 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
   }
 
   function joinGroup() {
-
-    // for (let i=0; i<vm.memberArray.length; i++) {
-    //   if (vm.memberArray[i]._id === vm.currentUserId) {
-    //     console.log('You\'ve already joined this group');
-    //     return false;
-    //   }
-    // }
-    console.log('vm.group.schedule[0].maxRunners:', vm.group.schedule[0].maxRunners);
-    console.log('vm.memberArray.length:', vm.memberArray.length);
-
+    for (let i=0; i<vm.memberArray.length; i++) {
+      if (vm.memberArray[i]._id === vm.currentUserId) {
+        console.log('You\'ve already joined this group');
+        return false;
+      }
+    }
     if (vm.group.schedule[0].maxRunners <= vm.memberArray.length) {
       console.log('Maximum number of runners has been reached');
       return false;
@@ -119,9 +116,25 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
           .$promise
           .then(() => {
             console.log('Joined group');
-            // $state.go('groupsIndex');
           });
       });
+  }
+
+  function postComment() {
+    vm.group.comments.push({
+      comment: vm.commentObject.comment,
+      user: vm.currentUserId
+    });
+
+    Group
+      .update({ id: vm.group._id }, vm.group)
+      .$promise
+      .then(() => {
+        
+      })
+      .catch(err => console.log('error in postComment:', err));
+
+
   }
 
 }
