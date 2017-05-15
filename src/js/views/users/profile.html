@@ -1,5 +1,13 @@
 <h1>{{ usersProfile.user.name }}'s Profile</h1>
 <div class="profile-info">
   <h2>{{ usersProfile.user.username }}</h2>
+  <img ng-src="{{ usersProfile.user.image }}">
+  <li>{{ usersProfile.user.age }}</li>
+  <li>{{ usersProfile.user.gender }}</li>
+  <li>{{ usersProfile.user.location }}</li>
+  <li>{{ usersProfile.user.about }}</li>
+
+
+
   <button type="button" ui-sref="usersEdit({ id: usersProfile.user._id })">Edit</button>
 </div>
