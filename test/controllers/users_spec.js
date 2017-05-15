@@ -4,6 +4,36 @@ const User            = require('../../models/user');
 let jsonToken;
 let currentUserId;
 
+function registerUserAndRetrieveToken(done) {
+  api
+    .post('/api/register')
+    .set('Accept', 'application/json')
+    .send({
+      username: 'alexyeates',
+      name: 'alex',
+      email: 'alex@alex.com',
+      age: 23,
+      gender: 'male',
+      image: 'https://www.fillmurray.com/600/400',
+      location: 'Aldgate',
+      postcode: 'E1 7PT',
+      locationCoords: { lat: 51.5152149, lng: 0.0745205 },
+      about: 'lorem',
+      password: 'password',
+      passwordConfirmation: 'password'
+    })
+    .then(data => {
+      const jsonData = JSON.parse(data.text);
+      jsonToken = jsonData.token;
+      currentUserId = jsonData.user._id;
+      // console.log('jsonData in beforeEach .post(/api/register):', jsonData);
+      // console.log('jsonData.token in beforeEach .post(/api/register):', jsonToken);
+      console.log('currentUserId in beforeEach .post(/api/register):', currentUserId);
+      done();
+    })
+    .catch(done);
+}
+
 describe('Users Controller Test', () => {
   // This is testing the users index
   describe('GET /api/users', () => {
@@ -42,33 +72,8 @@ describe('Users Controller Test', () => {
     // }); // shuts: beforeEach(...)
 
     beforeEach(done => {
-      api
-        .post('/api/register')
-        .set('Accept', 'application/json')
-        .send({
-          username: 'alexyeates',
-          name: 'alex',
-          email: 'alex@alex.com',
-          age: 23,
-          gender: 'male',
-          image: 'https://www.fillmurray.com/600/400',
-          location: 'Aldgate',
-          postcode: 'E1 7PT',
-          locationCoords: { lat: 51.5152149, lng: 0.0745205 },
-          about: 'lorem',
-          password: 'password',
-          passwordConfirmation: 'password'
-        })
-        .then(data => {
-          jsonToken = JSON.parse(data.text).token;
-          // console.log('jsonData in beforeEach .post(/api/register):', jsonData);
-          // console.log('jsonData.token in beforeEach .post(/api/register):', jsonToken);
-          done();
-        })
-        .catch(done);
+      registerUserAndRetrieveToken(done);
     });
-
-
 
     // This ensures that the unique dummy data is not re-used
     afterEach(done => {
@@ -186,33 +191,7 @@ describe('Users Controller Test', () => {
     });
 
     beforeEach(done => {
-      api
-        .post('/api/register')
-        .set('Accept', 'application/json')
-        .send({
-          username: 'alexyeates',
-          name: 'alex',
-          email: 'alex@alex.com',
-          age: 23,
-          gender: 'male',
-          image: 'https://www.fillmurray.com/600/400',
-          location: 'Aldgate',
-          postcode: 'E1 7PT',
-          locationCoords: { lat: 51.5152149, lng: 0.0745205 },
-          about: 'lorem',
-          password: 'password',
-          passwordConfirmation: 'password'
-        })
-        .then(data => {
-          const jsonData = JSON.parse(data.text);
-          jsonToken = jsonData.token;
-          currentUserId = jsonData.user._id;
-          // console.log('jsonData in beforeEach .post(/api/register):', jsonData);
-          // console.log('jsonData.token in beforeEach .post(/api/register):', jsonToken);
-          // console.log('currentUserId in beforeEach .post(/api/register):', currentUserId);
-          done();
-        })
-        .catch(done);
+      registerUserAndRetrieveToken(done);
     });
 
     // This ensures that the unique dummy data is not re-used
@@ -331,33 +310,7 @@ describe('Users Controller Test', () => {
     });
 
     beforeEach(done => {
-      api
-        .post('/api/register')
-        .set('Accept', 'application/json')
-        .send({
-          username: 'alexyeates',
-          name: 'alex',
-          email: 'alex@alex.com',
-          age: 23,
-          gender: 'male',
-          image: 'https://www.fillmurray.com/600/400',
-          location: 'Aldgate',
-          postcode: 'E1 7PT',
-          locationCoords: { lat: 51.5152149, lng: 0.0745205 },
-          about: 'lorem',
-          password: 'password',
-          passwordConfirmation: 'password'
-        })
-        .then(data => {
-          const jsonData = JSON.parse(data.text);
-          jsonToken = jsonData.token;
-          currentUserId = jsonData.user._id;
-          // console.log('jsonData in beforeEach .post(/api/register):', jsonData);
-          // console.log('jsonData.token in beforeEach .post(/api/register):', jsonToken);
-          console.log('currentUserId in beforeEach .post(/api/register):', currentUserId);
-          done();
-        })
-        .catch(done);
+      registerUserAndRetrieveToken(done);
     });
 
     // This ensures that the unique dummy data is not re-used
@@ -449,33 +402,7 @@ describe('Users Controller Test', () => {
     });
 
     beforeEach(done => {
-      api
-        .post('/api/register')
-        .set('Accept', 'application/json')
-        .send({
-          username: 'alexyeates',
-          name: 'alex',
-          email: 'alex@alex.com',
-          age: 23,
-          gender: 'male',
-          image: 'https://www.fillmurray.com/600/400',
-          location: 'Aldgate',
-          postcode: 'E1 7PT',
-          locationCoords: { lat: 51.5152149, lng: 0.0745205 },
-          about: 'lorem',
-          password: 'password',
-          passwordConfirmation: 'password'
-        })
-        .then(data => {
-          const jsonData = JSON.parse(data.text);
-          jsonToken = jsonData.token;
-          currentUserId = jsonData.user._id;
-          // console.log('jsonData in beforeEach .post(/api/register):', jsonData);
-          // console.log('jsonData.token in beforeEach .post(/api/register):', jsonToken);
-          console.log('currentUserId in beforeEach .post(/api/register):', currentUserId);
-          done();
-        })
-        .catch(done);
+      registerUserAndRetrieveToken(done);
     });
 
     // This ensures that the unique dummy data is not re-used
