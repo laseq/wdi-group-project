@@ -1,6 +1,8 @@
 const { api, expect } = require('../spec_helper');
 const User            = require('../../models/user');
 
+let jsonToken;
+
 describe('Users Controller Test', () => {
   // This is testing the users index
   describe('GET /api/users', () => {
@@ -14,29 +16,58 @@ describe('Users Controller Test', () => {
     });
 
     // This creates dummy data for the tests to run against in the API
+    // beforeEach(done => {
+    //   User
+    //   .create({
+    //     username: 'alexyeates',
+    //     name: 'alex',
+    //     email: 'alex@alex.com',
+    //     password: 'password',
+    //     passwordConfirmation: 'password',
+    //     age: 23,
+    //     gender: 'male',
+    //     image: 'https://www.fillmurray.com/600/400',
+    //     location: 'Aldgate',
+    //     postcode: 'E1 7PT',
+    //     locationCoords: { lat: 51.5152149, lng: 0.0745205 },
+    //     about: 'lorem'
+    //     // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
+    //   })
+    //   .then(user => {
+    //     console.log('user after User.create:', user);
+    //     done();
+    //   })
+    //   .catch(done);
+    // }); // shuts: beforeEach(...)
+
     beforeEach(done => {
-      User
-      .create({
-        username: 'alexyeates',
-        name: 'alex',
-        email: 'alex@alex.com',
-        password: 'password',
-        passwordConfirmation: 'password',
-        age: 23,
-        gender: 'male',
-        image: 'https://www.fillmurray.com/600/400',
-        location: 'Aldgate',
-        postcode: 'E1 7PT',
-        locationCoords: { lat: 51.5152149, lng: 0.0745205 },
-        about: 'lorem'
-        // groups: [{ type: mongoose.Schema.ObjectId, ref: 'Group'}]
-      })
-      .then(user => {
-        console.log('user after User.create:', user);
-        done();
-      })
-      .catch(done);
-    }); // shuts: beforeEach(...)
+      api
+        .post('/api/register')
+        .set('Accept', 'application/json')
+        .send({
+          username: 'alexyeates',
+          name: 'alex',
+          email: 'alex@alex.com',
+          age: 23,
+          gender: 'male',
+          image: 'https://www.fillmurray.com/600/400',
+          location: 'Aldgate',
+          postcode: 'E1 7PT',
+          locationCoords: { lat: 51.5152149, lng: 0.0745205 },
+          about: 'lorem',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .then(data => {
+          jsonToken = JSON.parse(data.text).token;
+          // console.log('jsonData in beforeEach .post(/api/register):', jsonData);
+          console.log('jsonData.token in beforeEach .post(/api/register):', jsonToken);
+          done();
+        })
+        .catch(done);
+    });
+
+
 
     // This ensures that the unique dummy data is not re-used
     afterEach(done => {
@@ -51,6 +82,7 @@ describe('Users Controller Test', () => {
       // this.skip();
       api
       .get('/api/users')
+      .set('Authorization', 'Bearer ' + jsonToken)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) console.log(err);
