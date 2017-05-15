@@ -2,7 +2,7 @@ const { api, expect } = require('../spec_helper');
 const Group           = require('../../models/group');
 const User           = require('../../models/user');
 
-let user0, user1, user2;
+let user0, user1, user2, groupId;
 
 function userAndTokens(user, token) {
   this.user = user;
@@ -98,8 +98,11 @@ function registerUsersAndCreateGroup(done) {
 
   Promise.all([p1,p2,p3])
     .then(() => {
-      Group
+      return Group
         .create(createGroup([user0.user, user1.user, user2.user]));
+    })
+    .then(group => {
+      groupId = group._id;
     })
     .then(done)
     .catch(done);
@@ -270,33 +273,52 @@ describe('Groups Controller Test', () => {
       removeGroupAndUserDbs(done);
     });
 
+    beforeEach(done => {
+      registerUsersAndCreateGroup(done);
+    });
+
     afterEach(done => {
       removeGroupAndUserDbs(done);
     });
 
-    it('should return a 200 response', function(done) {
-      this.skip();
-      User
-      .create(testUserArray)
-      .then(users => {
-        // console.log(`${users.length} users were created!`);
+    // it('should return a 200 response', function(done) {
+    //   // this.skip();
+    //   User
+    //   .create(testUserArray)
+    //   .then(users => {
+    //     // console.log(`${users.length} users were created!`);
+    //
+    //     return Group
+    //     .create(createGroup(users));
+    //   })
+    //   .then(group => {
+    //     // console.log(`A group with group id ${group._id} was created!`);
+    //     api
+    //     .get(`/api/groups/${group._id}`)
+    //     .set('Accept', 'application/json')
+    //     .end((err, res) => {
+    //       expect(res.status)
+    //       .to.eq(200);
+    //       done();
+    //     });
+    //   })
+    //   .catch(done);
+    // }); //End of it('should return a 200 response'...)
 
-        return Group
-        .create(createGroup(users));
-      })
-      .then(group => {
-        // console.log(`A group with group id ${group._id} was created!`);
-        api
-        .get(`/api/groups/${group._id}`)
-        .set('Accept', 'application/json')
-        .end((err, res) => {
-          expect(res.status)
-          .to.eq(200);
-          done();
-        });
-      })
-      .catch(done);
+
+    it('should return a 200 response', function(done) {
+      // this.skip();
+      api
+      .get(`/api/groups/${groupId}`)
+      .set('Authorization', 'Bearer ' + user0.token)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        expect(res.status)
+        .to.eq(200);
+        done();
+      });
     }); //End of it('should return a 200 response'...)
+
 
     it('should not return a group if the id is wrong', function(done) {
       this.skip();
