@@ -23,28 +23,9 @@ function DashboardCtrl(Group, $stateParams, $state, CurrentUserService) {
     .then((groups) => {
       // for each to check if the current user id matches one of a groups members, if so, push the group to usersGroup array
       console.log(vm.user);
-      for (var i = 0; i < groups.length; i++) {
-        console.log(groups);
+      for (var i = 0; i < groups[i].members.length; i++) {
+        console.log(groups[i]); // logs out objects of the groups
       }
-        // for (var j = 0; j < groups[i].length; j++) {
-        //   console.log();
-        // }
-
-        // for (var j = 0; j < groups.length; j++) {
-        //   if (groups.includes(vm.user))
-        //     console.log('yes');
-        //     // then push the group's name to the userGroups array
-        // }
-
-        // for(var i = 0; i < parentArray.length; i++){
-        //   for(var j = 0; j < parentArray[i].length; j++){
-        //
-        //     console.log(parentArray[i][j]);
-        //   }
-        // }
-      
-
-      // console.log(groups);
     });
   }
 }
