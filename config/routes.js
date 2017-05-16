@@ -29,4 +29,7 @@ router.route('/groups/:id')
 router.route('/groups/:id/join')
 .get(groups.join);
 
+router.route('/groups/:id/leave')
+.get(groups.leave);
+
 module.exports = router;

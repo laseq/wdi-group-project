@@ -10,6 +10,7 @@ function GroupsIndexCtrl(Group, TokenService, User) {
 
   vm.currentUserId = TokenService.decodeToken().id;
   vm.join = joinGroup;
+  vm.leave = leaveGroup;
   vm.member = false;
 
   //vm.all = Group.query();
@@ -31,13 +32,29 @@ function GroupsIndexCtrl(Group, TokenService, User) {
     Group
       .join({ id: group._id })
       .$promise
-      .then(() => {
+      .then(group => {
+        console.log('group after joining:', group);
         $event.target.style.display = 'none';
       })
       .catch(err => {
         console.log(err);
       });
   }
+
+  function leaveGroup(group, $event) {
+
+    Group
+      .leave({ id: group._id })
+      .$promise
+      .then(group => {
+        console.log('group after leaving:', group);
+        $event.target.style.display = 'none';
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
 
   function splitDateTimeString(groups) {
     groups.forEach(group => {

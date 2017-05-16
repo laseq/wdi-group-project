@@ -9,6 +9,10 @@ function Group($resource, API) {
     'join': {
       method: 'GET',
       url: `${API}/groups/:id/join`
+    },
+    'leave': {
+      method: 'GET',
+      url: `${API}/groups/:id/leave`
     }
   });
 }

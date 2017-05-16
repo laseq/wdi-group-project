@@ -18,4 +18,5 @@
   </div>
 
   <button type="button" name="button" ng-click="groupsIndex.join(group, $event)" ng-if="group.members.indexOf(main.user.id) === -1">Join</button>
+  <button type="button" name="button" ng-click="groupsIndex.leave(group, $event)" ng-if="group.members.indexOf(main.user.id) !== -1">Leave</button>
 </div>
