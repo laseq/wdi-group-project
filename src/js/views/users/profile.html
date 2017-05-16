@@ -1,13 +1,23 @@
 <h1>{{ usersProfile.user.name }}'s Profile</h1>
-<img class="profile-pic" ng-src="{{ usersProfile.user.image }}">
-<div class="profile-info">
-  <h2>{{ usersProfile.user.username }}</h2>
-  <p>Age: {{ usersProfile.user.age }}</p>
-  <p>Gender: {{ usersProfile.user.gender }}</p>
-  <p>Location: {{ usersProfile.user.location }}</p>
-  <p>About: {{ usersProfile.user.about }}</p>
-  <button type="button" ui-sref="usersEdit({ id: usersProfile.user._id })">Edit</button>
-</div>
-<div class="user-groups" ng-repeat="group in usersProfile.user.groups">
-  <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <img class="profile-pic" ng-src="{{ usersProfile.user.image }}">
+    </div>
+    <div class="col-md-4">
+      <div class="profile-info">
+        <h2>{{ usersProfile.user.username }}</h2>
+        <p>Age: {{ usersProfile.user.age }}</p>
+        <p>Gender: {{ usersProfile.user.gender }}</p>
+        <p>Location: {{ usersProfile.user.location }}</p>
+        <p>About: {{ usersProfile.user.about }}</p>
+        <button type="button" ui-sref="usersEdit({ id: usersProfile.user._id })">Edit</button>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="user-groups" ng-repeat="group in usersProfile.user.groups">
+        <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+      </div>
+    </div>
+  </div>
 </div>
