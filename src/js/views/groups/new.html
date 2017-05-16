@@ -5,10 +5,10 @@
     <label for="name">Name: </label>
     <input type="text" name="name" ng-model="groupsNew.group.name" placeholder="Name">
   </div>
-  <div class="">
+  <!-- <div class="">
     <label for="day">Day: </label>
     <input type="text" name="day" ng-model="groupsNew.group.schedule.day" placeholder="Day">
-  </div>
+  </div> -->
 
   <!-- <div class="">
     <label for="date">Date: </label>
@@ -27,13 +27,17 @@
          moment-picker="groupsNew.group.schedule.date">
   </div>
 
-  <div class="">
+  <!-- <div class="">
     <label for="startTime">Start Time: </label>
     <input type="text" name="startTime" ng-model="groupsNew.group.schedule.startTime" placeholder="Start Time">
+  </div> -->
+  <div class="">
+    <label for="location">Postcode: </label>
+    <input type="text" name="location" ng-model="groupsNew.group.schedule.location" placeholder="Location">
   </div>
   <div class="">
-    <label for="location">Location: </label>
-    <input type="text" name="location" ng-model="groupsNew.group.schedule.location" placeholder="Location">
+    <label for="meetingPoint">Meeting Point: </label>
+    <input type="text" name="meetingPoint" ng-model="groupsNew.group.schedule.meetingPoint" placeholder="Meeting Point">
   </div>
   <div class="">
     <label for="distance">Distance: </label>

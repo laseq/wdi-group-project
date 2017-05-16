@@ -55,7 +55,8 @@ User
         day: 'Monday',
         date: new Date('May 20, 2017 12:00:00'),
         startTime: '12:30',
-        location: 'Aldgate East Station',
+        location: 'E1 7PT',
+        meetingPoint: 'Aldgate East Station',
         distance: '3.0 km',
         description: 'A nice easy run',
         maxRunners: 10
@@ -90,7 +91,8 @@ User
         day: 'Tuesday',
         date: new Date('May 20, 2017 12:30:00'),
         startTime: '13:00',
-        location: 'Whitechapel Tube Station',
+        location: 'E1 1BY',
+        meetingPoint: 'Whitechapel Tube Station',
         distance: '4.0 km',
         description: 'A fast paced run',
         maxRunners: 8
@@ -118,7 +120,8 @@ User
         day: 'Wednesday',
         date: new Date('May 19, 2017 13:00:00'),
         startTime: '12:00',
-        location: 'Bethnal Green Tube Station',
+        location: 'E2 0ET',
+        meetingPoint: 'Bethnal Green Tube Station',
         distance: '2.0 km',
         description: 'A leisurely run',
         maxRunners: 15
