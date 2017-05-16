@@ -133,7 +133,7 @@ li {
 
 // ************** FORMS ***************
 
-login {
+.login {
   position: fixed;
   top: 55%;
   left: 50%;
@@ -158,6 +158,8 @@ login {
   border: 0px;
   border-radius: 3px;
   text-align: center;
+  font-size: 15px;
+  font-family: 'RunchFont';
 }
 
 .form-button {
@@ -168,9 +170,10 @@ login {
   height: 40px;
   border: 0px;
   border-radius: 3px;
-  font-size: 15px;
+  font-size: 20px;
   text-transform: uppercase;
   font-weight: bold;
+  font-family: 'RunchFont';
 }
 
 .profile-pic {
