@@ -1,5 +1,9 @@
 <h1>Groups Show</h1>
 
+<div class="map-styling">
+<google-map center="{ lat: 51.5138, lng: 0.0984}"></google-map>
+</div>
+
 <p>{{ groupsShow.group.name }}</p>
 <button type="button" name="button" ng-click="groupsShow.join()" ng-hide="groupsShow.member" >Join Group</button>
 <p>Group admin: {{ groupsShow.group.admin.username }}</p>
