@@ -71,6 +71,7 @@ h1 {
 .WelcomeMess {
   float: right;
   margin-right: 150px;
+  color: white;
 }
 
 .singed-in-logo {
@@ -89,7 +90,7 @@ h1 {
 
 // ************** Footer **********************
 footer {
-  position:fixed;
+  position:absolute;
   clear: both;
   bottom: 10px;
   left:0;
@@ -117,17 +118,17 @@ li {
 }
 
 .FooterLoggedIn {
-  position:fixed;
-  clear: both;
+  position: fixed;
   background-color: #8EB77B;
   bottom: 0px;
-  left:0;
-  right:0;
-  height:20px;
-  color: white;
-  padding-bottom: 20px;
-  font-size: 15px;
-  display: inline;
+  width: 100%;
+  // height: 30px;
+  // left:0;
+  // right:0;
+  // height:20px;
+  // color: white;
+  // padding-bottom: 20px;
+  // display: inline;
 }
 
 
