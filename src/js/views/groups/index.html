@@ -4,7 +4,7 @@
 
 <button type="button" name="button" ui-sref="groupsNew">Create a running group</button>
 
-<div ng-repeat="group in groupsIndex.all">
+<div ng-repeat="group in groupsIndex.all" ng-model="groupsIndex.all">
   <a ui-sref="groupsShow({ id: group._id })"><h3>{{ group.name }}</h3></a>
   <div class="">
     <h4>Run Details</h4>
@@ -13,5 +13,6 @@
     <p>Location: {{ group.schedule[0].location }}</p>
     <p>Runners: {{ group.members.length }}/{{ group.schedule[0].maxRunners }}</p>
   </div>
-  <button type="button" name="button" ng-click="groupsIndex.join(group)">Join</button>
+
+  <button type="button" name="button" ng-click="groupsIndex.join(group, $event)" ng-if="group.members.indexOf(main.user.id) === -1">Join</button>
 </div>

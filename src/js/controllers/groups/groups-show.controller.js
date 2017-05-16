@@ -7,16 +7,23 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
   const vm = this;
 
   // vm.group = Group.get($stateParams);
-  vm.currentUserId = TokenService.decodeToken().id;
+  // vm.currentUserId = TokenService.decodeToken().id;
   vm.currentUser = CurrentUserService.currentUser;
   vm.delete = groupsDelete;
   vm.join = joinGroup;
   vm.memberArray = [];
   vm.commenters = [];
   vm.postComment = postComment;
+  vm.member = false;
 
   getGroupDetails();
   // getLoggedInUser();
+
+  function checkIfMember() {
+    vm.member = !!(vm.group.members.find(member => {
+      return member._id === CurrentUserService.currentUser._id;
+    }));
+  }
 
   function getGroupDetails() {
     return Group
@@ -24,11 +31,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
       .$promise
       .then(group => {
         vm.group = group;
-        // getAdminDetails();
-        // getMemberDetails();
-        // getCommenters();
-        console.log('group:', group);
-        console.log('vm.currentUser:', vm.currentUser);
+        checkIfMember();
       })
       .catch(err => console.log('error in getGroupDetails:', err));
   }
@@ -42,26 +45,26 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
       });
   }
 
-  function getAdminDetails() {
-    User
-      .get({ id: vm.group.admin })
-      .$promise
-      .then(admin => {
-        vm.admin = admin;
-      });
-  }
-
-  function getMemberDetails() {
-    vm.group.members.forEach(member => {
-      User
-        .get({ id: member })
-        .$promise
-        .then(theMember => {
-          vm.memberArray.push(theMember);
-        })
-        .catch(err => console.log('error in getMemberDetails:', err));
-    });
-  }
+  // function getAdminDetails() {
+  //   User
+  //     .get({ id: vm.group.admin })
+  //     .$promise
+  //     .then(admin => {
+  //       vm.admin = admin;
+  //     });
+  // }
+  //
+  // function getMemberDetails() {
+  //   vm.group.members.forEach(member => {
+  //     User
+  //       .get({ id: member })
+  //       .$promise
+  //       .then(theMember => {
+  //         vm.memberArray.push(theMember);
+  //       })
+  //       .catch(err => console.log('error in getMemberDetails:', err));
+  //   });
+  // }
 
   // function getCommenters() {
   //   // vm.group.comments.forEach(comment => {
@@ -85,43 +88,53 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
   //   }
   // }
 
-  function getLoggedInUser() {
-    User
-      .get({ id: vm.currentUserId })
-      .$promise
-      .then(user => {
-        vm.loggedInUser = user;
-        console.log('vm.loggedInUser:', vm.loggedInUser);
-      })
-      .catch(err => console.log('error in getCommenters:', err));
-  }
+  // function getLoggedInUser() {
+  //   User
+  //     .get({ id: vm.currentUserId })
+  //     .$promise
+  //     .then(user => {
+  //       vm.loggedInUser = user;
+  //       console.log('vm.loggedInUser:', vm.loggedInUser);
+  //     })
+  //     .catch(err => console.log('error in getCommenters:', err));
+  // }
 
   function joinGroup() {
-    for (let i=0; i<vm.group.members.length; i++) {
-      if (vm.group.members[i]._id === vm.currentUser._id) {
-        console.log('You\'ve already joined this group');
-        return false;
-      }
-    }
-    if (vm.group.schedule[0].maxRunners <= vm.group.members.length) {
-      console.log('Maximum number of runners has been reached');
-      return false;
-    }
-    // vm.memberArray.push(vm.loggedInUser);
-    vm.group.members.push(vm.currentUser);
-    vm.currentUser.groups.push(vm.group._id);
-    console.log('vm.currentUser:', vm.currentUser);
     Group
-      .update({ id: $stateParams.id }, vm.group)
+      .join({ id: $stateParams.id })
       .$promise
-      .then(() => {
-        User
-          .update({ id: vm.currentUser._id }, vm.currentUser)
-          .$promise
-          .then(() => {
-            console.log('Joined group');
-          });
+      .then(response => {
+        checkIfMember();
+      })
+      .catch(err => {
+        console.log(err);
       });
+
+    // for (let i=0; i<vm.group.members.length; i++) {
+    //   if (vm.group.members[i]._id === vm.currentUser._id) {
+    //     console.log('You\'ve already joined this group');
+    //     return false;
+    //   }
+    // }
+    // if (vm.group.schedule[0].maxRunners <= vm.group.members.length) {
+    //   console.log('Maximum number of runners has been reached');
+    //   return false;
+    // }
+    // // vm.memberArray.push(vm.loggedInUser);
+    // vm.group.members.push(vm.currentUser);
+    // vm.currentUser.groups.push(vm.group._id);
+    // console.log('vm.currentUser:', vm.currentUser);
+    // Group
+    //   .update({ id: $stateParams.id }, vm.group)
+    //   .$promise
+    //   .then(() => {
+    //     User
+    //       .update({ id: vm.currentUser._id }, vm.currentUser)
+    //       .$promise
+    //       .then(() => {
+    //         console.log('Joined group');
+    //       });
+    //   });
   }
 
   function postComment() {

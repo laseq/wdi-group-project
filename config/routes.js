@@ -26,5 +26,7 @@ router.route('/groups/:id')
 .put(groups.update)
 .delete(groups.delete);
 
+router.route('/groups/:id/join')
+.get(groups.join);
 
 module.exports = router;
