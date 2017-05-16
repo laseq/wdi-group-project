@@ -4,10 +4,10 @@
   font-family: 'RunchFont';
   src: url('/fonts/RunchFont.eot');
   src: url('/fonts/RunchFont.woff2') format('woff2'),
-       url('/fonts/RunchFont.woff') format('woff'),
-       url('/fonts/RunchFont.ttf') format('truetype'),
-       url('/fonts/RunchFont.svg#TypoRoundThinDemo') format('svg'),
-       url('/fonts/RunchFont.eot?#iefix') format('embedded-opentype');
+  url('/fonts/RunchFont.woff') format('woff'),
+  url('/fonts/RunchFont.ttf') format('truetype'),
+  url('/fonts/RunchFont.svg#TypoRoundThinDemo') format('svg'),
+  url('/fonts/RunchFont.eot?#iefix') format('embedded-opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -57,7 +57,7 @@ video {
   z-index: -100;
 }
 
-img {
+#logo {
   width: 500px;
 }
 
@@ -90,13 +90,6 @@ nav a {
   padding:30px;
   background-color: rgba(255,255,255,.5);
   font-size: 20px;
-  color: white;
-  font-family: 'RunchFont';
-}
-
-.WelcomeMess {
-  float: right;
-  margin-right: 150px;
   color: white;
   font-family: 'RunchFont';
 }
@@ -211,11 +204,10 @@ li {
   h3{
     display: inline;
   }
-p{
-  display: inline;
+  p{
+    display: inline;
+  }
 }
-}
-
 
 .profile-pic {
   float: left;

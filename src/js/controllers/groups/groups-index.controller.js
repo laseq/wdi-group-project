@@ -2,22 +2,17 @@ angular
   .module('runchApp')
   .controller('GroupsIndexCtrl', GroupsIndexCtrl);
 
-GroupsIndexCtrl.$inject = ['Group', 'TokenService', 'User', 'CurrentUserService'];
-function GroupsIndexCtrl(Group, TokenService, User, CurrentUserService) {
+GroupsIndexCtrl.$inject = ['Group', 'TokenService', 'User'];
+function GroupsIndexCtrl(Group, TokenService, User) {
   const vm = this;
   const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   vm.currentUserId = TokenService.decodeToken().id;
-  // vm.join = JoinGroupService.joinGroup;
   vm.join = joinGroup;
   vm.member = false;
 
-  // groupsIndex();
-  //
-  // function groupsIndex() {
-  //   vm.all = Group.query();
-  // }
+  //vm.all = Group.query();
 
   getGroupDetails();
 
@@ -32,21 +27,12 @@ function GroupsIndexCtrl(Group, TokenService, User, CurrentUserService) {
       .catch(err => console.log('error in getGroupDetails:', err));
   }
 
-  // function checkIfMember() {
-  //   vm.member = !!(vm.group.members.find(member => {
-  //     return member._id === CurrentUserService.currentUser._id;
-  //   }));
-  // }
-
   function joinGroup(group, $event) {
     Group
       .join({ id: group._id })
       .$promise
-      .then(response => {
-        console.log('$event:', $event);
-        console.log('$event.target:', $event.target);
+      .then(() => {
         $event.target.style.display = 'none';
-        // Hide the button
       })
       .catch(err => {
         console.log(err);
@@ -74,6 +60,4 @@ function GroupsIndexCtrl(Group, TokenService, User, CurrentUserService) {
       });
     });
   }
-
-
 }

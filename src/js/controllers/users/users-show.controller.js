@@ -2,9 +2,10 @@ angular
 .module('runchApp')
 .controller('UsersShowCtrl', UsersShowCtrl);
 
-UsersShowCtrl.$inject = ['$stateParams', 'User', '$state'];
+UsersShowCtrl.$inject = ['$stateParams', 'User'];
 
-function UsersShowCtrl($state, User) {
+function UsersShowCtrl($stateParams, User) {
   const vm = this;
-  vm.user  = User.get($state); // $stateParams returns a resource but nothing inside
+  // $stateParams returns a resource but nothing inside
+  vm.user  = User.get($stateParams); 
 }

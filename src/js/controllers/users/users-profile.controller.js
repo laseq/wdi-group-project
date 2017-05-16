@@ -2,12 +2,9 @@ angular
   .module('runchApp')
   .controller('UsersProfileCtrl', UsersProfileCtrl);
 
-UsersProfileCtrl.$inject = ['User', 'CurrentUserService'];
-function UsersProfileCtrl(User, CurrentUserService) {
+UsersProfileCtrl.$inject = ['User', 'TokenService'];
+function UsersProfileCtrl(User, TokenService) {
   const vm = this;
-  vm.user = User.get({ id: CurrentUserService.currentUser._id });
 
-
-
-
+  vm.user = User.get({ id: TokenService.decodeToken().id });
 }

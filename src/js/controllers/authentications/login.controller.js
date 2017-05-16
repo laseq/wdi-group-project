@@ -11,7 +11,7 @@ function LoginCtrl(User, CurrentUserService, $state) {
       .login(vm.user)
       .$promise
       .then(() => {
-        CurrentUserService.getUser();
+        CurrentUserService.saveUser();
         $state.go('dashboard');
       }, err => {
         console.log(err);

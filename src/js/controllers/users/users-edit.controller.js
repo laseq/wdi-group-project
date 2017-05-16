@@ -2,12 +2,13 @@ angular
 .module('runchApp')
 .controller('UsersEditCtrl', UsersEditCtrl);
 
-UsersEditCtrl.$inject = ['User', '$state', 'CurrentUserService'];
+UsersEditCtrl.$inject = ['User', '$state', 'TokenService', 'CurrentUserService'];
 
-function UsersEditCtrl(User, $state, CurrentUserService) {
+function UsersEditCtrl(User, $state, TokenService, CurrentUserService) {
   const vm = this;
 
-  vm.user = User.get({id: CurrentUserService.currentUser._id });
+  vm.user = User.get({ id: TokenService.decodeToken().id });
+
   vm.update = usersUpdate;
 
   function usersUpdate() {

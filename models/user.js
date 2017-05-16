@@ -33,6 +33,10 @@ userSchema
 .set(createEmptyGroups);
 
 userSchema
+.virtual('ownedGroups')
+.set(createEmptyGroups);
+
+userSchema
 .path('passwordHash')
 .validate(validatePasswordHash);
 
@@ -44,6 +48,7 @@ userSchema.methods.validatePassword = validatePassword;
 
 /* Run this function just as the object comes out of the db */
 userSchema.pre('init', findGroups);
+userSchema.pre('init', findAdminedGroups);
 
 userSchema.set('toJSON', {
   getters: true,
@@ -73,6 +78,24 @@ function findGroups(done, doc) {
     .then(groups => {
       /* Replace the empty array with the groups */
       doc.groups = groups;
+      return done();
+    })
+    .catch(done);
+  } catch(e) {
+    return done(e);
+  }
+}
+
+function findAdminedGroups(done, doc) {
+  try {
+    Group
+    .find({
+      'admin': doc._id
+    })
+    .exec()
+    .then(groups => {
+      /* Replace the empty array with the groups */
+      doc.ownedGroups = groups;
       return done();
     })
     .catch(done);

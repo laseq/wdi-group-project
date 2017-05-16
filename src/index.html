@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <html ng-app="runchApp">
-  <head>
-    <meta charset="utf-8">
-    <title>Runch</title>
-    <base href="/" />
-    <!-- inject:js -->
-    <!-- endinject -->
-    <!-- inject:css -->
-    <!-- endinject -->
-  </head>
-  <body ng-controller="MainCtrl as main">
-    <nav>
-      <ul>
-        <li ng-hide="main.user">
-          <a ui-sref="register">Register</a>
-        </li>
-        <li ng-hide="main.user">
-          <a ui-sref="login">Login</a>
-        </li>
-        <!-- <li ng-show="main.user">
-          <a ui-sref="usersIndex">Users</a>
-        </li> -->
-        <li ng-show="main.user">
-          <a ui-sref="dashboard">Home</a>
-        </li>
-        <li ng-show="main.user">
-          <a ui-sref="usersProfile">Profile</a>
-        </li>
-        <li ng-show="main.user">
-          <a ng-click="main.logout()">Logout</a>
-        </li>
-      </ul>
-    </nav>
-    <p class="WelcomeMess"ng-show="main.user">Welcome back, {{ main.user.username }}</p>
-    <div ng-show="main.user" class="topNavBlock">
-      <a ui-sref="dashboard">
-      <img class="singed-in-logo" src="images/logo-signed-in.png">
-      </a>
-    </div>
-    <main ui-view></main>
-    <!-- <footer class="FooterLoggedIn"ng-show="main.user">
-      <ul>
-        <li> <img class="socialMediaBtn" src="images/facebook.png"></li>
-        <li> <img class="socialMediaBtn" src="images/twitter.png"></li>
-        <li> <img class="socialMediaBtn" src="images/instagram.png"></li>
-        <li class="copyRight">&copy redpanda.com</li>
-      </ul>
-  </footer> -->
-  </body>
-</html>
+<head>
+  <meta charset="utf-8">
+  <title>Runch</title>
+  <base href="/" />
+  <!-- inject:js -->
+  <!-- endinject -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4JQgV8ccrZQWkaBr0uIaeVNlLWH1hvzY">
+  </script>
+</head>
+<body ng-controller="MainCtrl as main">
+  <nav>
+    <ul>
+      <li ng-hide="main.user">
+        <a ui-sref="register">Register</a>
+      </li>
+      <li ng-hide="main.user">
+        <a ui-sref="login">Login</a>
+      </li>
+      <!-- <li ng-show="main.user">
+      <a ui-sref="usersIndex">Users</a>
+    </li> -->
+    <li ng-show="main.user">
+      <a ui-sref="dashboard">Home</a>
+    </li>
+    <li ng-show="main.user">
+      <a ui-sref="usersProfile">Profile</a>
+    </li>
+    <li ng-show="main.user">
+      <a ng-click="main.logout()">Logout</a>
+    </li>
+    <li ng-show="main.user">
+      <a ui-sref="groupsIndex">All Groups</a>
+    </li>
+  </ul>
+</nav>
+<div ng-show="main.user" class="topNavBlock">
+  <a ui-sref="dashboard">
+    <img class="singed-in-logo" src="images/logo-signed-in.png">
+  </a>
+</div>
+<main ui-view></main>
+<footer class="FooterLoggedIn"ng-show="main.user">
+  <ul>
+    <li> <img class="socialMediaBtn" src="images/facebook.png"></li>
+    <li> <img class="socialMediaBtn" src="images/twitter.png"></li>
+    <li> <img class="socialMediaBtn" src="images/instagram.png"></li>
+    <li class="copyRight">&copy redpanda.com</li>
+  </ul>
+</footer>
+</body>
