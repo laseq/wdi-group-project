@@ -7,23 +7,7 @@ DashboardCtrl.$inject = ['Group', '$stateParams', '$state', 'CurrentUserService'
 
 function DashboardCtrl(Group, $stateParams, $state, CurrentUserService) {
   const vm = this;
-  vm.user = CurrentUserService.currentUser.id;
-  const usersGroups = [];
+  vm.loggedInUser = CurrentUserService.currentUser;
 
-  memberOf();
-
-  function memberOf() {
-    const group = vm.all;
-    vm.all = Group.query()
-    .$promise
-    .then((groups) => {
-      console.log(vm.user);
-      // for each to check if the current user id matches one of a groups members, if so, push the group to usersGroup array
-      for (var i = 0; i < groups.length; i++) {
-        var groupMembers = groups[i].members; // gets an array of each groups members
-        console.log(groupMembers);
-      }
-      // console.log(groups[0].name); // Gets the group's name
-    });
-  }
+  // console.log('vm.loggedInUser:', vm.loggedInUser);
 }
