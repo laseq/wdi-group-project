@@ -13,6 +13,15 @@
     <label for="date">Date: </label>
     <input type="text" name="date" ng-model="groupsNew.group.schedule.date" placeholder="Date">
   </div>
+
+
+  <input class="form-control"
+       ng-model="groupsNew.group.schedule.date"
+       ng-model-options="{ updateOn: 'blur' }"
+       placeholder="Select a date..."
+       moment-picker="groupsNew.group.schedule.date">
+
+
   <div class="">
     <label for="startTime">Start Time: </label>
     <input type="text" name="startTime" ng-model="groupsNew.group.schedule.startTime" placeholder="Start Time">
