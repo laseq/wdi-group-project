@@ -10,7 +10,7 @@
     <!-- <div class="col-md-3"><h4>Group admin:</h4><p>{{ groupsShow.group.admin.username }}</p></div> -->
     <div class="col-md-3" ng-repeat="schedule in groupsShow.group.schedule">
       <h4>Day:</h4><p>{{ schedule.day }}</p>
-      <h4>Date:</h4><p>{{ schedule.date }}</p>
+      <h4>Date:</h4><p>{{ schedule.viewableDate }}</p>
       <h4>Start Time:</h4><p> {{ schedule.startTime }}</p>
       <h4>Location:</h4><p>{{ schedule.location }}</p>
       <h4>Runners:</h4><p>{{ groupsShow.group.members.length }}/{{ schedule.maxRunners }}</p></div>

@@ -6,11 +6,13 @@
 
 <div ng-repeat="group in groupsIndex.all" ng-model="groupsIndex.all">
   <a ui-sref="groupsShow({ id: group._id })"><h3>{{ group.name }}</h3></a>
+  <img ng-src="{{group.image}}" alt="">
   <div class="">
     <h4>Run Details</h4>
     <p>Day: {{ group.schedule[0].day }}</p>
     <p>Date: {{ group.schedule[0].viewableDate }}</p>
     <p>Start Time: {{ group.schedule[0].startTime }}</p>
+    <p>Meeting Point: {{ group.schedule[0].meetingPoint }}</p>
     <p>Location: {{ group.schedule[0].location }}</p>
     <p>Runners: {{ group.members.length }}/{{ group.schedule[0].maxRunners }}</p>
   </div>
