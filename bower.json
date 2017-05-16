@@ -21,5 +21,17 @@
     "angular-resource": "^1.5.9",
     "angular-moment-picker": "moment-picker#^0.10.0",
     "bootstrap": "^3.3.7"
+<<<<<<< HEAD
+=======
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.js",
+        "dist/css/bootstrap.css",
+        "fonts/*"
+      ]
+    }
+>>>>>>> a22bd9b621f5d5b509f5e4a66ed52c20fa4a4619
   }
 }
