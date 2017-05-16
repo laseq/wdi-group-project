@@ -1,21 +1,31 @@
 <h1>Groups Show</h1>
 
 <p>{{ groupsShow.group.name }}</p>
-<p>{{ groupsShow.group.admin }}</p>
-<p>Group admin: {{ groupsShow.admin.username }}</p>
-<p>{{ groupsShow.group.schedule }}</p>
-<p>{{ groupsShow.group.members }}</p>
+<button type="button" name="button" ng-click="groupsShow.join()" >Join Group</button>
+<p>Group admin: {{ groupsShow.group.admin.username }}</p>
+<div class="" ng-repeat="schedule in groupsShow.group.schedule">
+  <p>Day: {{ schedule.day }}</p>
+  <p>Date: {{ schedule.date }}</p>
+  <p>Start Time: {{ schedule.startTime }}</p>
+  <p>Location: {{ schedule.location }}</p>
+  <p>Runners: {{ groupsShow.group.members.length }}/{{ schedule.maxRunners }}</p>
+</div>
 <h3>Group members:</h3>
-<div ng-repeat="member in groupsShow.memberArray">
+<div ng-repeat="member in groupsShow.group.members track by $index" ng-model="groupsShow.group.members">
   <a ui-sref="usersShow({ id: member._id })">{{ member.username }}</a>
 </div>
-<div ng-repeat="comment in groupsShow.group.comments">
+
+<form ng-submit="groupsShow.postComment()" method="post">
+  <h4>Join the discussion</h4>
+  <input type="text" name="comment" value="" placeholder="Your comment" ng-model="groupsShow.commentObject.comment">
+  <input type="submit" name="" value="Post">
+</form>
+
+<div ng-repeat="comment in groupsShow.group.comments" ng-model="groupsShow.group.comments">
   <p>{{ comment.comment }}</p>
-  <p>{{ comment.user }}</p>
-  <p>Comment by: {{ comment.userDetails.username }}</p>
+  <!-- <p>{{ comment.user }}</p> -->
+  <p>Comment by: {{ comment.user.username }}</p>
 </div>
-<!-- <p>{{ groupsShow.group.comments }}</p>
-<p>{{ groupsShow.group.comments.user }}</p> -->
 
 <a ng-show="groupsShow.currentUserId == groupsShow.group.admin" ui-sref="groupsEdit({ id: groupsShow.group._id })">Edit Group</a>
 

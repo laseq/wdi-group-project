@@ -23,6 +23,9 @@ function groupsCreate(req, res, next) {
 function groupsShow(req, res, next) {
   Group
     .findById(req.params.id)
+    .populate('admin')
+    .populate(['members'])
+    .populate(['comments.user'])
     .exec()
     .then(group => {
       if (!group) {
