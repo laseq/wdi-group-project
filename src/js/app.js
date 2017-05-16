@@ -2,5 +2,6 @@ angular
   .module('runchApp', [
     'ui.router',
     'ngResource',
-    'angular-jwt'
+    'angular-jwt',
+    'moment-picker'
   ]);

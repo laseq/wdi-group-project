@@ -3,6 +3,9 @@ const Group = require('../models/group');
 function groupsIndex(req, res, next) {
   Group
     .find()
+    .populate('admin')
+    .populate(['members'])
+    .populate(['comments.user'])
     .exec()
     .then(groups => {
       return res.status(200).json(groups);
@@ -23,6 +26,9 @@ function groupsCreate(req, res, next) {
 function groupsShow(req, res, next) {
   Group
     .findById(req.params.id)
+    .populate('admin')
+    .populate(['members'])
+    .populate(['comments.user'])
     .exec()
     .then(group => {
       if (!group) {
