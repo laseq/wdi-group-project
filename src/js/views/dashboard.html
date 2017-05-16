@@ -15,8 +15,11 @@
     </div>
   </div>
 
-  <div class="created-groups">
-    <h2>Created Groups</h2>
+  <div class="owned-groups">
+    <h2>Owned Groups</h2>
+    <div ng-repeat="group in dashboard.ownedGroups">
+      {{ group.name }}
+    </div>
   </div>
 
   <div class="timetable">
