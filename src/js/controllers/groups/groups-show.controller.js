@@ -7,7 +7,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
   const vm = this;
 
   // vm.group = Group.get($stateParams);
-  // vm.currentUserId = TokenService.decodeToken().id;
+  vm.currentUserId = TokenService.decodeToken().id;
   vm.currentUser = CurrentUserService.currentUser;
   vm.delete = groupsDelete;
   vm.join = joinGroup;
@@ -33,25 +33,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
       .$promise
       .then(group => {
         vm.group = group;
-        // const timeInfo = new Date(vm.group.schedule[0].date);
-        // vm.group.schedule[0].day = weekDay[timeInfo.getDay()];
-        // const theDate = timeInfo.getDate();
-        // const theMonth = months[timeInfo.getMonth()];
-        // const theYear = timeInfo.getUTCFullYear();
-        // let startHours = timeInfo.getUTCHours();
-        // let startMins = timeInfo.getUTCMinutes();
-        // if (startHours < 10) {
-        //   startHours = `0${startHours}`;
-        // }
-        // if (startMins < 10) {
-        //   startMins = `0${startMins}`;
-        // }
-        // vm.group.schedule[0].date = `${theDate} ${theMonth} ${theYear}`;
-        // vm.group.schedule[0].startTime = `${startHours}:${startMins}`;
-
         splitDateTimeString(group);
-
-        console.log('vm.group.schedule:', vm.group.schedule);
         checkIfMember();
       })
       .catch(err => console.log('error in getGroupDetails:', err));
