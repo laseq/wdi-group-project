@@ -6,10 +6,11 @@ const groupSchema = new mongoose.Schema({
   name: { type: String, unique: true, trim: true, required: true },
   admin: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   members: [{ type: mongoose.Schema.ObjectId, ref: 'User'}],
+  image: { type: String, trim: true },
   schedule: [{
-    day: { type: String, required: true },
+    day: { type: String },
     date: {type: Date, required: true },
-    startTime: { type: String, required: true },
+    startTime: { type: String },
     location: { type: String, required: true },
     distance: { type: String, required: true },
     description: { type: String },

@@ -5,7 +5,7 @@
 <p>Group admin: {{ groupsShow.group.admin.username }}</p>
 <div class="" ng-repeat="schedule in groupsShow.group.schedule">
   <p>Day: {{ schedule.day }}</p>
-  <p>Date: {{ schedule.date }}</p>
+  <p>Date: {{ schedule.viewableDate }}</p>
   <p>Start Time: {{ schedule.startTime }}</p>
   <p>Location: {{ schedule.location }}</p>
   <p>Runners: {{ groupsShow.group.members.length }}/{{ schedule.maxRunners }}</p>
