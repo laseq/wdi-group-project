@@ -1,4 +1,14 @@
-<h1>Register</h1>
+<header>
+  <img src="images/logo.png">
+</header>
+
+<div id="video-overlay">
+<video id="bgvid" loop muted autoplay>
+<source src="http://tjshaw.co.uk/video/running.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- <h1>Register</h1> -->
 <form ng-submit="register.register()">
   <div class="form-group">
     <input class="form-control" type="text" name="username" ng-model="register.user.username" placeholder="Username">
@@ -23,3 +33,12 @@
   </div>
   <input class="btn btn-primary" type="submit" value="Submit" />
 </form>
+
+<footer>
+<ul>
+  <li> <img class="socialMediaBtn" src="images/facebook.png"></li>
+  <li> <img class="socialMediaBtn" src="images/twitter.png"></li>
+  <li> <img class="socialMediaBtn" src="images/instagram.png"></li>
+  <li class="copyRight">&copy redpanda.com</li>
+</ul>
+</footer>
