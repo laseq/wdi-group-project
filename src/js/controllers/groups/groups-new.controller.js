@@ -7,14 +7,11 @@ function GroupsNewCtrl($state, Group, CurrentUserService, TokenService, User) {
   const vm = this;
 
   vm.create = groupsCreate;
-  vm.currentUserId = TokenService.decodeToken().id;
-  console.log('vm.currentUserId:', vm.currentUserId);
-
-  getLoggedInUser();
+  vm.currentUser = User.get({ id: TokenService.decodeToken().id });
 
   function groupsCreate() {
-    vm.group.admin = vm.currentUserId;
-    vm.group.members = vm.currentUserId;
+    vm.group.admin = vm.currentUser._id; // On the backend with req.user
+    vm.group.members = vm.currentUserId; // On the backend with req.user
     Group
       .save(vm.group)
       .$promise
@@ -25,23 +22,12 @@ function GroupsNewCtrl($state, Group, CurrentUserService, TokenService, User) {
   }
 
   function addGroupToUserDatabase() {
-    vm.loggedInUser.groups.push(vm.group);
+    vm.currentUser.groups.push(vm.group);
     User
-      .update({ id: vm.currentUserId }, vm.loggedInUser)
+      .update({ id: vm.currentUser._id }, vm.loggedInUser)
       .$promise
       .then(() => {
         $state.go('groupsIndex');
       });
-  }
-
-  function getLoggedInUser() {
-    User
-      .get({ id: vm.currentUserId })
-      .$promise
-      .then(user => {
-        vm.loggedInUser = user;
-        console.log('vm.loggedInUser:', vm.loggedInUser);
-      })
-      .catch(err => console.log('error in getCommenters:', err));
   }
 }
