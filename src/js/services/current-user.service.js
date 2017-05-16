@@ -27,12 +27,12 @@ function CurrentUserService(TokenService, $rootScope, User) {
     const decoded = TokenService.decodeToken();
 
     if (decoded) {
-      return User
+      User
         .get({ id: decoded.id })
         .$promise
         .then(data => {
           self.currentUser = data;
-          console.log('self.currentUser:', self.currentUser);
+          // console.log('self.currentUser:', self.currentUser);
         })
         .catch(err => {
           console.log('decoded error:', err);
