@@ -42,7 +42,7 @@ function GroupsIndexCtrl(Group, TokenService, User, CurrentUserService) {
       .then(response => {
         console.log('$event:', $event);
         console.log('$event.target:', $event.target);
-        $event.target.hide();
+        $event.target.style.display = 'none';
         // Hide the button
       })
       .catch(err => {
