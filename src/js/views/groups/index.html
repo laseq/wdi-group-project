@@ -4,7 +4,8 @@
 
 <button type="button" name="button" ui-sref="groupsNew">Create a running group</button>
 
-<div ng-repeat="group in groupsIndex.all track by $index" ng-model="groupsIndex.all">
+<div ng-repeat="group in groupsIndex.all  | orderBy : 'schedule[0].date' track by $index"
+  ng-model="groupsIndex.all">
   <a ui-sref="groupsShow({ id: group._id })"><h3>{{ group.name }}</h3></a>
   <img ng-src="{{group.image}}" alt="">
   <div class="">
