@@ -15,7 +15,4 @@ function GroupsIndexCtrl(Group, TokenService, User, JoinGroupService) {
   }
 
 
-
-
-
 }

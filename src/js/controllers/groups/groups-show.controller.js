@@ -98,7 +98,6 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
 
   function joinGroup() {
     for (let i=0; i<vm.group.members.length; i++) {
-      console.log('vm.group.members[i]._id:', vm.group.members[i]._id);
       if (vm.group.members[i]._id === vm.currentUser._id) {
         console.log('You\'ve already joined this group');
         return false;
