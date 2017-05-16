@@ -6,18 +6,6 @@
 <div class="" ng-repeat="schedule in groupsShow.group.schedule">
   <p>Day: {{ schedule.day }}</p>
   <p>Date: {{ schedule.date }}</p>
-  <!-- <div moment-picker="schedule.date"
-    format="llll"
-    min-view="month"
-    start-view="day"
-    autoclose="true">
-    {{ schedule.date }}
-  </div>
-  <input moment-picker="schedule.date"
-       ng-model="schedule.date"
-       ng-model-options="{ updateOn: 'blur' }"
-       format="DD MMM YYYY"
-       start-view="month"> -->
   <p>Start Time: {{ schedule.startTime }}</p>
   <p>Location: {{ schedule.location }}</p>
   <p>Runners: {{ groupsShow.memberArray.length }}/{{ schedule.maxRunners }}</p>
@@ -42,11 +30,3 @@
 <a ng-show="groupsShow.currentUserId == groupsShow.group.admin" ui-sref="groupsEdit({ id: groupsShow.group._id })">Edit Group</a>
 
 <button ng-show="groupsShow.currentUserId == groupsShow.group.admin" ng-click="groupsShow.delete(groupsShow.group)">Delete</button>
-
-<div moment-picker="ctrl.myInput"
-     format="llll"
-     min-view="month"
-     start-view="day"
-     autoclose="true">
-    {{ ctrl.myInput }}
-</div>
