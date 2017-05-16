@@ -14,6 +14,10 @@
 
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 
+html, body {
+  margin: 0;
+}
+
 body {
   // font-family: 'RunchFont';
 }
@@ -109,18 +113,7 @@ nav a {
 
 
 // ************** Footer **********************
-footer {
-  position:absolute;
-  clear: both;
-  bottom: 10px;
-  left:0;
-  right:0;
-  height:20px;
-  color: white;
-  padding-bottom: 20px;
-  font-size: 15px;
-  display: inline;
-}
+
 
 .socialMediaBtn {
   width: 20px;
@@ -139,19 +132,44 @@ li {
 }
 
 .FooterLoggedIn {
-  position: fixed;
+  flex: 1;
   background-color: #8EB77B;
-  bottom: 0;
-  // width: 100%;
-  height: 40px;
-  padding-top: 10px;
-  // height: 30px;
-  // left:0;
-  // right:0;
-  // height:20px;
-  // color: white;
-  // padding-bottom: 20px;
-  // display: inline;
+}
+
+.FooterLoggedOut {
+  position:absolute;
+  clear: both;
+  bottom: 10px;
+  left:0;
+  right:0;
+  height:20px;
+  color: white;
+  padding-bottom: 20px;
+  font-size: 15px;
+  display: inline;
+}
+
+html, body {
+  height: 100%;
+}
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -50px;
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+footer, .page-wrap:after {
+  height: 50px;
+}
+
+footer {
+  ul {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 // ************** FORMS ***************

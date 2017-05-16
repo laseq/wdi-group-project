@@ -9,42 +9,44 @@
   <!-- inject:css -->
   <!-- endinject -->
   <script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4JQgV8ccrZQWkaBr0uIaeVNlLWH1hvzY">
+  // src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4JQgV8ccrZQWkaBr0uIaeVNlLWH1hvzY">
   </script>
 </head>
 <body ng-controller="MainCtrl as main">
-  <nav>
-    <ul>
-      <li ng-hide="main.user">
-        <a ui-sref="register">Register</a>
+  <div class="page-wrap">
+    <nav>
+      <ul>
+        <li ng-hide="main.user">
+          <a ui-sref="register">Register</a>
+        </li>
+        <li ng-hide="main.user">
+          <a ui-sref="login">Login</a>
+        </li>
+        <!-- <li ng-show="main.user">
+        <a ui-sref="usersIndex">Users</a>
+      </li> -->
+      <li ng-show="main.user">
+        <a ui-sref="dashboard">Home</a>
       </li>
-      <li ng-hide="main.user">
-        <a ui-sref="login">Login</a>
+      <li ng-show="main.user">
+        <a ui-sref="usersProfile">Profile</a>
       </li>
-      <!-- <li ng-show="main.user">
-      <a ui-sref="usersIndex">Users</a>
-    </li> -->
-    <li ng-show="main.user">
-      <a ui-sref="dashboard">Home</a>
-    </li>
-    <li ng-show="main.user">
-      <a ui-sref="usersProfile">Profile</a>
-    </li>
-    <li ng-show="main.user">
-      <a ng-click="main.logout()">Logout</a>
-    </li>
-    <li ng-show="main.user">
-      <a ui-sref="groupsIndex">All Groups</a>
-    </li>
-  </ul>
-</nav>
-<div ng-show="main.user" class="topNavBlock">
-  <a ui-sref="dashboard">
-    <img class="singed-in-logo" src="images/logo-signed-in.png">
-  </a>
+      <li ng-show="main.user">
+        <a ng-click="main.logout()">Logout</a>
+      </li>
+      <li ng-show="main.user">
+        <a ui-sref="groupsIndex">All Groups</a>
+      </li>
+    </ul>
+  </nav>
+  <div ng-show="main.user" class="topNavBlock">
+    <a ui-sref="dashboard">
+      <img class="singed-in-logo" src="images/logo-signed-in.png">
+    </a>
+  </div>
+  <main ui-view></main>
 </div>
-<main ui-view></main>
-<footer class="FooterLoggedIn"ng-show="main.user">
+<footer ng-class="main.user ? 'FooterLoggedIn' : FooterLoggedOut">
   <ul>
     <li> <img class="socialMediaBtn" src="images/facebook.png"></li>
     <li> <img class="socialMediaBtn" src="images/twitter.png"></li>
