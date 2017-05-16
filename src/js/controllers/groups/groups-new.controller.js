@@ -11,7 +11,7 @@ function GroupsNewCtrl($state, Group, CurrentUserService, TokenService, User) {
 
   function groupsCreate() {
     vm.group.admin = vm.currentUser._id; // On the backend with req.user
-    vm.group.members = vm.currentUserId; // On the backend with req.user
+    vm.group.members = vm.currentUser._id; // On the backend with req.user
     Group
       .save(vm.group)
       .$promise
@@ -24,7 +24,7 @@ function GroupsNewCtrl($state, Group, CurrentUserService, TokenService, User) {
   function addGroupToUserDatabase() {
     vm.currentUser.groups.push(vm.group);
     User
-      .update({ id: vm.currentUser._id }, vm.loggedInUser)
+      .update({ id: vm.currentUser._id }, vm.currentUser)
       .$promise
       .then(() => {
         $state.go('groupsIndex');

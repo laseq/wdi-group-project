@@ -24,7 +24,8 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
 
   function checkIfMember() {
     vm.member = !!(vm.group.members.find(member => {
-      return member._id === CurrentUserService.currentUser._id;
+      //return member._id === CurrentUserService.currentUser._id;
+      return member._id === vm.currentUser._id;
     }));
   }
 

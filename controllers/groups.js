@@ -14,6 +14,10 @@ function groupsIndex(req, res, next) {
 }
 
 function groupsCreate(req, res, next) {
+  console.log('req.body************************', req.body);
+  if (!req.body.image) {
+    req.body.image = 'http://il5.picdn.net/shutterstock/videos/4972508/thumb/1.jpg';
+  }
   Group
     .create(req.body)
     .then(group => {
