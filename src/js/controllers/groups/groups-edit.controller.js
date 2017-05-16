@@ -1,3 +1,5 @@
+/*globals moment*/
+
 angular
   .module('runchApp')
   .controller('GroupsEditCtrl', GroupsEditCtrl);
@@ -9,7 +11,10 @@ function GroupsEditCtrl($stateParams, $state, Group) {
   vm.group = Group.get($stateParams);
   vm.update = groupsUpdate;
   console.log('vm.group:', vm.group);
-  // console.log('vm.group.schedule.date:', vm.group.schedule[0].date);
+
+  // We're using angular moment-picker here and setting the minimum and maximum selectable times
+  vm.minDateMoment = moment().add(5, 'minute');
+  vm.maxDateMoment = moment().add(6, 'day');
 
   function groupsUpdate() {
     Group

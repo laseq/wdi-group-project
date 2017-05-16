@@ -20,10 +20,13 @@
     <input class="form-control"
          ng-model="groupsNew.group.schedule.date"
          ng-model-options="{ updateOn: 'blur' }"
-         placeholder="Select a date..."
+         placeholder="Select a date and time..."
          format="llll"
          min-view="month"
          start-view="day"
+         min-date="groupsNew.minDateMoment"
+         max-date="groupsNew.maxDateMoment"
+         required="true"
          moment-picker="groupsNew.group.schedule.date">
   </div>
 

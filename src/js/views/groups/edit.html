@@ -18,10 +18,13 @@
     <input class="form-control"
          ng-model="groupsEdit.group.schedule.date"
          ng-model-options="{ updateOn: 'blur' }"
-         placeholder="Select a date..."
+         placeholder="Select a date and time..."
          format="llll"
          min-view="month"
          start-view="day"
+         min-date="groupsEdit.minDateMoment"
+         max-date="groupsEdit.maxDateMoment"
+         required="true"
          moment-picker="groupsEdit.group.schedule.date">
   </div>
   <!-- <div class="">

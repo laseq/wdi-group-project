@@ -14,7 +14,6 @@ function groupsIndex(req, res, next) {
 }
 
 function groupsCreate(req, res, next) {
-  // console.log('req.body************************', req.body);
   if (!req.body.image) {
     req.body.image = 'https://s-media-cache-ak0.pinimg.com/originals/8b/27/87/8b2787a73b7d7e9064be00527c1bfdcd.gif';
   }
@@ -46,6 +45,9 @@ function groupsShow(req, res, next) {
 }
 
 function groupsUpdate(req, res, next) {
+  if (!req.body.image) {
+    req.body.image = 'https://s-media-cache-ak0.pinimg.com/originals/8b/27/87/8b2787a73b7d7e9064be00527c1bfdcd.gif';
+  }
   Group
     .findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
     .exec()
