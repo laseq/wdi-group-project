@@ -23,9 +23,10 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
       .$promise
       .then(group => {
         vm.group = group;
-        getAdminDetails();
-        getMemberDetails();
+        // getAdminDetails();
+        // getMemberDetails();
         // getCommenters();
+        console.log('group:', group);
       })
       .catch(err => console.log('error in getGroupDetails:', err));
   }
