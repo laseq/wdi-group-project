@@ -39,7 +39,7 @@ User
   new UserTemplate('ed1', 'Ed', 'ed@ed.com', 25, 'male', 'Bethnal Green', 'password')
 ])
 .then(users => {
-  // console.log(`${users.length} users created!`);
+  console.log(`${users.length} users created!`);
   // console.log('PasswordHash:', users[1].passwordHash);
   // console.log('PasswordConfirmation:', users[1].passwordConfirmation);
   // console.log('users[1].name:', users[1].name);
@@ -53,7 +53,7 @@ User
       image: 'http://www.runningismypassport.com/wp-content/uploads/2015/05/running-0045.jpg',
       schedule: [{
         day: 'Monday',
-        date: new Date('2017-05-15'),
+        date: new Date('May 20, 2017 12:00:00'),
         startTime: '12:30',
         location: 'Aldgate East Station',
         distance: '3.0 km',
@@ -88,7 +88,7 @@ User
       image: 'http://running.competitor.com/files/2012/03/Good-Running-Form.jpg',
       schedule: [{
         day: 'Tuesday',
-        date: new Date('2017-05-16'),
+        date: new Date('May 20, 2017 12:30:00'),
         startTime: '13:00',
         location: 'Whitechapel Tube Station',
         distance: '4.0 km',
@@ -116,7 +116,7 @@ User
       image: 'https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/5/7/1367930926942/A-running-group-training--008.jpg?w=700&q=55&auto=format&usm=12&fit=max&s=9d3798295399683096a9a2a624a2e4e7',
       schedule: [{
         day: 'Wednesday',
-        date: new Date('2017-05-17'),
+        date: new Date('May 19, 2017 13:00:00'),
         startTime: '12:00',
         location: 'Bethnal Green Tube Station',
         distance: '2.0 km',
@@ -132,76 +132,9 @@ User
 })
 .then(groups => {
   // groupsArray = groups;
-  // console.log(`${groups.length} groups created!`);
-  // console.log('groups[0].name:', groups[0].name);
-  // // console.log('groups[0].schedule[1]:', groups[0].schedule[1]);
-  // console.log('groups[0].members:', groups[0].members);
-  // console.log('groups[1].name:', groups[1].name);
-  // console.log('groups[1].schedule[0].maxRunners:', groups[1].schedule[0].maxRunners);
-  // // console.log('groups[1].schedule:', groups[1].schedule);
-  // console.log('groups[2].name:', groups[2].name);
-  // console.log('groups[2].admin:', groups[2].admin);
-  // console.log('groups[2].comments:', groups[2].comments);
+  console.log(`${groups.length} groups created!`);
 
-  // groups.forEach(group => {
-  //   let memberArray = [];
-  //   // console.log(group);
-  //   memberArray = group.members;
-  //   console.log('memberArray:', memberArray);
-  //   memberArray.forEach(memberId => {
-  //     // console.log(memberId);
-  //     return User
-  //     .findById(memberId)
-  //     .exec()
-  //     .then(member => {
-  //       console.log(member._id);
-  //       console.log('member pre save:', member.groups);
-  //       member.groups.push(group._id);
-  //       member.save();
-  //       console.log('member post save:', member.groups);
-  //     });
-  //   });
-  // });
 
-  // User
-  // .find()
-  // .exec()
-  // .then(users => {
-  //   users.forEach(user => {
-  //     if (user.email === 'sophie@sophie.com') {
-  //       user.groups.push(groupsArray[0]._id);
-  //     }
-  //     if (user.email === 'tim@tim.com') {
-  //       user.groups.push(groupsArray[0]._id);
-  //       user.groups.push(groupsArray[1]._id);
-  //     }
-  //     if (user.email === 'alex@alex.com') {
-  //       user.groups.push(groupsArray[0]._id);
-  //       user.groups.push(groupsArray[1]._id);
-  //     }
-  //     if (user.email === 'lou@lou.com') {
-  //       user.groups.push(groupsArray[1]._id);
-  //     }
-  //     if (user.email === 'dave@dave.com') {
-  //       user.groups.push(groupsArray[1]._id);
-  //     }
-  //     if (user.email === 'danai@danai.com') {
-  //       user.groups.push(groupsArray[1]._id);
-  //     }
-  //     if (user.email === 'jen@jen.com') {
-  //       user.groups.push(groupsArray[1]._id);
-  //     }
-  //     if (user.email === 'jack@jack.com') {
-  //       user.groups.push(groupsArray[2]._id);
-  //     }
-  //     if (user.email === 'casey@casey.com') {
-  //       user.groups.push(groupsArray[2]._id);
-  //     }
-  //     if (user.email === 'ed@ed.com') {
-  //       user.groups.push(groupsArray[2]._id);
-  //     }
-  //     user.save();
-  //   });
   process.exit();
 })
 .catch(err => {
