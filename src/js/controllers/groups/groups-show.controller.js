@@ -2,12 +2,13 @@ angular
   .module('runchApp')
   .controller('GroupsShowCtrl', GroupsShowCtrl);
 
-GroupsShowCtrl.$inject = ['Group', '$stateParams', 'TokenService', '$state', 'User'];
-function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
+GroupsShowCtrl.$inject = ['Group', '$stateParams', 'TokenService', '$state', 'User', 'CurrentUserService'];
+function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, CurrentUserService) {
   const vm = this;
 
   // vm.group = Group.get($stateParams);
   vm.currentUserId = TokenService.decodeToken().id;
+  vm.currentUser = CurrentUserService.currentUser;
   vm.delete = groupsDelete;
   vm.join = joinGroup;
   vm.memberArray = [];
@@ -15,7 +16,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
   vm.postComment = postComment;
 
   getGroupDetails();
-  getLoggedInUser();
+  // getLoggedInUser();
 
   function getGroupDetails() {
     return Group
@@ -27,6 +28,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
         // getMemberDetails();
         // getCommenters();
         console.log('group:', group);
+        console.log('vm.currentUser:', vm.currentUser);
       })
       .catch(err => console.log('error in getGroupDetails:', err));
   }
@@ -95,25 +97,27 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
   }
 
   function joinGroup() {
-    for (let i=0; i<vm.memberArray.length; i++) {
-      if (vm.memberArray[i]._id === vm.currentUserId) {
+    for (let i=0; i<vm.group.members.length; i++) {
+      console.log('vm.group.members[i]._id:', vm.group.members[i]._id);
+      if (vm.group.members[i]._id === vm.currentUser._id) {
         console.log('You\'ve already joined this group');
         return false;
       }
     }
-    if (vm.group.schedule[0].maxRunners <= vm.memberArray.length) {
+    if (vm.group.schedule[0].maxRunners <= vm.group.members.length) {
       console.log('Maximum number of runners has been reached');
       return false;
     }
-    vm.memberArray.push(vm.loggedInUser);
-    vm.group.members.push(vm.currentUserId);
-    vm.loggedInUser.groups.push(vm.group);
+    // vm.memberArray.push(vm.loggedInUser);
+    vm.group.members.push(vm.currentUser);
+    vm.currentUser.groups.push(vm.group._id);
+    console.log('vm.currentUser:', vm.currentUser);
     Group
       .update({ id: $stateParams.id }, vm.group)
       .$promise
       .then(() => {
         User
-          .update({ id: vm.currentUserId }, vm.loggedInUser)
+          .update({ id: vm.currentUser._id }, vm.currentUser)
           .$promise
           .then(() => {
             console.log('Joined group');
@@ -124,7 +128,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
   function postComment() {
     vm.group.comments.push({
       comment: vm.commentObject.comment,
-      user: vm.currentUserId
+      user: vm.currentUser
     });
 
     Group
@@ -132,7 +136,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
       .$promise
       .then(() => {
         console.log('Comment posted');
-        getCommenters();
+        //getCommenters();
       })
       .catch(err => console.log('error in postComment:', err));
   }
