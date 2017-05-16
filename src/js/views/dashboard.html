@@ -1,15 +1,26 @@
 <h1>Dashboard</h1>
+<div class="dashboard">
 
-<h2>My Groups</h2>
-<div ng-repeat="group in dashboard.loggedInUser.groups">
-  {{ group.name }}
+  <div class="my-groups">
+    <h2>My Groups</h2>
+    <div ng-repeat="group in dashboard.loggedInUser.groups">
+      <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+    </div>
+  </div>
+
+  <div class="all-groups">
+    <h2>Running Groups</h2>
+    <div ng-repeat="group in dashboard.all">
+      <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+    </div>
+  </div>
+
+  <div class="created-groups">
+    <h2>Created Groups</h2>
+  </div>
+
+  <div class="timetable">
+    <h2>Timetable</h2>
+  </div>
+
 </div>
-
-<h2>Running Groups</h2>
-<div ng-repeat="group in dashboard.all">
-  <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
-</div>
-
-<h2>Created Groups</h2>
-
-<h2>Timetable</h2>
