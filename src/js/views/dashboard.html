@@ -1,11 +1,11 @@
 <h1>Dashboard</h1>
-<div class="container">
+<div class="container-fluid">
 
   <div class="row">
-    <div class="timetable col-md">
+    <div class="timetable col-md-3">
       <h2>Timetable</h2>
     </div>
-    <div class="my-groups col-md">
+    <div class="my-groups col-md-9">
       <h2>My Groups</h2>
       <div ng-repeat="group in dashboard.loggedInUser.groups">
         <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
@@ -14,14 +14,14 @@
   </div>
 
   <div class="row">
-    <div class="owned-groups col">
+    <div class="owned-groups col-md-3">
       <h2>Owned Groups</h2>
       <div ng-repeat="group in dashboard.ownedGroups">
         <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
       </div>
     </div>
 
-    <div class="all-groups col">
+    <div class="all-groups col-md-9">
       <h2>Running Groups</h2>
       <div ng-repeat="group in dashboard.all">
         <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
