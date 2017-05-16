@@ -18,7 +18,7 @@
   <div class="owned-groups">
     <h2>Owned Groups</h2>
     <div ng-repeat="group in dashboard.ownedGroups">
-      {{ group.name }}
+      <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
     </div>
   </div>
 

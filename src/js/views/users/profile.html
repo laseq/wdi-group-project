@@ -8,6 +8,6 @@
   <p>About: {{ usersProfile.user.about }}</p>
   <button type="button" ui-sref="usersEdit({ id: usersProfile.user._id })">Edit</button>
 </div>
-  <div class="user-groups" ng-repeat="group in usersProfile.user.groups">
-    {{ group.name }}
-  </div>
+<div class="user-groups" ng-repeat="group in usersProfile.user.groups">
+  <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+</div>
