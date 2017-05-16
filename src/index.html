@@ -30,6 +30,9 @@
         <li ng-show="main.user">
           <a ng-click="main.logout()">Logout</a>
         </li>
+        <li ng-show="main.user">
+          <a ui-sref="groupsIndex">All Groups</a>
+        </li>
       </ul>
     </nav>
     <p class="WelcomeMess"ng-show="main.user">Welcome back, {{ main.user.username }}</p>
