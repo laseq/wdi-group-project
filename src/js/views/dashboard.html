@@ -1,29 +1,31 @@
 <h1>Dashboard</h1>
-<div class="dashboard">
+<div class="container">
 
-  <div class="my-groups">
-    <h2>My Groups</h2>
-    <div ng-repeat="group in dashboard.loggedInUser.groups">
-      <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+  <div class="row">
+    <div class="timetable col-md">
+      <h2>Timetable</h2>
+    </div>
+    <div class="my-groups col-md">
+      <h2>My Groups</h2>
+      <div ng-repeat="group in dashboard.loggedInUser.groups">
+        <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+      </div>
     </div>
   </div>
 
-  <div class="all-groups">
-    <h2>Running Groups</h2>
-    <div ng-repeat="group in dashboard.all">
-      <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+  <div class="row">
+    <div class="owned-groups col">
+      <h2>Owned Groups</h2>
+      <div ng-repeat="group in dashboard.ownedGroups">
+        <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+      </div>
+    </div>
+
+    <div class="all-groups col">
+      <h2>Running Groups</h2>
+      <div ng-repeat="group in dashboard.all">
+        <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+      </div>
     </div>
   </div>
-
-  <div class="owned-groups">
-    <h2>Owned Groups</h2>
-    <div ng-repeat="group in dashboard.ownedGroups">
-      <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
-    </div>
-  </div>
-
-  <div class="timetable">
-    <h2>Timetable</h2>
-  </div>
-
 </div>
