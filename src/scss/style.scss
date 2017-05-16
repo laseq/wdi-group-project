@@ -2,12 +2,12 @@
 
 @font-face {
   font-family: 'RunchFont';
-  src: url('/fonts/TypoRoundThinDemo.eot');
-  src: url('/fonts/TypoRoundThinDemo.woff2') format('woff2'),
-       url('/fonts/TypoRoundThinDemo.woff') format('woff'),
-       url('/fonts/TypoRoundThinDemo.ttf') format('truetype'),
-       url('/fonts/TypoRoundThinDemo.svg#TypoRoundThinDemo') format('svg'),
-       url('/fonts/TypoRoundThinDemo.eot?#iefix') format('embedded-opentype');
+  src: url('/fonts/RunchFont.eot');
+  src: url('/fonts/RunchFont.woff2') format('woff2'),
+       url('/fonts/RunchFont.woff') format('woff'),
+       url('/fonts/RunchFont.ttf') format('truetype'),
+       url('/fonts/RunchFont.svg#TypoRoundThinDemo') format('svg'),
+       url('/fonts/RunchFont.eot?#iefix') format('embedded-opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -38,7 +38,7 @@ nav ul li {
   display: inline;
   font-size: 20px;
   text-decoration: none;
-  font-family: serif;
+  font-family: 'RunchFont', serif;
   float: right;
   padding: 10px;
 }
@@ -46,7 +46,7 @@ nav ul li {
 nav a {
   color: white;
   list-style: none;
-  font-family: 'RunchFont';
+  font-family: 'RunchFont', serif;
   text-decoration: none;
   font-size: 30px;
 }
@@ -78,7 +78,7 @@ h1 {
 }
 
 // *********** Nav Block ******************
-.topNavBlock{
+.topNavBlock {
   background-color: #8EB77B;
   padding: 15px;
   margin-top: -20px;
@@ -88,7 +88,6 @@ h1 {
 
 
 // ************** Footer **********************
-
 footer {
   position:fixed;
   clear: both;
@@ -117,6 +116,19 @@ li {
   float: right;
 }
 
+.FooterLoggedIn {
+  position:fixed;
+  clear: both;
+  background-color: #8EB77B;
+  bottom: 0px;
+  left:0;
+  right:0;
+  height:20px;
+  color: white;
+  padding-bottom: 20px;
+  font-size: 15px;
+  display: inline;
+}
 
 
 .profile-pic {
