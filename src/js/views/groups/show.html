@@ -24,7 +24,7 @@
 <div ng-repeat="comment in groupsShow.group.comments" ng-model="groupsShow.group.comments">
   <p>{{ comment.comment }}</p>
   <!-- <p>{{ comment.user }}</p> -->
-  <p>Comment by: {{ comment.userDetails.username }}</p>
+  <p>Comment by: {{ comment.user.username }}</p>
 </div>
 
 <a ng-show="groupsShow.currentUserId == groupsShow.group.admin" ui-sref="groupsEdit({ id: groupsShow.group._id })">Edit Group</a>

@@ -25,7 +25,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
         vm.group = group;
         getAdminDetails();
         getMemberDetails();
-        getCommenters();
+        // getCommenters();
       })
       .catch(err => console.log('error in getGroupDetails:', err));
   }
@@ -60,27 +60,27 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User) {
     });
   }
 
-  function getCommenters() {
-    // vm.group.comments.forEach(comment => {
-    //   User
-    //     .get({ id: comment.user })
-    //     .$promise
-    //     .then(commenter => {
-    //       vm.commenters.push(commenter);
-    //     })
-    //     .catch(err => console.log('error in getCommenters:', err));
-    // });
-
-    for (let i=0; i<vm.group.comments.length; i++) {
-      User
-        .get({ id: vm.group.comments[i].user })
-        .$promise
-        .then(commenter => {
-          vm.group.comments[i].userDetails = commenter;
-        })
-        .catch(err => console.log('error in getCommenters:', err));
-    }
-  }
+  // function getCommenters() {
+  //   // vm.group.comments.forEach(comment => {
+  //   //   User
+  //   //     .get({ id: comment.user })
+  //   //     .$promise
+  //   //     .then(commenter => {
+  //   //       vm.commenters.push(commenter);
+  //   //     })
+  //   //     .catch(err => console.log('error in getCommenters:', err));
+  //   // });
+  //
+  //   for (let i=0; i<vm.group.comments.length; i++) {
+  //     User
+  //       .get({ id: vm.group.comments[i].user })
+  //       .$promise
+  //       .then(commenter => {
+  //         vm.group.comments[i].userDetails = commenter;
+  //       })
+  //       .catch(err => console.log('error in getCommenters:', err));
+  //   }
+  // }
 
   function getLoggedInUser() {
     User
