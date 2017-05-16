@@ -49,6 +49,14 @@ function groupsUpdate(req, res, next) {
     .catch(next);
 }
 
+function groupsJoin(req, res, next) {
+  Group
+    .findByIdAndUpdate(req.params.id, { $addToSet: { members: req.user._id } }, { new: true, runValidators: true })
+    .exec()
+    .then(group => res.status(200).json(group))
+    .catch(next);
+}
+
 function groupsDelete(req, res, next) {
   Group
     .findByIdAndRemove(req.params.id)
@@ -62,5 +70,6 @@ module.exports = {
   create: groupsCreate,
   show: groupsShow,
   update: groupsUpdate,
-  delete: groupsDelete
+  delete: groupsDelete,
+  join: groupsJoin
 };
