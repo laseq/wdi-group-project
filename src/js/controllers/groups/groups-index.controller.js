@@ -28,27 +28,36 @@ function GroupsIndexCtrl(Group, TokenService, User) {
       .catch(err => console.log('error in getGroupDetails:', err));
   }
 
-  function joinGroup(group, $event) {
+  function joinGroup(group, $event, $index) {
+    console.log('group:', group);
     Group
       .join({ id: group._id })
       .$promise
       .then(group => {
         console.log('group after joining:', group);
         $event.target.style.display = 'none';
+        vm.all[$index] = group;
       })
       .catch(err => {
         console.log(err);
       });
   }
 
-  function leaveGroup(group, $event) {
-
+  function leaveGroup(group, $event, $index) {
+    console.log('group[$index]:', group[$index]);
+    if (vm.currentUserId === group.admin._id) {
+      console.log('You can\'t leave your own group');
+      return false;
+    }
     Group
       .leave({ id: group._id })
       .$promise
       .then(group => {
         console.log('group after leaving:', group);
         $event.target.style.display = 'none';
+        const position = group.members.indexOf(vm.currentUserId);
+        group.members.splice(position);
+        vm.all[$index] = group;
       })
       .catch(err => {
         console.log(err);

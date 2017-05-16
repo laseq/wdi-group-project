@@ -62,10 +62,14 @@ function groupsJoin(req, res, next) {
 }
 
 function groupsLeave(req, res, next) {
+  console.log('req.user._id:', req.user._id);
   Group
     .findByIdAndUpdate(req.params.id, { $pull: { members: req.user._id } })
     .exec()
-    .then(group => res.status(200).json(group))
+    .then(group => {
+      console.log('group.members:', group.members);
+      res.status(200).json(group);
+    })
     .catch(next);
 }
 
