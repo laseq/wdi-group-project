@@ -1,1 +1,5 @@
 <h1>{{ usersShow.user.name }}'s Profile</h1>
+
+<div class="user-groups" ng-repeat="group in usersShow.user.groups">
+  {{ group.name }}
+</div>
