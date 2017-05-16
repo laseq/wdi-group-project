@@ -9,6 +9,7 @@
   <div class="">
     <h4>Run Details</h4>
     <p>Day: {{ group.schedule[0].day }}</p>
+    <p>Date: {{ group.schedule[0].viewableDate }}</p>
     <p>Start Time: {{ group.schedule[0].startTime }}</p>
     <p>Location: {{ group.schedule[0].location }}</p>
     <p>Runners: {{ group.members.length }}/{{ group.schedule[0].maxRunners }}</p>

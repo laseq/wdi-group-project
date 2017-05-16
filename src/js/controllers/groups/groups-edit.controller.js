@@ -8,6 +8,8 @@ function GroupsEditCtrl($stateParams, $state, Group) {
 
   vm.group = Group.get($stateParams);
   vm.update = groupsUpdate;
+  console.log('vm.group:', vm.group);
+  // console.log('vm.group.schedule.date:', vm.group.schedule[0].date);
 
   function groupsUpdate() {
     Group
