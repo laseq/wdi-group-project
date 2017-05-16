@@ -3,7 +3,7 @@
 <form ng-submit="groupsNew.create()" method="post">
   <div class="">
     <label for="name">Name: </label>
-    <input type="text" name="name" ng-model="groupsNew.group.name" placeholder="Name">
+    <input type="text" name="name" ng-model="groupsNew.group.name" placeholder="Name" required>
   </div>
   <!-- <div class="">
     <label for="day">Day: </label>
@@ -36,15 +36,17 @@
   </div> -->
   <div class="">
     <label for="meetingPoint">Meeting Point: </label>
-    <input type="text" name="meetingPoint" ng-model="groupsNew.group.schedule.meetingPoint" placeholder="Meeting Point">
+    <input type="text" name="meetingPoint" ng-model="groupsNew.group.schedule.meetingPoint" placeholder="Meeting Point" required>
   </div>
   <div class="">
     <label for="location">Postcode: </label>
-    <input type="text" name="location" ng-model="groupsNew.group.schedule.location" placeholder="Postcode">
+    <input type="text" name="location" ng-model="groupsNew.group.schedule.location" placeholder="Postcode"
+      maxlength="8" required>
   </div>
   <div class="">
     <label for="distance">Distance: </label>
-    <input type="text" name="distance" ng-model="groupsNew.group.schedule.distance" placeholder="Distance">
+    <input type="text" name="distance" ng-model="groupsNew.group.schedule.distance" placeholder="Distance"
+      maxlength="5">
   </div>
   <div class="">
     <label for="description">Description: </label>
@@ -52,7 +54,8 @@
   </div>
   <div class="">
     <label for="maxRunners">Max Runners: </label>
-    <input type="text" name="maxRunners" ng-model="groupsNew.group.schedule.maxRunners" placeholder="Max Runners">
+    <input type="number" name="maxRunners" ng-model="groupsNew.group.schedule.maxRunners" placeholder="Max Runners"
+      min="2" max="20" required>
   </div>
   <div class="">
     <label for="imageLink">Image URL: </label>
