@@ -11,6 +11,4 @@ function GroupsIndexCtrl(Group) {
   function groupsIndex() {
     vm.all = Group.query();
   }
-
-
 }
