@@ -29,22 +29,21 @@ function GroupsIndexCtrl(Group, TokenService, User, CurrentUserService) {
   //     .catch(err => console.log('error in getGroupDetails:', err));
   // }
 
-  function checkIfMember() {
-    vm.member = !!(vm.clickedGroup.members.find(member => {
-      return member._id === CurrentUserService.currentUser._id;
-    }));
-  }
+  // function checkIfMember() {
+  //   vm.member = !!(vm.group.members.find(member => {
+  //     return member._id === CurrentUserService.currentUser._id;
+  //   }));
+  // }
 
-
-  function joinGroup(group) {
-    console.log('Clicked join');
-    vm.clickedGroup = group;
+  function joinGroup(group, $event) {
     Group
       .join({ id: group._id })
       .$promise
       .then(response => {
-        console.log('Entered Group .then');
-        checkIfMember();
+        console.log('$event:', $event);
+        console.log('$event.target:', $event.target);
+        $event.target.hide();
+        // Hide the button
       })
       .catch(err => {
         console.log(err);

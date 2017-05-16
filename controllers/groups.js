@@ -4,7 +4,7 @@ function groupsIndex(req, res, next) {
   Group
     .find()
     .populate('admin')
-    .populate(['members'])
+    // .populate(['members'])
     .populate(['comments.user'])
     .exec()
     .then(groups => {
