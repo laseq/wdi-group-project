@@ -26,6 +26,9 @@ function usersShow(req, res, next) {
 }
 
 function usersCreate(req, res, next) {
+  if (!req.body.image) {
+    req.body.image = '../images/blank-profile-pic.png';
+  }
   User
   .create(req.body)
   .then(user => {
@@ -35,6 +38,9 @@ function usersCreate(req, res, next) {
 }
 
 function usersUpdate(req, res, next) {
+  if (!req.body.image) {
+    req.body.image = '../images/blank-profile-pic.png';
+  }
   User
   .findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
   .exec()
