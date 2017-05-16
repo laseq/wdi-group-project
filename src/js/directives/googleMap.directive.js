@@ -1,7 +1,6 @@
 angular
   .module('runchApp')
   .directive('googleMap', googleMap);
-//need to change format to snake-case to reference in index.html
 
 googleMap.$inject = ['$window'];
 function googleMap($window) {
@@ -25,8 +24,3 @@ function googleMap($window) {
     }
   };
 }
-// use templateURL if template is being renered from a different file
-// use template if you are defining template inside directive module
-// link allows us to make access to DOM elements from inside the directive template
-// JQLite - library in Angular, stripped down version of jQuery
-// $window to bind to the window
