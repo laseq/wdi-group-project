@@ -50,6 +50,7 @@ User
       name: 'Aldgate Runchers',
       admin: users[0]._id,
       members: [users[0]._id, users[1]._id, users[2]._id],
+      image: 'http://www.runningismypassport.com/wp-content/uploads/2015/05/running-0045.jpg',
       schedule: [{
         day: 'Monday',
         date: new Date('2017-05-15'),
@@ -58,7 +59,7 @@ User
         distance: '3.0 km',
         description: 'A nice easy run',
         maxRunners: 10
-      },{
+      }/*,{
         day: 'Wednesday',
         date: new Date('2017-05-17'),
         startTime: '12:30',
@@ -74,7 +75,7 @@ User
         distance: '3.0 km',
         description: 'A nice easy run',
         maxRunners: 10
-      }],
+      }*/],
       comments: [
         { comment: 'Welcome to my group', user: users[0]._id },
         { comment: 'This is a great run group', user: users[1]._id }
@@ -84,6 +85,7 @@ User
       name: 'Whitechapel Runchers',
       admin: users[3]._id,
       members: [users[3]._id, users[4]._id, users[5]._id, users[6]._id, users[1]._id, users[2]._id],
+      image: 'http://running.competitor.com/files/2012/03/Good-Running-Form.jpg',
       schedule: [{
         day: 'Tuesday',
         date: new Date('2017-05-16'),
@@ -92,7 +94,7 @@ User
         distance: '4.0 km',
         description: 'A fast paced run',
         maxRunners: 8
-      },
+      }/*,
       {
         day: 'Thursday',
         date: new Date('2017-05-18'),
@@ -101,7 +103,7 @@ User
         distance: '5.0 km',
         description: 'A fast paced run',
         maxRunners: 8
-      }],
+      }*/],
       comments: [
         { comment: 'Welcome to my group', user: users[3]._id },
         { comment: 'Whitechapel Runchers rocks!', user: users[4]._id }
@@ -111,6 +113,7 @@ User
       name: 'Bethnal Green Runchers',
       admin: users[7]._id,
       members: [users[7]._id, users[8]._id, users[9]._id],
+      image: 'https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/5/7/1367930926942/A-running-group-training--008.jpg?w=700&q=55&auto=format&usm=12&fit=max&s=9d3798295399683096a9a2a624a2e4e7',
       schedule: [{
         day: 'Wednesday',
         date: new Date('2017-05-17'),
