@@ -13,6 +13,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
 
   vm.delete = groupsDelete;
   vm.join = joinGroup;
+  vm.leave = leaveGroup;
   vm.memberArray = [];
   vm.commenters = [];
   vm.postComment = postComment;
@@ -24,7 +25,6 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
 
   function checkIfMember() {
     vm.member = !!(vm.group.members.find(member => {
-      //return member._id === CurrentUserService.currentUser._id;
       return member._id === vm.currentUser._id;
     }));
   }
@@ -74,12 +74,34 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
     Group
       .join({ id: $stateParams.id })
       .$promise
-      .then(response => {
+      .then(group => {
+        vm.group = group;
+        splitDateTimeString(vm.group);
         checkIfMember();
       })
       .catch(err => {
         console.log(err);
       });
+  }
+
+  function leaveGroup() {
+    if (vm.currentUser._id === vm.group.admin._id) {
+      console.log('You can\'t leave the group as you\'re the admin');
+      return false;
+    }
+    Group
+    .leave({ id: $stateParams.id })
+    .$promise
+    .then(group => {
+      const position = group.members.indexOf(vm.currentUser._id);
+      group.members.splice(position);
+      vm.group = group;
+      splitDateTimeString(vm.group);
+      checkIfMember();
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
 
   function postComment() {

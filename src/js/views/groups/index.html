@@ -30,6 +30,6 @@
     <p>Runners: {{ group.members.length }}/{{ group.schedule[0].maxRunners }}</p>
   </div>
 
-  <button type="button" name="button" ng-click="groupsIndex.join(group, $event, $index)" ng-if="group.members.indexOf(main.user.id) === -1">Join</button>
-  <button type="button" name="button" ng-click="groupsIndex.leave(group, $event, $index)" ng-if="group.members.indexOf(main.user.id) !== -1">Leave</button>
+  <button class="btn btn-primary" type="button" name="button" ng-click="groupsIndex.join(group, $event, $index)" ng-if="group.members.indexOf(main.user.id) === -1">Join</button>
+  <button class="btn btn-danger" type="button" name="button" ng-click="groupsIndex.leave(group, $event, $index)" ng-if="group.members.indexOf(main.user.id) !== -1">Leave</button>
 </div>

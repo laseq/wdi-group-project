@@ -4,7 +4,7 @@
 <h4 class="groupAdminTitle">Group admin: </h4>
 <p class="adminUSer">{{ groupsShow.group.admin.username }}</p>
 <div class="map-styling">
-<google-map center="{ lat: 51.5138, lng: 0.0984}"></google-map>
+<google-map location="{{ groupsShow.group.schedule[0].location }}"></google-map>
 </div>
 
 <h2>Group Information</h2>
@@ -14,6 +14,7 @@
       <h4>Day:</h4><p>{{ schedule.day }}</p>
       <h4>Date:</h4><p>{{ schedule.viewableDate }}</p>
       <h4>Start Time:</h4><p> {{ schedule.startTime }}</p>
+      <h4>Meeting Point:</h4><p>{{ schedule.meetingPoint }}</p>
       <h4>Location:</h4><p>{{ schedule.location }}</p>
       <h4>Runners:</h4><p>{{ groupsShow.group.members.length }}/{{ schedule.maxRunners }}</p></div>
     <!-- <div class="col-md-6"></div> -->
@@ -21,7 +22,8 @@
   </div>
 </div>
 
-<button class="btn btn-primary" type="button" name="button" ng-click="groupsShow.join()" ng-hide="groupsShow.member" >Join Group</button>
+<button class="btn btn-primary" type="button" name="button" ng-click="groupsShow.join($event)" ng-hide="groupsShow.member" >Join Group</button>
+<button class="btn btn-danger" type="button" name="button" ng-click="groupsShow.leave($event)" ng-show="groupsShow.member" >Leave</button>
 <h2>Group members:</h2>
 <div ng-repeat="member in groupsShow.group.members track by $index" ng-model="groupsShow.group.members">
   <a ui-sref="usersShow({ id: member._id })">{{ member.username }}</a>
@@ -39,6 +41,6 @@
   <p>Comment by: {{ comment.user.username }}</p>
  </div>
 
-<a ng-show="groupsShow.currentUserId == groupsShow.group.admin" ui-sref="groupsEdit({ id: groupsShow.group._id })">Edit Group</a>
+<button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ui-sref="groupsEdit({ id: groupsShow.group._id })">Edit Group</button>
 
-<button ng-show="groupsShow.currentUserId == groupsShow.group.admin" ng-click="groupsShow.delete(groupsShow.group)">Delete</button>
+<button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ng-click="groupsShow.delete(groupsShow.group)">Delete</button>
