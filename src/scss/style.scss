@@ -273,6 +273,31 @@ footer {
   height: 200px;
   float: left;
   position: relative;
+  
+  .hover {
+    opacity: 0;
+  }
+
+  &:hover {
+    .hover {
+      border: 0.5px double black;
+      text-align: center;
+      opacity: 0.5;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      -o-transition:.7s;
+      -ms-transition:.7s;
+      -moz-transition:.7s;
+      -webkit-transition:.7s;
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
 }
 
 .group-image {
