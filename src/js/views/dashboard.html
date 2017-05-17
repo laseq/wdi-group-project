@@ -16,10 +16,10 @@
   <div class="row">
     <div class="owned-groups col-md-3">
       <h2>Owned Groups</h2>
-
       <div ng-repeat="group in dashboard.user.ownedGroups">
         <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
       </div>
+      <button type="button" name="button" ui-sref="groupsNew">Create a running group</button>
     </div>
 
     <div class="all-groups col-md-9">
