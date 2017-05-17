@@ -58,6 +58,8 @@ function groupsUpdate(req, res, next) {
 function groupsJoin(req, res, next) {
   Group
     .findByIdAndUpdate(req.params.id, { $addToSet: { members: req.user._id } }, { new: true, runValidators: true })
+    .populate('admin')
+    .populate(['members'])
     .exec()
     .then(group => res.status(200).json(group))
     .catch(next);
@@ -67,9 +69,10 @@ function groupsLeave(req, res, next) {
   console.log('req.user._id:', req.user._id);
   Group
     .findByIdAndUpdate(req.params.id, { $pull: { members: req.user._id } })
+    .populate('admin')
+    .populate(['members'])
     .exec()
     .then(group => {
-      console.log('group.members:', group.members);
       res.status(200).json(group);
     })
     .catch(next);

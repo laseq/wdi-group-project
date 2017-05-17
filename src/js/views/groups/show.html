@@ -21,7 +21,8 @@
   </div>
 </div>
 
-<button class="btn btn-primary" type="button" name="button" ng-click="groupsShow.join()" ng-hide="groupsShow.member" >Join Group</button>
+<button class="btn btn-primary" type="button" name="button" ng-click="groupsShow.join($event)" ng-hide="groupsShow.member" >Join Group</button>
+<button class="btn btn-danger" type="button" name="button" ng-click="groupsShow.leave($event)" ng-show="groupsShow.member" >Leave</button>
 <h2>Group members:</h2>
 <div ng-repeat="member in groupsShow.group.members track by $index" ng-model="groupsShow.group.members">
   <a ui-sref="usersShow({ id: member._id })">{{ member.username }}</a>
