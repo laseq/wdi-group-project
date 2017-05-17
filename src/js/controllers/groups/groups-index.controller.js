@@ -12,6 +12,7 @@ function GroupsIndexCtrl(Group, TokenService, User, filterFilter) {
   vm.join = joinGroup;
   vm.leave = leaveGroup;
   vm.member = false;
+  vm.groupAdmin = false;
   // vm.filterTime = filterTimeSpans;
   // vm.now = new Date();
   // vm.radioFilter = 'Upcoming';
@@ -53,6 +54,14 @@ function GroupsIndexCtrl(Group, TokenService, User, filterFilter) {
       .then(groups => {
         vm.all = groups;
         splitDateTimeString(groups);
+
+        for (let i=0; i<groups.length; i++) {
+          console.log('groups[i].admin._id:', groups[i].admin._id);
+          if (groups[i].admin._id === vm.currentUserId) {
+            vm.groupAdmin = true;
+            break;
+          }
+        }
         // filterTimeSpans();
       })
       .catch(err => console.log('error in getGroupDetails:', err));

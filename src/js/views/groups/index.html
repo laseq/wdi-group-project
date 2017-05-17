@@ -2,7 +2,7 @@
 
 <h2>Running Groups</h2>
 
-<button type="button" name="button" ui-sref="groupsNew">Create a running group</button>
+<button type="button" name="button" ng-hide="groupsIndex.groupAdmin" ui-sref="groupsNew">Create a running group</button>
 
 <!-- <form action="">
   <input ng-model="groupsIndex.radioFilter" ng-click="groupsIndex.filterTime()" type="radio" name="timespan" value="Upcoming" checked="checked"> Upcoming<br>
