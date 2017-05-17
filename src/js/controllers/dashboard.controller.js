@@ -13,6 +13,8 @@ function DashboardCtrl(Group, TokenService, User) {
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   vm.now = new Date();
+  var offset = new Date().getTimezoneOffset();
+  console.log('offset:', offset);
   vm.upcoming = getUpcomingRuns;
 
   getGroupDetails();
@@ -32,8 +34,9 @@ function DashboardCtrl(Group, TokenService, User) {
   function getUpcomingRuns() {
     vm.upcomingArray = [];
     vm.all.forEach(group => {
-      if (new Date(group.schedule[0].date) > vm.now) {
-        console.log('group.schedule[0].date:', group.schedule[0].date);
+      const runDate = new Date(group.schedule[0].date);
+      if (runDate > vm.now) {
+        console.log('runDate:', runDate);
         console.log('vm.now:', vm.now);
         vm.upcomingArray.push(group);
         vm.orderBy = 'schedule[0].date';
@@ -49,8 +52,8 @@ function DashboardCtrl(Group, TokenService, User) {
         const theDate = timeInfo.getDate();
         const theMonth = months[timeInfo.getMonth()];
         const theYear = timeInfo.getUTCFullYear();
-        let startHours = timeInfo.getUTCHours();
-        let startMins = timeInfo.getUTCMinutes();
+        let startHours = timeInfo.getHours();
+        let startMins = timeInfo.getMinutes();
         if (startHours < 10) {
           startHours = `0${startHours}`;
         }
