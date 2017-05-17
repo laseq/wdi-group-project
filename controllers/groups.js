@@ -20,7 +20,6 @@ function groupsCreate(req, res, next) {
   Group
     .create(req.body)
     .then(group => {
-      // console.log('req.body inside groupsCreate:', req.body);
       res.status(201).json(group);
     })
     .catch(next);

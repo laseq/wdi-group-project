@@ -34,8 +34,6 @@ function DashboardCtrl(Group, TokenService, User) {
     vm.user.groups.forEach(group => {
       const runDate = new Date(group.schedule[0].date);
       if (runDate > vm.now) {
-        console.log('runDate:', runDate);
-        console.log('vm.now:', vm.now);
         vm.upcomingArray.push(group);
         vm.orderBy = 'schedule[0].date';
       }
