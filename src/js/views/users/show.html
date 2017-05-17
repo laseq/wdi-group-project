@@ -11,9 +11,9 @@
       <p>About: {{ usersShow.user.about }}</p>
     </div>
 
-    <div class="users-groups col-md-8">
+    <div class="user-groups col-md-8">
       <div class="group-item" ng-repeat="group in usersShow.user.groups">
-        <a ui-sref="groupsShow({ id: group._id })"><img class="group-image" src="{{ group.image }}" alt="Group Image"></a>
+        <a ui-sref="groupsShow({ id: group._id })"><img class="group-image" src="{{ group.image }}" alt="Group Image"></a><h2 class="imageHeader">{{ group.name }}</h2>
       </div>
     </div>
 

@@ -369,6 +369,18 @@ footer {
 }
 }
 
+.groupMembers{
+  display: inline-block;
+  float: right;
+}
+
+.img-thumbnail{
+  width: 100px;
+  height: 100px;
+}
+
+
+
 // ********** Dashboard *******************
 
 .timetable {
@@ -391,7 +403,8 @@ footer {
   height: 200px;
   float: left;
   position: relative;
-  padding: 1px;
+  padding: 5px;
+  overflow: hidden;
 
 .dashImage {
   position: relative;

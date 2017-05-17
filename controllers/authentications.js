@@ -3,6 +3,7 @@ const config  = require('../config/env');
 const User    = require('../models/user');
 
 function authenticationsRegister(req, res) {
+  req.body.image = '../images/blank-profile-pic.png';
   User.create(req.body, (err, user) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
 
