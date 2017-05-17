@@ -4,7 +4,7 @@
 <h4 class="groupAdminTitle">Group admin: </h4>
 <p class="adminUSer">{{ groupsShow.group.admin.username }}</p>
 <div class="map-styling">
-<google-map center="{ lat: 51.5138, lng: 0.0984}"></google-map>
+<!-- <google-map center="{ lat: 51.5138, lng: 0.0984}"></google-map> -->
 </div>
 
 <h2>Group Information</h2>
@@ -39,6 +39,6 @@
   <p>Comment by: {{ comment.user.username }}</p>
  </div>
 
-<a ng-show="groupsShow.currentUserId == groupsShow.group.admin" ui-sref="groupsEdit({ id: groupsShow.group._id })">Edit Group</a>
+<button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ui-sref="groupsEdit({ id: groupsShow.group._id })">Edit Group</button>
 
-<button ng-show="groupsShow.currentUserId == groupsShow.group.admin" ng-click="groupsShow.delete(groupsShow.group)">Delete</button>
+<button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ng-click="groupsShow.delete(groupsShow.group)">Delete</button>

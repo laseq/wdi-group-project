@@ -37,6 +37,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
         vm.group = group;
         splitDateTimeString(group);
         checkIfMember();
+        console.log('group.admin:', group.admin);
       })
       .catch(err => console.log('error in getGroupDetails:', err));
   }
