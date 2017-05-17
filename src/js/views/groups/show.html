@@ -1,40 +1,39 @@
 <!-- <h1>Groups Show</h1> -->
 <div class="GroupInfo">
-<h1 class="groupShowName">{{ groupsShow.group.name }}</h1>
-<h4 class="groupAdminTitle">Group admin: </h4>
-<p class="adminUSer">{{ groupsShow.group.admin.username }}</p>
+  <h1 class="groupShowName">{{ groupsShow.group.name }}</h1>
+  <h4 class="groupAdminTitle">Group admin: </h4>
+  <p class="adminUSer">{{ groupsShow.group.admin.username }}</p>
 
-<button class="groupShowBtn" type="button" name="button" ng-click="groupsShow.join($event)" ng-hide="groupsShow.member" >Join</button>
-<button class="groupShowBtn" type="button" name="button" ng-click="groupsShow.leave($event)" ng-show="groupsShow.member" >Leave</button>
+  <button class="groupShowBtn" type="button" name="button" ng-click="groupsShow.join($event)" ng-hide="groupsShow.member" >Join</button>
+  <button class="groupShowBtn" type="button" name="button" ng-click="groupsShow.leave($event)" ng-show="groupsShow.member" >Leave</button>
 </div>
 
 <div class="map-styling">
-<google-map location="{{ groupsShow.group.schedule[0].location }}"></google-map>
+  <google-map location="{{ groupsShow.group.schedule[0].location }}"></google-map>
 </div>
 
 <div class="groupInformation">
-<h2>Runch Details</h2>
-<div class="groupShowCon">
-  <div class="row">
-    <div class="col-md-7" ng-repeat="schedule in groupsShow.group.schedule">
-      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><p class="glyphiconText">{{ schedule.day }}, {{ schedule.viewableDate }}</p>
-      <span class="glyphicon glyphicon-time" aria-hidden="true"></span><p class="glyphiconText"> {{ schedule.startTime }}</p>
-      <span class="glyphicon glyphicon-flag" aria-hidden="true"></span><p class="glyphiconText">{{ schedule.meetingPoint }}</p>
-      <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span><p class="glyphiconText">{{ schedule.location }}</p>
-      <span class="glyphicon glyphicon-user"></span><p class="glyphiconText">{{ groupsShow.group.members.length }}/{{ schedule.maxRunners }}</p>
-    </div>
-    <!-- <div class="col-md-6"></div> -->
+  <h2>Runch Details</h2>
+  <div class="groupShowCon">
+    <div class="row">
+      <div class="col-md-7" ng-repeat="schedule in groupsShow.group.schedule">
+        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><p class="glyphiconText">{{ schedule.day }}, {{ schedule.viewableDate }}</p>
+        <span class="glyphicon glyphicon-time" aria-hidden="true"></span><p class="glyphiconText"> {{ schedule.startTime }}</p>
+        <span class="glyphicon glyphicon-flag" aria-hidden="true"></span><p class="glyphiconText">{{ schedule.meetingPoint }}</p>
+        <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span><p class="glyphiconText">{{ schedule.location }}</p>
+        <span class="glyphicon glyphicon-user"></span><p class="glyphiconText">{{ groupsShow.group.members.length }}/{{ schedule.maxRunners }}</p>
+      </div>
+      <!-- <div class="col-md-6"></div> -->
 
+    </div>
   </div>
 </div>
-</div>
 
-<div class="groupMembers">
-
-</div>
-<h2>Group members:</h2>
-<div ng-repeat="member in groupsShow.group.members track by $index" ng-model="groupsShow.group.members">
-  <a ui-sref="usersShow({ id: member._id })">{{ member.image }}</a>
+<div class="groupMembers col-md-5">
+  <h2>Group members:</h2>
+  <div ng-repeat="member in groupsShow.group.members track by $index" ng-model="groupsShow.group.members">
+    <a ui-sref="usersShow({ id: member._id })"><img class="img-thumbnail img-responsive" ng-src="{{ member.image }}"></a>
+  </div>
 </div>
 
 <form ng-submit="groupsShow.postComment()" method="post">
@@ -47,7 +46,7 @@
   <p>{{ comment.comment }}</p>
   <!-- <p>{{ comment.user }}</p> -->
   <p>Comment by: {{ comment.user.username }}</p>
- </div>
+</div>
 
 <button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ui-sref="groupsEdit({ id: groupsShow.group._id })">Edit Group</button>
 
