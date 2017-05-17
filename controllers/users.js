@@ -26,9 +26,7 @@ function usersShow(req, res, next) {
 }
 
 function usersCreate(req, res, next) {
-  if (!req.body.image) {
-    req.body.image = '../images/blank-profile-pic.png';
-  }
+  req.body.image = '../images/blank-profile-pic.png';
   User
   .create(req.body)
   .then(user => {
