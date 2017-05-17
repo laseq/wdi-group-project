@@ -31,5 +31,6 @@
   </div>
 
   <button class="btn btn-primary" type="button" name="button" ng-click="groupsIndex.join(group, $event, $index)" ng-if="group.members.indexOf(main.user.id) === -1">Join</button>
-  <button class="btn btn-danger" type="button" name="button" ng-click="groupsIndex.leave(group, $event, $index)" ng-if="group.members.indexOf(main.user.id) !== -1">Leave</button>
+  <!-- <button class="btn btn-danger" type="button" name="button" ng-click="groupsIndex.leave(group, $event, $index)" ng-if="group.members.indexOf(main.user.id) !== -1">Leave</button> -->
+  <button class="btn btn-danger" type="button" name="button" ng-click="groupsIndex.openLeave(group, $event, $index)" ng-if="group.members.indexOf(main.user.id) !== -1">Leave</button>
 </div>

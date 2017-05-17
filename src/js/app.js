@@ -3,5 +3,7 @@ angular
     'ui.router',
     'ngResource',
     'angular-jwt',
-    'moment-picker'
+    'moment-picker',
+    'ui.bootstrap',
+    'ngAnimate'
   ]);

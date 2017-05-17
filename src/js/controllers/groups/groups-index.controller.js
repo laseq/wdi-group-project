@@ -2,8 +2,8 @@ angular
   .module('runchApp')
   .controller('GroupsIndexCtrl', GroupsIndexCtrl);
 
-GroupsIndexCtrl.$inject = ['Group', 'TokenService', 'User', 'filterFilter'];
-function GroupsIndexCtrl(Group, TokenService, User, filterFilter) {
+GroupsIndexCtrl.$inject = ['Group', 'TokenService', 'User', '$uibModal'];
+function GroupsIndexCtrl(Group, TokenService, User, $uibModal) {
   const vm = this;
   const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -13,6 +13,7 @@ function GroupsIndexCtrl(Group, TokenService, User, filterFilter) {
   vm.leave = leaveGroup;
   vm.member = false;
   vm.groupAdmin = false;
+  vm.openLeave = openLeaveModal;
   // vm.filterTime = filterTimeSpans;
   // vm.now = new Date();
   // vm.radioFilter = 'Upcoming';
@@ -56,7 +57,6 @@ function GroupsIndexCtrl(Group, TokenService, User, filterFilter) {
         splitDateTimeString(groups);
 
         for (let i=0; i<groups.length; i++) {
-          console.log('groups[i].admin._id:', groups[i].admin._id);
           if (groups[i].admin._id === vm.currentUserId) {
             vm.groupAdmin = true;
             break;
@@ -140,4 +140,26 @@ function GroupsIndexCtrl(Group, TokenService, User, filterFilter) {
       });
     });
   }
+
+
+
+  function openLeaveModal(group, $event, $index) {
+    console.log('Entered openLeaveModal');
+    $uibModal.open({
+      templateUrl: 'js/views/partials/groupLeaveModal.html',
+      controller: 'GroupsLeaveCtrl as groupsLeave',
+      resolve: {
+        group: () => {
+          return group;
+        },
+        theEvent: () => {
+          return $event;
+        },
+        theIndex: () => {
+          return $index;
+        }
+      }
+    });
+  }
+
 }
