@@ -251,16 +251,31 @@ footer {
   display: inline-block;
 }
 
+// ********** Dashboard *******************
 
-
-.profile-pic {
-  float: left;
+.timetable {
+  width: 20%;
+  text-align: center;
 }
 
-.profile-info {
-  width: 400px;
-  border: solid;
-  height: 400px;
-  float: left;
+.owned-groups {
+  width: 20%;
   text-align: center;
+}
+
+.dash-groups {
+  width: 80%;
+  text-align: center;
+}
+
+.group-item {
+  width: 33.33%;
+  height: 200px;
+  float: left;
+  position: relative;
+}
+
+.group-image {
+  width: 100%;
+  height: 100%;
 }

@@ -22,30 +22,30 @@
         <li ng-hide="main.user">
           <a ui-sref="login">Login</a>
         </li>
-      <li ng-show="main.user">
-        <a ui-sref="usersProfile">Profile</a>
-      </li>
-      <li ng-show="main.user">
-        <a ng-click="main.logout()">Logout</a>
-      </li>
-      <li ng-show="main.user">
-        <a ui-sref="groupsIndex">All Groups</a>
-      </li>
-    </ul>
-  </nav>
-  <div ng-show="main.user" class="topNavBlock">
-    <a ui-sref="dashboard">
-      <img class="singed-in-logo" src="images/logo-signed-in.png">
-    </a>
+        <li ng-show="main.user">
+          <a ng-click="main.logout()">Logout</a>
+        </li>
+        <li ng-show="main.user">
+          <a ui-sref="usersProfile">Profile</a>
+        </li>
+        <li ng-show="main.user">
+          <a ui-sref="groupsIndex">All Groups</a>
+        </li>
+      </ul>
+    </nav>
+    <div ng-show="main.user" class="topNavBlock">
+      <a ui-sref="dashboard">
+        <img class="singed-in-logo" src="images/logo-signed-in.png">
+      </a>
+    </div>
+    <main ui-view></main>
   </div>
-  <main ui-view></main>
-</div>
-<footer ng-class="main.user ? 'FooterLoggedIn' : FooterLoggedOut" style="padding-left: 15px;">
-  <ul>
-    <li> <img class="socialMediaBtn" src="images/facebook.png"></li>
-    <li> <img class="socialMediaBtn" src="images/twitter.png"></li>
-    <li> <img class="socialMediaBtn" src="images/instagram.png"></li>
-    <li class="copyRight">&copy redpanda.com</li>
-  </ul>
-</footer>
+  <footer ng-class="main.user ? 'FooterLoggedIn' : FooterLoggedOut" style="padding-left: 15px;">
+    <ul>
+      <li> <img class="socialMediaBtn" src="images/facebook.png"></li>
+      <li> <img class="socialMediaBtn" src="images/twitter.png"></li>
+      <li> <img class="socialMediaBtn" src="images/instagram.png"></li>
+      <li class="copyRight">&copy redpanda.com</li>
+    </ul>
+  </footer>
 </body>
