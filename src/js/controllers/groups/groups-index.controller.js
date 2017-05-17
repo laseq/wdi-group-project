@@ -65,6 +65,15 @@ function GroupsIndexCtrl(Group, TokenService, User, filterFilter) {
       .then(group => {
         $event.target.style.display = 'none';
         vm.all[$index] = group;
+
+        // Since the /api/groups/:id/join call populates the members,
+        // as member population is required for the groups show joining,
+        // this loop replaces the population with just the member id
+        // to get the show and hide functionality of the join/leave buttons working
+        for (let i=0; i<vm.all[$index].members.length; i++) {
+          vm.all[$index].members[i] = group.members[i]._id;
+        }
+
         splitDateTimeString(vm.all);
       })
       .catch(err => {
@@ -84,6 +93,15 @@ function GroupsIndexCtrl(Group, TokenService, User, filterFilter) {
         const position = group.members.indexOf(vm.currentUserId);
         group.members.splice(position);
         vm.all[$index] = group;
+
+        // Since the /api/groups/:id/leave call populates the members,
+        // as member population is required for the groups show leaving,
+        // this loop replaces the population with just the member id
+        // to get the show and hide functionality of the join/leave buttons working
+        for (let i=0; i<vm.all[$index].members.length; i++) {
+          vm.all[$index].members[i] = group.members[i]._id;
+        }
+
         splitDateTimeString(vm.all);
       })
       .catch(err => {
