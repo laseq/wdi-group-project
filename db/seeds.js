@@ -16,6 +16,7 @@ function UserTemplate(username, name, email, age, gender, location) {
   this.email = email;
   this.age = age;
   this.gender = gender;
+  this.image = '../images/blank-profile-pic.png';
   this.location = location;
   this.postcode = 'E1 7PT';
   this.about = 'I like running';
