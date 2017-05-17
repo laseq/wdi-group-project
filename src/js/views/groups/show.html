@@ -1,34 +1,25 @@
 <!-- <h1>Groups Show</h1> -->
 
-<h1>{{ groupsShow.group.name }}</h1> <h4>Group admin:</h4><p>{{ groupsShow.group.admin.username }}</p>
+<h1 class="groupShowName">{{ groupsShow.group.name }}</h1>
+<h4 class="groupAdminTitle">Group admin: </h4>
+<p class="adminUSer">{{ groupsShow.group.admin.username }}</p>
 <div class="map-styling">
 <google-map center="{ lat: 51.5138, lng: 0.0984}"></google-map>
 </div>
+
 <h2>Group Information</h2>
 <div class="groupShowCon">
   <div class="row">
-    <!-- <div class="col-md-3"><h4>Group admin:</h4><p>{{ groupsShow.group.admin.username }}</p></div> -->
-    <div class="col-md-3" ng-repeat="schedule in groupsShow.group.schedule">
+    <div class="col-md-12" ng-repeat="schedule in groupsShow.group.schedule">
       <h4>Day:</h4><p>{{ schedule.day }}</p>
       <h4>Date:</h4><p>{{ schedule.viewableDate }}</p>
       <h4>Start Time:</h4><p> {{ schedule.startTime }}</p>
       <h4>Location:</h4><p>{{ schedule.location }}</p>
       <h4>Runners:</h4><p>{{ groupsShow.group.members.length }}/{{ schedule.maxRunners }}</p></div>
-      <div class="col-md-3"></div>
-      <div class="col-md-3"></div>
+    <!-- <div class="col-md-6"></div> -->
+
   </div>
 </div>
-
-
-
-<!-- <div class="" ng-repeat="schedule in groupsShow.group.schedule">
->>>>>>> a22bd9b621f5d5b509f5e4a66ed52c20fa4a4619
-  <p>Day: {{ schedule.day }}</p>
-  <p>Date: {{ schedule.viewableDate }}</p>
-  <p>Start Time: {{ schedule.startTime }}</p>
-  <p>Location: {{ schedule.location }}</p>
-  <p>Runners: {{ groupsShow.group.members.length }}/{{ schedule.maxRunners }}</p>
-</div> -->
 
 <button class="btn btn-primary" type="button" name="button" ng-click="groupsShow.join()" ng-hide="groupsShow.member" >Join Group</button>
 <h2>Group members:</h2>
