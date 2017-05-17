@@ -467,12 +467,12 @@ footer {
 // ********** User Profie/Show *******************
 
 .profile-info {
-  width: 20%;
+  width: 20%; // of the row
 }
 
 .profile-image {
-  width: 100%;
-  height: 100%;
+  width: 100%; // of the profile-info
+  height: 200px; // % non-responsive
 }
 
 .user-groups {
