@@ -13,8 +13,6 @@ function DashboardCtrl(Group, TokenService, User) {
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   vm.now = new Date();
-  var offset = new Date().getTimezoneOffset();
-  console.log('offset:', offset);
   vm.upcoming = getUpcomingRuns;
 
   getGroupDetails();
