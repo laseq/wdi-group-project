@@ -48,6 +48,10 @@ p {
   background-color: rgba(124,183,123,.5);
 }
 
+main {
+  margin: 10px;
+}
+
 // *************Landing Page*********************
 
 video {
@@ -108,7 +112,6 @@ nav a {
   padding: 15px;
   margin-top: -20px;
   margin-left: -10px;
-  margin-right: -10px;
 }
 
 
@@ -129,11 +132,14 @@ li {
 .copyRight {
   float: right;
   font-family: 'RunchFont';
+  color: white;
 }
 
 .FooterLoggedIn {
   flex: 1;
   background-color: #8EB77B;
+  padding-left: 15px;
+  padding-top: 15px;
 }
 
 .FooterLoggedOut {
@@ -142,11 +148,12 @@ li {
   bottom: 10px;
   left:0;
   right:0;
-  height:20px;
+  height:10px;
   color: white;
   padding-bottom: 20px;
   font-size: 15px;
   display: inline;
+  padding-left: 15px;
 }
 
 html, body {
@@ -218,14 +225,33 @@ footer {
 }
 
 // ********** Group Show *******************
-.groupShowCon {
-  h3{
-    display: inline;
-  }
-  p{
-    display: inline;
-  }
+// .groupShowCon {
+//   h3{
+//     display: inline;
+//   }
+//   p{
+//     display: inline;
+//   }
+// }
+
+.map-styling {
+  width: 100%;
+  height: 300px;
+  display: inline-block;
+  background-color: rgba(124,183,123,.5);
 }
+
+.groupShowName {
+  margin-bottom: -15px;
+}
+.groupAdminTitle {
+  display: inline-block;
+}
+.adminUSer {
+  display: inline-block;
+}
+
+
 
 .profile-pic {
   float: left;
