@@ -4,7 +4,7 @@
 <h4 class="groupAdminTitle">Group admin: </h4>
 <p class="adminUSer">{{ groupsShow.group.admin.username }}</p>
 <div class="map-styling">
-<google-map center="{ lat: 51.5138, lng: 0.0984}"></google-map>
+<google-map location="{{ groupsShow.group.schedule[0].location }}"></google-map>
 </div>
 
 <h2>Group Information</h2>
