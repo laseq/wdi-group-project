@@ -4,8 +4,20 @@
 
 <button type="button" name="button" ui-sref="groupsNew">Create a running group</button>
 
-<div ng-repeat="group in groupsIndex.all  | orderBy : 'schedule[0].date' track by $index"
-  ng-model="groupsIndex.all">
+<!-- <form action="">
+  <input ng-model="groupsIndex.radioFilter" ng-click="groupsIndex.filterTime()" type="radio" name="timespan" value="Upcoming" checked="checked"> Upcoming<br>
+  <input ng-model="groupsIndex.radioFilter" ng-click="groupsIndex.filterTime()"
+    type="radio" name="timespan" value="Past"> Past<br>
+  <input ng-model="groupsIndex.radioFilter" ng-click="groupsIndex.filterTime()"
+    type="radio" name="timespan" value="All"> All
+</form> -->
+
+
+<!-- <div ng-repeat="group in groupsIndex.filterArray  | orderBy : groupsIndex.orderBy track by $index"
+    ng-model="groupsIndex.filterArray"> -->
+<!-- <div ng-repeat="group in groupsIndex.all  | orderBy : 'schedule[0].date' track by $index"
+    ng-model="groupsIndex.all"> -->
+<div ng-repeat="group in groupsIndex.all track by $index" ng-model="groupsIndex.all">
   <a ui-sref="groupsShow({ id: group._id })"><h3>{{ group.name }}</h3></a>
   <img ng-src="{{group.image}}" alt="">
   <div class="">
