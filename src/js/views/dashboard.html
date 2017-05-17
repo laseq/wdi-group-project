@@ -1,14 +1,18 @@
-<h1>Dashboard</h1>
 <div class="container-fluid">
 
   <div class="row">
-    <div class="timetable col-md-3">
+    <div class="timetable col-md-5">
       <h2>Timetable</h2>
     </div>
-    <div class="my-groups col-md-9">
+
+    <div class="dash-groups col-md-7">
       <h2>My Groups</h2>
-      <div ng-repeat="group in dashboard.user.groups">
-        <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+      <div class="group-item" ng-repeat="group in dashboard.user.groups">
+        <a ui-sref="groupsShow({ id: group._id })"><img class="group-image" src="{{ group.image }}"></a>
+        <div class="hover">
+          <!--  More group info to go here -->
+          <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+        </div>
       </div>
     </div>
   </div>
@@ -22,10 +26,14 @@
       <button type="button" name="button" ui-sref="groupsNew">Create a running group</button>
     </div>
 
-    <div class="all-groups col-md-9">
+    <div class="dash-groups col-md-9">
       <h2>Running Groups</h2>
-      <div ng-repeat="group in dashboard.all">
-        <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+      <div class="group-item" ng-repeat="group in dashboard.all">
+        <a ui-sref="groupsShow({ id: group._id })"><img class="group-image" src="{{ group.image }}"></a>
+        <div class="hover">
+          <!--  More group info to go here -->
+          <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+        </div>
       </div>
     </div>
   </div>
