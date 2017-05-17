@@ -332,15 +332,6 @@ footer {
   border: solid 1px #8EB77B;
 }
 
-.groupShowCon {
-  h3{
-    display: inline;
-  }
-  p{
-    display: inline;
-  }
-}
-
 .map-styling {
   width: 95%;
   height: 350px;
@@ -351,6 +342,32 @@ footer {
   transform: translate(-50%);
   overflow: hidden;
   margin-top: 5px;
+}
+
+.groupInformation{
+  margin-left: 60px;
+  margin-top: 30px;
+
+.groupShowCon {
+  margin-top: 20px;
+
+  p{
+    display: inline;
+  }
+
+.glyphicon{
+  color: #8EB77B;
+  padding-right: 10px;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.glyphiconText{
+  color: #000;
+  padding-right: 15px;
+  font-size: 16px;
+}
+}
 }
 
 // ********** Dashboard *******************
