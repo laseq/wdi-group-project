@@ -48,8 +48,8 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
       const theDate = timeInfo.getDate();
       const theMonth = months[timeInfo.getMonth()];
       const theYear = timeInfo.getUTCFullYear();
-      let startHours = timeInfo.getUTCHours();
-      let startMins = timeInfo.getUTCMinutes();
+      let startHours = timeInfo.getHours();
+      let startMins = timeInfo.getMinutes();
       if (startHours < 10) {
         startHours = `0${startHours}`;
       }
