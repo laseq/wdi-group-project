@@ -228,7 +228,10 @@ footer {
   background-color: rgba(0,0,0,.7);
   color: #8EB77B;
   border: solid 1px #8EB77B;
+}
 
+.createHeader, .editHeader {
+  text-align: center;
 }
 
 // ************* Group Create Form ***********
@@ -240,6 +243,12 @@ footer {
   transform: translate(-50%, -50%);
   }
 
+  .edit {
+    position: fixed;
+    top: 57%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+  }
 
 .form-control-create {
     width: 500px;
