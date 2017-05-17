@@ -4,25 +4,33 @@
     <div class="timetable col-md-5">
       <h2>Timetable</h2>
       <div ng-repeat="group in dashboard.upcomingArray  | orderBy : dashboard.orderBy track by $index">
-          <p>{{ group.name }}</p>
-          <p>{{ group.schedule[0].viewableDate }}</p>
-          <p>{{ group.schedule[0].startTime }}</p>
-          <p>{{ group.schedule[0].meetingPoint }}</p>
-          <p>{{ group.schedule[0].location }}</p>
+        <p>{{ group.name }}</p>
+        <p>{{ group.schedule[0].viewableDate }}</p>
+        <p>{{ group.schedule[0].startTime }}</p>
+        <p>{{ group.schedule[0].meetingPoint }}</p>
+        <p>{{ group.schedule[0].location }}</p>
       </div>
     </div>
 
-    <div class="dash-groups col-md-7">
-      <h2>My Groups</h2>
-      <div class="group-item" ng-repeat="group in dashboard.user.groups">
-        <a ui-sref="groupsShow({ id: group._id })"><img class="group-image" src="{{ group.image }}"></a>
-        <div class="hover">
-          <!--  More group info to go here -->
-          <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+    <!-- {{ group.name }} -->
+    <div class="dashImage">
+      <div class="slideUp">
+
+
+      <div class="dash-groups col-md-7">
+        <h2>My Groups</h2>
+        <div class="group-item" ng-repeat="group in dashboard.user.groups">
+          <img class="group-image" src="{{ group.image }}"><h2 class="imageHeader">{{ group.name }}</h2>
         </div>
       </div>
     </div>
   </div>
+  </div>
+
+
+  <!-- <div class="hover"> -->
+  <!--  More group info to go here -->
+  <!-- <a ui-sref="groupsShow({ id: group._id })"><h4 class="imgBanner">{{ group.name }}</h4></a> -->
 
   <div class="row">
     <div class="owned-groups col-md-3">
