@@ -23,7 +23,7 @@ body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   font-family: "RunchFont";
   color: black;
 }
@@ -33,8 +33,6 @@ h1, h2, h3, h4, h5 {
   font-family: 'RunchFont';
   color: #8EB77B
 }
-
-
 
 p {
   font-family: 'Poppins', sans-serif;
@@ -80,7 +78,7 @@ nav ul li {
 }
 
 nav a {
-  color: white;
+  color: white !important;
   list-style: none;
   font-family: 'RunchFont', serif;
   text-decoration: none;
@@ -383,6 +381,29 @@ footer {
 
 // ********** Dashboard *******************
 
+.dashCreateBtn {
+  background: #8EB77B;
+  color: #fff;
+  margin-right: 30px;
+  margin-top: 25px;
+  width: 185px;
+  height: 40px;
+  border: 0px;
+  border-radius: 3px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'RunchFont';
+  display: inline-block;
+  float: right;
+}
+
+.dashCreateBtn:hover {
+  background-color: white;
+  color: #8EB77B;
+  border: solid 1px #8EB77B;
+}
+
 .timetable {
   width: 20%;
   text-align: center;
@@ -403,7 +424,7 @@ footer {
   height: 200px;
   float: left;
   position: relative;
-  padding: 5px;
+  padding: 1px;
   overflow: hidden;
 
 .dashImage {
@@ -412,13 +433,13 @@ footer {
 }
 
 .imageHeader {
-  // background-color: rgba(124,183,123,.8);
-  // position: relative;
-  // top: -62px;
-  // left: 0;
-  // width: 100%;
-  // color: white;
-  // text-align: left;
+  background-color: rgba(124,183,123,.8);
+  position: relative;
+  top: -62px;
+  left: 0;
+  width: 100%;
+  color: white;
+  text-align: left;
   padding: 5px;
 }
 
