@@ -1,5 +1,3 @@
-<!-- <h1>{{ main.user.name }}'s Profile</h1> Won't print {{ main.user.name }} if you're coming from a register route-->
-<h1>Your Profile</h1>
 <div class="container">
   <div class="row">
 
@@ -9,8 +7,8 @@
 
 
     <div class="user-groups col-md-8">
-      <div class="user-groups" ng-repeat="group in main.user.groups">
-        <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+      <div class="group-item" ng-repeat="group in main.user.groups">
+        <a ui-sref="groupsShow({ id: group._id })"><img class="group-image" src="{{ group.image }}"></a>
       </div>
     </div>
   </div>
@@ -18,7 +16,7 @@
   <div class="row">
     <div class="col-md-4">
       <div class="profile-info">
-        <h2>{{ main.user.username }}</h2>
+        <h2>{{ main.user.username }}'s Profile</h2>
         <p>Age: {{ main.user.age }}</p>
         <p>Gender: {{ main.user.gender }}</p>
         <p>Location: {{ main.user.location }}</p>
