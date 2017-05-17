@@ -1,8 +1,14 @@
 <!-- <h1>Groups Show</h1> -->
-
+<div class="GroupInfo">
 <h1 class="groupShowName">{{ groupsShow.group.name }}</h1>
 <h4 class="groupAdminTitle">Group admin: </h4>
 <p class="adminUSer">{{ groupsShow.group.admin.username }}</p>
+
+
+<button class="groupShowBtn" type="button" name="button" ng-click="groupsShow.join($event)" ng-hide="groupsShow.member" >Join</button>
+<button class="groupShowBtn" type="button" name="button" ng-click="groupsShow.leave($event)" ng-show="groupsShow.member" >Leave</button>
+</div>
+
 <div class="map-styling">
 <google-map location="{{ groupsShow.group.schedule[0].location }}"></google-map>
 </div>
@@ -22,8 +28,7 @@
   </div>
 </div>
 
-<button class="btn btn-primary" type="button" name="button" ng-click="groupsShow.join($event)" ng-hide="groupsShow.member" >Join Group</button>
-<button class="btn btn-danger" type="button" name="button" ng-click="groupsShow.leave($event)" ng-show="groupsShow.member" >Leave</button>
+
 <h2>Group members:</h2>
 <div ng-repeat="member in groupsShow.group.members track by $index" ng-model="groupsShow.group.members">
   <a ui-sref="usersShow({ id: member._id })">{{ member.username }}</a>
