@@ -6,7 +6,7 @@ DashboardCtrl.$inject = ['Group', 'TokenService', 'User'];
 
 function DashboardCtrl(Group, TokenService, User) {
   const vm = this;
-  // vm.all = Group.query();
+  vm.all = Group.query();
   vm.user = User.get({ id: TokenService.decodeToken().id });
 
   const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -15,23 +15,23 @@ function DashboardCtrl(Group, TokenService, User) {
   vm.now = new Date();
   vm.upcoming = getUpcomingRuns;
 
-  getGroupDetails();
+  getUserDetails();
 
-  function getGroupDetails() {
-    return Group
-      .query()
+  function getUserDetails() {
+    User
+      .get({ id: TokenService.decodeToken().id })
       .$promise
-      .then(groups => {
-        vm.all = groups;
-        splitDateTimeString(groups);
+      .then(user => {
+        vm.user = user;
+        splitDateTimeString(user.groups);
         getUpcomingRuns();
       })
-      .catch(err => console.log('error in getGroupDetails:', err));
+      .catch(err => console.log('error in getUserDetails:', err));
   }
 
   function getUpcomingRuns() {
     vm.upcomingArray = [];
-    vm.all.forEach(group => {
+    vm.user.groups.forEach(group => {
       const runDate = new Date(group.schedule[0].date);
       if (runDate > vm.now) {
         console.log('runDate:', runDate);
