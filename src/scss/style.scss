@@ -335,14 +335,28 @@ footer {
   position: relative;
   padding: 1px;
 
-// .imgBanner {
-//
-// }
-//
+.dashImage {
+  position: relative;
+  width: inherit;
+}
 
-  .hover {
-    opacity: 0;
-  }
+.imageHeader {
+  background-color: rgba(124,183,123,.8);
+  position: relative;
+  top: -62px;
+  left: 0;
+  width: 100%;
+  color: white;
+  text-align: left;
+  padding: 5px;
+
+}
+
+
+  //
+  // .hover {
+  //   opacity: 0;
+  // }
 
   &:hover {
     .hover {
