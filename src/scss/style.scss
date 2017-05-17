@@ -23,8 +23,9 @@ body {
 }
 
 a {
-  color: black;
   text-decoration: none;
+  font-family: "RunchFont";
+  color: black;
 }
 
 h1, h2, h3, h4 {
@@ -276,6 +277,12 @@ footer {
     border: solid 1px #8EB77B;
   }
 
+  // button:hover {
+  //   background-color: white;
+  //   color: #8EB77B;
+  //   border: solid 1px #8EB77B;
+  // }
+
 
 // ********** Group Show *******************
 .groupShowCon {
@@ -326,6 +333,12 @@ footer {
   height: 200px;
   float: left;
   position: relative;
+  padding: 1px;
+
+// .imgBanner {
+//
+// }
+//
 
   .hover {
     opacity: 0;
@@ -333,7 +346,7 @@ footer {
 
   &:hover {
     .hover {
-      border: 0.5px double black;
+      border: solid #8EB77B;
       text-align: center;
       opacity: 0.5;
       position: absolute;
@@ -341,13 +354,22 @@ footer {
       bottom: 0;
       left: 0;
       right: 0;
-      background: white;
-      -o-transition:.7s;
-      -ms-transition:.7s;
-      -moz-transition:.7s;
-      -webkit-transition:.7s;
-      -webkit-transform: rotate(360deg);
-      transform: rotate(360deg);
+      background: #8EB77B;
+      -webkit-transition: opacity 0.2s ease-in;
+      -moz-transition: opacity 0.2s ease-in;
+      -o-transition: opacity 0.2s ease-in;
+      -ms-transition: opacity 0.2s ease-in;
+      transition: opacity 0.2s ease-in;
+
+
+
+
+      // -o-transition:.7s;
+      // -ms-transition:.7s;
+      // -moz-transition:.7s;
+      // -webkit-transition:.7s;
+      // -webkit-transform: rotate(360deg);
+      // transform: rotate(360deg);
     }
   }
 

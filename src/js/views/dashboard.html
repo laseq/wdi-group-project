@@ -3,18 +3,13 @@
   <div class="row">
     <div class="timetable col-md-5">
       <h2>Timetable</h2>
-
       <div ng-repeat="group in dashboard.upcomingArray  | orderBy : dashboard.orderBy track by $index">
-      <!-- <div class="" ng-repeat="group in dashboard.all  | orderBy : 'schedule[0].date' track by $index"> -->
-
           <p>{{ group.name }}</p>
           <p>{{ group.schedule[0].viewableDate }}</p>
           <p>{{ group.schedule[0].startTime }}</p>
           <p>{{ group.schedule[0].meetingPoint }}</p>
           <p>{{ group.schedule[0].location }}</p>
-
       </div>
-
     </div>
 
     <div class="dash-groups col-md-7">
