@@ -41,17 +41,34 @@ function GroupsLeaveCtrl(group, theEvent, theIndex, currentUserId, $uibModalInst
         // as member population is required for the groups show leaving,
         // this loop replaces the population with just the member id
         // to get the show and hide functionality of the join/leave buttons working
-        for (let i=0; i<group.members.length; i++) {
-          group.members[i] = group.members[i]._id;
+        if (vm.theIndex !== null) {
+          for (let i=0; i<group.members.length; i++) {
+            group.members[i] = group.members[i]._id;
+          }
+
+          console.log('group.members:', group.members);
+
+          const position = group.members.indexOf(vm.currentUserId);
+          console.log('position:', position);
+
+          if (position !== -1) {
+            group.members.splice(position);
+          }
         }
 
-        console.log('group.members:', group.members);
-
-        const position = group.members.indexOf(vm.currentUserId);
-        console.log('position:', position);
-
-        if (position !== -1) {
-          group.members.splice(position);
+        // If the leave request comes from the group show page
+        // i.e group is populated with member information
+        if (vm.theIndex === null) {
+          console.log('Entered vm.theIndex === null if statement');
+          for (let i=0; i<group.members.length; i++) {
+            console.log('group.members[i]._id:', group.members[i]._id);
+            console.log('vm.currentUserId:', vm.currentUserId);
+            if (group.members[i]._id === vm.currentUserId) {
+              console.log('Entered group.members[i]._id === vm.currentUserId if statement');
+              group.members.splice(i);
+              break;
+            }
+          }
         }
 
         $uibModalInstance.close(group);
@@ -61,29 +78,6 @@ function GroupsLeaveCtrl(group, theEvent, theIndex, currentUserId, $uibModalInst
       });
   }
 
-  const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-  function splitDateTimeString(groups) {
-    groups.forEach(group => {
-      group.schedule.forEach(schedule => {
-        const timeInfo = new Date(schedule.date);
-        schedule.day = weekDay[timeInfo.getDay()];
-        const theDate = timeInfo.getDate();
-        const theMonth = months[timeInfo.getMonth()];
-        const theYear = timeInfo.getUTCFullYear();
-        let startHours = timeInfo.getHours();
-        let startMins = timeInfo.getMinutes();
-        if (startHours < 10) {
-          startHours = `0${startHours}`;
-        }
-        if (startMins < 10) {
-          startMins = `0${startMins}`;
-        }
-        schedule.viewableDate = `${theDate} ${theMonth} ${theYear}`;
-        schedule.startTime = `${startHours}:${startMins}`;
-      });
-    });
-  }
 
 }

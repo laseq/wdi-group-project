@@ -10,7 +10,7 @@ function GroupsIndexCtrl(Group, TokenService, User, $uibModal) {
 
   vm.currentUserId = TokenService.decodeToken().id;
   vm.join = joinGroup;
-  vm.leave = leaveGroup;
+  //vm.leave = leaveGroup;
   vm.member = false;
   vm.groupAdmin = false;
   vm.openLeave = openLeaveModal;
@@ -90,33 +90,33 @@ function GroupsIndexCtrl(Group, TokenService, User, $uibModal) {
       });
   }
 
-  function leaveGroup(group, $event, $index) {
-    if (vm.currentUserId === group.admin._id) {
-      return false;
-    }
-    Group
-      .leave({ id: group._id })
-      .$promise
-      .then(group => {
-        $event.target.style.display = 'none';
-        const position = group.members.indexOf(vm.currentUserId);
-        group.members.splice(position);
-        vm.all[$index] = group;
-
-        // Since the /api/groups/:id/leave call populates the members,
-        // as member population is required for the groups show leaving,
-        // this loop replaces the population with just the member id
-        // to get the show and hide functionality of the join/leave buttons working
-        for (let i=0; i<vm.all[$index].members.length; i++) {
-          vm.all[$index].members[i] = group.members[i]._id;
-        }
-
-        splitDateTimeString(vm.all);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+  // function leaveGroup(group, $event, $index) {
+  //   if (vm.currentUserId === group.admin._id) {
+  //     return false;
+  //   }
+  //   Group
+  //     .leave({ id: group._id })
+  //     .$promise
+  //     .then(group => {
+  //       $event.target.style.display = 'none';
+  //       const position = group.members.indexOf(vm.currentUserId);
+  //       group.members.splice(position);
+  //       vm.all[$index] = group;
+  //
+  //       // Since the /api/groups/:id/leave call populates the members,
+  //       // as member population is required for the groups show leaving,
+  //       // this loop replaces the population with just the member id
+  //       // to get the show and hide functionality of the join/leave buttons working
+  //       for (let i=0; i<vm.all[$index].members.length; i++) {
+  //         vm.all[$index].members[i] = group.members[i]._id;
+  //       }
+  //
+  //       splitDateTimeString(vm.all);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }
 
 
   function splitDateTimeString(groups) {
@@ -167,8 +167,10 @@ function GroupsIndexCtrl(Group, TokenService, User, $uibModal) {
     leaveModalInstance
       .result
       .then(passedItem => {
-        vm.all[$index] = passedItem;
-        splitDateTimeString(vm.all);
+        if (passedItem) {
+          vm.all[$index] = passedItem;
+          splitDateTimeString(vm.all);
+        }
       });
   }
 

@@ -2,8 +2,8 @@ angular
   .module('runchApp')
   .controller('GroupsShowCtrl', GroupsShowCtrl);
 
-GroupsShowCtrl.$inject = ['Group', '$stateParams', 'TokenService', '$state', 'User', 'CurrentUserService'];
-function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, CurrentUserService) {
+GroupsShowCtrl.$inject = ['Group', '$stateParams', 'TokenService', '$state', 'User', '$uibModal'];
+function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibModal) {
   const vm = this;
 
   // vm.group = Group.get($stateParams);
@@ -18,6 +18,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
   vm.commenters = [];
   vm.postComment = postComment;
   vm.member = false;
+  vm.openLeave = openLeaveModal;
   const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -104,6 +105,39 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
     });
   }
 
+  function openLeaveModal($event) {
+
+    var leaveModalInstance = $uibModal.open({
+      templateUrl: 'js/views/partials/groupLeaveModal.html',
+      controller: 'GroupsLeaveCtrl as groupsLeave',
+      resolve: {
+        group: () => {
+          return vm.group;
+        },
+        theEvent: () => {
+          return $event;
+        },
+        theIndex: () => {
+          return null;
+        },
+        currentUserId: () => {
+          return vm.currentUser._id;
+        }
+      }
+    });
+
+    leaveModalInstance
+      .result
+      .then(passedItem => {
+        console.log('passedItem:', passedItem);
+        if (passedItem) {
+          vm.group = passedItem;
+          splitDateTimeString(vm.group);
+          checkIfMember();
+        }
+      });
+  }
+
   function postComment() {
     vm.group.comments.push({
       comment: vm.commentObject.comment,
@@ -115,7 +149,6 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
       .$promise
       .then(() => {
         console.log('Comment posted');
-        //getCommenters();
       })
       .catch(err => console.log('error in postComment:', err));
   }
