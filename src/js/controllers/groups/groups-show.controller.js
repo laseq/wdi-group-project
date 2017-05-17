@@ -25,7 +25,6 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
 
   function checkIfMember() {
     vm.member = !!(vm.group.members.find(member => {
-      //return member._id === CurrentUserService.currentUser._id;
       return member._id === vm.currentUser._id;
     }));
   }
@@ -38,7 +37,6 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
         vm.group = group;
         splitDateTimeString(group);
         checkIfMember();
-        // console.log('group.admin:', group.admin);
       })
       .catch(err => console.log('error in getGroupDetails:', err));
   }
@@ -95,7 +93,6 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, Current
     .leave({ id: $stateParams.id })
     .$promise
     .then(group => {
-      console.log('group in leaveGroup:', group);
       const position = group.members.indexOf(vm.currentUser._id);
       group.members.splice(position);
       vm.group = group;
