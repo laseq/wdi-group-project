@@ -54,12 +54,6 @@ function GroupsLeaveCtrl(group, theEvent, theIndex, currentUserId, $uibModalInst
           group.members.splice(position);
         }
 
-        // splitDateTimeString(vm.allGroups);
-        return group;
-
-      })
-      .then(group => {
-        console.log('group:', group);
         $uibModalInstance.close(group);
       })
       .catch(err => {

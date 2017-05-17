@@ -160,9 +160,6 @@ function GroupsIndexCtrl(Group, TokenService, User, $uibModal) {
         },
         currentUserId: () => {
           return currentUserId;
-        },
-        allGroups: () => {
-          return allGroups;
         }
       }
     });
@@ -170,8 +167,8 @@ function GroupsIndexCtrl(Group, TokenService, User, $uibModal) {
     leaveModalInstance
       .result
       .then(passedItem => {
-        console.log('passedItem:', passedItem);
         vm.all[$index] = passedItem;
+        splitDateTimeString(vm.all);
       });
   }
 
