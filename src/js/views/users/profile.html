@@ -1,9 +1,15 @@
 <div class="container">
   <div class="row">
 
-    <div class="profile-pic col-md-4">
+    <div class="profile-info col-md-4">
       <img class="profile-image" ng-src="{{ main.user.image }}">
       <h2>{{ main.user.username }}'s Profile</h2>
+      <p>Name: {{ main.user.name }}</p>
+      <p>Age: {{ main.user.age }}</p>
+      <p>Gender: {{ main.user.gender }}</p>
+      <p>Location: {{ main.user.location }}</p>
+      <p>About: {{ main.user.about }}</p>
+      <button type="button" ui-sref="usersEdit({ id: main.user._id })">Edit</button>
     </div>
 
     <div class="user-groups col-md-8">
@@ -13,17 +19,8 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-4">
-      <div class="profile-info">
-        <p>Name: {{ main.user.name }}</p>
-        <p>Age: {{ main.user.age }}</p>
-        <p>Gender: {{ main.user.gender }}</p>
-        <p>Location: {{ main.user.location }}</p>
-        <p>About: {{ main.user.about }}</p>
-        <button type="button" ui-sref="usersEdit({ id: main.user._id })">Edit</button>
-      </div>
-    </div>
+
+
 
   </div>
 </div>

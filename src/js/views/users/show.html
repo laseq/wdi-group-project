@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-    <div class="profile-pic col-md-4">
+    <div class="profile-info col-md-4">
       <img class="profile-image" src="{{ usersShow.user.image }}" alt="Profile Picture">
       <h1>{{ usersShow.user.name }}'s Profile</h1>
       <p>Name: {{ usersShow.user.name }}</p>
@@ -9,7 +9,6 @@
       <p>Gender: {{ usersShow.user.gender }}</p>
       <p>Location: {{ usersShow.user.location }}</p>
       <p>About: {{ usersShow.user.about }}</p>
-      <button type="button" ui-sref="usersEdit({ id: main.user._id })">Edit</button>
     </div>
 
     <div class="users-groups col-md-8">
