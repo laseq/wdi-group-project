@@ -7,7 +7,7 @@
 //   return {
 //     restrict: 'E',
 //     replace: true,
-//     template: '<div class="map-styling">GOOGLE MAP GOES HERE</div>',
+//     template: '<div class='map-styling'>GOOGLE MAP GOES HERE</div>',
 //     scope: {
 //       center: '='
 //     },
@@ -27,8 +27,8 @@
 
 // -----My Attempt----
 angular
-  .module('runchApp')
-  .directive('googleMap', googleMap);
+.module('runchApp')
+.directive('googleMap', googleMap);
 
 googleMap.$inject = ['$window', '$http'];
 function googleMap($window, $http) {
@@ -41,11 +41,6 @@ function googleMap($window, $http) {
     },
     link(scope, element) {
       scope.$watch('location', function(postcode){
-        console.log('postcode:', postcode);
-        console.log('location:', scope.location);
-
-        const mergedPostcode = postcode.split(' ').join('');
-        console.log('mergedPostcode:', mergedPostcode);
 
         if (postcode) {
           $http({
@@ -57,8 +52,236 @@ function googleMap($window, $http) {
             console.log('coordinates:', coordinates);
 
             const map = new $window.google.maps.Map(element[0], {
-              zoom: 15,
-              center: coordinates
+              zoom: 14,
+              center: coordinates,
+              styles: [
+                {
+                  'featureType': 'administrative',
+                  'elementType': 'labels.text.fill',
+                  'stylers': [
+                    {
+                      'color': '#444444'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'administrative.land_parcel',
+                  'elementType': 'geometry',
+                  'stylers': [
+                    {
+                      'visibility': 'on'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'administrative.land_parcel',
+                  'elementType': 'labels',
+                  'stylers': [
+                    {
+                      'visibility': 'on'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'landscape',
+                  'elementType': 'all',
+                  'stylers': [
+                    {
+                      'color': '#f2f2f2'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'poi',
+                  'elementType': 'all',
+                  'stylers': [
+                    {
+                      'visibility': 'off'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'road',
+                  'elementType': 'all',
+                  'stylers': [
+                    {
+                      'saturation': -100
+                    },
+                    {
+                      'lightness': 45
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'road.highway',
+                  'elementType': 'all',
+                  'stylers': [
+                    {
+                      'visibility': 'simplified'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'road.highway',
+                  'elementType': 'geometry',
+                  'stylers': [
+                    {
+                      'visibility': 'simplified'
+                    },
+                    {
+                      'color': '#8EB77B'
+                    },
+                    {
+                      'lightness': '0'
+                    },
+                    {
+                      'saturation': '0'
+                    },
+                    {
+                      'weight': '1.82'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'road.highway',
+                  'elementType': 'geometry.fill',
+                  'stylers': [
+                    {
+                      'visibility': 'on'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'road.highway',
+                  'elementType': 'geometry.stroke',
+                  'stylers': [
+                    {
+                      'visibility': 'off'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'road.highway',
+                  'elementType': 'labels.text',
+                  'stylers': [
+                    {
+                      'visibility': 'on'
+                    },
+                    {
+                      'weight': '3.59'
+                    },
+                    {
+                      'gamma': '0.36'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'road.highway',
+                  'elementType': 'labels.icon',
+                  'stylers': [
+                    {
+                      'visibility': 'on'
+                    },
+                    {
+                      'hue': '#ff0000'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'road.arterial',
+                  'elementType': 'geometry',
+                  'stylers': [
+                    {
+                      'visibility': 'on'
+                    },
+                    {
+                      'color': '#8EB77B'
+                    },
+                    {
+                      'weight': '0.14'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'road.arterial',
+                  'elementType': 'labels.icon',
+                  'stylers': [
+                    {
+                      'visibility': 'off'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'transit',
+                  'elementType': 'all',
+                  'stylers': [
+                    {
+                      'visibility': 'off'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'transit.station.airport',
+                  'elementType': 'geometry',
+                  'stylers': [
+                    {
+                      'visibility': 'on'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'transit.station.airport',
+                  'elementType': 'labels.text',
+                  'stylers': [
+                    {
+                      'visibility': 'on'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'transit.station.bus',
+                  'elementType': 'geometry',
+                  'stylers': [
+                    {
+                      'color': '#912e2e'
+                    },
+                    {
+                      'visibility': 'off'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'water',
+                  'elementType': 'all',
+                  'stylers': [
+                    {
+                      'color': '#46bcec'
+                    },
+                    {
+                      'visibility': 'on'
+                    }
+                  ]
+                },
+                {
+                  'featureType': 'water',
+                  'elementType': 'geometry',
+                  'stylers': [
+                    {
+                      'visibility': 'simplified'
+                    },
+                    {
+                      'color': '#00b2dd'
+                    },
+                    {
+                      'weight': '0.31'
+                    },
+                    {
+                      'lightness': '0'
+                    }
+                  ]
+                }
+              ]
+
             });
 
             new $window.google.maps.Marker({
@@ -71,92 +294,7 @@ function googleMap($window, $http) {
           });
         }
 
-      }); // End of scope.$watch
-    } // End of link(scope, element)
-  }; // End of return
-} // End of function googleMap($window, $http)
-
-
-// -----Lourenco's Code ------
-// googleMap.$inject = ['$window', '$http'];
-// function googleMap($window, $http) {
-//   return {
-//     restrict: 'E',
-//     replace: true,
-//     template: '<div class="map-styling">GOOGLE MAP GOES HERE</div>',
-//     scope: {
-//       origin: '@'
-//     },
-//     link(scope, element) {
-//
-//       scope.$watch('origin', function(location){
-//         console.log('location:', location);
-//         console.log('origin:', scope.origin);
-//
-//         if (location) {
-//           $http({
-//             method: 'GET',
-//             url: `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyCnKlCHThE_n_gwYdwXd5GL5XA2_mDOguY`
-//           }).then(function successCallback(response) {
-//             const coOrds = response.data.results['0'].geometry.location;
-//
-//             var map = new $window.google.maps.Map(element[0], {
-//               zoom: 4,
-//               center: coOrds
-//             });
-//
-//             new $window.google.maps.Marker({
-//               position: coOrds,
-//               map: map
-//             });
-//
-//           }, function errorCallback(response) {
-//             console.log('Error response:', response);
-//           });
-//         }
-//
-//       }); // End of scope.$watch
-//     } // End of link(scope, element)
-//   }; // End of return
-// } // End of function googleMap($window, $http)
-//
-//
-
-// --------------including postcode----------------
-// 'use strict';
-// angular.module('MY_APP_NAME')
-//     .directive('googleMap', function () {
-//         return {
-//             template: '<div id="map" class="gmap"></div>',
-//             restrict: 'E',
-//             link: function postLink(scope, element, attrs){
-//
-// 	            var geocoder = new google.maps.Geocoder();
-//
-// 	            // Get longitude and latitude values from Google and render the map, or use longitude and latitude from position attribute
-// 	            if(attrs.postcode){
-// 		            geocoder.geocode({'address': attrs.postcode}, function(results, status){
-// 			            if(status == google.maps.GeocoderStatus.OK){
-// 				            renderMap({lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()})
-// 			            }
-// 		            });
-// 	            }else{
-// 		            renderMap(attrs.position);
-// 	            }
-//
-// 	            function renderMap(pos){
-// 		            var mapOptions = {
-// 			            zoom: 10,
-// 			            center: {lat: pos.lat, lng: pos.lng}
-// 		            }
-//
-// 		            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-//
-// 		            var marker = new google.maps.Marker({
-// 			            position: mapOptions.center,
-// 			            map: map
-// 		            });
-// 	            }
-//             }
-//         };
-//     });
+      });
+    }
+  };
+}

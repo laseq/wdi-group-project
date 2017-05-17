@@ -1,10 +1,80 @@
-<h1>Groups Edit</h1>
+<h1 class="editHeader">Edit {{ groupsEdit.group.name}}</h1>
 
-<form ng-submit="groupsEdit.update()" method="post">
+
+<form class="edit" ng-submit="groupsEdit.update()" method="post">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label"></label>
+    <div class="col-sm-10">
+      <input class="form-control-create" type="text" name="name" ng-model="groupsEdit.group.name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputdate" class="col-sm-2 control-label"></label>
+    <div class="col-sm-10">
+      <input class="form-control-create"
+           ng-model="groupsEdit.group.schedule.date"
+           ng-model-options="{ updateOn: 'blur' }"
+           placeholder="Select a date and time"
+           format="llll"
+           min-view="month"
+           start-view="day"
+           min-date="groupsEdit.minDateMoment"
+           max-date="groupsEdit.maxDateMoment"
+           required="true"
+           moment-picker="groupsEdit.group.schedule.date">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputMeetingPoint" class="col-sm-2 control-label"></label>
+      <div class="col-sm-10">
+        <input class="form-control-create" type="text" name="meetingPoint" ng-model="groupsEdit.group.schedule[0].meetingPoint">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPostCode" class="col-sm-2 control-label"></label>
+      <div class="col-sm-10">
+        <input class="form-control-create" type="text" name="location" ng-model="groupsEdit.group.schedule[0].location">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputDistance" class="col-sm-2 control-label"></label>
+      <div class="col-sm-10">
+        <input class="form-control-create" type="text" name="distance" ng-model="groupsEdit.group.schedule[0].distance">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputMaxRunners" class="col-sm-2 control-label"></label>
+      <div class="col-sm-10">
+        <input class="form-control-create" type="number" name="maxRunners" ng-model="groupsEdit.group.schedule[0].maxRunners" min="2" max="20" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputImage" class="col-sm-2 control-label"></label>
+      <div class="col-sm-10">
+        <input class="form-control-create" type="text" name="imageLink" ng-model="groupsEdit.group.image">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputDescription" class="col-sm-2 control-label"></label>
+      <div class="col-sm-10">
+        <input class="form-control-create" type="text" name="descciption" ng-model="groupsEdit.group.schedule[0].description">
+      </div>
+    </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <input class="form-button-create" type="submit" name="" value="Submit">
+    </div>
+  </div>
+</form>
+
+
+
+
+<!-- <form ng-submit="groupsEdit.update()" method="post">
   <div class="">
     <label for="name">Name: </label>
     <input type="text" name="name" ng-model="groupsEdit.group.name" required>
-  </div>
+  </div> -->
   <!-- <div class="">
     <label for="day">Day: </label>
     <input type="text" name="day" ng-model="groupsEdit.group.schedule[0].day">
@@ -13,7 +83,7 @@
     <label for="date">Date: </label>
     <input type="text" name="date" ng-model="groupsEdit.group.schedule[0].date">
   </div> -->
-  <div class="">
+  <!-- <div class="">
     <label for="date">Date: </label>
     <input class="form-control"
          ng-model="groupsEdit.group.schedule.date"
@@ -26,12 +96,12 @@
          max-date="groupsEdit.maxDateMoment"
          required="true"
          moment-picker="groupsEdit.group.schedule.date">
-  </div>
+  </div> -->
   <!-- <div class="">
     <label for="startTime">Start Time: </label>
     <input type="text" name="startTime" ng-model="groupsEdit.group.schedule[0].startTime">
   </div> -->
-  <div class="">
+  <!-- <div class="">
     <label for="meetingPoint">Meeting Point: </label>
     <input type="text" name="meetingPoint" ng-model="groupsEdit.group.schedule[0].meetingPoint" placeholder="Meeting Point" required>
   </div>
@@ -56,4 +126,4 @@
     <input type="text" name="imageLink" ng-model="groupsEdit.group.image">
   </div>
   <input type="submit" name="" value="Edit">
-</form>
+</form> -->
