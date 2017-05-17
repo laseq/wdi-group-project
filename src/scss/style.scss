@@ -369,10 +369,15 @@ footer {
   height: 100%;
 }
 
-// ********** User Profie *******************
+// ********** User Profie/Show *******************
 
 .profile-pic {
   width: 20%;
+}
+
+.profile-info {
+  width: 20%;
+  float: left;
 }
 
 .profile-image {

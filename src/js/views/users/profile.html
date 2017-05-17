@@ -5,7 +5,6 @@
       <img class="profile-image" ng-src="{{ main.user.image }}">
       <h2>{{ main.user.username }}'s Profile</h2>
     </div>
-    
 
     <div class="user-groups col-md-8">
       <div class="group-item" ng-repeat="group in main.user.groups">
@@ -17,6 +16,7 @@
   <div class="row">
     <div class="col-md-4">
       <div class="profile-info">
+        <p>Name: {{ main.user.name }}</p>
         <p>Age: {{ main.user.age }}</p>
         <p>Gender: {{ main.user.gender }}</p>
         <p>Location: {{ main.user.location }}</p>
