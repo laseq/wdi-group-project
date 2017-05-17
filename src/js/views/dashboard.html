@@ -21,11 +21,7 @@
     <div class="owned-groups col-md-3">
       <h2>Owned Groups</h2>
       <div ng-repeat="group in dashboard.user.ownedGroups">
-        <a ui-sref="groupsShow({ id: group._id })"><img src="{{ group.image }}"></a>
-        <div class="hover">
-          <!--  More group info to go here -->
-          <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
-        </div>
+        <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
       </div>
       <button type="button" name="button" ui-sref="groupsNew">Create a running group</button>
     </div>
