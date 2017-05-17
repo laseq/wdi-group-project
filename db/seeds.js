@@ -28,16 +28,16 @@ function UserTemplate(username, name, email, age, gender, location) {
 
 User
 .create([
-  new UserTemplate('sophie1', 'Sophie', 'sophie@sophie.com', 20, 'female', 'Aldgate East', 'password'),
-  new UserTemplate('tim1', 'Tim', 'tim@tim.com', 30, 'male', 'Aldgate East', 'password'),
-  new UserTemplate('alex1', 'Alex', 'alex@alex.com', 25, 'male', 'Aldgate East', 'password'),
-  new UserTemplate('lou1', 'Lourenco', 'lou@lou.com', 27, 'male', 'Whitechapel', 'password'),
-  new UserTemplate('dave1', 'Dave', 'dave@dave.com', 28, 'male', 'Whitechapel', 'password'),
-  new UserTemplate('danai1', 'Danai', 'danai@danai.com', 25, 'female', 'Whitechapel', 'password'),
-  new UserTemplate('jen1', 'Jennifer', 'jen@jen.com', 30, 'female', 'Whitechapel', 'password'),
-  new UserTemplate('jack1', 'Jack', 'jack@jack.com', 27, 'male', 'Bethnal Green', 'password'),
-  new UserTemplate('casey1', 'Casey', 'casey@casey.com', 23, 'female', 'Bethnal Green', 'password'),
-  new UserTemplate('ed1', 'Ed', 'ed@ed.com', 25, 'male', 'Bethnal Green', 'password')
+  new UserTemplate('sophie1', 'Sophie', 'sophie@sophie.com', 20, 'Female', 'Aldgate East', 'password'),
+  new UserTemplate('tim1', 'Tim', 'tim@tim.com', 30, 'Male', 'Aldgate East', 'password'),
+  new UserTemplate('alex1', 'Alex', 'alex@alex.com', 23, 'Male', 'Aldgate East', 'password'),
+  new UserTemplate('lou1', 'Lourenco', 'lou@lou.com', 27, 'Male', 'Whitechapel', 'password'),
+  new UserTemplate('dave1', 'Dave', 'dave@dave.com', 28, 'Male', 'Whitechapel', 'password'),
+  new UserTemplate('danai1', 'Danai', 'danai@danai.com', 25, 'Female', 'Whitechapel', 'password'),
+  new UserTemplate('jen1', 'Jennifer', 'jen@jen.com', 30, 'Female', 'Whitechapel', 'password'),
+  new UserTemplate('jack1', 'Jack', 'jack@jack.com', 27, 'Male', 'Bethnal Green', 'password'),
+  new UserTemplate('casey1', 'Casey', 'casey@casey.com', 23, 'Female', 'Bethnal Green', 'password'),
+  new UserTemplate('ed1', 'Ed', 'ed@ed.com', 25, 'Male', 'Bethnal Green', 'password')
 ])
 .then(users => {
   console.log(`${users.length} users created!`);
