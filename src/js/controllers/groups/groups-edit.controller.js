@@ -23,9 +23,22 @@ function GroupsEditCtrl($stateParams, $state, Group) {
       .update({ id: $stateParams.id }, vm.group)
       .$promise
       .then(() => {
-        $state.go('groupsIndex');
+        $state.go('groupsShow', { id: vm.group._id });
       });
   }
+  vm.testString  = 'Hello';
+  vm.momentDate = moment();
+
+  // some sample format to show
+  vm.formats = [
+    'HH:mm',
+    'MMM Do YY',
+    'MMMM Do YYYY, h:mm:ss a',
+    'YYYY [escaped] YYYY',
+    'LT',
+    'LTS'
+  ];
+  vm.format = vm.formats[0];
 
 
   const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
