@@ -143,9 +143,9 @@ function GroupsIndexCtrl(Group, TokenService, User, $uibModal) {
 
 
 
-  function openLeaveModal(group, $event, $index) {
-    console.log('Entered openLeaveModal');
-    $uibModal.open({
+  function openLeaveModal(group, $event, $index, currentUserId) {
+
+    var leaveModalInstance = $uibModal.open({
       templateUrl: 'js/views/partials/groupLeaveModal.html',
       controller: 'GroupsLeaveCtrl as groupsLeave',
       resolve: {
@@ -157,9 +157,27 @@ function GroupsIndexCtrl(Group, TokenService, User, $uibModal) {
         },
         theIndex: () => {
           return $index;
+        },
+        currentUserId: () => {
+          return currentUserId;
+        },
+        allGroups: () => {
+          return allGroups;
         }
       }
     });
+
+    leaveModalInstance
+      .result
+      .then(passedItem => {
+        console.log('passedItem:', passedItem);
+        vm.all[$index] = passedItem;
+      });
   }
+
+
+
+
+
 
 }
