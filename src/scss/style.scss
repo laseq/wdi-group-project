@@ -89,8 +89,8 @@ nav a {
   position: absolute;
   width: 102%;
   top: 40%;
-  padding: 30px;
-  // background-color: rgba(255, 255, 255, 0.5);
+  padding: 5px;
+  background-color: rgba(124,183,123,.5);
   font-size: 51px;
   color: black;
   font-family: 'RunchFont';
@@ -515,89 +515,59 @@ footer {
   width: 80%;
   text-align: center;
 }
+ // ********** Search Form ************
 
-/*
- * Caption component
- */
-.caption {
-    position: relative;
-    overflow: hidden;
-
-    /* Only the -webkit- prefix is required these days */
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
+input[type=search] {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font-family: 'RunchFont';
+	font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+	display: none;
 }
 
-.caption h2 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(124,183,123,.8);
-  margin: 0;
-  color: white;
-  transition: all 2s ease 0s;
+input[type=search] {
+	background: rgba(124,183,123,.8) url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	border: solid 1px #8EB77B;
+	padding: 9px 10px 9px 32px;
+	width: 55px;
+
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 20px;
+
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+input[type=search]:focus {
+	width: 70px;
+	background-color: #fff;
+	border-color: #8EB77B;
+
 }
 
-.caption:hover h2 {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
+// size of the search Bar before
+#searchBar input[type=search] {
+  width: 17px;
+  padding-left: 10px;
+  color: transparent;
 }
-
-// .caption::before {
-//     content: ' ';
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     bottom: 0;
-//     left: 0;
-//     background: transparent;
-//     transition: background .35s ease-out;
-// }
-//
-// .caption:hover::before {
-//     background: rgba(0, 0, 0, .5);
-// }
-//
-// .caption__media {
-//     display: block;
-//     min-width: 100%;
-//     max-width: 100%;
-//     height: auto;
-// }
-//
-// .caption__overlay {
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     bottom: 0;
-//     left: 0;
-//     padding: 10px;
-//     color: white;
-//
-//     -webkit-transform: translateY(100%);
-//             transform: translateY(100%);
-//
-//     transition: -webkit-transform .35s ease-out;
-//     transition:         transform .35s ease-out;
-// }
-//
-// .caption:hover .caption__overlay {
-//     -webkit-transform: translateY(0);
-//             transform: translateY(0);
-// }
-//
-// .caption__overlay__title {
-//     -webkit-transform: translateY( -webkit-calc(-100% - 10px) );
-//             transform: translateY( calc(-100% - 10px) );
-//
-//     transition: -webkit-transform .35s ease-out;
-//     transition:         transform .35s ease-out;
-// }
-//
-// .caption:hover .caption__overlay__title {
-//     -webkit-transform: translateY(0);
-//             transform: translateY(0);
-// }
+#searchBar input[type=search]:hover {
+	background-color: #fff;
+}
+#searchBar input[type=search]:focus {
+	width: 1000px;
+	padding-left: 32px;
+	color: #8EB77B;
+	background-color: #fff;
+	cursor: auto;
+}
+#searchBar input:-moz-placeholder {
+	color: transparent;
+}
+#searchBar input::-webkit-input-placeholder {
+	color: transparent;
+}
