@@ -1,4 +1,24 @@
-<h1>{{ usersShow.user.name }}'s Profile</h1>
+<div class="container">
+<div class="row">
+
+  <div class="profile-pic col-md-4">
+    <img class="profile-image" src="{{ usersShow.user.image }}" alt="Profile Picture">
+    <h1>{{ usersShow.user.name }}'s Profile</h1>
+  </div>
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
 
 <div class="user-groups" ng-repeat="group in usersShow.user.groups">
   <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
