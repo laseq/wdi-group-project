@@ -98,19 +98,19 @@ nav a {
   text-align: center;
 }
 
-.mainContainer {
-  position: absolute;
-  width: 102%;
-  top: 0%;
-  padding: 30px;
-  background-color: rgba(255, 255, 255, 0.3);
-  font-size: 51px;
-  color: white;
-  font-family: 'RunchFont';
-  margin-left: -12px;
-  text-align: center;
-  height: 103%;
-}
+// .mainContainer {
+//   position: absolute;
+//   width: 102%;
+//   top: 0%;
+//   padding: 30px;
+//   background-color: rgba(255, 255, 255, 0.3);
+//   font-size: 51px;
+//   color: white;
+//   font-family: 'RunchFont';
+//   margin-left: -12px;
+//   text-align: center;
+//   height: 103%;
+// }
 
 .singed-in-logo {
   width: 300px;
@@ -558,7 +558,7 @@ input[type=search]:focus {
 #searchBar input[type=search]:hover {
 	background-color: #fff;
 }
-#searchBar input[type=search]:focus {
+#searchBar input[type=search]:hover {
 	width: 1000px;
 	padding-left: 32px;
 	color: #8EB77B;
