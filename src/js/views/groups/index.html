@@ -1,30 +1,39 @@
-<h1>Groups Index</h1>
-
-<h2>Running Groups</h2>
-
+<h1>All Running Groups</h1>
 <button type="button" name="button" ng-hide="groupsIndex.groupAdmin" ui-sref="groupsNew">Create a running group</button>
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
 
     <div class="dashImage">
       <div class="dash-groups col-md-12">
         <div class="group-item caption" ng-repeat="group in groupsIndex.all track by $index" ng-model="groupsIndex.all">
+          <!-- Image and Header -->
           <a ui-sref="groupsShow({ id: group._id })">
-          <img class="group-image" ng-src="{{group.image}}" alt="Group Image">
-          <h2 class="imageHeader">{{ group.name }}</h2></a>
+            <img class="group-image" ng-src="{{group.image}}" alt="Group Image">
+            <h2 class="imageHeader">{{ group.name }}</h2></a>
+
+
+            <!-- Extra Information underneath  -->
+            <div class="group-info">
+              <h2>{{ 1+1}}</h2>
+              <p></p>
+            </div>
+
+          </div>
         </div>
       </div>
-    </div>
 
-  <button class="btn btn-primary" type="button" name="button" ng-click="groupsIndex.join(group, $event, $index)" ng-if="group.members.indexOf(main.user.id) === -1">Join</button>
 
-  <button class="btn btn-danger" type="button" name="button"
-    ng-click="groupsIndex.openLeave(group, $event, $index, groupsIndex.currentUserId)"
-    ng-if="group.members.indexOf(main.user.id) !== -1 && group.admin._id !== groupsIndex.currentUserId">
-    Leave
-  </button>
+
+
+
+      <!-- <button class="btn btn-primary" type="button" name="button" ng-click="groupsIndex.join(group, $event, $index)" ng-if="group.members.indexOf(main.user.id) === -1">Join</button>
+
+      <button class="btn btn-danger" type="button" name="button"
+      ng-click="groupsIndex.openLeave(group, $event, $index, groupsIndex.currentUserId)"
+      ng-if="group.members.indexOf(main.user.id) !== -1 && group.admin._id !== groupsIndex.currentUserId">
+      Leave
+    </button> -->
 
   </div>
-
 </div>

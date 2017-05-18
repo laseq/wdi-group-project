@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
 
-    <div class="profile-info col-md-4">
-      <img class="profile-image" ng-src="{{ main.user.image }}" alt="Profile Picture">
+    <div class="profile-info col-md-5">
+      <img class="profile-image" ng-src="{{ usersProfile.user.image }}" alt="Profile Picture">
       <h2>{{ usersProfile.user.username }}'s Profile</h2>
       <p>Name: {{ usersProfile.user.name }}</p>
       <p>Age: {{ usersProfile.user.age }}</p>
@@ -12,7 +12,7 @@
       <button type="button" ui-sref="usersEdit({ id: usersProfile.user._id })">Edit</button>
     </div>
 
-    <div class="user-groups col-md-8">
+    <div class="user-groups col-md-7">
       <div class="group-item" ng-repeat="group in usersProfile.user.groups">
         <a ui-sref="groupsShow({ id: group._id })"><img class="group-image" src="{{ group.image }}"><h2 class="imageHeader">{{ group.name }}</h2></a>
       </div>
