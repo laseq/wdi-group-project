@@ -5,13 +5,11 @@
       <h2>Timetable</h2>
       <div ng-repeat="group in dashboard.upcomingArray  | orderBy : dashboard.orderBy track by $index">
         <a ui-sref="groupsShow({ id: group._id })"><h5><strong>{{ group.name }}</strong></h5></a>
-        <p>{{ group.schedule[0].viewableDate }}</p>
-        <p>{{ group.schedule[0].startTime }}</p>
-        <p>{{ group.schedule[0].meetingPoint }}</p>
-        <p>{{ group.schedule[0].location }}</p>
+        <p>{{ group.schedule[0].viewableDate }}, {{ group.schedule[0].startTime }}</p>
+        <p>{{ group.schedule[0].meetingPoint }}, {{ group.schedule[0].location }}</p>
       </div>
     </div>
-    <!-- <h3>Search Runch</h3> -->
+
     <form id="searchBar">
     	<input type="search" placeholder="Search Runch">
     </form>
@@ -19,17 +17,12 @@
       <div class="dash-groups col-md-7">
         <h2>My Groups</h2>
         <div class="group-item" ng-repeat="group in dashboard.user.groups">
-          <img class="group-image" src="{{ group.image }}">
+          <a ui-sref="groupsShow({ id: group._id })"><img class="group-image" src="{{ group.image }}"></a>
           <a ui-sref="groupsShow({ id: group._id })"><h2 class="imageHeader">{{ group.name }}</h2></a>
         </div>
       </div>
     </div>
   </div>
-
-
-  <!-- <div class="hover"> -->
-  <!--  More group info to go here -->
-  <!-- <a ui-sref="groupsShow({ id: group._id })"><h2 class="imageHeader">{{ group.name }}</h2></a> -->
 
   <div class="row">
     <div class="owned-groups col-md-3">
