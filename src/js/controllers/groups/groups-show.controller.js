@@ -52,11 +52,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
 
   function joinGroup($event) {
 
-    console.log('vm.group.members.length:', vm.group.members.length);
-    console.log('vm.group.schedule[0].maxRunners:', vm.group.schedule[0].maxRunners);
-
     if (vm.group.members.length === vm.group.schedule[0].maxRunners) {
-      console.log('Max runners have been reached');
       openMaxRunnersModal(vm.group);
       return;
     }
@@ -65,7 +61,6 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
       .join({ id: $stateParams.id })
       .$promise
       .then(group => {
-        console.log('group:', group);
         vm.group = group;
         splitDateTimeString(vm.group);
         checkIfMember();

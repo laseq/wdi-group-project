@@ -11,7 +11,6 @@ function MaxRunnersCtrl(group, $uibModalInstance) {
   vm.close = closeModal;
 
   function closeModal() {
-    console.log('Entered closeModal');
     $uibModalInstance.close();
   }
 

@@ -37,11 +37,7 @@ function GroupsIndexCtrl(Group, TokenService, User, $uibModal) {
 
   function joinGroup(group, $event, $index) {
 
-    console.log('vm.all[$index].members.length:', vm.all[$index].members.length);
-    console.log('vm.all[$index].schedule[0].maxRunners:', vm.all[$index].schedule[0].maxRunners);
-
     if (vm.all[$index].members.length === vm.all[$index].schedule[0].maxRunners) {
-      console.log('Max runners have been reached');
       openMaxRunnersModal(group);
       return;
     }
