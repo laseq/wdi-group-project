@@ -5,8 +5,8 @@
   <div class="row">
 
     <div class="dashImage">
-      <div class="dash-groups col-md-12">
-        <div class="group-item caption" ng-repeat="group in groupsIndex.all track by $index" ng-model="groupsIndex.all">
+      <div class="index-groups col-md-12">
+        <div class="index-group-item caption" ng-repeat="group in groupsIndex.all track by $index" ng-model="groupsIndex.all">
           <!-- Image and Header -->
           <a ui-sref="groupsShow({ id: group._id })">
             <img class="group-image" ng-src="{{group.image}}" alt="Group Image">
