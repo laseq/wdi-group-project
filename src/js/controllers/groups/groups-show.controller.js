@@ -10,12 +10,13 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
   //vm.currentUserId = TokenService.decodeToken().id;
   vm.currentUser = User.get({ id: TokenService.decodeToken().id });
 
-  //vm.delete = groupsDelete;
   vm.join = joinGroup;
   vm.memberArray = [];
   vm.commenters = [];
   vm.postComment = postComment;
   vm.member = false;
+  vm.memberAndNotAdmin = false;
+  vm.openJoin = openJoinModal;
   vm.openLeave = openLeaveModal;
   vm.openDelete = openDeleteModal;
 
@@ -30,6 +31,12 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
     }));
   }
 
+  function checkIfMemberAndNotAdmin() {
+    vm.memberAndNotAdmin = !!(vm.group.members.find(member => {
+      return (member._id === vm.currentUser._id && vm.group.admin._id !== vm.currentUser._id);
+    }));
+  }
+
   function getGroupDetails() {
     return Group
       .get($stateParams)
@@ -38,20 +45,12 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
         vm.group = group;
         splitDateTimeString(group);
         checkIfMember();
+        checkIfMemberAndNotAdmin();
       })
       .catch(err => console.log('error in getGroupDetails:', err));
   }
 
-  function groupsDelete(group) {
-    Group
-      .remove({ id: group._id })
-      .$promise
-      .then(() => {
-        $state.go('groupsIndex');
-      });
-  }
-
-  function joinGroup() {
+  function joinGroup($event) {
     Group
       .join({ id: $stateParams.id })
       .$promise
@@ -59,10 +58,28 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
         vm.group = group;
         splitDateTimeString(vm.group);
         checkIfMember();
+        checkIfMemberAndNotAdmin();
+        openJoinModal($event);
       })
       .catch(err => {
         console.log(err);
       });
+  }
+
+  function openJoinModal($event) {
+
+    $uibModal.open({
+      templateUrl: 'js/views/partials/groupJoinModal.html',
+      controller: 'GroupsJoinCtrl as groupsJoin',
+      resolve: {
+        group: () => {
+          return vm.group;
+        },
+        theEvent: () => {
+          return $event;
+        }
+      }
+    });
   }
 
   function openLeaveModal($event) {
@@ -93,6 +110,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
           vm.group = passedItem;
           splitDateTimeString(vm.group);
           checkIfMember();
+          checkIfMemberAndNotAdmin();
         }
       });
   }
@@ -124,7 +142,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
       if (startMins < 10) {
         startMins = `0${startMins}`;
       }
-      schedule.viewableDate = `${theDate} ${theMonth} ${theYear}`;
+      schedule.viewableDate = `${schedule.day}, ${theDate} ${theMonth} ${theYear}`;
       schedule.startTime = `${startHours}:${startMins}`;
     });
   }
@@ -139,7 +157,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
       .update({ id: vm.group._id }, vm.group)
       .$promise
       .then(() => {
-        console.log('Comment posted');
+        vm.commentObject.comment = '';
       })
       .catch(err => console.log('error in postComment:', err));
   }

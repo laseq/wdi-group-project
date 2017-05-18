@@ -5,9 +5,10 @@
   <p>You've joined <strong>{{ groupsJoin.group.name }}</strong></p>
   <p><strong>Run schedule:</strong></p>
   <ul>
-    <li>Date: {{ groupsJoin.group.name }}</li>
-    <li></li>
-    <li></li>
+    <li>Day: {{ groupsJoin.group.schedule[0].viewableDate }}</li>
+    <li>Start Time: {{ groupsJoin.group.schedule[0].startTime }} </li>
+    <li>Meeting Point: {{ groupsJoin.group.schedule[0].meetingPoint }} </li>
+    <li>Location: {{ groupsJoin.group.schedule[0].location }} </li>
   </ul>
 </div>
 <div class="modal-footer">
