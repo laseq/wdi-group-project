@@ -23,7 +23,7 @@ body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   font-family: "RunchFont";
   color: black;
 }
@@ -33,8 +33,6 @@ h1, h2, h3, h4, h5 {
   font-family: 'RunchFont';
   color: #8EB77B
 }
-
-
 
 p {
   font-family: 'Poppins', sans-serif;
@@ -80,7 +78,7 @@ nav ul li {
 }
 
 nav a {
-  color: white;
+  color: white !important;
   list-style: none;
   font-family: 'RunchFont', serif;
   text-decoration: none;
@@ -89,17 +87,30 @@ nav a {
 
 .front-para {
   position: absolute;
-  width: 600px;
-  height: 200px;
-  z-index: 15;
-  top: 35%;
-  left: 50%;
-  padding:30px;
-  background-color: rgba(255,255,255,.5);
-  font-size: 20px;
-  color: white;
+  width: 102%;
+  top: 40%;
+  padding: 5px;
+  background-color: rgba(124,183,123,.5);
+  font-size: 51px;
+  color: black;
   font-family: 'RunchFont';
+  margin-left: -12px;
+  text-align: center;
 }
+
+// .mainContainer {
+//   position: absolute;
+//   width: 102%;
+//   top: 0%;
+//   padding: 30px;
+//   background-color: rgba(255, 255, 255, 0.3);
+//   font-size: 51px;
+//   color: white;
+//   font-family: 'RunchFont';
+//   margin-left: -12px;
+//   text-align: center;
+//   height: 103%;
+// }
 
 .singed-in-logo {
   width: 300px;
@@ -139,6 +150,8 @@ li {
   background-color: #8EB77B;
   padding-left: 15px;
   padding-top: 15px;
+  // bottom: 10px;
+  // margin-bottom: 10px;
 }
 
 .FooterLoggedOut {
@@ -383,6 +396,29 @@ footer {
 
 // ********** Dashboard *******************
 
+.dashCreateBtn {
+  background: #8EB77B;
+  color: #fff;
+  margin-right: 30px;
+  margin-top: 25px;
+  width: 185px;
+  height: 40px;
+  border: 0px;
+  border-radius: 3px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'RunchFont';
+  display: inline-block;
+  float: right;
+}
+
+.dashCreateBtn:hover {
+  background-color: white;
+  color: #8EB77B;
+  border: solid 1px #8EB77B;
+}
+
 .timetable {
   width: 20%;
   text-align: center;
@@ -403,7 +439,7 @@ footer {
   height: 200px;
   float: left;
   position: relative;
-  padding: 5px;
+  padding: 1px;
   overflow: hidden;
 
 .dashImage {
@@ -412,13 +448,13 @@ footer {
 }
 
 .imageHeader {
-  // background-color: rgba(124,183,123,.8);
-  // position: relative;
-  // top: -62px;
-  // left: 0;
-  // width: 100%;
-  // color: white;
-  // text-align: left;
+  background-color: rgba(124,183,123,.8);
+  position: relative;
+  top: -62px;
+  left: 0;
+  width: 100%;
+  color: white;
+  text-align: left;
   padding: 5px;
 }
 
@@ -479,37 +515,64 @@ footer {
   width: 80%;
   text-align: center;
 }
+ // ********** Search Form ************
 
-/*
- * Caption component
- */
-.caption {
-    position: relative;
-    overflow: hidden;
-
-    /* Only the -webkit- prefix is required these days */
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
+input[type=search] {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font-family: 'RunchFont';
+	font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+	display: none;
 }
 
-.caption h2 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(124,183,123,.8);
-  margin: 0;
-  color: white;
-  transition: all 2s ease 0s;
+input[type=search] {
+	background: rgba(124,183,123,.8) url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	border: solid 1px #8EB77B;
+	padding: 9px 10px 9px 32px;
+	width: 55px;
+
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 20px;
+
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+input[type=search]:focus {
+	width: 70px;
+	background-color: #fff;
+	border-color: #8EB77B;
+
 }
 
-.caption:hover h2 {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
+<<<<<<< HEAD
+// size of the search Bar before
+#searchBar input[type=search] {
+  width: 17px;
+  padding-left: 10px;
+  color: transparent;
 }
-
+#searchBar input[type=search]:hover {
+	background-color: #fff;
+}
+#searchBar input[type=search]:hover {
+	width: 1000px;
+	padding-left: 32px;
+	color: #8EB77B;
+	background-color: #fff;
+	cursor: auto;
+}
+#searchBar input:-moz-placeholder {
+	color: transparent;
+}
+#searchBar input::-webkit-input-placeholder {
+	color: transparent;
+}
+=======
 // .caption::before {
 //     content: ' ';
 //     position: absolute;
@@ -567,3 +630,4 @@ footer {
 // }
 
 // ********** Group Index *******************
+>>>>>>> 1ef9b894fc726130f137a8623bb1545ce783819f

@@ -4,21 +4,23 @@
     <div class="timetable col-md-5">
       <h2>Timetable</h2>
       <div ng-repeat="group in dashboard.upcomingArray  | orderBy : dashboard.orderBy track by $index">
-        <h5><strong>{{ group.name }}</strong></h5>
+        <a ui-sref="groupsShow({ id: group._id })"><h5><strong>{{ group.name }}</strong></h5></a>
         <p>{{ group.schedule[0].viewableDate }}</p>
         <p>{{ group.schedule[0].startTime }}</p>
         <p>{{ group.schedule[0].meetingPoint }}</p>
         <p>{{ group.schedule[0].location }}</p>
       </div>
     </div>
-
-    <!-- {{ group.name }} -->
+    <!-- <h3>Search Runch</h3> -->
+    <form id="searchBar">
+    	<input type="search" placeholder="Search Runch">
+    </form>
     <div class="dashImage ">
       <div class="dash-groups col-md-7">
         <h2>My Groups</h2>
-        <div class="group-item caption" ng-repeat="group in dashboard.user.groups">
+        <div class="group-item" ng-repeat="group in dashboard.user.groups">
           <img class="group-image" src="{{ group.image }}">
-          <h2 class="imageHeader">{{ group.name }}</h2>
+          <a ui-sref="groupsShow({ id: group._id })"><h2 class="imageHeader">{{ group.name }}</h2></a>
         </div>
       </div>
     </div>
@@ -27,7 +29,7 @@
 
   <!-- <div class="hover"> -->
   <!--  More group info to go here -->
-  <!-- <a ui-sref="groupsShow({ id: group._id })"><h4 class="imgBanner">{{ group.name }}</h4></a> -->
+  <!-- <a ui-sref="groupsShow({ id: group._id })"><h2 class="imageHeader">{{ group.name }}</h2></a> -->
 
   <div class="row">
     <div class="owned-groups col-md-3">
@@ -35,7 +37,7 @@
       <div ng-repeat="group in dashboard.user.ownedGroups">
         <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
       </div>
-      <button type="button" ng-hide="dashboard.user.ownedGroups.length" name="button" ui-sref="groupsNew">Create a running group</button>
+      <button class="dashCreateBtn" type="button" ng-hide="dashboard.user.ownedGroups.length" name="button" ui-sref="groupsNew">Create a RUNCH group</button>
     </div>
 
 
