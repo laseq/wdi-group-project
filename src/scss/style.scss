@@ -1,15 +1,27 @@
 // Import all of your scss files here
 
+// @font-face {
+//   font-family: 'RunchFont';
+//   src: url('/fonts/RunchFont.eot');
+//   src: url('/fonts/RunchFont.woff2') format('woff2'),
+//   url('/fonts/RunchFont.woff') format('woff'),
+//   url('/fonts/RunchFont.ttf') format('truetype'),
+//   url('/fonts/RunchFont.svg#TypoRoundThinDemo') format('svg'),
+//   url('/fonts/RunchFont.eot?#iefix') format('embedded-opentype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
 @font-face {
-  font-family: 'RunchFont';
-  src: url('/fonts/RunchFont.eot');
-  src: url('/fonts/RunchFont.woff2') format('woff2'),
-  url('/fonts/RunchFont.woff') format('woff'),
-  url('/fonts/RunchFont.ttf') format('truetype'),
-  url('/fonts/RunchFont.svg#TypoRoundThinDemo') format('svg'),
-  url('/fonts/RunchFont.eot?#iefix') format('embedded-opentype');
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'RunchFont';
+	src: url('/fonts/RunchFont.eot');
+	src: url('/fonts/RunchFont.eot?#iefix') format('embedded-opentype'),
+		url('/fonts/RunchFont.woff2') format('woff2'),
+		url('/fonts/RunchFont.woff') format('woff'),
+		url('/fonts/RunchFont.ttf') format('truetype'),
+		url('/fonts/RunchFont.svg#RunchFont') format('svg');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @import url('https://fonts.googleapis.com/css?family=Poppins');
@@ -85,25 +97,11 @@ nav a {
   padding: 5px;
   background-color: rgba(124,183,123,.5);
   font-size: 51px;
-  color: black;
+  color: white;
   font-family: 'RunchFont';
   margin-left: -12px;
   text-align: center;
 }
-
-// .mainContainer {
-//   position: absolute;
-//   width: 102%;
-//   top: 0%;
-//   padding: 30px;
-//   background-color: rgba(255, 255, 255, 0.3);
-//   font-size: 51px;
-//   color: white;
-//   font-family: 'RunchFont';
-//   margin-left: -12px;
-//   text-align: center;
-//   height: 103%;
-// }
 
 .singed-in-logo {
   width: 300px;
@@ -526,6 +524,11 @@ footer {
 }
 
 .timetable {
+  margin-bottom: 85px;
+  text-align: center;
+}
+
+#border {
   width: 20%;
   text-align: center;
 }
