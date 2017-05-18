@@ -1,0 +1,47 @@
+// ************* Group Create Form ***********
+
+.new {
+  position: fixed;
+  top: 57%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  }
+
+  .edit {
+    position: fixed;
+    top: 57%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+  }
+
+.form-control-create {
+    width: 500px;
+    height: 40px;
+    border: solid 1px #8EB77B;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 15px;
+    font-family: 'RunchFont';
+    margin-top: 6px;
+  }
+
+
+  .form-button-create {
+    background: #8EB77B;
+    color: #fff;
+    margin-top: 10px;
+    width: 500px;
+    height: 40px;
+    border: 0px;
+    border-radius: 3px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'RunchFont';
+  }
+
+  .form-button-create:hover {
+    background-color: white;
+    color: #8EB77B;
+    border: solid 1px #8EB77B;
+  }
