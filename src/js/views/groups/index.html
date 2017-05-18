@@ -4,27 +4,22 @@
 <div class="container-fluid">
   <div class="row">
 
-    <div class="dashImage">
-      <div class="index-groups col-md-12">
-        <div class="index-group-item caption" ng-repeat="group in groupsIndex.all track by $index" ng-model="groupsIndex.all">
-          <!-- Image and Header -->
+
+    <div class="index-groups">
+      <div ng-repeat="group in groupsIndex.all track by $index" ng-model="groupsIndex.all" class="col-md-3 index-info-card">
+        <!-- Image and Header -->
+
+        <div class="dashImage caption index-group-item">
           <a ui-sref="groupsShow({ id: group._id })">
             <img class="group-image" ng-src="{{group.image}}" alt="Group Image">
             <h2 class="imageHeader">{{ group.name }}</h2></a>
-
-
-            <!-- Extra Information underneath  -->
-            <div class="group-info">
-              <h2>{{ 1+1}}</h2>
-              <p></p>
-            </div>
-
+          </div>
+          <!-- Extra Information underneath  -->
+          <div class="group-info">
+            {{ group.name }}
           </div>
         </div>
       </div>
-
-
-
 
 
       <!-- <button class="btn btn-primary" type="button" name="button" ng-click="groupsIndex.join(group, $event, $index)" ng-if="group.members.indexOf(main.user.id) === -1">Join</button>
@@ -34,6 +29,10 @@
       ng-if="group.members.indexOf(main.user.id) !== -1 && group.admin._id !== groupsIndex.currentUserId">
       Leave
     </button> -->
+
+
+
+
 
   </div>
 </div>
