@@ -6,6 +6,10 @@
 
   <button class="groupShowBtn" type="button" name="button" ng-click="groupsShow.join($event)" ng-hide="groupsShow.member" >Join</button>
   <button class="groupShowBtn" type="button" name="button" ng-click="groupsShow.openLeave($event)" ng-if="groupsShow.memberAndNotAdmin">Leave</button>
+
+  <button class="groupShowBtn" ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ng-click="groupsShow.openDelete()">Delete</button>
+
+  <button class="groupShowBtn" id="groupEdit" ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ui-sref="groupsEdit({ id: groupsShow.group._id })">Edit </button>
 </div>
 
 <div class="map-styling">
@@ -33,15 +37,15 @@
   <h2>Runchers:</h2>
   <div ng-repeat="member in groupsShow.group.members track by $index" ng-model="groupsShow.group.members">
     <div class="userImages"> <a ui-sref="usersShow({ id: member._id })"><img class="img-thumbnail img-responsive" ng-src="{{ member.image }}"></a></div>
-    <p>{{ member.username }}</p>
+    <div class="runchUsername"><p>{{ member.username }}</p></div>
   </div>
 </div>
 
 <div class="groupDescription">
   <h2>About your Runch group</h2>
   <div ng-repeat="schedule in groupsShow.group.schedule">
-  <p>{{ schedule.description }}</p>
-</div>
+    <p>{{ schedule.description }}</p>
+  </div>
 </div>
 
 <form class="discussion" ng-submit="groupsShow.postComment()" method="post">
@@ -50,16 +54,11 @@
   <input class="discussionBtn" type="submit" name="" value="Post">
 </form>
 
-<div ng-repeat="comment in groupsShow.group.comments" ng-model="groupsShow.group.comments">
-  <p>{{ comment.comment }}</p>
-  <!-- <p>{{ comment.user }}</p> -->
-  <p>Comment by: {{ comment.user.username }}</p>
+<div class="comments" ng-repeat="comment in groupsShow.group.comments" ng-model="groupsShow.group.comments">
+  <img class="img-circle" ng-src="{{ comment.user.image }}">
+  <div class="commentBox">
+    <h5><a ui-sref="usersShow({ id: comment.user._id })">{{ comment.user.username }}</a></h5>
+    <p>{{ comment.comment }}</p>
+  </div>
+  <!-- <p>Comment by: {{ comment.user.username }}</p> -->
 </div>
-
-<button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ui-sref="groupsEdit({ id: groupsShow.group._id })">Edit Group</button>
-
-<!-- <button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ng-click="groupsShow.delete(groupsShow.group)">Delete</button> -->
-<button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id"
-  ng-click="groupsShow.openDelete()">
-  Delete
-</button>
