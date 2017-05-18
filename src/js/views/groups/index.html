@@ -4,49 +4,18 @@
 
 <button type="button" name="button" ng-hide="groupsIndex.groupAdmin" ui-sref="groupsNew">Create a running group</button>
 
-<!-- <form action="">
-<input ng-model="groupsIndex.radioFilter" ng-click="groupsIndex.filterTime()" type="radio" name="timespan" value="Upcoming" checked="checked"> Upcoming<br>
-<input ng-model="groupsIndex.radioFilter" ng-click="groupsIndex.filterTime()"
-type="radio" name="timespan" value="Past"> Past<br>
-<input ng-model="groupsIndex.radioFilter" ng-click="groupsIndex.filterTime()"
-type="radio" name="timespan" value="All"> All
-</form> -->
-
-
-<!-- <div ng-repeat="group in groupsIndex.filterArray  | orderBy : groupsIndex.orderBy track by $index"
-ng-model="groupsIndex.filterArray"> -->
-<!-- <div ng-repeat="group in groupsIndex.all  | orderBy : 'schedule[0].date' track by $index"
-ng-model="groupsIndex.all"> -->
 <div class="container">
   <div class="row">
 
     <div class="dashImage">
       <div class="dash-groups col-md-12">
         <div class="group-item caption" ng-repeat="group in groupsIndex.all track by $index" ng-model="groupsIndex.all">
+          <a ui-sref="groupsShow({ id: group._id })">
           <img class="group-image" ng-src="{{group.image}}" alt="Group Image">
-          <h2 class="imageHeader">{{ group.name }}</h2>
+          <h2 class="imageHeader">{{ group.name }}</h2></a>
         </div>
       </div>
     </div>
-
-    <!--  Info for the hover -->
-    <!-- <div class="dashImage caption">
-      <div class="dash-groups col-md-12">
-        <div class="group-item caption" ng-repeat="group in dashboard.user.groups">
-          <div>
-            <h4>Run Details</h4>
-            <p>Day: {{ group.schedule[0].day }}</p>
-            <p>Date: {{ group.schedule[0].viewableDate }}</p>
-            <p>Start Time: {{ group.schedule[0].startTime }}</p>
-            <p>Meeting Point: {{ group.schedule[0].meetingPoint }}</p>
-            <p>Location: {{ group.schedule[0].location }}</p>
-            <p>Runners: {{ group.members.length }}/{{ group.schedule[0].maxRunners }}</p>
-          </div>
-          <button class="btn btn-primary" type="button" name="button" ng-click="groupsIndex.join(group, $event, $index)" ng-if="group.members.indexOf(main.user.id) === -1">Join</button>
-          <button class="btn btn-danger" type="button" name="button" ng-click="groupsIndex.leave(group, $event, $index)" ng-if="group.members.indexOf(main.user.id) !== -1">Leave</button>
-        </div>
-      </div>
-    </div> -->
 
   <button class="btn btn-primary" type="button" name="button" ng-click="groupsIndex.join(group, $event, $index)" ng-if="group.members.indexOf(main.user.id) === -1">Join</button>
 

@@ -14,7 +14,7 @@
 
     <div class="user-groups col-md-8">
       <div class="group-item" ng-repeat="group in usersProfile.user.groups">
-        <a ui-sref="groupsShow({ id: group._id })"><img class="group-image" src="{{ group.image }}"></a><h2 class="imageHeader">{{ group.name }}</h2>
+        <a ui-sref="groupsShow({ id: group._id })"><img class="group-image" src="{{ group.image }}"><h2 class="imageHeader">{{ group.name }}</h2></a>
       </div>
     </div>
   </div>
