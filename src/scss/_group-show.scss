@@ -12,13 +12,16 @@
   margin-bottom: -2px;
   margin-left: 30px;
 }
+
 .groupAdminTitle {
   display: inline-block;
   margin-left: 30px;
 }
+
 .adminUSer {
   display: inline-block;
   margin-left: 5px;
+  font-size: 15px;
 }
 .groupShowBtn{
   background: #8EB77B;
@@ -57,12 +60,12 @@
   left: 50%;
   transform: translate(-50%);
   overflow: hidden;
-  margin-top: 5px;
+  margin-top: 7px;
 }
 
 // Group Details
 .groupInformation{
-  margin-left: 60px;
+  margin-left: 70px;
   margin-top: 30px;
   display: inline-block;
 
@@ -89,7 +92,7 @@
 }
 
 .groupDescription{
-  margin-left: 60px;
+  margin-left: 70px;
   margin-top: 40px;
 
   p{
