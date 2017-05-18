@@ -466,7 +466,7 @@ footer {
   text-align: center;
 }
 
-.col-md-3 {
+#border {
   width: 20%;
   border-right: 1px solid #8EB77B;
   // height: 1000px;
@@ -643,10 +643,11 @@ input[type=search]:focus {
   // border: solid black 1px;
   padding: 5px;
   float: left;
-
+  background-color: #DEF9BE;
 }
 
 .index-info-card {
+
 }
 
 .index-group-item {
