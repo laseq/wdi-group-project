@@ -5,8 +5,6 @@ angular
 GroupsLeaveCtrl.$inject = ['group', 'theEvent', 'theIndex', 'currentUserId', '$uibModalInstance', '$state', 'Group'];
 function GroupsLeaveCtrl(group, theEvent, theIndex, currentUserId, $uibModalInstance, $state, Group) {
 
-  console.log('Entered GroupsLeaveCtrl');
-
   const vm = this;
   vm.group = group;
   vm.theEvent = theEvent;
@@ -15,19 +13,12 @@ function GroupsLeaveCtrl(group, theEvent, theIndex, currentUserId, $uibModalInst
   vm.close = closeModal;
   vm.leave = groupsLeave;
 
-  // console.log('vm.group in GroupsLeaveCtrl:', vm.group);
-  // console.log('vm.theEvent in GroupsLeaveCtrl:', vm.theEvent);
-  // console.log('vm.theIndex in GroupsLeaveCtrl:', vm.theIndex);
-  // console.log('vm.currentUserId in GroupsLeaveCtrl:', vm.currentUserId);
-
   function closeModal() {
-    console.log('Entered closeModal in GroupsLeaveCtrl');
     $uibModalInstance.close();
   }
 
   function groupsLeave() {
     if (vm.currentUserId === vm.group.admin._id) {
-      console.log('You are the admin. You cannot leave your own group');
       return false;
     }
     Group
@@ -46,25 +37,18 @@ function GroupsLeaveCtrl(group, theEvent, theIndex, currentUserId, $uibModalInst
             group.members[i] = group.members[i]._id;
           }
 
-          console.log('group.members:', group.members);
-
+          // Take the member out of the group. Trust me, Mongo DB has some sort of time lag
+          // with removing an element and so the update isn't
+          // instantaneous like with adding to the database
           const position = group.members.indexOf(vm.currentUserId);
-          console.log('position:', position);
-
-          if (position !== -1) {
-            group.members.splice(position);
-          }
+          if (position !== -1) group.members.splice(position);
         }
 
         // If the leave request comes from the group show page
         // i.e group is populated with member information
         if (vm.theIndex === null) {
-          console.log('Entered vm.theIndex === null if statement');
           for (let i=0; i<group.members.length; i++) {
-            console.log('group.members[i]._id:', group.members[i]._id);
-            console.log('vm.currentUserId:', vm.currentUserId);
             if (group.members[i]._id === vm.currentUserId) {
-              console.log('Entered group.members[i]._id === vm.currentUserId if statement');
               group.members.splice(i);
               break;
             }
@@ -77,7 +61,4 @@ function GroupsLeaveCtrl(group, theEvent, theIndex, currentUserId, $uibModalInst
         console.log(err);
       });
   }
-
-
-
 }

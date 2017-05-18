@@ -8,17 +8,16 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
 
   // vm.group = Group.get($stateParams);
   //vm.currentUserId = TokenService.decodeToken().id;
-  // vm.currentUser = CurrentUserService.currentUser;
   vm.currentUser = User.get({ id: TokenService.decodeToken().id });
 
   vm.delete = groupsDelete;
   vm.join = joinGroup;
-  vm.leave = leaveGroup;
   vm.memberArray = [];
   vm.commenters = [];
   vm.postComment = postComment;
   vm.member = false;
   vm.openLeave = openLeaveModal;
+
   const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -42,25 +41,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
       .catch(err => console.log('error in getGroupDetails:', err));
   }
 
-  function splitDateTimeString(group) {
-    group.schedule.forEach(schedule => {
-      const timeInfo = new Date(schedule.date);
-      schedule.day = weekDay[timeInfo.getDay()];
-      const theDate = timeInfo.getDate();
-      const theMonth = months[timeInfo.getMonth()];
-      const theYear = timeInfo.getUTCFullYear();
-      let startHours = timeInfo.getHours();
-      let startMins = timeInfo.getMinutes();
-      if (startHours < 10) {
-        startHours = `0${startHours}`;
-      }
-      if (startMins < 10) {
-        startMins = `0${startMins}`;
-      }
-      schedule.viewableDate = `${theDate} ${theMonth} ${theYear}`;
-      schedule.startTime = `${startHours}:${startMins}`;
-    });
-  }
+
 
   function groupsDelete(group) {
     Group
@@ -83,26 +64,6 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
       .catch(err => {
         console.log(err);
       });
-  }
-
-  function leaveGroup() {
-    if (vm.currentUser._id === vm.group.admin._id) {
-      console.log('You can\'t leave the group as you\'re the admin');
-      return false;
-    }
-    Group
-    .leave({ id: $stateParams.id })
-    .$promise
-    .then(group => {
-      const position = group.members.indexOf(vm.currentUser._id);
-      group.members.splice(position);
-      vm.group = group;
-      splitDateTimeString(vm.group);
-      checkIfMember();
-    })
-    .catch(err => {
-      console.log(err);
-    });
   }
 
   function openLeaveModal($event) {
@@ -129,13 +90,32 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
     leaveModalInstance
       .result
       .then(passedItem => {
-        console.log('passedItem:', passedItem);
         if (passedItem) {
           vm.group = passedItem;
           splitDateTimeString(vm.group);
           checkIfMember();
         }
       });
+  }
+
+  function splitDateTimeString(group) {
+    group.schedule.forEach(schedule => {
+      const timeInfo = new Date(schedule.date);
+      schedule.day = weekDay[timeInfo.getDay()];
+      const theDate = timeInfo.getDate();
+      const theMonth = months[timeInfo.getMonth()];
+      const theYear = timeInfo.getUTCFullYear();
+      let startHours = timeInfo.getHours();
+      let startMins = timeInfo.getMinutes();
+      if (startHours < 10) {
+        startHours = `0${startHours}`;
+      }
+      if (startMins < 10) {
+        startMins = `0${startMins}`;
+      }
+      schedule.viewableDate = `${theDate} ${theMonth} ${theYear}`;
+      schedule.startTime = `${startHours}:${startMins}`;
+    });
   }
 
   function postComment() {
