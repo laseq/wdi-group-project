@@ -42,7 +42,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
       .catch(err => console.log('error in getGroupDetails:', err));
   }
 
-  function joinGroup() {
+  function joinGroup($event) {
     Group
       .join({ id: $stateParams.id })
       .$promise
@@ -50,10 +50,29 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
         vm.group = group;
         splitDateTimeString(vm.group);
         checkIfMember();
+
+        openJoinModal($event);
+
       })
       .catch(err => {
         console.log(err);
       });
+  }
+
+  function openJoinModal($event) {
+
+    $uibModal.open({
+      templateUrl: 'js/views/partials/groupJoinModal.html',
+      controller: 'GroupsJoinCtrl as groupsJoin',
+      resolve: {
+        group: () => {
+          return vm.group;
+        },
+        theEvent: () => {
+          return $event;
+        }
+      }
+    });
   }
 
   function openLeaveModal($event) {
