@@ -198,3 +198,27 @@
     color: #8EB77B;
   }
 }
+
+//Modals
+
+.my-modals {
+
+  .modal-body-header {
+    text-align: center;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+
+  .join-modal-schedule{
+    li {
+      display: block;
+      list-style: none;
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+
+}
