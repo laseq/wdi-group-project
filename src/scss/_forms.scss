@@ -50,6 +50,28 @@
   border: solid 1px #8EB77B;
 }
 
-.createHeader, .editHeader {
+.createHeader, .editHeader, .edit-user-header {
   text-align: center;
+}
+
+.user-edit-description {
+  background: #8EB77B;
+  color: #fff;
+  margin-top: 10px;
+  width: 100px;
+  height: 30px;
+  border: 0px;
+  border-radius: 3px;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'RunchFont';
+}
+
+.user-edit {
+    position: fixed;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
 }
