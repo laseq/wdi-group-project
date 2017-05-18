@@ -525,12 +525,12 @@ footer {
 // ********** User Profie/Show *******************
 
 .profile-info {
-  width: 20%; // of the row
+  width: 20%;
 }
 
 .profile-image {
-  width: 100%; // of the profile-info
-  height: 200px; // % non-responsive
+  width: 100%;
+  height: 100%;
 }
 
 .user-groups {
@@ -623,5 +623,3 @@ footer {
 //     -webkit-transform: translateY(0);
 //             transform: translateY(0);
 // }
-
-// ********** Group Index *******************
