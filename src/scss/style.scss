@@ -302,6 +302,7 @@ footer {
 
 // ********** Group Show *******************
 
+// Top section
 .groupInfo{
   display: inline-block;
   float: left;
@@ -344,6 +345,11 @@ footer {
   border: solid 1px #8EB77B;
 }
 
+#groupEdit{
+  margin-right: 10px;
+}
+
+// map
 .map-styling {
   width: 95%;
   height: 350px;
@@ -356,6 +362,7 @@ footer {
   margin-top: 5px;
 }
 
+// Group Details
 .groupInformation{
   margin-left: 60px;
   margin-top: 30px;
@@ -383,17 +390,23 @@ footer {
   }
 }
 
+.groupDescription{
+  margin-left: 60px;
+  margin-top: 40px;
+
+  p{
+    font-size: 16px;
+    margin-top: 20px;
+  }
+}
+
+// Runchers
 .groupMembers{
+  width: 240px;
   display: inline-block;
   float: right;
   overflow: hidden;
   margin-top: 20px;
-
-  p{
-    display: inline-block;
-    padding-left: 10px;
-    font-size: 15px;
-  }
 }
 
 .userImages{
@@ -408,15 +421,15 @@ footer {
   float: left;
 }
 
-.groupDescription{
-  margin-left: 60px;
-  margin-top: 40px;
-
+.runchUsername{
+  display: inline-block;
+  padding-left: 10px;
   p{
-    font-size: 16px;
-    margin-top: 20px;
+    font-size: 12px;
   }
+
 }
+
 
 .discussion{
   margin-left: 60px;
@@ -426,15 +439,16 @@ footer {
 .discussionBtn{
   background: #8EB77B;
   color: #fff;
-  margin-right: 30px;
+  margin-top: 2px;
+  margin-left: 545px;
   width: 55px;
   border: 0px;
   border-radius: 3px;
-  font-size: 20px;
+  font-size: 15px;
   text-transform: uppercase;
   font-weight: bold;
   font-family: 'RunchFont';
-  display: inline-block;
+  display: block;
 }
 
 .discussionBtn:hover {
@@ -458,8 +472,8 @@ footer {
 }
 
 .comments{
-  margin-left: 90px;
-  margin-top: 20px;
+  margin-left: 60px;
+  margin-top: 10px;
 }
 
 .img-circle{
@@ -478,7 +492,7 @@ footer {
   border-radius: 5px;
 
   outline: 0;
-  width: 300px;
+  width: 555px;
   margin-left: 15px;
   display: inline-block;
 
