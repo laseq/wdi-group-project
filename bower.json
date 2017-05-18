@@ -15,6 +15,23 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "^1.5.8"
-  }
+    "angular": "^1.5.8",
+    "angular-jwt": "^0.1.8",
+    "angular-ui-router": "^0.3.2",
+    "angular-resource": "^1.5.9",
+    "angular-moment-picker": "moment-picker#^0.10.0",
+    "bootstrap-css-only": "^3.3.7",
+    "angular-bootstrap": "^2.5.0",
+    "angular-animate": "^1.6.4",
+    "bootstrap": "^3.3.7"
+  },
+  "overrides": {
+   "bootstrap": {
+     "main": [
+       "dist/js/bootstrap.js",
+       "dist/css/bootstrap.css",
+       "fonts/*"
+     ]
+   }
+ }
 }

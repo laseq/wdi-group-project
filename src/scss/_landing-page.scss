@@ -1,0 +1,51 @@
+// *************Landing Page*********************
+
+video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+}
+
+#logo {
+  width: 400px;
+}
+
+nav ul li {
+  color: white;
+  display: inline;
+  font-size: 20px;
+  text-decoration: none;
+  font-family: 'RunchFont', serif;
+  float: right;
+  padding: 10px;
+}
+
+nav a {
+  color: white !important;
+  list-style: none;
+  font-family: 'RunchFont', serif;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.front-para {
+  position: absolute;
+  width: 100%;
+  top: 40%;
+  padding: 5px;
+  background-color: rgba(124,183,123,.5);
+  font-size: 51px;
+  color: white;
+  font-family: 'RunchFont';
+  margin-left: -12px;
+  text-align: center;
+}
+
+.singed-in-logo {
+  width: 300px;
+}

@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row index-header">
+    <div class="col-md-6">
+      <h1 class="pull-left">All Running Groups</h1>
+    </div>
+    <div class="col-md-6">
+      <button class="group-index-create-button pull-right" type="button" name="button" ng-hide="groupsIndex.groupAdmin" ui-sref="groupsNew">Create a running group</button>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="index-groups">
+      <div ng-repeat="group in groupsIndex.all track by $index" ng-model="groupsIndex.all" class="col-md-3 index-info-card">
+        <!-- Image and Header -->
+
+        <div class="dashImage caption index-group-item">
+          <a ui-sref="groupsShow({ id: group._id })">
+            <img class="group-image" ng-src="{{group.image}}" alt="Group Image">
+            <h2 class="imageHeader">{{ group.name }}</h2></a>
+          </div>
+          <!-- Extra Information underneath  -->
+          <div class="group-info">
+            <p>Day: {{ group.schedule[0].day }}</p>
+            <p>Date: {{ group.schedule[0].viewableDate }}</p>
+            <p>Start Time: {{ group.schedule[0].startTime }}</p>
+            <p>Meeting Point: {{ group.schedule[0].meetingPoint }}</p>
+            <p>Distance: {{ group.schedule[0].distance }}</p>
+            <p>Runners: {{ group.members.length }}/{{ group.schedule[0].maxRunners}}</p>
+
+            <div class="row group-info-buttons" align="center">
+              <div class="col-md-6 col-centered">
+
+                <button class="btn btn-primary group-info-button" type="button" name="button" ng-click="groupsIndex.join(group, $event, $index)" ng-if="group.members.indexOf(main.user.id) === -1">Join</button>
+
+                <button class="btn btn-danger group-info-button" type="button" name="button"
+                ng-click="groupsIndex.openLeave(group, $event, $index, groupsIndex.currentUserId)"
+                ng-if="group.members.indexOf(main.user.id) !== -1 && group.admin._id !== groupsIndex.currentUserId">
+                Leave
+              </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

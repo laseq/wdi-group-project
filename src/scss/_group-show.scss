@@ -1,0 +1,240 @@
+// ********** Group Show *******************
+
+// Top section
+.groupInfo{
+  display: inline-block;
+  float: left;
+  max-width: 700px;
+  overflow: hidden;
+}
+
+.groupShowName {
+  margin-bottom: -2px;
+  margin-left: 30px;
+}
+
+.groupAdminTitle {
+  display: inline-block;
+  margin-left: 30px;
+}
+
+.adminUSer {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 15px;
+}
+.groupShowBtn{
+  background: #8EB77B;
+  color: #fff;
+  margin-top: -30px;
+  margin-right: 30px;
+  width: 100px;
+  height: 40px;
+  border: 0px;
+  border-radius: 3px;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'RunchFont';
+  display: inline-block;
+  float: right;
+}
+
+.groupShowBtn:hover {
+  background-color: white;
+  color: #8EB77B;
+  border: solid 1px #8EB77B;
+}
+
+#groupEdit{
+  margin-right: 10px;
+}
+
+// map
+.map-styling {
+  width: 95%;
+  height: 350px;
+  display: block;
+  background: #fff;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  overflow: hidden;
+  margin-top: 7px;
+}
+
+// Group Details
+.groupInformation{
+  margin-left: 70px;
+  margin-top: 30px;
+  display: inline-block;
+
+  .groupShowCon {
+    margin-top: 20px;
+
+    p{
+      display: inline;
+    }
+
+    .glyphicon{
+      color: #8EB77B;
+      padding-right: 10px;
+      display: inline-block;
+      font-size: 16px;
+    }
+
+    .glyphiconText{
+      color: #000;
+      padding-right: 25px;
+      font-size: 16px;
+    }
+  }
+}
+
+.groupDescription{
+  margin-left: 70px;
+  margin-top: 40px;
+
+  p{
+    font-size: 16px;
+    margin-top: 20px;
+  }
+}
+
+// Runchers
+.groupMembers{
+  display: inline-block;
+  float: right;
+  overflow: hidden;
+  margin-top: 20px;
+
+  p{
+    display: inline-block;
+    padding-left: 10px;
+    margin-top: -50px;
+    font-size: 15px;
+  }
+}
+
+.memberInfo{
+  display: flex;
+}
+
+.img-thumbnail{
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  position: relative;
+  float: left;
+  margin-top: 5px;
+}
+
+.runchUsername{
+  display: inline-block;
+  padding-left: 20px;
+  margin-top: 30px;
+  p{
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  a{
+    font-family: 'Poppins', sans-serif;
+    color: #8EB77B;
+  }
+}
+
+// Comments
+.discussion{
+  margin-left: 70px;
+  margin-top: 50px;
+}
+
+.discussionBtn{
+  background: #8EB77B;
+  color: #fff;
+  margin-top: 2px;
+  margin-left: 545px;
+  width: 55px;
+  border: 0px;
+  border-radius: 3px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'RunchFont';
+  display: block;
+}
+
+.discussionBtn:hover {
+  background-color: white;
+  color: #8EB77B;
+  border: solid 1px #8EB77B;
+}
+
+.discussionBox {
+  width: 600px;
+  height: 70px;
+  margin-top: 10px;
+  border: 1px solid #8EB77B;
+  padding: 4px 10px;
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  outline: 0;
+}
+
+.comments{
+  margin-left: 70px;
+  margin-top: 10px;
+}
+
+.img-circle{
+  height: 30px;
+  width: 30px;
+  float: left;
+  margin-top: 25px;
+}
+
+.commentBox{
+  border: 1px solid #8EB77B;
+  padding: 8px 10px;
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  outline: 0;
+  width: 555px;
+  margin-left: 15px;
+  display: inline-block;
+
+  a{
+    color: #8EB77B;
+  }
+}
+
+//Modals
+
+.my-modals {
+
+  .modal-body-header {
+    text-align: center;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+
+  .join-modal-schedule{
+    li {
+      display: block;
+      list-style: none;
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+
+}

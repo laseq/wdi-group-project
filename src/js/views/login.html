@@ -1,0 +1,21 @@
+<header>
+  <a href="home">
+  <img id="logo" src="images/logo.png">
+  </a>
+</header>
+<div id="video-overlay">
+
+  <video id="bgvid" loop muted autoplay>
+    <source src="http://tjshaw.co.uk/video/running.mp4" type="video/mp4">
+    </video>
+  </div>
+  <!-- <h1>Login</h1> -->
+  <form class="login" ng-submit="login.login()">
+    <div class="form-group">
+      <input class="form-control" type="email" name="email" ng-model="login.user.email" placeholder="Email" required>
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="password" name="password" ng-model="login.user.password" placeholder="Password" required>
+    </div>
+    <input class="form-button" type="submit" value="Runch Away">
+  </form>

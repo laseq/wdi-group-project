@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'RunchFont';
+  src: url('/fonts/RunchFont.eot');
+  src: url('/fonts/RunchFont.woff2') format('woff2'),
+  url('/fonts/RunchFont.woff') format('woff'),
+  url('/fonts/RunchFont.ttf') format('truetype'),
+  url('/fonts/RunchFont.svg#TypoRoundThinDemo') format('svg'),
+  url('/fonts/RunchFont.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+html, body {
+  margin: 0;
+}
+
+body {
+  // font-family: 'RunchFont';
+}
+
+a {
+  text-decoration: none !important;
+  font-family: 'RunchFont';
+  color: black;
+}
+
+h1, h2, h3, h4, h5 {
+  color: black;
+  font-family: 'RunchFont';
+  color: #8EB77B
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px
+}
+
+main {
+  margin: 10px;
+}
+
+.user-edit-button {
+  background: #8EB77B;
+  color: #fff;
+  margin-top: 10px;
+  width: 50px;
+  height: 40px;
+  border: 0px;
+  border-radius: 3px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'RunchFont';
+}
