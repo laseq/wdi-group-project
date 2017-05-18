@@ -2,16 +2,19 @@ angular
   .module('runchApp')
   .controller('GroupsIndexCtrl', GroupsIndexCtrl);
 
-GroupsIndexCtrl.$inject = ['Group', 'TokenService', 'User', 'filterFilter'];
-function GroupsIndexCtrl(Group, TokenService, User, filterFilter) {
+GroupsIndexCtrl.$inject = ['Group', 'TokenService', 'User', '$uibModal'];
+function GroupsIndexCtrl(Group, TokenService, User, $uibModal) {
   const vm = this;
+  
   const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   vm.currentUserId = TokenService.decodeToken().id;
   vm.join = joinGroup;
-  vm.leave = leaveGroup;
   vm.member = false;
+  vm.groupAdmin = false;
+  vm.openLeave = openLeaveModal;
+
   // vm.filterTime = filterTimeSpans;
   // vm.now = new Date();
   // vm.radioFilter = 'Upcoming';
@@ -53,6 +56,13 @@ function GroupsIndexCtrl(Group, TokenService, User, filterFilter) {
       .then(groups => {
         vm.all = groups;
         splitDateTimeString(groups);
+
+        for (let i=0; i<groups.length; i++) {
+          if (groups[i].admin._id === vm.currentUserId) {
+            vm.groupAdmin = true;
+            break;
+          }
+        }
         // filterTimeSpans();
       })
       .catch(err => console.log('error in getGroupDetails:', err));
@@ -81,34 +91,36 @@ function GroupsIndexCtrl(Group, TokenService, User, filterFilter) {
       });
   }
 
-  function leaveGroup(group, $event, $index) {
-    if (vm.currentUserId === group.admin._id) {
-      return false;
-    }
-    Group
-      .leave({ id: group._id })
-      .$promise
-      .then(group => {
-        $event.target.style.display = 'none';
-        const position = group.members.indexOf(vm.currentUserId);
-        group.members.splice(position);
-        vm.all[$index] = group;
+  function openLeaveModal(group, $event, $index, currentUserId) {
 
-        // Since the /api/groups/:id/leave call populates the members,
-        // as member population is required for the groups show leaving,
-        // this loop replaces the population with just the member id
-        // to get the show and hide functionality of the join/leave buttons working
-        for (let i=0; i<vm.all[$index].members.length; i++) {
-          vm.all[$index].members[i] = group.members[i]._id;
+    var leaveModalInstance = $uibModal.open({
+      templateUrl: 'js/views/partials/groupLeaveModal.html',
+      controller: 'GroupsLeaveCtrl as groupsLeave',
+      resolve: {
+        group: () => {
+          return group;
+        },
+        theEvent: () => {
+          return $event;
+        },
+        theIndex: () => {
+          return $index;
+        },
+        currentUserId: () => {
+          return currentUserId;
         }
+      }
+    });
 
-        splitDateTimeString(vm.all);
-      })
-      .catch(err => {
-        console.log(err);
+    leaveModalInstance
+      .result
+      .then(passedItem => {
+        if (passedItem) {
+          vm.all[$index] = passedItem;
+          splitDateTimeString(vm.all);
+        }
       });
   }
-
 
   function splitDateTimeString(groups) {
     groups.forEach(group => {
@@ -131,4 +143,5 @@ function GroupsIndexCtrl(Group, TokenService, User, filterFilter) {
       });
     });
   }
+
 }

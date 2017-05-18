@@ -2,7 +2,7 @@
 
 <h2>Running Groups</h2>
 
-<button type="button" name="button" ui-sref="groupsNew">Create a running group</button>
+<button type="button" name="button" ng-hide="groupsIndex.groupAdmin" ui-sref="groupsNew">Create a running group</button>
 
 <!-- <form action="">
 <input ng-model="groupsIndex.radioFilter" ng-click="groupsIndex.filterTime()" type="radio" name="timespan" value="Upcoming" checked="checked"> Upcoming<br>
@@ -48,6 +48,14 @@ ng-model="groupsIndex.all"> -->
       </div>
     </div> -->
 
+  <button class="btn btn-primary" type="button" name="button" ng-click="groupsIndex.join(group, $event, $index)" ng-if="group.members.indexOf(main.user.id) === -1">Join</button>
+
+  <button class="btn btn-danger" type="button" name="button"
+    ng-click="groupsIndex.openLeave(group, $event, $index, groupsIndex.currentUserId)"
+    ng-if="group.members.indexOf(main.user.id) !== -1 && group.admin._id !== groupsIndex.currentUserId">
+    Leave
+  </button>
 
   </div>
+
 </div>

@@ -8,6 +8,7 @@ function DashboardCtrl(Group, TokenService, User) {
   const vm = this;
   vm.all = Group.query();
   vm.user = User.get({ id: TokenService.decodeToken().id });
+  vm.groupAdmin = false;
 
   const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];

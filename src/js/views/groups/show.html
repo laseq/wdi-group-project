@@ -5,7 +5,7 @@
   <p class="adminUSer">{{ groupsShow.group.admin.username }}</p>
 
   <button class="groupShowBtn" type="button" name="button" ng-click="groupsShow.join($event)" ng-hide="groupsShow.member" >Join</button>
-  <button class="groupShowBtn" type="button" name="button" ng-click="groupsShow.leave($event)" ng-show="groupsShow.member" >Leave</button>
+  <button class="groupShowBtn" type="button" name="button" ng-click="groupsShow.openLeave($event)" ng-show="groupsShow.member && groupsShow.currentUser._id != groupsShow.group.admin._id">Leave</button>
 </div>
 
 <div class="map-styling">
@@ -58,4 +58,8 @@
 
 <button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ui-sref="groupsEdit({ id: groupsShow.group._id })">Edit Group</button>
 
-<button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ng-click="groupsShow.delete(groupsShow.group)">Delete</button>
+<!-- <button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ng-click="groupsShow.delete(groupsShow.group)">Delete</button> -->
+<button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id"
+  ng-click="groupsShow.openDelete()">
+  Delete
+</button>
