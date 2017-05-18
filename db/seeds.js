@@ -43,7 +43,12 @@ User
   new UserTemplate('harry1', 'Harry', 'harry@harry.com', 23, 'Male', 'Mayfair', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAaJAAAAJDkxOTliNmU4LTk4MzEtNDgxYS05ZDExLTJlZTE3YTMxZmVjYw.jpg'),
   new UserTemplate('louis1', 'Louis', 'louis@louis.com', 27, 'Male', 'Belgravia', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAVkAAAAJDM4MmNiMzg5LTUyMDUtNGIwOS04MTNiLWU4ZGZjMTJjZGJlOA.jpg'),
   new UserTemplate('edie1', 'Edie', 'edie@edie.com', 24, 'Female', 'Kensington', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAxmAAAAJDU2MjY4OGY1LWE3ZjktNDg5NC1iMjE2LTY2OTkzNGRlNDdjMw.jpg'),
-  new UserTemplate('lee1', 'Lee', 'lee@lee.com', 23, 'Male', 'Mayfair', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAA1yAAAAJGYzZTdlMDM4LTMxMmQtNGFjNS1hNjY4LTVjZjZiMGUzY2NmMw.jpg')
+  new UserTemplate('lee1', 'Lee', 'lee@lee.com', 23, 'Male', 'Mayfair', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAA1yAAAAJGYzZTdlMDM4LTMxMmQtNGFjNS1hNjY4LTVjZjZiMGUzY2NmMw.jpg'),
+  new UserTemplate('marisa1', 'Marisa', 'marisa@marisa.com', 30, 'Female', 'Kingston', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAWFAAAAJDNjYTMxZTlhLTlmYzEtNDQ0NC04ODdmLTdjYjU5MjFhM2M5YQ.jpg'),
+  new UserTemplate('hass1', 'Hassan', 'hass@hass.com', 26, 'Male', 'Hampton Wick', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAjyAAAAJDVjNmE3NjE0LWEzYWUtNGQxMC1iYzgxLWU0MWIwZjE1NjYwZg.jpg'),
+  new UserTemplate('anna1', 'Anna', 'anna@anna.com', 25, 'Female', 'Kingston', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAApsAAAAJDY2NzFlOGY3LWJmYTUtNDc0Yy05YWQ1LTllNDk2Y2MwMDljMw.jpg'),
+  new UserTemplate('charlie1', 'Charlie', 'charlie@charlie.com', 27, 'Male', 'Hampton Wick', 'password', '../images/jack.png'),
+  new UserTemplate('monju1', 'Monju', 'monju@monju.com', 28, 'Male', 'Hampton', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAuYAAAAJDBjYTg4Y2NiLWUxNjktNDI3MC04YjBlLTk1NmE2ZmE0N2JjMg.jpg')
 ])
 .then(users => {
   console.log(`${users.length} users created!`);
@@ -169,6 +174,28 @@ User
         { comment: 'You\'re just looking for any excuse to take your top off', user: users[12]._id},
         { comment: 'You\'ll probably get arrested if you swim in the river', user: users[14]._id},
         { comment: 'You\'re just jealous of my button game', user: users[12]._id}
+      ]
+    },
+    {
+      name: 'Kingston Runchers',
+      admin: users[16]._id,
+      members: [users[16]._id, users[17]._id, users[18]._id, users[19]._id, users[20]._id],
+      image: 'https://farm2.staticflickr.com/1685/25619392222_9b72360005_z.jpg',
+      schedule: [{
+        day: 'Wednesday',
+        date: new Date('May 24, 2017 13:00:00'),
+        startTime: '13:00',
+        location: 'KT1 4DQ',
+        meetingPoint: 'East entrance of Bushy Park',
+        distance: '5.0 km',
+        description: 'This will be a medium paced run along the paths of Bushy Park.',
+        maxRunners: 8
+      }],
+      comments: [
+        { comment: 'We\'ll be meeting at 1.00 pm at the east entrance of Bushy Park near Hampton Wick train station.', user: users[16]._id },
+        { comment: 'Last time I visited Bushy Park I got chased by a deer', user: users[20]._id },
+        { comment: 'Yeah they\'re dangerous at this time of year as it\'s mating season. Stay away from the deer and you should be fine.', user: users[18]._id },
+        { comment: 'We should go for pizza aftwards.', user: users[19]._id}
       ]
     }
   ]);
