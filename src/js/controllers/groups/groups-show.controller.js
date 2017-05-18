@@ -10,13 +10,14 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
   //vm.currentUserId = TokenService.decodeToken().id;
   vm.currentUser = User.get({ id: TokenService.decodeToken().id });
 
-  vm.delete = groupsDelete;
+  //vm.delete = groupsDelete;
   vm.join = joinGroup;
   vm.memberArray = [];
   vm.commenters = [];
   vm.postComment = postComment;
   vm.member = false;
   vm.openLeave = openLeaveModal;
+  vm.openDelete = openDeleteModal;
 
   const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -40,8 +41,6 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
       })
       .catch(err => console.log('error in getGroupDetails:', err));
   }
-
-
 
   function groupsDelete(group) {
     Group
@@ -96,6 +95,18 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
           checkIfMember();
         }
       });
+  }
+
+  function openDeleteModal() {
+    $uibModal.open({
+      templateUrl: 'js/views/partials/groupDeleteModal.html',
+      controller: 'GroupsDeleteCtrl as groupsDelete',
+      resolve: {
+        group: () => {
+          return vm.group;
+        }
+      }
+    });
   }
 
   function splitDateTimeString(group) {

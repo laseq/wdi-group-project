@@ -50,4 +50,8 @@
 
 <button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ui-sref="groupsEdit({ id: groupsShow.group._id })">Edit Group</button>
 
-<button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ng-click="groupsShow.delete(groupsShow.group)">Delete</button>
+<!-- <button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ng-click="groupsShow.delete(groupsShow.group)">Delete</button> -->
+<button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id"
+  ng-click="groupsShow.openDelete()">
+  Delete
+</button>
