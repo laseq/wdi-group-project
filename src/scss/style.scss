@@ -548,7 +548,7 @@ footer {
   height: 200px;
   float: left;
   position: relative;
-  padding: 1px;
+  padding: 5px;
   overflow: hidden;
 
   .dashImage {
@@ -691,10 +691,17 @@ input[type=search]:focus {
 
 .group-info {
   width: 100%;
+  height: 200px;
   // border: solid black 1px;
   padding: 5px;
   float: left;
   background-color: #DEF9BE;
+  text-align: left;
+}
+
+.group-info-button {
+  text-align: center;
+  width: 100%;
 }
 
 .index-info-card {
