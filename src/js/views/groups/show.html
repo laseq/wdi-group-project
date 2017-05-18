@@ -16,7 +16,7 @@
   <h2>Runch Details</h2>
   <div class="groupShowCon">
     <div class="row">
-      <div class="col-md-7" ng-repeat="schedule in groupsShow.group.schedule">
+      <div class="col-md-12" ng-repeat="schedule in groupsShow.group.schedule">
         <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><p class="glyphiconText">{{ schedule.day }}, {{ schedule.viewableDate }}</p>
         <span class="glyphicon glyphicon-time" aria-hidden="true"></span><p class="glyphiconText"> {{ schedule.startTime }}</p>
         <span class="glyphicon glyphicon-flag" aria-hidden="true"></span><p class="glyphiconText">{{ schedule.meetingPoint }}</p>
@@ -29,17 +29,25 @@
   </div>
 </div>
 
-<div class="groupMembers col-md-5">
-  <h2>Group members:</h2>
+<div class="groupMembers col-md-2">
+  <h2>Runchers:</h2>
   <div ng-repeat="member in groupsShow.group.members track by $index" ng-model="groupsShow.group.members">
-    <a ui-sref="usersShow({ id: member._id })"><img class="img-thumbnail img-responsive" ng-src="{{ member.image }}"></a>
+    <div class="userImages"> <a ui-sref="usersShow({ id: member._id })"><img class="img-thumbnail img-responsive" ng-src="{{ member.image }}"></a></div>
+    <p>{{ member.username }}</p>
   </div>
 </div>
 
-<form ng-submit="groupsShow.postComment()" method="post">
+<div class="groupDescription">
+  <h2>About your Runch group</h2>
+  <div ng-repeat="schedule in groupsShow.group.schedule">
+  <p>{{ schedule.description }}</p>
+</div>
+</div>
+
+<form class="discussion" ng-submit="groupsShow.postComment()" method="post">
   <h2>Join the discussion</h2>
-  <input type="text" name="comment" value="" placeholder="Your comment" ng-model="groupsShow.commentObject.comment">
-  <input type="submit" name="" value="Post">
+  <input class="discussionBox" type="text" name="comment" value="" placeholder="Your comment" ng-model="groupsShow.commentObject.comment">
+  <input class="discussionBtn" type="submit" name="" value="Post">
 </form>
 
 <div ng-repeat="comment in groupsShow.group.comments" ng-model="groupsShow.group.comments">
