@@ -8,15 +8,24 @@ GroupsEditCtrl.$inject = ['$stateParams', '$state', 'Group'];
 function GroupsEditCtrl($stateParams, $state, Group) {
   const vm = this;
 
-  vm.group = Group.get($stateParams);
+  // vm.group = Group.get($stateParams);
   vm.update = groupsUpdate;
-  console.log('vm.group:', vm.group);
-
-
-
   // We're using angular moment-picker here and setting the minimum and maximum selectable times
   vm.minDateMoment = moment().add(5, 'minute');
   vm.maxDateMoment = moment().add(6, 'day');
+
+  getGroupDetails();
+
+  function getGroupDetails() {
+    Group
+      .get($stateParams)
+      .$promise
+      .then(group => {
+        vm.group = group;
+        vm.momentDate = moment(vm.group.schedule[0].date);
+      })
+      .catch(err => console.log(err));
+  }
 
   function groupsUpdate() {
     Group
@@ -25,45 +34,6 @@ function GroupsEditCtrl($stateParams, $state, Group) {
       .then(() => {
         $state.go('groupsShow', { id: vm.group._id });
       });
-  }
-  vm.testString  = 'Hello';
-  vm.momentDate = moment();
-
-  // some sample format to show
-  vm.formats = [
-    'HH:mm',
-    'MMM Do YY',
-    'MMMM Do YYYY, h:mm:ss a',
-    'YYYY [escaped] YYYY',
-    'LT',
-    'LTS'
-  ];
-  vm.format = vm.formats[0];
-
-
-  const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-  function splitDateTimeString(groups) {
-    groups.forEach(group => {
-      group.schedule.forEach(schedule => {
-        const timeInfo = new Date(schedule.date);
-        schedule.day = weekDay[timeInfo.getDay()];
-        const theDate = timeInfo.getDate();
-        const theMonth = months[timeInfo.getMonth()];
-        const theYear = timeInfo.getUTCFullYear();
-        let startHours = timeInfo.getHours();
-        let startMins = timeInfo.getMinutes();
-        if (startHours < 10) {
-          startHours = `0${startHours}`;
-        }
-        if (startMins < 10) {
-          startMins = `0${startMins}`;
-        }
-        schedule.viewableDate = `${theDate} ${theMonth} ${theYear}`;
-        schedule.startTime = `${startHours}:${startMins}`;
-      });
-    });
   }
 
 }

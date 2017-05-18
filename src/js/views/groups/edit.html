@@ -1,6 +1,5 @@
 <h1 class="editHeader">Edit {{ ::groupsEdit.group.name }}</h1>
 
-
 <form class="edit" ng-submit="groupsEdit.update()" method="post">
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label"></label>
@@ -12,16 +11,17 @@
     <label for="inputdate" class="col-sm-2 control-label"></label>
     <div class="col-sm-10">
       <input class="form-control-create"
-           ng-model="groupsEdit.group.schedule[0].date"
-           ng-model-options="{ updateOn: 'blur' }"
-           placeholder="Set the date and time"
-           format="llll"
-           min-view="month"
-           start-view="day"
-           min-date="groupsEdit.minDateMoment"
-           max-date="groupsEdit.maxDateMoment"
-           required="true"
-           moment-picker="groupsEdit.group.schedule[0].date">
+          placeholder="Set the date and time"
+          moment-picker="groupsEdit.momentDate"
+          locale="en"
+          format="llll"
+          ng-model="groupsEdit.group.schedule[0].date"
+          ng-model-options="{ updateOn: 'blur' }"
+          min-view="month"
+          start-view="day"
+          min-date="groupsEdit.minDateMoment"
+          max-date="groupsEdit.maxDateMoment"
+          required="true">
       </div>
     </div>
     <div class="form-group">
