@@ -55,6 +55,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
       .join({ id: $stateParams.id })
       .$promise
       .then(group => {
+        console.log('group:', group);
         vm.group = group;
         splitDateTimeString(vm.group);
         checkIfMember();
