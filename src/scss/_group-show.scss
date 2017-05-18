@@ -12,13 +12,16 @@
   margin-bottom: -2px;
   margin-left: 30px;
 }
+
 .groupAdminTitle {
   display: inline-block;
   margin-left: 30px;
 }
+
 .adminUSer {
   display: inline-block;
   margin-left: 5px;
+  font-size: 15px;
 }
 .groupShowBtn{
   background: #8EB77B;
@@ -57,12 +60,12 @@
   left: 50%;
   transform: translate(-50%);
   overflow: hidden;
-  margin-top: 5px;
+  margin-top: 7px;
 }
 
 // Group Details
 .groupInformation{
-  margin-left: 60px;
+  margin-left: 70px;
   margin-top: 30px;
   display: inline-block;
 
@@ -89,7 +92,7 @@
 }
 
 .groupDescription{
-  margin-left: 60px;
+  margin-left: 70px;
   margin-top: 40px;
 
   p{
@@ -100,15 +103,21 @@
 
 // Runchers
 .groupMembers{
-  width: 240px;
   display: inline-block;
   float: right;
   overflow: hidden;
   margin-top: 20px;
+
+  p{
+    display: inline-block;
+    padding-left: 10px;
+    margin-top: -50px;
+    font-size: 15px;
+  }
 }
 
-.userImages{
-  display: inline-block;
+.memberInfo{
+  display: flex;
 }
 
 .img-thumbnail{
@@ -117,20 +126,27 @@
   display: inline-block;
   position: relative;
   float: left;
+  margin-top: 5px;
 }
 
 .runchUsername{
   display: inline-block;
-  padding-left: 10px;
+  padding-left: 20px;
+  margin-top: 30px;
   p{
     font-size: 12px;
+    text-transform: uppercase;
   }
 
+  a{
+    font-family: 'Poppins', sans-serif;
+    color: #8EB77B;
+  }
 }
 
 // Comments
 .discussion{
-  margin-left: 60px;
+  margin-left: 70px;
   margin-top: 50px;
 }
 
@@ -170,7 +186,7 @@
 }
 
 .comments{
-  margin-left: 60px;
+  margin-left: 70px;
   margin-top: 10px;
 }
 
