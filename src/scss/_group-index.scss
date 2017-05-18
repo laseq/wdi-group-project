@@ -81,3 +81,14 @@
 
 	color: transparent;
 }
+
+.group-info-buttons {
+  text-align: center;
+}
+
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+}
