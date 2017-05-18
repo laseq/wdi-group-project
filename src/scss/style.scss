@@ -503,12 +503,12 @@ footer {
 // ********** User Profie/Show *******************
 
 .profile-info {
-  width: 20%;
+  width: 20%; // of the row
 }
 
 .profile-image {
-  width: 100%;
-  height: 100%;
+  width: 100%; // of the profile-info
+  height: 200px; // % non-responsive
 }
 
 .user-groups {
@@ -549,6 +549,7 @@ input[type=search]:focus {
 
 }
 
+<<<<<<< HEAD
 // size of the search Bar before
 #searchBar input[type=search] {
   width: 17px;
@@ -571,3 +572,62 @@ input[type=search]:focus {
 #searchBar input::-webkit-input-placeholder {
 	color: transparent;
 }
+=======
+// .caption::before {
+//     content: ' ';
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     background: transparent;
+//     transition: background .35s ease-out;
+// }
+//
+// .caption:hover::before {
+//     background: rgba(0, 0, 0, .5);
+// }
+//
+// .caption__media {
+//     display: block;
+//     min-width: 100%;
+//     max-width: 100%;
+//     height: auto;
+// }
+//
+// .caption__overlay {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     padding: 10px;
+//     color: white;
+//
+//     -webkit-transform: translateY(100%);
+//             transform: translateY(100%);
+//
+//     transition: -webkit-transform .35s ease-out;
+//     transition:         transform .35s ease-out;
+// }
+//
+// .caption:hover .caption__overlay {
+//     -webkit-transform: translateY(0);
+//             transform: translateY(0);
+// }
+//
+// .caption__overlay__title {
+//     -webkit-transform: translateY( -webkit-calc(-100% - 10px) );
+//             transform: translateY( calc(-100% - 10px) );
+//
+//     transition: -webkit-transform .35s ease-out;
+//     transition:         transform .35s ease-out;
+// }
+//
+// .caption:hover .caption__overlay__title {
+//     -webkit-transform: translateY(0);
+//             transform: translateY(0);
+// }
+
+// ********** Group Index *******************
+>>>>>>> 1ef9b894fc726130f137a8623bb1545ce783819f
