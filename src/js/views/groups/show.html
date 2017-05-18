@@ -50,16 +50,19 @@
   <input class="discussionBtn" type="submit" name="" value="Post">
 </form>
 
-<div ng-repeat="comment in groupsShow.group.comments" ng-model="groupsShow.group.comments">
-  <p>{{ comment.comment }}</p>
-  <!-- <p>{{ comment.user }}</p> -->
-  <p>Comment by: {{ comment.user.username }}</p>
+<div class="comments" ng-repeat="comment in groupsShow.group.comments" ng-model="groupsShow.group.comments">
+  <img class="img-circle" ng-src="{{ comment.user.image }}">
+  <div class="commentBox">
+    <h5><a ui-sref="usersShow({ id: member._id })">{{ comment.user.username }}</a></h5>
+    <p>{{ comment.comment }}</p>
+  </div>
+  <!-- <p>Comment by: {{ comment.user.username }}</p> -->
 </div>
 
-<button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ui-sref="groupsEdit({ id: groupsShow.group._id })">Edit Group</button>
+<!-- <button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ui-sref="groupsEdit({ id: groupsShow.group._id })">Edit Group</button>
 
 <!-- <button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id" ng-click="groupsShow.delete(groupsShow.group)">Delete</button> -->
-<button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id"
+<!-- <button ng-show="groupsShow.currentUser._id == groupsShow.group.admin._id"
   ng-click="groupsShow.openDelete()">
-  Delete
-</button>
+  Delete -->
+<!-- </button> --> -->
