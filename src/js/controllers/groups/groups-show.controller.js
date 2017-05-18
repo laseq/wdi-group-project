@@ -15,6 +15,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
   vm.commenters = [];
   vm.postComment = postComment;
   vm.member = false;
+  vm.memberAndNotAdmin = false;
   vm.openJoin = openJoinModal;
   vm.openLeave = openLeaveModal;
   vm.openDelete = openDeleteModal;
@@ -25,8 +26,20 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
   getGroupDetails();
 
   function checkIfMember() {
+    //console.log('checkIfMember entered ******************');
+    // console.log('vm.currentUser._id:', vm.currentUser._id);
     vm.member = !!(vm.group.members.find(member => {
+      // console.log('member._id:', member._id);
+      // console.log('member._id === vm.currentUser._id:', member._id === vm.currentUser._id);
       return member._id === vm.currentUser._id;
+    }));
+  }
+
+  function checkIfMemberAndNotAdmin() {
+    vm.memberAndNotAdmin = !!(vm.group.members.find(member => {
+      // console.log('member._id:', member._id);
+      // console.log('member._id === vm.currentUser._id:', member._id === vm.currentUser._id);
+      return (member._id === vm.currentUser._id && vm.group.admin._id !== vm.currentUser._id);
     }));
   }
 
@@ -38,6 +51,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
         vm.group = group;
         splitDateTimeString(group);
         checkIfMember();
+        checkIfMemberAndNotAdmin();
       })
       .catch(err => console.log('error in getGroupDetails:', err));
   }
@@ -50,8 +64,10 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
         vm.group = group;
         splitDateTimeString(vm.group);
         checkIfMember();
+        checkIfMemberAndNotAdmin();
 
         openJoinModal($event);
+        console.log('After join vm.memberAndNotAdmin (boolean):', vm.memberAndNotAdmin);
 
       })
       .catch(err => {
@@ -103,6 +119,8 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
           vm.group = passedItem;
           splitDateTimeString(vm.group);
           checkIfMember();
+          checkIfMemberAndNotAdmin();
+          console.log('After leave vm.memberAndNotAdmin (boolean):', vm.memberAndNotAdmin);
         }
       });
   }
@@ -134,7 +152,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
       if (startMins < 10) {
         startMins = `0${startMins}`;
       }
-      schedule.viewableDate = `${theDate} ${theMonth} ${theYear}`;
+      schedule.viewableDate = `${schedule.day}, ${theDate} ${theMonth} ${theYear}`;
       schedule.startTime = `${startHours}:${startMins}`;
     });
   }
@@ -150,6 +168,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
       .$promise
       .then(() => {
         console.log('Comment posted');
+        vm.commentObject.comment = '';
       })
       .catch(err => console.log('error in postComment:', err));
   }

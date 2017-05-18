@@ -35,9 +35,6 @@ function GroupsJoinCtrl(group, theEvent, $uibModalInstance, $state) {
         startMins = `0${startMins}`;
       }
 
-      console.log('schedule.viewableDate:', schedule.viewableDate);
-      console.log('schedule.startTime:', schedule.startTime);
-
       schedule.viewableDate = `${schedule.day}, ${theDate} ${theMonth} ${theYear}`;
       schedule.startTime = `${startHours}:${startMins}`;
     });
