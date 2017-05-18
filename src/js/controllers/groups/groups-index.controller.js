@@ -5,7 +5,7 @@ angular
 GroupsIndexCtrl.$inject = ['Group', 'TokenService', 'User', '$uibModal'];
 function GroupsIndexCtrl(Group, TokenService, User, $uibModal) {
   const vm = this;
-  
+
   const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -14,38 +14,6 @@ function GroupsIndexCtrl(Group, TokenService, User, $uibModal) {
   vm.member = false;
   vm.groupAdmin = false;
   vm.openLeave = openLeaveModal;
-
-  // vm.filterTime = filterTimeSpans;
-  // vm.now = new Date();
-  // vm.radioFilter = 'Upcoming';
-
-  //vm.all = Group.query();
-
-  // function filterTimeSpans() {
-  //   console.log('vm.radioFilter:', vm.radioFilter);
-  //   vm.filterArray = [];
-  //
-  //   if (vm.radioFilter === 'Upcoming') {
-  //     vm.all.forEach(group => {
-  //       if (new Date(group.schedule[0].date) > vm.now) {
-  //         vm.filterArray.push(group);
-  //         vm.orderBy = 'schedule[0].date';
-  //       }
-  //     });
-  //   } else if (vm.radioFilter === 'Past') {
-  //     vm.all.forEach(group => {
-  //       if (new Date(group.schedule[0].date) <= vm.now) {
-  //         vm.filterArray.push(group);
-  //         vm.orderBy = '-schedule[0].date';
-  //       }
-  //     });
-  //   } else {
-  //     vm.all.forEach(group => {
-  //       vm.filterArray.push(group);
-  //       vm.orderBy = '-schedule[0].date';
-  //     });
-  //   }
-  // }
 
   getGroupDetails();
 
@@ -63,7 +31,6 @@ function GroupsIndexCtrl(Group, TokenService, User, $uibModal) {
             break;
           }
         }
-        // filterTimeSpans();
       })
       .catch(err => console.log('error in getGroupDetails:', err));
   }
