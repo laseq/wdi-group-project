@@ -1,54 +1,52 @@
 <div class="container-fluid">
-
   <div class="row">
-    <div class="timetable col-md-5">
-      <h2>Timetable</h2>
-      <div ng-repeat="group in dashboard.upcomingArray  | orderBy : dashboard.orderBy track by $index">
-        <a ui-sref="groupsShow({ id: group._id })"><h5><strong>{{ group.name }}</strong></h5></a>
-        <p>{{ group.schedule[0].viewableDate }}</p>
-        <p>{{ group.schedule[0].startTime }}</p>
-        <p>{{ group.schedule[0].meetingPoint }}</p>
-        <p>{{ group.schedule[0].location }}</p>
-      </div>
-    </div>
-    <!-- <h3>Search Runch</h3> -->
-    <form id="searchBar">
-    	<input type="search" placeholder="Search Runch">
-    </form>
-    <div class="dashImage ">
-      <div class="dash-groups col-md-7">
-        <h2>My Groups</h2>
-        <div class="group-item" ng-repeat="group in dashboard.user.groups">
-          <img class="group-image" src="{{ group.image }}">
-          <a ui-sref="groupsShow({ id: group._id })"><h2 class="imageHeader">{{ group.name }}</h2></a>
+    <div class="col-md-3">
+      <div class="timetable">
+        <div class="timetableLine">
+          <div class="timetableHeader">
+          <h2>Timetable</h2>
+        </div>
+          <div ng-repeat="group in dashboard.upcomingArray  | orderBy : dashboard.orderBy track by $index">
+            <a ui-sref="groupsShow({ id: group._id })"><h5><strong>{{ group.name }}</strong></h5></a>
+            <p>{{ group.schedule[0].viewableDate }}, {{ group.schedule[0].startTime }}</p>
+            <p>{{ group.schedule[0].meetingPoint }}, {{ group.schedule[0].location }}</p>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-
-
-  <!-- <div class="hover"> -->
-  <!--  More group info to go here -->
-  <!-- <a ui-sref="groupsShow({ id: group._id })"><h2 class="imageHeader">{{ group.name }}</h2></a> -->
-
-  <div class="row">
-    <div class="owned-groups col-md-3">
-      <h2>Owned Groups</h2>
-      <div ng-repeat="group in dashboard.user.ownedGroups">
-        <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a>
+      <div class="owned-groups">
+        <h2>Owned Groups</h2>
+        <div ng-repeat="group in dashboard.user.ownedGroups">
+          <a ui-sref="groupsShow({ id: group._id })"><img class="ownedGroupsImg" src="{{ group.image }}"></a>
+          <a ui-sref="groupsShow({ id: group._id })"><h4 class="OwnedGroupBanner">{{ group.name }}</h4></a>
+        </div>
+        <button class="dashCreateBtn" type="button" ng-hide="dashboard.user.ownedGroups.length" name="button" ui-sref="groupsNew">Create a RUNCH group</button>
       </div>
-      <button class="dashCreateBtn" type="button" ng-hide="dashboard.user.ownedGroups.length" name="button" ui-sref="groupsNew">Create a RUNCH group</button>
     </div>
+    <div class="col-md-9">
+      <form id="searchBar">
+      	<input type="search" placeholder="Search Runch">
+      </form>
 
-
-  <div class="dashImage">
-    <div class="dash-groups col-md-9">
-      <h2>Running Groups</h2>
-      <div class="group-item" ng-repeat="group in dashboard.all">
-          <img class="group-image" src="{{ group.image }}"><h2 class="imageHeader">{{ group.name }}</h2>
-        <!-- <div class="hover">
-          <!--  More group info to go here -->
-          <!-- <a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a> -->
+        <div class="dash-groups">
+          <div class="dashImage">
+          <h2>My Groups</h2>
+          <div class="groups-container">
+            <div class="group-item" ng-repeat="group in dashboard.user.groups">
+              <a ui-sref="groupsShow({ id: group._id })"><img class="group-image" src="{{ group.image }}"></a>
+              <a ui-sref="groupsShow({ id: group._id })"><h2 class="imageHeader">{{ group.name }}</h2></a>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="dash-groups">
+          <h2>Running Groups</h2>
+          <div class="groups-container">
+            <div class="group-item" ng-repeat="group in dashboard.all">
+              <a ui-sref="groupsShow({ id: group._id })"><img class="group-image" src="{{ group.image }}"></a>
+              <a ui-sref="groupsShow({ id: group._id })"><h2 class="imageHeader">{{ group.name }}</h2></a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
