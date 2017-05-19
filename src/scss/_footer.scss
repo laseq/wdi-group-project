@@ -1,0 +1,66 @@
+
+// ************** Footer **********************
+
+
+.socialMediaBtn {
+  width: 20px;
+  height: 20px;
+}
+
+li {
+  display: inline-block;
+  style: none;
+  margin-right: 10px;
+}
+
+.copyRight {
+  float: right;
+  font-family: 'RunchFont';
+  color: white;
+}
+
+.FooterLoggedIn {
+  flex: 1;
+  background-color: #8EB77B;
+  padding-left: 15px;
+  padding-top: 15px;
+  // bottom: 10px;
+  // margin-bottom: 10px;
+}
+
+.FooterLoggedOut {
+  position:absolute;
+  clear: both;
+  bottom: 10px;
+  left:0;
+  right:0;
+  height:10px;
+  color: white;
+  padding-bottom: 20px;
+  font-size: 15px;
+  display: inline;
+  padding-left: 15px;
+}
+
+html, body {
+  height: 100%;
+}
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -50px;
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+footer, .page-wrap:after {
+  height: 50px;
+}
+
+footer {
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}

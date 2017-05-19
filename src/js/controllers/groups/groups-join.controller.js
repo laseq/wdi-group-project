@@ -35,7 +35,7 @@ function GroupsJoinCtrl(group, theEvent, $uibModalInstance, $state) {
         startMins = `0${startMins}`;
       }
 
-      schedule.viewableDate = `${schedule.day}, ${theDate} ${theMonth} ${theYear}`;
+      vm.viewableDate = `${schedule.day} ${theDate} ${theMonth} ${theYear}`;
       schedule.startTime = `${startHours}:${startMins}`;
     });
   }

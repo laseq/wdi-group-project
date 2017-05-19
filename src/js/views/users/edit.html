@@ -1,29 +1,43 @@
-<h1>Edit User</h1>
-<form ng-submit="usersEdit.update()">
-  <div>
-    <label for="name">Name</label>
-    <input type="text" name="name" ng-model="usersEdit.user.name">
-  </div>
-  
-  <div>
-    <label for="image">Image</label>
-    <input type="text" name="image" ng-model="usersEdit.user.image">
+<h1 class="edit-user-header">Edit Your Profile</h1>
+<form ng-submit="usersEdit.update()" class="user-edit">
+  <div class="form-group">
+    <label for="name" class="col-sm-2 control-label user-edit-description">Name</label>
+    <div class="col-sm-10">
+      <input class="form-control-create" type="text" name="name" ng-model="usersEdit.user.name">
+    </div>
   </div>
 
-  <div>
-    <label for="location">Location</label>
-    <input type="text" name="location" ng-model="usersEdit.user.location">
+  <div class="form-group">
+    <label for="image" class="col-sm-2 control-label user-edit-description">Image</label>
+    <div class="col-sm-10">
+      <input class="form-control-create" type="text" name="image" ng-model="usersEdit.user.image">
+    </div>
   </div>
 
-  <div>
-    <label for="postcode">Postcode</label>
-    <input type="text" name="postcode" ng-model="usersEdit.user.postcode">
+  <div class="form-group">
+    <label for="location" class="col-sm-2 control-label user-edit-description">Location</label>
+    <div class="col-sm-10">
+      <input class="form-control-create" type="text" name="location" ng-model="usersEdit.user.location">
+    </div>
   </div>
 
-  <div>
-    <label for="about">About</label>
-    <textarea placeholder="Tell us about yourself!" name="about" ng-model="usersEdit.user.about"></textarea>
+  <div class="form-group">
+    <label for="postcode" class="col-sm-2 control-label user-edit-description">Postcode</label>
+    <div class="col-sm-10">
+      <input class="form-control-create" type="text" name="postcode" ng-model="usersEdit.user.postcode">
+    </div>
   </div>
 
-  <input type="submit" value="Update User">
+  <div class="form-group">
+    <label for="about" class="col-sm-2 control-label user-edit-description">About</label>
+    <div class="col-sm-10">
+      <textarea class="form-control-create" placeholder="Tell us about yourself!" name="about" ng-model="usersEdit.user.about"></textarea>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <input class="form-button-create" type="submit" value="Update User">
+    </div>
+  </div>
 </form>

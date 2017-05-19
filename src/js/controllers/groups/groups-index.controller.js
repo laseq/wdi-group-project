@@ -50,12 +50,28 @@ function GroupsIndexCtrl(Group, TokenService, User, $uibModal) {
         for (let i=0; i<vm.all[$index].members.length; i++) {
           vm.all[$index].members[i] = group.members[i]._id;
         }
-
         splitDateTimeString(vm.all);
+        openJoinModal(group, $event);
       })
       .catch(err => {
         console.log(err);
       });
+  }
+
+  function openJoinModal(group, $event) {
+
+    $uibModal.open({
+      templateUrl: 'js/views/partials/groupJoinModal.html',
+      controller: 'GroupsJoinCtrl as groupsJoin',
+      resolve: {
+        group: () => {
+          return group;
+        },
+        theEvent: () => {
+          return $event;
+        }
+      }
+    });
   }
 
   function openLeaveModal(group, $event, $index, currentUserId) {
