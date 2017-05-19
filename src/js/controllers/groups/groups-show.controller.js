@@ -52,7 +52,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
 
   function joinGroup($event) {
 
-    if (vm.group.members.length === vm.group.schedule[0].maxRunners) {
+    if (vm.group.members.length >= vm.group.schedule[0].maxRunners) {
       openMaxRunnersModal(vm.group);
       return;
     }

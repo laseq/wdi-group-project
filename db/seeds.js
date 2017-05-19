@@ -39,7 +39,7 @@ User
   new UserTemplate('casey1', 'Casey', 'casey@casey.com', 23, 'Female', 'Bethnal Green', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAVFAAAAJGZmZGQ0MWI4LWE0ZjMtNGNlYy1iMzFlLWU3MTIwM2EzZGQwNg.jpg'),
   new UserTemplate('ed1', 'Ed', 'ed@ed.com', 25, 'Male', 'Bethnal Green', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAqkAAAAJGJjMDA5YjQxLWFlNzgtNDhjNS04ZjQyLTVmMTU4NWUwZTg4Mg.jpg'),
   new UserTemplate('nat1', 'Nat', 'nat@nat.com', 25, 'Female', 'Bethnal Green', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/1/005/085/112/3fde578.jpg'),
-  new UserTemplate('did1', 'Didrik', 'didrik@didrik.com', 22, 'Male', 'Kensington', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAA1vAAAAJGYwZGVlMGYxLWY3MmEtNDYxZS04MWM4LWY2ODE2MTFiZmUwYw.jpg'),
+  new UserTemplate('didrik1', 'Didrik', 'didrik@didrik.com', 22, 'Male', 'Kensington', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAA1vAAAAJGYwZGVlMGYxLWY3MmEtNDYxZS04MWM4LWY2ODE2MTFiZmUwYw.jpg'),
   new UserTemplate('harry1', 'Harry', 'harry@harry.com', 23, 'Male', 'Mayfair', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAaJAAAAJDkxOTliNmU4LTk4MzEtNDgxYS05ZDExLTJlZTE3YTMxZmVjYw.jpg'),
   new UserTemplate('louis1', 'Louis', 'louis@louis.com', 27, 'Male', 'Belgravia', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAVkAAAAJDM4MmNiMzg5LTUyMDUtNGIwOS04MTNiLWU4ZGZjMTJjZGJlOA.jpg'),
   new UserTemplate('edie1', 'Edie', 'edie@edie.com', 24, 'Female', 'Kensington', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAxmAAAAJDU2MjY4OGY1LWE3ZjktNDg5NC1iMjE2LTY2OTkzNGRlNDdjMw.jpg'),
@@ -47,8 +47,12 @@ User
   new UserTemplate('marisa1', 'Marisa', 'marisa@marisa.com', 30, 'Female', 'Kingston', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAWFAAAAJDNjYTMxZTlhLTlmYzEtNDQ0NC04ODdmLTdjYjU5MjFhM2M5YQ.jpg'),
   new UserTemplate('hass1', 'Hassan', 'hass@hass.com', 26, 'Male', 'Hampton Wick', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAjyAAAAJDVjNmE3NjE0LWEzYWUtNGQxMC1iYzgxLWU0MWIwZjE1NjYwZg.jpg'),
   new UserTemplate('anna1', 'Anna', 'anna@anna.com', 25, 'Female', 'Kingston', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAApsAAAAJDY2NzFlOGY3LWJmYTUtNDc0Yy05YWQ1LTllNDk2Y2MwMDljMw.jpg'),
-  new UserTemplate('charlie1', 'Charlie', 'charlie@charlie.com', 27, 'Male', 'Hampton Wick', 'password', '../images/jack.png'),
-  new UserTemplate('monju1', 'Monju', 'monju@monju.com', 28, 'Male', 'Hampton', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAuYAAAAJDBjYTg4Y2NiLWUxNjktNDI3MC04YjBlLTk1NmE2ZmE0N2JjMg.jpg')
+  new UserTemplate('charlie1', 'Charlie', 'charlie@charlie.com', 27, 'Male', 'Hampton Wick', 'password', '../images/charles.png'),
+  new UserTemplate('monju1', 'Monju', 'monju@monju.com', 28, 'Male', 'Hampton', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAuYAAAAJDBjYTg4Y2NiLWUxNjktNDI3MC04YjBlLTk1NmE2ZmE0N2JjMg.jpg'),
+  new UserTemplate('sam1', 'Sam', 'sam@sam.com', 26, 'Male', 'Canary Wharf', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAtDAAAAJGQwYTZiNDJjLWVkNGItNGZjMy1hMzFkLTE3MjJhNTNjMjA0Nw.jpg'),
+  new UserTemplate('sean1', 'Sean', 'sean@sean.com', 28, 'Male', 'Canary Wharf', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/4/005/029/1a0/1b1a3d9.jpg'),
+  new UserTemplate('horace1', 'Horace', 'horace@horace.com', 25, 'Male', 'Canary Wharf', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAquAAAAJDllYWY1N2I0LWFkOGItNDk1Ni1hOTVmLTU0OGQ0MDQwYWQxZQ.jpg'),
+  new UserTemplate('brian1', 'Brian', 'brian@brian.com', 30, 'Male', 'Canary Wharf', 'password', 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAgaAAAAJDhmOTIxMzk3LWZjNTctNDFlMC05OTI2LTE2MDcxYmNjMzQ2NQ.jpg')
 ])
 .then(users => {
   console.log(`${users.length} users created!`);
@@ -99,7 +103,7 @@ User
       name: 'Whitechapel Runchers',
       admin: users[3]._id,
       members: [users[3]._id, users[4]._id, users[5]._id, users[6]._id, users[1]._id, users[2]._id],
-      image: 'http://running.competitor.com/files/2012/03/Good-Running-Form.jpg',
+      image: 'http://vipauk.org/transport/tube/hammer/img/whch2.jpg',
       schedule: [{
         day: 'Monday',
         date: new Date('May 22, 2017 12:30:00'),
@@ -127,7 +131,7 @@ User
       ]
     },
     {
-      name: 'Bethnal Green Runchers',
+      name: 'Bethnal Runchers',
       admin: users[7]._id,
       members: [users[7]._id, users[8]._id, users[9]._id, users[10]._id],
       image: 'https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/5/7/1367930926942/A-running-group-training--008.jpg?w=700&q=55&auto=format&usm=12&fit=max&s=9d3798295399683096a9a2a624a2e4e7',
@@ -194,8 +198,32 @@ User
       comments: [
         { comment: 'We\'ll be meeting at 1.00 pm at the east entrance of Bushy Park near Hampton Wick train station.', user: users[16]._id },
         { comment: 'Last time I visited Bushy Park I got chased by a deer', user: users[20]._id },
-        { comment: 'Yeah they\'re dangerous at this time of year as it\'s mating season. Stay away from the deer and you should be fine.', user: users[18]._id },
+        { comment: 'Yeah they\'re dangerous at this time of year as it\'s mating season. Stay away from the deer and you should be fine.', user: users[17]._id },
         { comment: 'We should go for pizza aftwards.', user: users[19]._id}
+      ]
+    },
+    {
+      name: 'Canary Runchers',
+      admin: users[21]._id,
+      members: [users[21]._id, users[22]._id, users[23]._id, users[24]._id],
+      image: 'http://images.fineartamerica.com/images-medium/canary-wharf-gouzel-liddle.jpg',
+      schedule: [{
+        day: 'Monday',
+        date: new Date('May 22, 2017 12:45:00'),
+        startTime: '12:45',
+        location: 'E14 5RB',
+        meetingPoint: 'Just outside Barclays Bank',
+        distance: '3.0 km',
+        description: 'This will be a medium paced run along the docks. Entrepreneurs only.',
+        maxRunners: 4
+      }],
+      comments: [
+        { comment: 'Remember to bring your fidget spinner or I\'ll send you away.', user: users[21]._id },
+        { comment: 'Do fidget fans count?', user: users[23]._id },
+        { comment: 'Yeah that\'ll be fine, should help clear people out of our way.', user: users[21]._id },
+        { comment: 'Don\'t forget to bring a lifejacket. This group admin accidentally trips up people and they fall into the water.', user: users[22]._id},
+        { comment: 'Is that so?', user: users[24]._id},
+        { comment: 'I have no idea what Sean\'s talking about', user: users[21]._id}
       ]
     }
   ]);
