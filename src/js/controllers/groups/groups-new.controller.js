@@ -37,9 +37,4 @@ function GroupsNewCtrl($state, Group, CurrentUserService, TokenService, User) {
       });
   }
 
-  // function selectableTimes(date, type) {
-  //   // disable all Sundays in the Month View
-  //   return type != 'day' || date.format('dddd') != 'Sunday';
-  // }
-
 }
