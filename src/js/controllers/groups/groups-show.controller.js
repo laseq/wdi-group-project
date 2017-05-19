@@ -51,6 +51,12 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
   }
 
   function joinGroup($event) {
+
+    if (vm.group.members.length >= vm.group.schedule[0].maxRunners) {
+      openMaxRunnersModal(vm.group);
+      return;
+    }
+
     Group
       .join({ id: $stateParams.id })
       .$promise
@@ -64,6 +70,18 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
       .catch(err => {
         console.log(err);
       });
+  }
+
+  function openMaxRunnersModal(group) {
+    $uibModal.open({
+      templateUrl: 'js/views/partials/maxRunnersModal.html',
+      controller: 'MaxRunnersCtrl as maxRunnersCtrl',
+      resolve: {
+        group: () => {
+          return group;
+        }
+      }
+    });
   }
 
   function openJoinModal($event) {
