@@ -1,0 +1,63 @@
+//Modals
+
+
+.modal-content {
+    background-color: rgba(124,183,123,.5);
+}
+
+.modal.in .modal-dialog {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-title {
+  color: white;
+}
+
+.modal-body-header {
+  color: white;
+}
+
+.btn.btn-primary, .btn.btn-danger {
+  background-color: rgba(124,183,123,.5);
+    border: 1px solid white;
+}
+
+.btn.btn-danger:hover {
+  background-color: white;
+  color: #8EB77B;
+}
+
+.btn.btn-primary:hover {
+  background-color: white;
+  color: #8EB77B;
+}
+
+.modal-body {
+  color: white;
+  font-family: 'RunchFont', serif !important;
+}
+
+.my-modals {
+
+  .modal-body-header {
+    text-align: center;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+
+  .join-modal-schedule{
+    li {
+      display: block;
+      list-style: none;
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+
+}
