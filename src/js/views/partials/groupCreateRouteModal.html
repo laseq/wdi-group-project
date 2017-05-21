@@ -3,12 +3,15 @@
     <h3 class="modal-title"><strong>Create a route</strong></h3>
   </div>
   <div class="modal-body">
-    <gmap-draw-route location="{{ createRoute.location }}"></gmap-draw-route>
+    <gmap-draw-route location="{{ createRoute.location }}"
+      data-patharray="createRoute.pathArray"
+      data-pathundo="createRoute.undo">
+    </gmap-draw-route>
   </div>
   <div class="modal-footer">
     <button class="btn btn-primary" ng-click="createRoute.close()">Clear Route</button>
     <button class="btn btn-primary" ng-click="createRoute.close()">Undo Last</button>
-    <button class="btn btn-primary" ng-click="createRoute.close()">Save Route</button>
+    <button class="btn btn-primary" ng-click="createRoute.save()">Save Route</button>
     <button class="btn btn-primary" ng-click="createRoute.close()">Discard</button>
   </div>
 </div>
