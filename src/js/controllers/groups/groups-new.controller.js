@@ -4,11 +4,12 @@ angular
   .module('runchApp')
   .controller('GroupsNewCtrl', GroupsNewCtrl);
 
-GroupsNewCtrl.$inject = ['$state', 'Group', 'CurrentUserService', 'TokenService', 'User'];
-function GroupsNewCtrl($state, Group, CurrentUserService, TokenService, User) {
+GroupsNewCtrl.$inject = ['$state', 'Group', 'CurrentUserService', 'TokenService', 'User', '$uibModal'];
+function GroupsNewCtrl($state, Group, CurrentUserService, TokenService, User, $uibModal) {
   const vm = this;
 
   vm.create = groupsCreate;
+  vm.openRouteCreate = openRouteCreate;
   vm.currentUser = User.get({ id: TokenService.decodeToken().id });
 
   // We're using angular moment-picker here and setting the minimum and maximum selectable times
@@ -35,6 +36,26 @@ function GroupsNewCtrl($state, Group, CurrentUserService, TokenService, User) {
       .then(() => {
         $state.go('groupsIndex');
       });
+  }
+
+  function openRouteCreate() {
+    const locationInput = document.getElementById('location');
+    console.log(locationInput.value.length);
+    if (locationInput.value.length < 5) {
+      console.log('Fill in your postcode to access the route creator');
+      return;
+    }
+    $uibModal.open({
+      templateUrl: 'js/views/partials/groupCreateRouteModal.html',
+      controller: 'CreateRouteCtrl as createRoute',
+      size: 'lg',
+      id: 'create-route-modal',
+      resolve: {
+        location: () => {
+          return vm.group.schedule.location;
+        }
+      }
+    });
   }
 
 }
