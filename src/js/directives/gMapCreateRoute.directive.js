@@ -17,8 +17,9 @@ function gmapDrawRoute($window, $http) {
     template: '<div class="map-styling">GOOGLE MAP GOES HERE</div>',
     scope: {
       location: '@',
-      fromDirectivePath: '=patharray',
-      fromDirectivePathUndo: '=pathundo'
+      fromDirectivePathArray: '=patharray',
+      fromDirectivePathUndo: '=pathundo',
+      fromDirectivePathClear: '=pathclear'
     },
     link(scope, element) {
       scope.$watch('location', function(postcode){
@@ -51,9 +52,9 @@ function gmapDrawRoute($window, $http) {
               strokeWeight: 3
             });
             poly.setMap(map);
-            pathArray.push(coordinates);
-
-            scope.fromDirectivePath = pathArray;
+            // pathArray.push(coordinates);
+            scope.fromDirectivePathArray.push(coordinates);
+            //scope.fromDirectivePath = pathArray;
 
             // Add a listener for the click event
             map.addListener('click', addLatLng);
@@ -77,14 +78,18 @@ function gmapDrawRoute($window, $http) {
           lat: event.latLng.lat(),
           lng: event.latLng.lng()
         };
-        pathArray.push(coordObj);
-        console.log('pathArray:', pathArray);
+        // pathArray.push(coordObj);
+        // console.log('pathArray:', pathArray);
+        scope.fromDirectivePathArray.push(coordObj);
+        console.log('scope.fromDirectivePathArray:', scope.fromDirectivePathArray);
+        // scope.fromDirectivePathArray.forEach(coords => {
+        //   console.log('coords:', coords);
+        // });
 
-        scope.fromDirectivePath = pathArray;
+        // scope.fromDirectivePath = pathArray;
+
         // format for path: {lat: 37.772, lng: -122.214}
       }
-
-      
 
     }
   };

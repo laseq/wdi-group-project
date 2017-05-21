@@ -11,6 +11,7 @@ function CreateRouteCtrl(location, $uibModalInstance) {
   vm.close = closeModal;
   vm.save = saveRoute;
   vm.undo = undoLastPath;
+  vm.clear = clearPath;
   vm.pathArray = [];
 
   function closeModal() {
@@ -20,11 +21,20 @@ function CreateRouteCtrl(location, $uibModalInstance) {
 
   function saveRoute() {
     console.log('Entered saveRoute');
-    console.log('vm.pathArray:', vm.pathArray);
+    console.log('vm.pathArray in save:', vm.pathArray);
   }
 
   function undoLastPath() {
-    vm.pathArray.pop();
+    console.log('Entered undoLastPath');
+    if (vm.pathArray.length > 1) vm.pathArray.pop();
+    console.log('vm.pathArray in undo:', vm.pathArray);
+  }
+
+  function clearPath() {
+    console.log('Entered clearPath');
+    //directivePathArray = [];
+    vm.pathArray.splice(1);
+    console.log('vm.pathArray in clear:', vm.pathArray);
   }
 
 }
