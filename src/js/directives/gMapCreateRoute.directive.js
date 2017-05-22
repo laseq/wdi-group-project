@@ -17,9 +17,11 @@ function gmapDrawRoute($window, $http) {
     template: '<div class="map-styling">GOOGLE MAP GOES HERE</div>',
     scope: {
       location: '@',
-      fromDirectivePathArray: '=patharray',
-      fromDirectivePathUndo: '=pathundo',
-      fromDirectivePathClear: '=pathclear'
+      patharray: '=patharray',
+      pathundo: '&pathundo',
+      path: '=path',
+      poly: '=poly',
+      coords: '=coords'
     },
     link(scope, element) {
       scope.$watch('location', function(postcode){
@@ -31,6 +33,7 @@ function gmapDrawRoute($window, $http) {
           })
           .then(function successCallback(response) {
             const coordinates = response.data.results['0'].geometry.location;
+            scope.coords = response.data.results['0'].geometry.location;
             console.log('coordinates:', coordinates);
 
             map = new $window.google.maps.Map(element[0], {
@@ -45,15 +48,16 @@ function gmapDrawRoute($window, $http) {
               map: map
             });
 
-            poly = new google.maps.Polyline({
+            scope.poly = new google.maps.Polyline({
               path: [coordinates],
               strokeColor: '#000000',
               strokeOpacity: 1.0,
               strokeWeight: 3
             });
-            poly.setMap(map);
+            scope.poly.setMap(map);
             // pathArray.push(coordinates);
-            scope.fromDirectivePathArray.push(coordinates);
+            scope.path = scope.poly.getPath();
+            scope.patharray.push(coordinates);
             //scope.fromDirectivePath = pathArray;
 
             // Add a listener for the click event
@@ -68,11 +72,11 @@ function gmapDrawRoute($window, $http) {
 
       // Handles click events on a map, and adds a new point to the Polyline.
       function addLatLng(event) {
-        var path = poly.getPath();
+        scope.path = scope.poly.getPath();
 
         // Because path is an MVCArray, we can simply append a new coordinate
         // and it will automatically appear.
-        path.push(event.latLng);
+        scope.path.push(event.latLng);
 
         const coordObj = {
           lat: event.latLng.lat(),
@@ -80,9 +84,9 @@ function gmapDrawRoute($window, $http) {
         };
         // pathArray.push(coordObj);
         // console.log('pathArray:', pathArray);
-        scope.fromDirectivePathArray.push(coordObj);
-        console.log('scope.fromDirectivePathArray:', scope.fromDirectivePathArray);
-        // scope.fromDirectivePathArray.forEach(coords => {
+        scope.patharray.push(coordObj);
+        console.log('scope.patharray:', scope.patharray);
+        // scope.patharray.forEach(coords => {
         //   console.log('coords:', coords);
         // });
 
@@ -90,6 +94,8 @@ function gmapDrawRoute($window, $http) {
 
         // format for path: {lat: 37.772, lng: -122.214}
       }
+
+
 
     }
   };
