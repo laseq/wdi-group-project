@@ -14,8 +14,8 @@ const groupSchema = new mongoose.Schema({
     location: { type: String, required: true },
     route: [
       {
-        lat: { type: String },
-        lng: { type: String }
+        lat: { type: Number },
+        lng: { type: Number }
       }
     ],
     meetingPoint: { type: String },
@@ -36,3 +36,19 @@ groupSchema.post('save', function() {
 });
 
 module.exports = mongoose.model('Group', groupSchema);
+
+// groupSchema.post('init', function(doc) {
+//   console.log('doc._id:', doc._id);
+// });
+
+groupSchema.set('toJSON', {
+  transform: function(doc, ret) {
+    // delete ret.passwordHash;
+    // delete ret.email;
+    // delete ret.__v;
+    ret.schedule[0].route.forEach(coord => {
+      delete coord._id;
+    });
+    return ret;
+  }
+});
