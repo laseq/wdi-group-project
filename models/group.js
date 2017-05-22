@@ -12,6 +12,12 @@ const groupSchema = new mongoose.Schema({
     date: {type: Date, required: true },
     startTime: { type: String },
     location: { type: String, required: true },
+    route: [
+      {
+        lat: { type: String },
+        lng: { type: String }
+      }
+    ],
     meetingPoint: { type: String },
     distance: { type: String, required: true },
     description: { type: String },

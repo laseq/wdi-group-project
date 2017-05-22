@@ -45,7 +45,7 @@ function GroupsNewCtrl($state, Group, CurrentUserService, TokenService, User, $u
       console.log('Fill in your postcode to access the route creator');
       return;
     }
-    $uibModal.open({
+    var routeModalInstance = $uibModal.open({
       templateUrl: 'js/views/partials/groupCreateRouteModal.html',
       controller: 'CreateRouteCtrl as createRoute',
       size: 'lg',
@@ -56,6 +56,16 @@ function GroupsNewCtrl($state, Group, CurrentUserService, TokenService, User, $u
         }
       }
     });
+
+    routeModalInstance
+      .result
+      .then(passedItem => {
+        if (passedItem) {
+          vm.group.schedule.route = passedItem;
+          console.log('vm.group.schedule.route:', vm.group.schedule.route);
+        }
+      });
+
   }
 
 }

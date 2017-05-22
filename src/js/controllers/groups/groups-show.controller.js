@@ -43,6 +43,7 @@ function GroupsShowCtrl(Group, $stateParams, TokenService, $state, User, $uibMod
       .$promise
       .then(group => {
         vm.group = group;
+        console.log('group.schedule:', group.schedule);
         splitDateTimeString(group);
         checkIfMember();
         checkIfMemberAndNotAdmin();

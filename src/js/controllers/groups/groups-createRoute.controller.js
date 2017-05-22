@@ -23,7 +23,7 @@ function CreateRouteCtrl(location, $uibModalInstance) {
   function saveRoute() {
     console.log('Entered saveRoute');
     console.log('vm.pathArray in save:', vm.pathArray);
-    $uibModalInstance.close();
+    $uibModalInstance.close(vm.pathArray);
   }
 
   function undoLastPath() {
