@@ -17,6 +17,7 @@ function gmapDrawRoute($window, $http) {
     template: '<div class="map-styling">GOOGLE MAP GOES HERE</div>',
     scope: {
       location: '@',
+      route: '=',
       patharray: '=patharray',
       pathundo: '&pathundo',
       path: '=path',
@@ -48,17 +49,30 @@ function gmapDrawRoute($window, $http) {
               map: map
             });
 
+            // Choose either the route co-ords or the starting location co-ords
+            // depending on whether a route has been saved previously or not
+            const arrayForPath = (!!scope.route) ? scope.route : [coordinates];
+            console.log('scope.route:', scope.route);
+
             scope.poly = new google.maps.Polyline({
-              path: [coordinates],
+              // path: [coordinates],
+              path: arrayForPath,
               strokeColor: '#000000',
               strokeOpacity: 1.0,
               strokeWeight: 3
             });
             scope.poly.setMap(map);
-            // pathArray.push(coordinates);
             scope.path = scope.poly.getPath();
-            scope.patharray.push(coordinates);
-            //scope.fromDirectivePath = pathArray;
+
+            // If a route is already saved, set pathArray equal to it
+            // otherwise, push the start point co-ords into pathArray
+            if (!!scope.route) {
+              scope.patharray = scope.route;
+            } else {
+              scope.patharray.push(coordinates);
+            }
+
+            console.log('scope.pathArray after if statement:', scope.patharray);
 
             // Add a listener for the click event
             map.addListener('click', addLatLng);
@@ -82,25 +96,12 @@ function gmapDrawRoute($window, $http) {
           lat: event.latLng.lat(),
           lng: event.latLng.lng()
         };
-        // pathArray.push(coordObj);
-        // console.log('pathArray:', pathArray);
         scope.patharray.push(coordObj);
         console.log('scope.patharray:', scope.patharray);
-        // scope.patharray.forEach(coords => {
-        //   console.log('coords:', coords);
-        // });
-
-        // scope.fromDirectivePath = pathArray;
-
-        // format for path: {lat: 37.772, lng: -122.214}
       }
-
-
 
     }
   };
-
-
 
 }
 

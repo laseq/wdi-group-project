@@ -53,6 +53,9 @@ function GroupsNewCtrl($state, Group, CurrentUserService, TokenService, User, $u
       resolve: {
         location: () => {
           return vm.group.schedule.location;
+        },
+        route: () => {
+          return vm.group.schedule.route;
         }
       }
     });

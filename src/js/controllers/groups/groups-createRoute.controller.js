@@ -2,8 +2,8 @@ angular
   .module('runchApp')
   .controller('CreateRouteCtrl', CreateRouteCtrl);
 
-CreateRouteCtrl.$inject = ['location','$uibModalInstance'];
-function CreateRouteCtrl(location, $uibModalInstance) {
+CreateRouteCtrl.$inject = ['location', 'route', '$uibModalInstance'];
+function CreateRouteCtrl(location, route, $uibModalInstance) {
 
   const vm = this;
 
@@ -12,6 +12,7 @@ function CreateRouteCtrl(location, $uibModalInstance) {
   vm.save = saveRoute;
   vm.undo = undoLastPath;
   vm.clear = clearPath;
+  vm.route = route;
   vm.pathArray = [];
 
   function closeModal() {
