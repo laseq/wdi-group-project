@@ -11,6 +11,7 @@ function GroupsEditCtrl($stateParams, $state, Group, $uibModal) {
   // vm.group = Group.get($stateParams);
   vm.update = groupsUpdate;
   vm.openRouteEdit = openRouteEdit;
+  vm.discardRouteChanges = false;
   // We're using angular moment-picker here and setting the minimum and maximum selectable times
   vm.minDateMoment = moment().add(5, 'minute');
   vm.maxDateMoment = moment().add(6, 'day');
@@ -55,6 +56,9 @@ function GroupsEditCtrl($stateParams, $state, Group, $uibModal) {
         },
         route: () => {
           return vm.group.schedule[0].route;
+        },
+        discard: () => {
+          return vm.discardRouteChanges;
         }
       }
     });
@@ -62,10 +66,12 @@ function GroupsEditCtrl($stateParams, $state, Group, $uibModal) {
     routeModalInstance
       .result
       .then(passedItem => {
-        if (passedItem) {
-          vm.group.schedule[0].route = passedItem;
+        console.log('passedItem', passedItem);
+        if (passedItem[0]) {
+          vm.group.schedule[0].route = passedItem[0];
           console.log('vm.group.schedule.route:', vm.group.schedule[0].route);
         }
+        vm.discardRouteChanges = passedItem[1];
       });
 
   }

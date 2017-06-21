@@ -18,11 +18,13 @@ function gmapDrawRoute($window, $http) {
     scope: {
       location: '@',
       route: '=',
+      previousroute: '=',
       patharray: '=patharray',
       pathundo: '&pathundo',
       path: '=path',
       poly: '=poly',
-      coords: '=coords'
+      coords: '=coords',
+      discard: '='
     },
     link(scope, element) {
       scope.$watch('location', function(postcode){
@@ -49,10 +51,35 @@ function gmapDrawRoute($window, $http) {
               map: map
             });
 
+            console.log('scope.route before assignment:', scope.route);
+
             // Choose either the route co-ords or the starting location co-ords
             // depending on whether a route has been saved previously or not
-            const arrayForPath = (!!scope.route) ? scope.route : [coordinates];
-            console.log('scope.route:', scope.route);
+            // const arrayForPath = (!!scope.route) ? scope.route : [coordinates];
+            let arrayForPath = [];
+
+            if (!scope.previousroute){
+              console.log('Entered !scope.previousroute');
+              scope.previousroute = [];
+              scope.previousroute = scope.route;
+            }
+
+            console.log('!!scope.route:', !!scope.route);
+            console.log('!!scope.previousroute:', !!scope.previousroute);
+            console.log('scope.discard:', scope.discard);
+
+            if (!!scope.route && !scope.discard) {
+              console.log('Entered there is route and discard==false');
+              arrayForPath = scope.route;
+            } else if (!!scope.previousroute && scope.discard) {
+              console.log('Entered there is previousroute and discard==true');
+              arrayForPath = scope.previousroute;
+            } else {
+              console.log('Entered else');
+              arrayForPath = [coordinates];
+            }
+
+            console.log('arrayForPath after if');
 
             scope.poly = new google.maps.Polyline({
               // path: [coordinates],
@@ -66,8 +93,10 @@ function gmapDrawRoute($window, $http) {
 
             // If a route is already saved, set pathArray equal to it
             // otherwise, push the start point co-ords into pathArray
-            if (!!scope.route) {
+            if (!!scope.route && !scope.discard) {
               scope.patharray = scope.route;
+            } else if (!!scope.previousroute && scope.discard) {
+              scope.patharray = scope.previousroute;
             } else {
               scope.patharray.push(coordinates);
             }

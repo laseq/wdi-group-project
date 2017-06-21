@@ -5,12 +5,14 @@
   <div class="modal-body">
     <gmap-draw-route location="{{ createRoute.location }}"
       route="createRoute.route"
+      previousroute="createRoute.previousroute"
       data-patharray="createRoute.pathArray"
       data-pathundo="createRoute.undo"
       data-pathclear="createRoute.clear"
       data-path="createRoute.path"
       data-poly="createRoute.poly"
-      data-coords="createRoute.coords">
+      data-coords="createRoute.coords"
+      discard="createRoute.discard">
     </gmap-draw-route>
   </div>
   <div class="modal-footer">

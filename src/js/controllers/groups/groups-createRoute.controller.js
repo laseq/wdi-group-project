@@ -2,8 +2,8 @@ angular
   .module('runchApp')
   .controller('CreateRouteCtrl', CreateRouteCtrl);
 
-CreateRouteCtrl.$inject = ['location', 'route', '$uibModalInstance'];
-function CreateRouteCtrl(location, route, $uibModalInstance) {
+CreateRouteCtrl.$inject = ['location', 'route', 'discard', '$uibModalInstance'];
+function CreateRouteCtrl(location, route, discard, $uibModalInstance) {
 
   const vm = this;
 
@@ -14,17 +14,24 @@ function CreateRouteCtrl(location, route, $uibModalInstance) {
   vm.clear = clearPath;
   vm.route = route;
   vm.pathArray = [];
+  vm.discard = discard;
 
   function closeModal() {
     vm.pathArray = [];
     vm.polypath = [];
-    $uibModalInstance.close();
+    console.log('closeModal() vm.route before:', vm.route);
+    vm.route = vm.previousroute;
+    console.log('closeModal() vm.route after:', vm.route);
+    vm.discard = true;
+    $uibModalInstance.close([vm.pathArray, vm.discard]);
   }
 
   function saveRoute() {
     console.log('Entered saveRoute');
     console.log('vm.pathArray in save:', vm.pathArray);
-    $uibModalInstance.close(vm.pathArray);
+    vm.previousroute = vm.route;
+    vm.discard = false;
+    $uibModalInstance.close([vm.pathArray, vm.discard]);
   }
 
   function undoLastPath() {
