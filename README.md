@@ -28,15 +28,43 @@ RUNCH is an app targeted at getting people, who have little spare time, active. 
 
 This app was created for our Group Project on the Web Development Immersive course at General Assembly. It was built using:
 
-- MEAN - Mongo, Express, Angular and Node
+- MEAN - MongoDB, Express.js, AngularJS and Node.js
 - JavaScript
 - jQuery
 - HTML
 - CSS & Bootstrap
 
+#### Server-side dependencies
+- bcrypt
+- bluebird
+- body-parser
+- cors
+- express
+- express-jwt
+- forever
+- jsonwebtoken
+- mongoose
+- morgan
+- validator
+- babel
+- gulp
+- chai
+- istanbul
+- mocha
+- supertest
+
+#### Client-side dependencies
+- angular
+- angular-jwt
+- angular-ui-router
+- angular-resource
+- angular-moment-picker
+- bootstrap-css-only
+- angular-animate
+
 A hosted version of RUNCH can be found [here](https://runchtime.herokuapp.com).
 
-The code can be viewed [here] (https://github.com/laseq/wdi-group-project).
+The code can be viewed [here](https://github.com/laseq/wdi-group-project).
 
 ## Why RUNCH?
 Fed up of sitting down all day?
