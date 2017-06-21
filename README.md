@@ -272,7 +272,7 @@ Trouble started to occur when we all began styling. With everyone working on the
 
 We didn't get to include as many extras as originally planned due to lack of time. We could have maybe planned this better.
 
-##Future Additions
+## Future Additions
 
 In order to give users a better experience, we propose the following features to be built into Runch:
 
