@@ -69,7 +69,7 @@ User
       image: 'http://www.runningismypassport.com/wp-content/uploads/2015/05/running-0045.jpg',
       schedule: [{
         day: 'Tuesday',
-        date: new Date('May 23, 2017 12:00:00'),
+        date: new Date('July 12, 2017 12:00:00'),
         startTime: '12:00',
         location: 'E1 7PT',
         meetingPoint: 'Aldgate East Station',
@@ -106,7 +106,7 @@ User
       image: 'http://vipauk.org/transport/tube/hammer/img/whch2.jpg',
       schedule: [{
         day: 'Monday',
-        date: new Date('May 22, 2017 12:30:00'),
+        date: new Date('July 13, 2017 12:30:00'),
         startTime: '12:30',
         location: 'E1 1BY',
         meetingPoint: 'Whitechapel Tube Station',
@@ -137,7 +137,7 @@ User
       image: 'https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/5/7/1367930926942/A-running-group-training--008.jpg?w=700&q=55&auto=format&usm=12&fit=max&s=9d3798295399683096a9a2a624a2e4e7',
       schedule: [{
         day: 'Friday',
-        date: new Date('May 19, 2017 14:00:00'),
+        date: new Date('July 14, 2017 14:00:00'),
         startTime: '14:00',
         location: 'E2 0ET',
         meetingPoint: 'Bethnal Green Tube Station',
@@ -161,7 +161,7 @@ User
       image: 'http://www.warriorwomen.co.uk/wp-content/uploads/2008/07/gcr200708.jpg',
       schedule: [{
         day: 'Friday',
-        date: new Date('May 19, 2017 12:00:00'),
+        date: new Date('July 12, 2017 12:00:00'),
         startTime: '12:00',
         location: 'W2 2UH',
         meetingPoint: 'The South Gate',
@@ -187,7 +187,7 @@ User
       image: 'https://farm2.staticflickr.com/1685/25619392222_9b72360005_z.jpg',
       schedule: [{
         day: 'Wednesday',
-        date: new Date('May 24, 2017 13:00:00'),
+        date: new Date('July 14, 2017 13:00:00'),
         startTime: '13:00',
         location: 'KT1 4DQ',
         meetingPoint: 'East entrance of Bushy Park',
@@ -209,7 +209,7 @@ User
       image: 'http://images.fineartamerica.com/images-medium/canary-wharf-gouzel-liddle.jpg',
       schedule: [{
         day: 'Monday',
-        date: new Date('May 22, 2017 12:45:00'),
+        date: new Date('July 13, 2017 12:45:00'),
         startTime: '12:45',
         location: 'E14 5RB',
         meetingPoint: 'Just outside Barclays Bank',
