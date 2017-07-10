@@ -58,28 +58,45 @@ function gmapDrawRoute($window, $http) {
             // const arrayForPath = (!!scope.route) ? scope.route : [coordinates];
             let arrayForPath = [];
 
+            console.log('scope.previousroute:', scope.previousroute);
             if (!scope.previousroute){
               console.log('Entered !scope.previousroute');
               scope.previousroute = [];
-              scope.previousroute = scope.route;
+              if (!scope.route) {
+                scope.route = [];
+              }
+              scope.route[0] = scope.coords;
+              const newArray = scope.route.map(a => Object.assign({}, a));
+              scope.previousroute = newArray;
             }
 
             console.log('!!scope.route:', !!scope.route);
-            console.log('!!scope.previousroute:', !!scope.previousroute);
+            console.log('scope.previousroute.length:', scope.previousroute.length);
             console.log('scope.discard:', scope.discard);
 
             if (!!scope.route && !scope.discard) {
               console.log('Entered there is route and discard==false');
               arrayForPath = scope.route;
-            } else if (!!scope.previousroute && scope.discard) {
+
+              scope.patharray = scope.route;
+
+            } else if (scope.previousroute.length && scope.discard) {
               console.log('Entered there is previousroute and discard==true');
-              arrayForPath = scope.previousroute;
+              // arrayForPath = scope.previousroute;
+              arrayForPath = scope.previousroute.map(a => Object.assign({}, a));
+
+              const newArray = scope.previousroute.map(a => Object.assign({}, a));
+              scope.patharray = newArray;
+
             } else {
               console.log('Entered else');
               arrayForPath = [coordinates];
+
+              scope.patharray.push(coordinates);
             }
 
-            console.log('arrayForPath after if');
+            console.log('scope.patharray after if statement:', scope.patharray);
+
 
             scope.poly = new google.maps.Polyline({
               // path: [coordinates],
@@ -93,15 +110,15 @@ function gmapDrawRoute($window, $http) {
 
             // If a route is already saved, set pathArray equal to it
             // otherwise, push the start point co-ords into pathArray
-            if (!!scope.route && !scope.discard) {
-              scope.patharray = scope.route;
-            } else if (!!scope.previousroute && scope.discard) {
-              scope.patharray = scope.previousroute;
-            } else {
-              scope.patharray.push(coordinates);
-            }
-
-            console.log('scope.pathArray after if statement:', scope.patharray);
+            // if (!!scope.route && !scope.discard) {
+            //   scope.patharray = scope.route;
+            // } else if (!!scope.previousroute && scope.discard) {
+            //   const newArray = scope.previousroute.map(a => Object.assign({}, a));
+            //   scope.patharray = newArray;
+            //   // scope.patharray = scope.previousroute;
+            // } else {
+            //   scope.patharray.push(coordinates);
+            // }
 
             // Add a listener for the click event
             map.addListener('click', addLatLng);
@@ -126,7 +143,10 @@ function gmapDrawRoute($window, $http) {
           lng: event.latLng.lng()
         };
         scope.patharray.push(coordObj);
-        console.log('scope.patharray:', scope.patharray);
+        // I'm using pop() as patharray was linked to previousroute.
+        // I tried to make a clone of previousroute but it didn't work
+        // pop() is a workaround to a deep clone
+        // scope.previousroute.pop();
       }
 
     }

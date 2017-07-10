@@ -11,6 +11,7 @@ function GroupsNewCtrl($state, Group, CurrentUserService, TokenService, User, $u
   vm.create = groupsCreate;
   vm.openRouteCreate = openRouteCreate;
   vm.currentUser = User.get({ id: TokenService.decodeToken().id });
+  vm.discardRouteChanges = false;
 
   // We're using angular moment-picker here and setting the minimum and maximum selectable times
   vm.minDateMoment = moment().add(5, 'minute');
@@ -56,6 +57,9 @@ function GroupsNewCtrl($state, Group, CurrentUserService, TokenService, User, $u
         },
         route: () => {
           return vm.group.schedule.route;
+        },
+        discard: () => {
+          return vm.discardRouteChanges;
         }
       }
     });
@@ -63,10 +67,12 @@ function GroupsNewCtrl($state, Group, CurrentUserService, TokenService, User, $u
     routeModalInstance
       .result
       .then(passedItem => {
-        if (passedItem) {
-          vm.group.schedule.route = passedItem;
+        console.log('passedItem', passedItem);
+        if (passedItem[0]) {
+          vm.group.schedule.route = passedItem[0];
           console.log('vm.group.schedule.route:', vm.group.schedule.route);
         }
+        vm.discardRouteChanges = passedItem[1];
       });
 
   }
