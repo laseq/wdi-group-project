@@ -41,11 +41,11 @@ function GroupsNewCtrl($state, Group, CurrentUserService, TokenService, User, $u
 
   function openRouteCreate() {
     const locationInput = document.getElementById('location');
-    console.log(locationInput.value.length);
     if (locationInput.value.length < 5) {
-      console.log('Fill in your postcode to access the route creator');
+      vm.routeMessage = 'Fill in the start location postcode to access the route creator';
       return;
     }
+    vm.routeMessage = '';
     var routeModalInstance = $uibModal.open({
       templateUrl: 'js/views/partials/groupCreateRouteModal.html',
       controller: 'CreateRouteCtrl as createRoute',
@@ -67,10 +67,8 @@ function GroupsNewCtrl($state, Group, CurrentUserService, TokenService, User, $u
     routeModalInstance
       .result
       .then(passedItem => {
-        console.log('passedItem', passedItem);
         if (passedItem[0]) {
           vm.group.schedule.route = passedItem[0];
-          console.log('vm.group.schedule.route:', vm.group.schedule.route);
         }
         vm.discardRouteChanges = passedItem[1];
       });

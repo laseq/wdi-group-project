@@ -40,11 +40,11 @@ function GroupsEditCtrl($stateParams, $state, Group, $uibModal) {
 
   function openRouteEdit() {
     const locationInput = document.getElementById('location');
-    console.log(locationInput.value.length);
     if (locationInput.value.length < 5) {
-      console.log('Fill in your postcode to access the route creator');
+      vm.routeMessage = 'Fill in the start location postcode to access the route creator';
       return;
     }
+    vm.routeMessage = '';
     var routeModalInstance = $uibModal.open({
       templateUrl: 'js/views/partials/groupCreateRouteModal.html',
       controller: 'CreateRouteCtrl as createRoute',
@@ -66,10 +66,8 @@ function GroupsEditCtrl($stateParams, $state, Group, $uibModal) {
     routeModalInstance
       .result
       .then(passedItem => {
-        console.log('passedItem', passedItem);
         if (passedItem[0]) {
           vm.group.schedule[0].route = passedItem[0];
-          console.log('vm.group.schedule.route:', vm.group.schedule[0].route);
         }
         vm.discardRouteChanges = passedItem[1];
       });
